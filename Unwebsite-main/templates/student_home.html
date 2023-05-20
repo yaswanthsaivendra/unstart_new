@@ -1,0 +1,425 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+    {% load custom_tags %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Page</title>
+    <link rel="stylesheet" href="{% static "styles/student/all.css" %}">
+    <link rel="stylesheet" href="{% static "styles/student/style.css" %}">
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <header class="header">
+        <div class="left-header">
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <img id="logo" src="images/logo.png">
+        </div>
+
+        <div class="right-header">
+            <div class="all-apps-container">
+                <div class="right-header-icons">
+                    <img class="all-apps-icon icon" src="images/Apps.png">
+                </div>
+            </div>
+
+            <div class="notification-container">
+                <div class="right-header-icons">
+                    <img class="notify-icon icon" src="images/notification.png">
+                </div>
+                <div class="dropdown">
+                    <div class="notify_item">
+                        <div class="notify_img">
+                            <img src="images/User.png" alt="profile_pic" style="width: 50px">
+                        </div>
+                        <div class="notify_info">
+                            <p>You have submitted your assignment submission for<span>Assignment-1</span></p>
+                            <button class="notify-btn">Explore All</button>
+                        </div>
+                        <div class="notify_time">
+                            <p>2h</p>
+                            <h1>...</h1>
+                        </div>
+                    </div>
+                    <div class="notify_item">
+                        <div class="notify_img">
+                            <img src="images/User.png" alt="profile_pic" style="width: 50px">
+                        </div>
+                        <div class="notify_info">
+                            <p>You have submitted your assignment submission for<span>Assignment-1</span></p>
+                            <button class="notify-btn">Explore All</button>
+                        </div>
+                        <div class="notify_time">
+                            <p>2h</p>
+                            <h1>...</h1>
+                        </div>
+                    </div>
+                    <div class="notify_See_All">
+                        <button class="see-All">See All Notifications</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-container">
+                <div class="right-header-icons">
+                    <img class="profile-icon icon" src="images/User.png">
+                </div>
+                <div class="dropdown-content">
+                    <a href="#"><span><i class="fa-solid fa-gauge"></i>Dashboard</span></a>
+                    <a href="#"><span><i class="fa-solid fa-table"></i>Grades</span></a>
+                    <a href="#"><span><i class="fa-solid fa-comment"></i>Messages</span></a>
+                    <a href="#"><span><i class="fa-solid fa-wrench"></i>Preferences</span></a>
+                    <a href="#"><span><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-container">
+        <nav class="sidebar close">
+            <header>
+                <i class='bx bx-chevron-right toggle'></i>
+            </header>
+
+            <div class="menu-bar">
+                <div class="menu">
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a class="active" href="#">
+                                <i class='bx bx-home-alt icon'></i>
+                                <span class="text nav-text">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="all_courses_page.html">
+                                <i class='bx bx-bar-chart-alt-2 icon'></i>
+                                <span class="text nav-text">All courses</span>
+                            </a>
+
+
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="calender_page.html">
+                                <i class='bx bx-bell icon'></i>
+                                <span class="text nav-text">Calender</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="notifications_page.html">
+                                <i class='bx bx-pie-chart-alt icon'></i>
+                                <span class="text nav-text">Notifications</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="yourFiles_page.html">
+                                <i class='bx bx-heart icon'></i>
+                                <span class="text nav-text">Your Files</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="events_page.html">
+                                <i class='bx bx-wallet icon'></i>
+                                <span class="text nav-text">Events</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="bottom-content">
+                    <li class="">
+                        <a href="#">
+                            <i class='bx bx-log-out icon'></i>
+                            <span class="text nav-text">Logout</span>
+                        </a>
+                    </li>
+
+                    <li class="mode">
+                        <div class="sun-moon">
+                            <i class='bx bx-moon icon moon'></i>
+                            <i class='bx bx-sun icon sun'></i>
+                        </div>
+                        <span class="mode-text text">Dark mode</span>
+
+                        <div class="toggle-switch">
+                            <span class="switch"></span>
+                        </div>
+                    </li>
+
+                </div>
+            </div>
+        </nav>
+
+        <section class="home">
+            <div class="img-banner">
+                <img src="https://www.westcoastcollege.co.za/wcc2/wp-content/uploads/2020/07/West_Coast_College_About_slider2.jpg" alt=""
+                    srcset="">
+            </div>
+
+            <div class="main-content">
+                <div class="leftside-content">
+                    <div class="my-courses-container">
+                        <button type="button" class="collapsible">Recently Released Courses
+                            <span class="buttonheader"><i class="fa-solid fa-angle-down"></i>
+                                <i class="fa-solid fa-angle-up"></i></span>
+                        </button>
+                        <section class="content">
+                            <div class="wrapper_tab-content">
+                                <div class="course-list">
+                                    <div class="course-card">
+                                        <img
+                                            src="https://www.educative.io/cdn-cgi/image/f=auto,fit=cover,w=620/v2api/collection/10370001/6183193425739776/image/5306219095130112">
+                                        <div class="details">
+                                            <a href="course_detail.html" target="_blank">Lern Node.js from
+                                                scratch</a>
+
+                                            <p>DAC1101-MAY-21</p>
+                                            <p class="spec">BCA_Sem1</p>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="course-card">
+                                        <img
+                                            src="https://www.educative.io/cdn-cgi/image/f=auto,fit=cover,w=620/v2api/collection/10370001/5397377793392640/image/4676725896380416">
+                                        <div class="details">
+                                            <a href="course_detail.html" target="_blank">Building website with
+                                                javascript from scartch</a>
+
+                                            <p>DAC1101-MAY-21</p>
+                                            <p class="spec">BCA_Sem1</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="course-card">
+                                        <img src="images/logo.png">
+                                        <div class="details">
+                                            <a href="course_detail.html" target="_blank">Fundamentals of IT and
+                                                Programming</a>
+
+                                            <p>DAC1101-MAY-21</p>
+                                            <p>BCA_Sem1</p>
+
+                                            <div class="message">
+                                                <a href="course_detail.html" target="_blank"><i
+                                                        class="fa-solid fa-message"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="course-card">
+                                        <img src="images/logo.png">
+                                        <div class="details">
+                                            <a href="course_detail.html" target="_blank">Fundamentals of IT and
+                                                Programming</a>
+
+                                            <p>DAC1101-MAY-21</p>
+                                            <p>BCA_Sem1</p>
+
+                                            <div class="message">
+                                                <a href="course_detail.html" target="_blank"><i
+                                                        class="fa-solid fa-message"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="course-card">
+                                        <img src="images/logo.png">
+                                        <div class="details">
+                                            <a href="course_detail.html" target="_blank">Fundamentals of IT and
+                                                Programming</a>
+
+                                            <p>DAC1101-MAY-21</p>
+                                            <p>BCA_Sem1</p>
+
+                                            <div class="message">
+                                                <a href="course_detail.html" target="_blank"><i
+                                                        class="fa-solid fa-message"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="course-card">
+                                        <img src="images/logo.png">
+                                        <div class="details">
+                                            <a href="course_detail.html" target="_blank">Fundamentals of IT and
+                                                Programming</a>
+
+                                            <p>DAC1101-MAY-21</p>
+                                            <p>BCA_Sem1</p>
+
+                                            <div class="message">
+                                                <a href="course_detail.html" target="_blank"><i
+                                                        class="fa-solid fa-message"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bottom-view-more">
+                                    <a href="all_courses_page.html" target="_blank">View All Courses (<span
+                                            class="courses-count">5</span>)
+                                        <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="announcment-container">
+                        <button type="button" class="collapsible">Announcments<span><i
+                                    class="fa-solid fa-angle-down"></i>
+                                <i class="fa-solid fa-angle-up"></i></span></button>
+                        <div class="content">
+                            <div class="banner banner-img-type">
+                                <div class="row-1">
+                                    <h1>Welcome to Online TechSnap ! <span><i class="fa-solid fa-xmark"></i></span></h1>
+
+                                    <p>Posted by Krishna
+                                        &#x2022;
+                                        <span><i class="fa-solid fa-globe"></i></span>
+                                        Global
+                                        &#x2022;
+                                        <span><i class="fa-solid fa-clock-rotate-left"></i></span>
+                                        Edited
+                                        &#x2022;
+                                        <span><i class="fa-solid fa-sitemap"></i></span>
+                                        Confidentially Released
+                                    </p>
+                                </div>
+
+                                <div class="row-2">
+                                    <img src="images/logo.png">
+                                </div>
+
+                                <div class="row-3">
+                                    <i class="fa-solid fa-thumbs-up"></i>
+                                    <i class="fa-solid fa-share-nodes"></i>
+                                    <button class="btn-subscribe">Subscribe</button>
+                                </div>
+                            </div>
+
+                            <div class="banner banner-msg-type">
+                                <div class="row-1">
+                                    <h1>Academic Calender - JUL - AUG 2021 Session<span><i class="fa-solid fa-xmark"></i></span></h1>
+
+                                    <p>Posted by Krishna
+                                        &#x2022;
+                                        <span><i class="fa-solid fa-globe"></i></span>
+                                        Global
+                                        &#x2022;
+                                        <span><i class="fa-solid fa-clock-rotate-left"></i></span>
+                                        Edited
+                                        &#x2022;
+                                        <span><i class="fa-solid fa-sitemap"></i></span>
+                                        Confidentially Released
+                                    </p>
+                                </div>
+
+                                <div class="row-2">
+                                    <p>Dear Student</p>
+                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste non architecto ipsa praesentium ducimus excepturi delectus, hic eveniet, autem labore nulla consequuntur fugiat repellendus sit, dolorum adipisci facilis enim? Porro odit illo sequi vero officiis aliquam, quasi tenetur, repellat fugiat quia, pariatur minima laborum! Magni doloremque tempore blanditiis? Sapiente, libero!</p>
+                                </div>
+
+                                <div class="row-3">
+                                    <i class="fa-solid fa-thumbs-up"></i>
+                                    <i class="fa-solid fa-share-nodes"></i>
+                                    <button class="btn-subscribe">Subscribe</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rightside-content">
+                    <div class="guest-lecture-link-container">
+                        <button type="button" class="collapsible">Upcoming Assignments<span><i
+                                    class="fa-solid fa-angle-down"></i>
+                                <i class="fa-solid fa-angle-up"></i></span></button>
+                        <div class="content">
+                            <p><a href="course_detail.html" target="_blank">Network Analysis</a> by Ms. Apoorva KA</p>
+                        </div>
+                    </div>
+
+                    <div class="calender-container">
+                        <button type="button" class="collapsible">Calender<span><i class="fa-solid fa-angle-down"></i>
+                                <i class="fa-solid fa-angle-up"></i></span></button>
+                        <div class="content">
+                            <div class="btn-events">
+                                <button class="events">Friday, 1 July 2022 <span><i
+                                            class="fa-solid fa-angle-right"></i></span></button>
+
+                                <button class="events">Upcoming Events <span><i
+                                            class="fa-solid fa-angle-right"></i></span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="expert-speak-recording-container">
+                        <button type="button" class="collapsible">Expert Speak Recordings<span><i
+                                    class="fa-solid fa-angle-down"></i>
+                                <i class="fa-solid fa-angle-up"></i></span></button>
+                        <div class="content">
+                            <div class="links">
+                                <p>15 January 2022 <a href="#">Create a powerful LinkedIn Profile</a> <b> by Garima
+                                        Pande </b></p>
+                                <hr>
+                            </div>
+                            <div class="links">
+                                <p>15 January 2022 <a href="#">Create a powerful LinkedIn Profile</a> <b> by Garima
+                                        Pande </b></p>
+                                <hr>
+                            </div>
+                            <div class="links">
+                                <p>15 January 2022 <a href="#">Create a powerful LinkedIn Profile</a> <b> by Garima
+                                        Pande </b></p>
+                                <hr>
+                            </div>
+                            <div class="links">
+                                <p>15 January 2022 <a href="#">Create a powerful LinkedIn Profile</a> <b> by Garima
+                                        Pande </b></p>
+                                <hr>
+                            </div>
+                            <div class="links">
+                                <p>15 January 2022 <a href="#">Create a powerful LinkedIn Profile</a> <b> by Garima
+                                        Pande </b></p>
+                                <hr>
+                            </div>
+                            <div class="links">
+                                <p>15 January 2022 <a href="#">Create a powerful LinkedIn Profile</a> <b> by Garima
+                                        Pande </b></p>
+                                <hr>
+                            </div>
+                            <div class="links">
+                                <p>15 January 2022 <a href="#">Create a powerful LinkedIn Profile</a> <b> by Garima
+                                        Pande </b></p>
+                                <hr>
+                            </div>
+                            <div class="links">
+                                <p>15 January 2022 <a href="#">Create a powerful LinkedIn Profile</a> <b> by Garima
+                                        Pande </b></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="{% static "styles/student/app.js"%}"></script>
+</body>
+
+</html>

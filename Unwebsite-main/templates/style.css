@@ -1,0 +1,575 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&family=Kanit&family=Poppins&family=Roboto&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:"Roboto";
+}
+
+.webpage{
+    width: 100%;
+    max-width: 1550px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+header{
+    width: 100%;
+    height: 5rem;
+    background-color:black;
+    display: flex;
+    position: sticky;
+    top: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+header nav span{
+    padding: 15px 20px;
+    color: white;
+}
+
+header nav span:hover{
+    background-color: rgb(183, 183, 183);
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+header nav .signup{
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-right: 20px;
+    text-transform: capitalize;
+}
+
+header nav .free-btn{
+    border: 2px solid black;
+    background-color:white;
+    color: black;
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: capitalize;
+}
+
+/*home page*/
+#home{
+    width: 100%;
+    height: 700px;
+    background-color: white;
+    padding: 0px 20px;
+}
+
+#home .row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.col-1,.col-2{
+    flex-basis: 500px;
+}
+
+.col-1 h1{
+    font-size: 50px;
+    color: black;
+    margin-bottom: 10px;
+}
+.col-1 p{
+    font-size: 25px;
+    color: gray;
+    margin-bottom: 10px;
+}
+
+.col-1 .get-btn{
+    padding: 8px 35px;
+    color: black;
+    font-size: 18px;
+    text-transform: capitalize;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* page 1*/
+#page-1{
+    width: 100%;
+    height: 600px;
+    background-color: rgb(255, 255, 255);
+    padding: 0px 20px;   
+}
+
+.main-text{
+    font-size: 35px;
+    color: black;
+    text-align: center;
+    margin-top: 50px;
+    text-transform: capitalize;
+    font-family: Poppins;
+}
+
+.card-container{
+    padding-top: 60px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 20px;
+    overflow-y:scroll;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+.card{
+    min-width: 950px;
+    height: 400px;
+    padding: 50px;
+    border: none;
+    background-color: black;
+    border-radius: 10px;
+}
+
+.card .page-1-row-1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.page-1-col-1 h1{
+    color: white;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+.page-1-col-1 .text-1,.page-1-col-1 .text-2{
+    color: gray;
+    font-size: 25px;
+    margin-bottom: 10px;
+    
+}
+.page-1-col-1{
+    flex-basis: 50%;
+}
+
+/* page-2*/
+
+#page-2{
+    width: 100%;
+    height: auto;
+    background-color: white;
+    padding: 0px 20px;
+}
+
+.page-2-main-text{
+    font-family: Poppins;
+    font-size: 35px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+.grid{
+    padding-top: 50px;
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: repeat(4,400px);
+    grid-template-rows: repeat(4,auto);
+    gap: 20px;
+    animation-name: scroll;
+    animation-duration: 7s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-direction: alternate;
+}
+
+@keyframes scroll{
+      0% {
+        margin-left:-300px;
+      }
+      100% {
+        margin-left: 50px;
+      }
+}
+
+.box{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: black;
+    padding: 20px;
+}
+
+.box p{
+    font-family: Poppins;
+    font-size: 20px;
+    color: white;
+}
+
+.box span{
+    font-family: Poppins;
+    font-weight: bold;
+    color: gray;
+}
+
+.item-2,.item-4,.item-6,.item-8{
+    margin-bottom: 50px;
+}
+.item-3,.item-5,.item-7{
+    margin-top: 50px;
+}
+
+/* page-3*/
+
+#page-3{
+    width: 100%;
+    height: auto;
+    padding: 20px 20px;
+}
+
+.page-3-main-text{
+    font-family: Poppins;
+    font-size: 35px;
+    text-align-last: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.page-3-flex{
+    width: 100%;
+    background-color: white;
+    border-radius:10px;
+    border: none;
+    box-shadow:0px 0px 3px #dbdbdb;
+    margin: 0 auto;
+    display: flex;
+    padding: 20px 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#page-3 .pbox-1,.pbox-2,.pbox-3{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+
+}
+
+#page-3 .pbox{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+}
+
+.pb-1{
+    background-image: url("imgs/b1.svg");
+    background-size: cover;
+}
+.pb-2{
+    background-image: url("imgs/b2.svg");
+    background-size: cover;
+}
+
+.pb-3{
+    background-image: url("imgs/b3.svg");
+    background-size: cover;
+}
+
+.pbox-1 span,.pbox-2 span,.pbox-3 span{
+    font-family: Poppins;
+    font-size: 25px;
+}
+.pbox-1 span p,.pbox-2 span p,.pbox-3 span p{
+    font-family: Poppins;
+    font-size: 15px;
+}
+
+/*  page-4*/
+
+#page-4{
+    width: 100%;
+    height: 500px;
+    background-color: white;
+    padding: 20px 20px;
+    
+}
+
+.page-4-row{
+    padding-top:60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.page-4-col-1{
+    flex-basis: 50%;
+}
+.page-4-col-1 h1{
+    font-family: Poppins;
+    font-size: 40px;
+    columns: black;
+}
+
+.page-4-col-1 p{
+    font-family: Poppins;
+    font-size: 25px;
+    color: gray;
+    margin-bottom: 50px;
+}
+.page-4-btn{
+    padding: 10px 30px;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+}
+
+/* page 5 */
+
+#page-5{
+    width: 100%;
+    height: 600px;
+    background-color: black;
+    padding: 20px;
+}
+
+.page-5-row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 50px;
+    gap: 20px;
+}
+
+.page-5-img{
+    width:100%;
+    height:auto;
+}
+.page-5-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.page-5-col-1,.page-5-col-2,.page-5-col-3{
+    flex-basis:200%;
+}
+
+
+
+.page-5-col-1 h1,.page-5-col-2 h1,.page-5-col-3 h1{
+    font-family: Poppins;
+    color: white;
+    font-size: 30px;
+}
+.page-5-col-1 p,.page-5-col-2 p,.page-5-col-3 p{
+    font-family: Poppins;
+    color: gray;
+    font-size: 20px;
+}
+
+/*   page-6 */
+
+#page-6{
+    width: 100%;
+    height: 700px;
+    padding: 20px;
+    background-color: white;
+}
+
+.page-6-flex{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-6-flex h1{
+    font-family: Poppins;
+    color: black;
+    font-size: 35px;
+}
+
+.page-6-flex button{
+    padding: 10px 30px;
+    background-color: black;
+    color: white;
+    font-family: Poppins;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+}
+
+.carsuol{
+    margin-top: 80px;
+    width: 100%;
+    display: flex;
+    overflow-y:scroll;
+    height:auto;
+    gap: 30px;
+}
+
+.c-card{
+    min-width: 390px;
+    min-height: 350px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #dbdbdb;
+}
+.c-card .img{
+    width: 100%;
+    height: 300px;
+}
+
+.c-card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.c-card .p1{
+    font-family: Poppins;
+    font-size: 20px;
+    margin-bottom: 10px;
+
+}
+
+.c-card .p2{
+    font-family: Poppins;
+    color: gray;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.c-card button{
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    font-family: Poppins;
+    font-size: 15px;
+}
+
+/*  page-7 */
+
+#page-7{
+    width: 100%;
+    height: 700px;
+    background-color: black;
+    padding: 20px;
+}
+
+.page-7-row{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-7-col-1{
+    flex-basis: 50%;
+}
+
+.page-7-col-1 h1{
+    font-family: Poppins;
+    font-size: 35px;
+    color: white;
+}
+
+.page-7-col-2 .form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 600px;
+    background-color: white;
+    border-radius: 10px;
+    border: none;
+}
+
+form label{
+    font-family: Poppins;
+    font-size: 16px;
+    color: black;
+    margin-bottom: 5px;
+}
+
+form input{
+    width: 300px;
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 5px;
+
+}
+
+form button{
+    width: 100%;
+    height: 40px;
+    font-family: Poppins;
+    font-size: 16px;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    border: none;
+}
+
+/*  footer */
+
+footer{
+    width: 100%;
+    padding: 20px;
+    height: auto;
+    background-color: white;
+}
+
+.f-row{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid gray;
+}
+
+.f-col-1 .icons{
+    padding-top: 16px;
+}
+
+.f-col-1 .icons i{
+    font-size: 30px;
+    margin-right: 20px;
+}
+
+.f-col-2 span,.f-col-3 span,.f-col-4 span,.f-col-5 span,.f-col-6 span{
+    font-family: Poppins;
+    font-size: 24px;
+}
+
+.f-row ul li{
+    list-style: none;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.f-row-2{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.f-row-2 div:nth-child(1){
+    font-weight: 100;
+    font-size: 20px;
+
+}

@@ -1,0 +1,104 @@
+{% extends "base2.html" %}
+{% load static %}
+
+{% block content %}
+        
+        <div class="announcements-container">
+            
+            <div class="ann">
+                <div style="display:flex">
+                    <a href={% url 'usercourse' %}><button class="btn btn-link ">All Courses</button></a>
+                    <a href={% url 'courseDetail' courseid %}><button class="btn btn-link ">{{course.title}}</button></a>
+                    <a href={% url 'announceDetail' obj courseid %}><button class="btn btn-link ">{{obj}}</button></a>
+                    
+              </div>
+                <div class="heading ann-item">
+                    <div class="head heading-item">
+                        <p class="heading-name">
+                            Lessons
+                        </p>
+                    </div>
+                    
+                </div>
+                
+                
+                
+                   
+                        
+                        <div class="ann-content">
+                            <div class="m-4">
+                                
+                                    
+                                      
+                                      <h2 class="mr-5">{{ unit.title}}</h2>
+                                      
+                                      <button class="btn btn-primary" data-toggle="modal" data-target="#topicmodal{{courseunit.id}}">Add {{courseunit.name}}</button>
+                                    {% for lesson in lessons %}
+                                      
+                                        <div style="display: flex;justify-content: space-between;" class="p-3">
+                                            <a href=""><button class="btn btn-link">{{lesson.title}}</button></a>
+                                            <a href="" ><button class="btn btn-danger">Delete</button></a>
+                                        </div>
+                                    
+                                       
+                                    {% endfor %}
+                          
+                                                <!-- create course topic Modal -->
+                                      <div class="modal fade" id="topicmodal{{courseunit.id}}" tabindex="-1" aria-labelledby="topicmodal{{courseunit.id}}" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="topicmodal{{courseunit.id}}title">Add {{ courseunit.name }}</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action={% url 'create-unit' obj %} method="post" enctype="multipart/form-data">{% csrf_token %}
+                                                <div class="form-group">
+                                                    <label for="title">Title</label>
+                                                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" required>
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="brief">brief</label>
+                                                  <input type="text" class="form-control" id="brief" name="brief" placeholder="Add Info if any" >
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="due">Due</label>
+                                                  <input type="date" class="form-control" id="date" name="date" placeholder="due date" >
+                                                </div>
+                                                
+                                                <input type="hidden" value={{course.id}} name="courseunitid" id="courseunitid">
+                                                <button type="submit" class="btn btn-primary">Add</button>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          
+                                            </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                          
+                                     
+                                    
+                          
+                                
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>  
+
+                     
+                    
+                
+                              
+            </div>
+        </div>
+    
+    
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,176 @@
+{% extends "base2.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+<div id="add_course" class="add-course">
+    <form class='popup w3-border w3-round-large' enctype='multipart/form-data' method='POST' action="{% url 'unit-detail' obj unit.id courseid %}">
+        <div class="left">
+            <div class="left-cont">
+                <img src="{% static "rsc/icons8-project-management-48.png"%}" alt="">
+                <h3>Create new Unit</h3>
+                <div class="left-item ac-btn">
+                    <button type="submit" class="a">Create</button>
+                    <button class="cancel" type="button">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-cont">
+                <div class='right-item'>
+                    {% csrf_token %}
+                    {{ lesson_form|crispy }}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        
+
+        <div class="announcements-container">
+            <div class="ann">
+                <div class="heading ann-item">
+                    <div class="head heading-item">
+                        <p class="heading-name">
+                            {{unit.title}}
+                        </p>
+                    </div>
+                    <div class="add-search ann-item heading-item">
+                        <div class="search as-item">
+                            <input type="text" name="" id="" placeholder="search" class="search-item searchbar">
+                            <img src="{% static "rsc/icons8-search-50 (4).png"%}" alt="" class="search-icon search-item">
+                        </div>
+                        <div class="filter fs-item">
+                            <button class="filter-btn" id="add-course-btn">Add</button>
+                        </div>
+                    </div>
+
+                    {% if unit.released == False %}
+                    <div class="release-edit heading-item">
+                        
+                        <div class="release">
+                            <a href="{% url 'release-topic' obj unit.id courseid %}"> <button class="release-btn">   
+                                <img src="{% static "rsc/icons8-telegram-app-30.png" %}" alt="" class="icon">
+                                <p>Release</p>
+                            </button></a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="release-edit heading-item">
+                        
+                    <div class="update" >
+                          
+                            
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#topicmodal">Update </button>
+                        
+                    </div>
+                </div>
+                <div class="tabs ann-item">
+                    <div class="tab dra not-current">
+                        <img src="{% static "rsc/icons8-draft-48.png" %}" alt="" class="icon">
+                        <p>Drafts</p>
+                    </div>
+                    <div class="tab rel current">
+                        <img src="{% static "rsc/icons8-sent-50.png"%}" alt="" class="icon">
+                        <p>Released</p>
+                    </div>
+                </div>
+                <div class="ann-item released-container">
+                {% for lesson in lessons %}
+                
+                    <div class="released">
+                        <div class="ann-content">
+                            {% if lesson.released %}
+                            <div style="display: flex;justify-content: space-between;" class="p-3">
+                                <a href={% url 'lesson-detail' courseid lesson.id %}><button class="btn btn-link">{{lesson.title}}</button></a>
+                                <a href=# ><button class="btn btn-danger">Delete lesson</button></a>
+                            </div>
+                            <div class="filter fs-item">
+                                <a href="{% url "update-lesson" obj lesson.id unit.id courseid %}"><button class="btn btn-primary">Edit</button></a>
+                            
+                                <a href="{% url "delete-lesson" obj lesson.id unit.id courseid %}"><button class="btn btn-primary">Delete</button></a>
+                            </div> 
+                            {% endif %}
+                        </div>
+                        
+                        
+                        
+                        
+                    </div>
+                               <!--  update course modal -->
+                    
+                    {% endfor %}
+                </div>
+                <div class="ann-item drafts-container">
+                    {% for lesson in lessons %}
+
+                    <div class="drafts">
+                        <div class="ann-content">
+                            {% if lesson.released == False %}
+                            <div style="display: flex;justify-content: space-between;" class="p-3">
+                                <a href={% url 'lesson-detail' courseid lesson.id %}><button class="btn btn-link">{{lesson.title}}</button></a>
+                                <a href=# ><button class="btn btn-danger">Delete lesson</button></a>
+                            </div>
+                            <div class="filter fs-item">
+                                <a href="{% url "update-lesson" obj lesson.id unit.id courseid %}"><button class="btn btn-primary">Edit</button></a>
+                            
+                                <a href="{% url "delete-lesson" obj lesson.id unit.id courseid %}"><button class="btn btn-primary">Delete</button></a>
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        
+                        
+                         
+                    </div>
+                               <!--  update course modal -->
+                            
+                    {% endfor %}
+                </div>
+                <div/>
+            </div>
+            
+        </div>
+    </div>
+    <div class="modal fade" id="topicmodal" tabindex="-1" aria-labelledby="topicmodal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="topicmodaltitle">Add</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action={% url 'update-unit' obj unit.id %} method="post" enctype="multipart/form-data">{% csrf_token %}
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" value={{unit.title}} required>
+                </div>
+                <div class="form-group">
+                  <label for="brief">brief</label>
+                  <input type="text" class="form-control" id="brief" name="brief" placeholder="Add Info if any" value= {{unit.brief}} >
+                </div>
+                <div class="form-group">
+                  <label for="due">Due</label>
+                  <input type="date" class="form-control" id="date" name="date" placeholder="due date" value = {{unit.due}} >
+                </div>
+                
+                <input type='hidden' name="courseid" value={{ courseid }} />
+                <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+            </div>
+        </div>
+      </div>
+</div>
+
+{% endblock %}
+
+        

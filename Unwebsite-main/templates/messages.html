@@ -1,0 +1,90 @@
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css">
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css">
+<style>
+    .alert {
+      padding: 20px;
+      background-color: #f44336;
+      color: white;
+      opacity: 1;
+      margin-left: auto;
+      margin-right: auto;
+      width:40%;
+      transition: opacity 0.6s;
+      margin-bottom: 15px;
+    }
+    .alert.error {background-color: #f44336;}
+    .alert.success {background-color: #04AA6D;}
+    .alert.info {background-color: #2196F3;}
+    .alert.warning {background-color: #ff9800;}
+
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
+    }
+
+    @media (max-width: 500px) {
+      .alert{
+        width:100%;
+      }
+    }
+</style>
+</head>
+<body>
+    <!-- {% if messages %}
+    {% for message in messages %}
+    <div {% if message.tags %} class="alert {{ message.tags }}" {% endif %}>
+      <span class="closebtn">&times;</span>
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <script>
+    var close = document.getElementsByClassName("closebtn");
+    var i;
+
+    for (i = 0; i < close.length; i++) {
+      close[i].onclick = function(){
+        var div = this.parentElement;
+        div.style.opacity = "0";
+        setTimeout(function(){ div.style.display = "none"; }, 600);
+      }
+    }
+    </script> -->
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == "success" %}
+    <script>
+      alertify.set('notifier','position', 'top-center');
+      alertify.success('{{message}}',0);
+    </script>
+    {% elif message.tags == "error" %}
+    <script>
+      alertify.set('notifier','position', 'top-center');
+      var msg= alertify.error('{{message}}',0);
+      $('body').one('click', function(){
+          msg.dismiss();
+      });
+    </script>
+    {% elif message.tags == "warning" %}
+    <script>
+      alertify.set('notifier','position', 'top-center');
+      alertify.warning('{{message}}',0);
+    </script>
+    {% endif %}
+    {% endfor %}
+    {% endif %}

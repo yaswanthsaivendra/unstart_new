@@ -1,0 +1,114 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Jost&family=Kanit&family=Poppins&family=Roboto&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto';
+} */
+
+.webpage {
+    width: 100%;
+    max-width: 1550px;
+    /* height: 100%; */
+    margin: 0 auto;
+  }
+
+  /*  signup page */
+
+  #signup {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .signup-text {
+    font-family: Poppins;
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .signup-text + p {
+    font-family: Poppins;
+    font-size: 1rem;
+    color: gray;
+    text-align: center;
+    /* width: 40%; */
+    margin-bottom: 20px;
+  }
+
+  .signup-card {
+    width: 500px;
+    padding: 40px;
+    height: auto;
+    box-shadow: 0px 0px 8px rgb(214, 214, 214);
+    border: none;
+    border-radius: 10px;
+  }
+
+  .signup-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  @media only screen and (max-width: 500px) {
+    .signup-card {
+      width: 100%;
+    }
+    .signup-icons {
+      flex-direction: column;
+    }
+  }
+
+  .signup-icons a {
+    color: gray;
+    background-color: white;
+    border: 1px solid gray;
+    font-family: Poppins;
+    font-size: 1.2rem;
+    padding: 7px 60px;
+    border-radius: 5px;
+  }
+  .signup-txt-1 {
+    font-family: Poppins;
+    font-size: 1rem;
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .form-card label {
+    font-family: Poppins;
+    font-size: 1rem;
+  }
+
+  .form-card input {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 4px rgb(214, 214, 214);
+    border: none;
+    border-radius: 5px;
+  }
+
+  .form-card button {
+    width: 100%;
+    height: 40px;
+    background-color: black;
+    color: white;
+    font-family: Poppins;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
