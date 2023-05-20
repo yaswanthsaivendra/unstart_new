@@ -28,6 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['unstarted.in','www.unstarted.in','167.172.191.236']
 
+if DEBUG:
+    ALLOWED_HOSTS.append('127.0.0.1')
+
 
 # Application definition
 
@@ -142,9 +145,11 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
+
+
 # STATIC_URL = '/static/'
-# #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# # STATICFILES_DIRS = [BASE_DIR / 'static',]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = [BASE_DIR / 'static',]
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'static')
 # ]
