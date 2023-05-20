@@ -56,3 +56,9 @@ pandas
 django-resized
 django-tinymce
 django-taggit
+
+
+# newly added
+crispy-bootstrap4
+razorpay
+django-rest-framework
