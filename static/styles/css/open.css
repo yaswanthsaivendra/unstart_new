@@ -1,0 +1,113 @@
+p{
+    font-size: 1.125rem!important;
+    line-height: 1.75rem!important;
+}
+.course-content {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    max-width: 62%;
+    margin-right: 30px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+}
+.course-sidebar {
+    max-width: 396px;
+}
+.hide{
+    display: none;
+}
+#formCard{
+    position: sticky;
+    top: 77px;
+    padding: 60px 32px 25px;
+}
+.banner-section{
+    position: relative;
+    background: no-repeat center center;
+    background-size: 100% 500px;
+    background-image: url(../images/background.png);
+    background-position-x: left;
+    background-position-y: top;
+  }
+  .course-preview-filter {
+    position: absolute;
+    border-radius: 20px;
+    left: 8%;
+    bottom: -10%;
+    opacity: 0.8;
+    width:500px;
+    height:345px;
+    top: 20%;
+}
+.nav {
+    font-size: large;
+    padding-bottom: 10px;
+  }
+  .nav li {
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+  }
+  .nav li .active:hover{
+    color: black;
+  }
+  .nav li.active::after {
+    position: absolute;
+    content: "";
+    height: 4px;
+    width: 100%;
+    background-color: #ff105e;
+    left: 0;
+    bottom: -7px;
+    border-radius: 20px;
+    animation: appear 0.2s linear;
+  }
+  @media screen and (max-width:739px) {
+    #formCard{
+        display: none;
+    }
+    .course-content{
+        max-width: 100%;
+        flex-basis: auto;
+    }
+  }
+  @media screen and (max-width:660px) {
+    .course-preview-filter{
+        width: 350px;
+    }
+    iframe{
+        width: 350px;
+    }
+  }
+  .tick {
+    list-style: url(../images/tick.png);
+    margin-bottom: 16px;
+}
+
+  .list-unstyled {
+      padding-left: 0;
+      list-style: none;
+  }
+  .steps li {
+      list-style: inside url(../images/tick.png);
+      position: relative;
+      padding: 0 0 1.5rem 2.5rem;
+      color: #000;
+      margin-bottom: 0;
+  }
+  .steps li:after {
+      content: "";
+      background-color: #c7d4ee;
+      position: absolute;
+      top: 1.4rem;
+      left: 0.5rem;
+      width: 1px;
+      margin: 0 0 1.5rem 2.5rem;
+      height: 45%;
+  }
