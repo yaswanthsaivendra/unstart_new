@@ -1,19 +1,8 @@
-from django.shortcuts import render
-import os
 from django.shortcuts import render, redirect, HttpResponse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from courses.forms import userform,LessonForm,LessonFileForm
-from courses.models import Assignment,Payment, Files, course, courseTopic, myAssignment, myFiles, mycourses, mytopics, courseUnit, myCourseUnit, Groups, Unit,Lesson,Lesson,LessonFile,MyUnit,MyLesson, grades as marks
-from django.http import JsonResponse
-from django.db.models import Q
-from account.models import *
-from decimal import Context
-from django.contrib.auth.decorators import login_required
-from django.http.response import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib.auth.models import User, auth
 from django.views.generic import UpdateView, DetailView
@@ -26,12 +15,9 @@ from django.contrib.sites.shortcuts import get_current_site
 from .utils import token_generator
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, View
-from django.http import JsonResponse
 
-import razorpay
-from django.utils.translation import get_language
-from django.views.decorators.csrf import csrf_exempt
-from django.conf import settings
+
+from .models import Profile, Student_profile_application, Teacher_profile_application
 
 def index(request):
     return render(request,'mainindex.html')
@@ -62,9 +48,13 @@ class RegistrationView(View):
                 user.set_password(password)
                 user.is_active = True
                 user.save()
+                user = auth.authenticate(
+                        username=username, password=password)
+                if user:
+                    auth.login(request, user)
                 messages.success(
                     request, 'Account successfully created! Please do login to access Lms')
-                return redirect('register')
+                return redirect('add-profile-details')
 
             messages.warning(request, "This Email already exists!")
             return render(request, 'register.html', context)
@@ -90,30 +80,30 @@ class VerificationView(View):
         else:
             return render(request, 'registration/login.html')
 
-def handlelogin(request):
-    if request.method == 'POST':
-        # Get the Post parametres
-        loginusername = request.POST['username']
-        loginpassword = request.POST['password']
+# def handlelogin(request):
+#     if request.method == 'POST':
+#         # Get the Post parametres
+#         loginusername = request.POST['username']
+#         loginpassword = request.POST['password']
 
-        user = authenticate(username=loginusername, password=loginpassword)
-        user_verify = User.objects.get(username=loginusername)
+#         user = authenticate(username=loginusername, password=loginpassword)
+#         user_verify = User.objects.get(username=loginusername)
 
-        if user.profile.status == 't':
-            login(request, user)
-            messages.success(request, "Successfully logged in")
-            return redirect('teacher_home')
-        if user is not None:
-            login(request, user)
-            messages.success(request, "Successfully logged in")
-            return redirect('home')
-        elif user_verify.is_active == False:
-            messages.error(request, "Please verify your email first to login.")
-            return redirect('home')
-        else:
-            messages.error(request, "Invalid Credentials: Please try again")
-            return redirect('home')
-    return render(request,'login.html')
+#         if user.profile.status == 't':
+#             login(request, user)
+#             messages.success(request, "Successfully logged in")
+#             return redirect('teacher_home')
+#         if user is not None:
+#             login(request, user)
+#             messages.success(request, "Successfully logged in")
+#             return redirect('home')
+#         elif user_verify.is_active == False:
+#             messages.error(request, "Please verify your email first to login.")
+#             return redirect('home')
+#         else:
+#             messages.error(request, "Invalid Credentials: Please try again")
+#             return redirect('home')
+#     return render(request,'login.html')
 
 
 class LoginView(View):
@@ -121,59 +111,132 @@ class LoginView(View):
         return render(request, 'login.html')
 
     def post(self, request):
-        if 'login_page' in request.POST:
-            next = request.POST.get('next')
-            username = request.POST['username']
-            password = request.POST['password']
-            context = {
-                'user_found': True,
-                'user_name': username
-            }
-            if username and password:
-                if User.objects.filter(username=username).exists():
-                    user = auth.authenticate(
-                        username=username, password=password)
-                    if user:
-                        if user.is_active:
-                            auth.login(request, user)
-                            if next:
-                                return redirect(next)
-                            return redirect("index")
+        # if 'login_page' in request.POST:
+        next = request.POST.get('next')
+        username = request.POST['username']
+        password = request.POST['password']
+        context = {
+            'user_found': True,
+            'user_name': username
+        }
+        if username and password:
+            if User.objects.filter(username=username).exists():
+                user = auth.authenticate(
+                    username=username, password=password)
+                if user:
+                    if user.is_active:
+                        auth.login(request, user)
+                        messages.success(request, "Successfully logged in")
+                        if next:
+                            return redirect(next)
+                        # return redirect("index")
 
-                        messages.error(
-                            request, "Account is not active,please check your email"
-                        )
+                        if user.profile.is_verified == False:
+                            return redirect('access-pending-view')
+                        elif user.profile.status == 't':
+                            return redirect('teacher_home')
+                        else:
+                            return redirect('home')
 
-                elif User.objects.filter(email=username).exists():
-                    user = User.objects.get(email=username)
-                    user = auth.authenticate(
-                        username=user.username, password=password)
-                    if user:
-                        if user.is_active:
-                            auth.login(request, user)
-                            if next:
-                                return redirect(next)
-                            return redirect("index")
-
-                        messages.error(
-                            request, "Account is not active,please check your email"
-                        )
-                elif (User.objects.filter(email=username).exists() or User.objects.filter(username=username).exists() == False):
                     messages.error(
-                        request, "The username or Email you have entered does not exist.")
-                    return render(request, 'login.html', context)
+                        request, "Account is not active,please check your email"
+                    )
 
-            context = {
-                'user_found': True,
-                'user_name': username
-            }
-            messages.error(request, 'Invalid credentials, try again')
-            return render(request, 'login.html', context)
+            elif User.objects.filter(email=username).exists():
+                user = User.objects.get(email=username)
+                user = auth.authenticate(
+                    username=user.username, password=password)
 
-        return render(request, "login.html")
+                if user:
+                    if user.is_active:
+                        auth.login(request, user)
+                        messages.success(request, "Successfully logged in")
+                        if next:
+                            return redirect(next)
+                        # return redirect("index")
+                        if user.profile.is_verified == False:
+                            return redirect('access-pending-view')
+                        elif user.profile.status == 't':
+                            return redirect('teacher_home')
+                        else:
+                            return redirect('home')
+
+                    messages.error(
+                        request, "Account is not active,please check your email"
+                    )
+            elif (User.objects.filter(email=username).exists() or User.objects.filter(username=username).exists() == False):
+                messages.error(
+                    request, "The username or Email you have entered does not exist.")
+                return render(request, 'login.html', context)
+
+        context = {
+            'user_found': True,
+            'user_name': username
+        }
+        messages.error(request, 'Invalid credentials, try again')
+        return render(request, 'login.html', context)
+
+        # return render(request, "login.html")
 
 def handlelogout(request):
     logout(request)
     messages.success(request, "Successfully logged out")
     return redirect('index')
+
+def add_profile_details(request):
+    if request.method == 'GET':
+        return render(request, 'account/add_profile_details.html')
+
+    elif request.method == 'POST':
+        ## getting user profile
+        user_profile = Profile.objects.filter(user=request.user).first()
+
+        ## get the status - teacher or student
+        status = request.POST.get('status')
+
+        if status == 's':
+            print(request.POST)
+            semester = request.POST.getlist('semester')[0]
+            section = request.POST.getlist('section')[0]
+            roll_number = request.POST.getlist('roll_number')[0]
+            full_name = request.POST.getlist('full_name')[0]
+            department = request.POST.getlist('department')[0]
+            Student_profile_application.objects.create(
+                profile=user_profile,
+                semester=semester,
+                section=section,
+                roll_number=roll_number,
+                full_name=full_name,
+                department =department
+            )
+        elif status == 't':
+            date_of_joining = request.POST.get('date_of_joining')
+            semester = request.POST.getlist('semester')[0]
+            section = request.POST.getlist('section')[0]
+            full_name = request.POST.getlist('full_name')[0]
+            department = request.POST.getlist('department')[0]
+            Teacher_profile_application.objects.create(
+                profile=user_profile,
+                date_of_joining=date_of_joining,
+                semester=semester,
+                section=section,
+                full_name=full_name,
+                department=department
+            )
+        return redirect('access-pending-view')
+        
+
+def access_pending_view(request):
+    if request.method == 'GET':
+        user_profile = Profile.objects.filter(user=request.user).first()
+        student_applications = Student_profile_application.objects.filter(profile__in= [user_profile])
+        teacher_applications = Teacher_profile_application.objects.filter(profile__in= [user_profile])
+
+        return render(request, 'account/access_pending.html', {'student_applications': student_applications, 'teacher_applications' : teacher_applications})
+
+
+
+
+        
+        
 

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .edit-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div>
+        <a href="{% url 'add-profile-details' %}" class="edit-button">Submit New Application</a>
+    </div>
+
+    {% if student_applications %}
+    <h1>Student Profile Applications</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Semester</th>
+                <th>Section</th>
+                <th>Year</th>
+                <th>Roll Number</th>
+                <th>Department</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in student_applications %}
+                <tr>
+                    <td>{{ application.full_name }}</td>
+                    <td>{{ application.semester }}</td>
+                    <td>{{ application.section }}</td>
+                    <td>{{ application.Year }}</td>
+                    <td>{{ application.roll_number }}</td>
+                    <td>{{ application.department }}</td>
+                    <td><a href="#" class="edit-button">Edit</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+
+
+    {% if teacher_applications %}
+    <h1>Teacher Profile Applications</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Semester</th>
+                <th>Section</th>
+                <th>Date of Joining</th>
+                <th>Department</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in teacher_applications %}
+                <tr>
+                    <td>{{ application.full_name }}</td>
+                    <td>{{ application.semester }}</td>
+                    <td>{{ application.section }}</td>
+                    <td>{{ application.date_of_joining }}</td>
+                    <td>{{ application.department }}</td>
+                    <td><a href="#" class="edit-button">Edit</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+
+    
+</body>
+</html>
