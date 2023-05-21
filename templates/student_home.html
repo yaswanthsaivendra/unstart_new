@@ -1,7 +1,7 @@
 {%load static%}
 <!DOCTYPE html>
 <html lang="en">
-    {% load custom_tags %}
+{% load custom_tags %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="{% static "styles/student/style.css" %}">
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -22,47 +25,39 @@
                 <span class="bar"></span>
             </div>
 
-            <img id="logo" src="images/logo.png">
+            <img id="logo" src="{% static "images/logoblue.png"%}">
         </div>
 
         <div class="right-header">
             <div class="all-apps-container">
                 <div class="right-header-icons">
-                    <img class="all-apps-icon icon" src="images/Apps.png">
+                    <img class="all-apps-icon icon" src="{% static "images/Apps.png"%}">
                 </div>
             </div>
 
             <div class="notification-container">
                 <div class="right-header-icons">
-                    <img class="notify-icon icon" src="images/notification.png">
+                    <img class="notify-icon icon" src="{% static "images/notification.png"%}">
                 </div>
                 <div class="dropdown">
+                    {% for noti in notification %}
                     <div class="notify_item">
+
                         <div class="notify_img">
-                            <img src="images/User.png" alt="profile_pic" style="width: 50px">
+                            <img src={{noti.user.profile.profile_pic.url}} alt="profile_pic" style="width: 50px">
                         </div>
+
                         <div class="notify_info">
-                            <p>You have submitted your assignment submission for<span>Assignment-1</span></p>
+                            <p>{{noti.notification}}<span></span></p>
                             <button class="notify-btn">Explore All</button>
                         </div>
                         <div class="notify_time">
-                            <p>2h</p>
+                            <p>{{noti.created_at}}</p>
                             <h1>...</h1>
                         </div>
                     </div>
-                    <div class="notify_item">
-                        <div class="notify_img">
-                            <img src="images/User.png" alt="profile_pic" style="width: 50px">
-                        </div>
-                        <div class="notify_info">
-                            <p>You have submitted your assignment submission for<span>Assignment-1</span></p>
-                            <button class="notify-btn">Explore All</button>
-                        </div>
-                        <div class="notify_time">
-                            <p>2h</p>
-                            <h1>...</h1>
-                        </div>
-                    </div>
+                    {% endfor %}
+
                     <div class="notify_See_All">
                         <button class="see-All">See All Notifications</button>
                     </div>
@@ -74,10 +69,10 @@
                     <img class="profile-icon icon" src="images/User.png">
                 </div>
                 <div class="dropdown-content">
-                    <a href="#"><span><i class="fa-solid fa-gauge"></i>Dashboard</span></a>
+                    <a href="{% url 'stu-setting' %}"><span><i class="fa-solid fa-gauge"></i>Settings</span></a>
                     <a href="#"><span><i class="fa-solid fa-table"></i>Grades</span></a>
                     <a href="#"><span><i class="fa-solid fa-comment"></i>Messages</span></a>
-                    <a href="#"><span><i class="fa-solid fa-wrench"></i>Preferences</span></a>
+                    <a href="{% url 'teacher_profile' %}"><span><i class="fa-solid fa-wrench"></i>Teachers</span></a>
                     <a href="#"><span><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</span></a>
                 </div>
             </div>
@@ -101,7 +96,7 @@
                         </li>
 
                         <li class="nav-link">
-                            <a href="all_courses_page.html">
+                            <a href="{% url 'all-courses' %}">
                                 <i class='bx bx-bar-chart-alt-2 icon'></i>
                                 <span class="text nav-text">All courses</span>
                             </a>
@@ -180,99 +175,28 @@
                         <section class="content">
                             <div class="wrapper_tab-content">
                                 <div class="course-list">
+
+                                    {% for course in courses %}
                                     <div class="course-card">
                                         <img
-                                            src="https://www.educative.io/cdn-cgi/image/f=auto,fit=cover,w=620/v2api/collection/10370001/6183193425739776/image/5306219095130112">
+                                            src="{{course.image.url}}">
                                         <div class="details">
-                                            <a href="course_detail.html" target="_blank">Lern Node.js from
-                                                scratch</a>
+                                            <h4>{{course.title}}</h4>
 
-                                            <p>DAC1101-MAY-21</p>
-                                            <p class="spec">BCA_Sem1</p>
+                                            <p>{{course.category}}</p>
 
+                                            <a href="{% url 'courseUnits' course.id %}" target="_blank">Units</a>
+                                            <p>{{course.id|get_percentage:request.user.id }}%</p>
+
+                                            <a href="{% url 'make-payment' course.id %}" target="_blank">Enroll course</a>
                                         </div>
                                     </div>
-
-                                    <div class="course-card">
-                                        <img
-                                            src="https://www.educative.io/cdn-cgi/image/f=auto,fit=cover,w=620/v2api/collection/10370001/5397377793392640/image/4676725896380416">
-                                        <div class="details">
-                                            <a href="course_detail.html" target="_blank">Building website with
-                                                javascript from scartch</a>
-
-                                            <p>DAC1101-MAY-21</p>
-                                            <p class="spec">BCA_Sem1</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="course-card">
-                                        <img src="images/logo.png">
-                                        <div class="details">
-                                            <a href="course_detail.html" target="_blank">Fundamentals of IT and
-                                                Programming</a>
-
-                                            <p>DAC1101-MAY-21</p>
-                                            <p>BCA_Sem1</p>
-
-                                            <div class="message">
-                                                <a href="course_detail.html" target="_blank"><i
-                                                        class="fa-solid fa-message"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="course-card">
-                                        <img src="images/logo.png">
-                                        <div class="details">
-                                            <a href="course_detail.html" target="_blank">Fundamentals of IT and
-                                                Programming</a>
-
-                                            <p>DAC1101-MAY-21</p>
-                                            <p>BCA_Sem1</p>
-
-                                            <div class="message">
-                                                <a href="course_detail.html" target="_blank"><i
-                                                        class="fa-solid fa-message"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="course-card">
-                                        <img src="images/logo.png">
-                                        <div class="details">
-                                            <a href="course_detail.html" target="_blank">Fundamentals of IT and
-                                                Programming</a>
-
-                                            <p>DAC1101-MAY-21</p>
-                                            <p>BCA_Sem1</p>
-
-                                            <div class="message">
-                                                <a href="course_detail.html" target="_blank"><i
-                                                        class="fa-solid fa-message"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="course-card">
-                                        <img src="images/logo.png">
-                                        <div class="details">
-                                            <a href="course_detail.html" target="_blank">Fundamentals of IT and
-                                                Programming</a>
-
-                                            <p>DAC1101-MAY-21</p>
-                                            <p>BCA_Sem1</p>
-
-                                            <div class="message">
-                                                <a href="course_detail.html" target="_blank"><i
-                                                        class="fa-solid fa-message"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {% endfor %}
                                 </div>
 
                                 <div class="bottom-view-more">
-                                    <a href="all_courses_page.html" target="_blank">View All Courses (<span
-                                            class="courses-count">5</span>)
+                                    <a href="all_courses_page.html" target="_blank">View All Courses<span
+                                            class="courses-count">{{total_courses}}</span>
                                         <i class="fa-solid fa-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -284,62 +208,44 @@
                                     class="fa-solid fa-angle-down"></i>
                                 <i class="fa-solid fa-angle-up"></i></span></button>
                         <div class="content">
+
+                            {% for announcment in announcements %}
                             <div class="banner banner-img-type">
                                 <div class="row-1">
-                                    <h1>Welcome to Online TechSnap ! <span><i class="fa-solid fa-xmark"></i></span></h1>
+                                    <h1>{{announcment.title}} <span><i class="fa-solid fa-xmark"></i></span></h1>
 
-                                    <p>Posted by Krishna
+                                    <p>Posted by: {{announcment.posted_by.full_name}}
                                         &#x2022;
                                         <span><i class="fa-solid fa-globe"></i></span>
-                                        Global
+                                        {% comment %} Global
                                         &#x2022;
                                         <span><i class="fa-solid fa-clock-rotate-left"></i></span>
                                         Edited
                                         &#x2022;
                                         <span><i class="fa-solid fa-sitemap"></i></span>
-                                        Confidentially Released
+                                        Confidentially Released {% endcomment %}
                                     </p>
                                 </div>
 
                                 <div class="row-2">
-                                    <img src="images/logo.png">
+
+                                    <p>{{announcment.info}}</p>
                                 </div>
 
                                 <div class="row-3">
-                                    <i class="fa-solid fa-thumbs-up"></i>
-                                    <i class="fa-solid fa-share-nodes"></i>
-                                    <button class="btn-subscribe">Subscribe</button>
+                                    <p>{{announcment.links}}</p>
+
+                                </div>
+                                <div class="row-4">
+                                    {% for i in announcment.documents.all %}
+                                    <a href={{i.document.url}}> {{i.document}}</a>
+                                    <br/>
+                                    {% endfor %}
                                 </div>
                             </div>
+                            {% endfor %}
 
-                            <div class="banner banner-msg-type">
-                                <div class="row-1">
-                                    <h1>Academic Calender - JUL - AUG 2021 Session<span><i class="fa-solid fa-xmark"></i></span></h1>
 
-                                    <p>Posted by Krishna
-                                        &#x2022;
-                                        <span><i class="fa-solid fa-globe"></i></span>
-                                        Global
-                                        &#x2022;
-                                        <span><i class="fa-solid fa-clock-rotate-left"></i></span>
-                                        Edited
-                                        &#x2022;
-                                        <span><i class="fa-solid fa-sitemap"></i></span>
-                                        Confidentially Released
-                                    </p>
-                                </div>
-
-                                <div class="row-2">
-                                    <p>Dear Student</p>
-                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste non architecto ipsa praesentium ducimus excepturi delectus, hic eveniet, autem labore nulla consequuntur fugiat repellendus sit, dolorum adipisci facilis enim? Porro odit illo sequi vero officiis aliquam, quasi tenetur, repellat fugiat quia, pariatur minima laborum! Magni doloremque tempore blanditiis? Sapiente, libero!</p>
-                                </div>
-
-                                <div class="row-3">
-                                    <i class="fa-solid fa-thumbs-up"></i>
-                                    <i class="fa-solid fa-share-nodes"></i>
-                                    <button class="btn-subscribe">Subscribe</button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

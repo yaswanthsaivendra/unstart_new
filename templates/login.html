@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="{% static "styles/mainpages/login.css"%}">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="{% static "styles/mainpages/login1.css"%}">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
         integrity="sha512-ZnR2wlLbSbr8/c9AgLg3jQPAattCUImNsae6NHYnS9KrIwRdcY9DxFotXhNAKIKbAXlRnujIqUWoXXwqyFOeIQ=="
@@ -49,21 +48,19 @@
     <div class="webpage">
         <section id="login">
             <h1 class="login-text">
-                Sign in to Unstarted
+                Sign in to Codedamn
             </h1>
             <div class="login-card">
-                <form
-                                    action="{% url 'login' %}"
-                                    method="POST"
-                                    class="needs-validation"
-                                    novalidate
-                                >
-                                    {% csrf_token %}
-                    <label>Email address/Username</label><br>
-                    <input type="text" name="username"><br>
+                <form action="{% url 'login' %}"
+                method="POST"
+                class="needs-validation"
+                novalidate>
+                {% csrf_token %}
+                <label>Email address/Username</label><br>
+                <input type="text" name="username"><br>
 
-                    <label>Password</label><br>
-                    <input type="password" name="password"><br>
+                <label>Password</label><br>
+                <input type="password" name="password"><br>
 
                     <div class="form-flex">
                         <div class="form-flex-col-1">
@@ -77,15 +74,20 @@
                     </div>
                     <button type="submit" class="login-btn">Sign in</button><br>
 
-
-                    <span class="login-text-2">Don't have account? <a href="./signup.html">create Account</a></span>
+                    <span class="login-text-1">Or continue with</span><br>
+                    <div class="login-icons">
+                        <a href="#"><i class="bi bi-google"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                    </div>
+                    <span class="login-text-2">Don't have account? <a href="{%url 'register'%}">create Account</a></span>
 
 
                 </form>
             </div>
         </section>
-        <footer class="bg-black w-full">
-            <div class="container mx-auto py-8">
+
+        <footer class="bg-black">
+            <div class="container mx-auto py-10">
                 <div class="flex flex-wrap justify-between items-center">
                     <div class="w-full md:w-1/2 lg:w-1/4 text-white p-4">
                         <p class="text-gray-500">Unstarted is committed to promoting the services of the future goals as
@@ -121,15 +123,20 @@
                     <div
                         class="w-full md:w-1/2 lg:w-1/4 text-white mt-8 md:mt-0 flex flex-col items-center md:items-start">
                         <div class="font-bold text-xl mb-4">Download the app</div>
-                        <button class="bg-white text-black px-4 py-2 rounded-md mb-2">Free Trial Access to the
+                        <!-- <div class="flex md:block p-4"> -->
+                        <button class="bg-white text-black px-4 py-2 rounded-md mb-2">Free Trial Access to
+                            the
                             LMS</button>
-                        <button class="bg-white text-black px-4 py-2 rounded-md mb-2">Contact and get support</button>
+                        <button class="bg-white text-black px-4 py-2 rounded-md mb-2">Contact and get
+                            support</button>
+                        <!-- </div> -->
                         <p class="text-gray-500">Are you hiring? <a href="#" class="text-white">Hire from us</a></p>
                     </div>
                 </div>
-                <h1 class="text-gray-500 text-5xl text-center mt-8">UnStartED</h1>
+                <h1 class="text-gray-500 text-5xl md:text-[10rem] lg:text-[14rem] text-center mt-8">UnStartED</h1>
             </div>
         </footer>
+
     </div>
 
     <script src="{% static "styles/mainpages/index.js"%}"></script>
