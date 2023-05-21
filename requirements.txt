@@ -22,7 +22,8 @@ django-ckeditor
 django-crispy-forms
 asgiref==3.4.1
 certifi==2021.5.30
-cffi==1.14.6
+# cffi==1.14.6
+cffi
 charset-normalizer==2.0.4
 cryptography==3.4.8
 defusedxml==0.7.1

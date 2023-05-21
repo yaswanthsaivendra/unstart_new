@@ -155,7 +155,7 @@
             </div>
             <div class="courses panel-item">
                 <img src="{% static "rsc/icons8-e-learning-48.png"%}" alt="" class="item">
-                <p class="name"><a href="{% url 'usercourse' %}">Courses</a></p>
+                <p class="name current"><a href="{% url 'usercourse' %}" >Courses</a></p>
             </div>
             
             <div class="groups panel-item">
@@ -242,11 +242,11 @@
               </div>
             {% comment %} <p ><a href="{% url 'usercourse' %}"><button type="button" class="btn btn-link"> Courses</button></p> {% endcomment %}
                 <div class="tabs ann-item">
-                    <div class="tab dra not-current">
+                    <div class="tab dra current">
                         <img src="{% static "rsc/icons8-draft-48.png" %}" alt="" class="icon">
                         <p>Drafts</p>
                     </div>
-                    <div class="tab rel current">
+                    <div class="tab rel not-current">
                         <img src="{% static "rsc/icons8-sent-50.png" %}" alt="" class="icon">
                         <p>Released</p>
                     </div>
@@ -255,6 +255,67 @@
                 
                 <div class="course-sets">
                 
+                    <div class="ann-item drafts-container">
+                        <div class="drafts">
+                            {% for course in courses %}
+                            
+                            {% if course.released == False  %}
+    
+                            <div class="ann-content">
+                                <div class="m-4">
+                                
+                                    <div class="course">
+                                        <div class="course-banner">
+                                            <img src="{{course.image.url}}" alt="" class="banner">
+                                        </div>
+                                        <div class="course-details">
+                                            <h3 class="course-name cd">{{course.title}}</h3>
+                                            <h3 class="course-name cd">{{course.category}}</h3>
+            
+                                            {% comment %} <a href="{% url 'delete-course' course.id %}">
+                                                <button class="delete-btn">Delete</button>
+                                            </a> {% endcomment %}
+                                            
+                                            <div class="diff-preview cd">
+                                                <div class="course-container">
+                                                    <a href={% url 'courseDetail' course.id %}>
+                                                        <button class="preview-btn">Details</button>
+                                                    </a>
+                                                    
+                                                    <div class="filter fs-item">
+                                                        
+                                                        <a href="/enroll_students/{{course.id}}/">
+                                                            <button class="filter-btn">Enroll students</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="course-container">
+
+                                    
+                                                    {% if course.unit.all %}
+                                                    <a href={% url 'release_course' course.id %}>
+                                                        <button class="preview-btn">Release</button>
+                                                    </a>
+                                                    {% endif %}
+                                                    
+                                                    <div class="filter fs-item">
+                                                        <a href={% url 'course-stats' course.id %}>
+                                                            <button class="filter-btn">Student stats</button>
+                                                        </a>
+                                                    </div>
+                                    
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
                         <div class="ann-item released-container">
                             <div class="released">
                                 {% for course in courses %}
@@ -322,68 +383,7 @@
                             
                         </div>
 
-                        <div class="ann-item drafts-container">
-                            
-                            <div class="drafts">
-                                {% for course in courses %}
-                                
-                                {% if course.released == False  %}
-        
-                                <div class="ann-content">
-                                    <div class="m-4">
-                                    
-                                        <div class="course">
-                                            <div class="course-banner">
-                                                <img src="{{course.image.url}}" alt="" class="banner">
-                                            </div>
-                                            <div class="course-details">
-                                                <h3 class="course-name cd">{{course.title}}</h3>
-                                                <h3 class="course-name cd">{{course.category}}</h3>
-                
-                                                {% comment %} <a href="{% url 'delete-course' course.id %}">
-                                                    <button class="delete-btn">Delete</button>
-                                                </a> {% endcomment %}
-                                                
-                                                <div class="diff-preview cd">
-                                                    <div class="course-container">
-                                                        <a href={% url 'courseDetail' course.id %}>
-                                                            <button class="preview-btn">Details</button>
-                                                        </a>
-                                                        
-                                                        <div class="filter fs-item">
-                                                            
-                                                            <a href="/enroll_students/{{course.id}}/">
-                                                                <button class="filter-btn">Enroll students</button>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="course-container">
-
-                                        
-                                                        {% if course.unit.all %}
-                                                        <a href={% url 'release_course' course.id %}>
-                                                            <button class="preview-btn">Release</button>
-                                                        </a>
-                                                        {% endif %}
-                                                        
-                                                        <div class="filter fs-item">
-                                                            <a href={% url 'course-stats' course.id %}>
-                                                                <button class="filter-btn">Student stats</button>
-                                                            </a>
-                                                        </div>
-                                        
-                                                        </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-
-                                {% endif %}
-                            {% endfor %}
-                            </div>
-                        </div>
+                        
                     
                 
                 </div>
