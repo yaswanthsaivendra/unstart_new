@@ -11,10 +11,10 @@ class student_verificationform(ModelForm):
         model = temp_verification
         fields = ('college','roll_number','department','Year','section','semester')
 
-class Profile_form(ModelForm):
-    class Meta:
-        model = Profile
-        fields = ('college','roll_number','department','Year','section','semester')
+# class Profile_form(ModelForm):
+#     class Meta:
+#         model = Profile
+#         fields = ('college','roll_number','department','Year','section','semester')
 
 class GroupsStudentForm(forms.Form):
 

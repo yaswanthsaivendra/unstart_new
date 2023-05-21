@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  <style>
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  
+    .form-container label,
+    .form-container select {
+      display: block;
+      margin-bottom: 10px;
+    }
+  
+    .form-container select {
+      width: 100%;
+      padding: 5px;
+    }
+  
+    .form-container .field-group {
+      margin-bottom: 10px;
+    }
+  
+    .form-container .field-group label {
+      font-weight: bold;
+    }
+  
+    .form-container .field-group input {
+      width: 100%;
+      padding: 5px;
+    }
+  
+    .form-container button {
+      display: block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+
+  
+<div class="form-container">
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="field-group">
+      <label for="status">Status:</label>
+      <select id="status" name="status">
+        <option value="">Select Status</option>
+        <option value="s">Student</option>
+        <option value="t">Teacher</option>
+      </select>
+    </div>
+
+    <div id="student-fields" class="field-group">
+      <label for="semester">Semester:</label>
+      <input type="text" id="semester" name="semester">
+
+      <label for="section">Section:</label>
+      <input type="text" id="section" name="section">
+
+      <label for="roll_number">Roll Number:</label>
+      <input type="number" id="roll_number" name="roll_number">
+
+      <label for="full_name">Full Name:</label>
+      <input type="text" id="full_name" name="full_name">
+
+      <label for="department">Department:</label>
+      <input type="text" id="department" name="department">
+    </div>
+
+    <div id="teacher-fields" class="field-group">
+
+      <label for="date_of_joining">Date of Joining:</label>
+      <input type="date" id="date_of_joining" name="date_of_joining">
+
+      <label for="semester">Semester:</label>
+      <input type="text" id="semester" name="semester">
+
+      <label for="section">Section:</label>
+      <input type="text" id="section" name="section">
+
+      <label for="full_name">Full Name:</label>
+      <input type="text" id="full_name" name="full_name">
+
+      <label for="department">Department:</label>
+      <input type="text" id="department" name="department">
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+  $(document).ready(function() {
+
+    $('#teacher-fields').hide();
+    $('#student-fields').hide();
+
+    $('#status').change(function() {
+      if ($(this).val() === 's') {
+        $('#student-fields').show();
+        $('#teacher-fields').hide();
+      } else if ($(this).val() === 't') {
+        $('#student-fields').hide();
+        $('#teacher-fields').show();
+      }
+    });
+  });
+  </script>
+  
+    
+</body>
+</html>
