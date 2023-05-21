@@ -200,14 +200,14 @@ def coursepage(request):
 
 def usercourse(request):
 
-    courses = mycourses.objects.filter(user=request.user)
-    cours = []
-    for i in courses:
-        print(i.courses.unit)
+    student_enrolled_courses = mycourses.objects.filter(user=request.user).values_list('courses', flat=True)
+    # student_announcements = courseTopic.objects.filter(course__in=student_enrolled_courses, title='Announcement')
+    # print(student_announcements)
 
-        cours.append(i.courses)
+    
+
     all_courses = mycourses.objects.all()
-    #courses = courses.courses.all()
+
     if request.user.profile.status == 't':
         courses = course.objects.filter(created_by=request.user)
         choices=[
@@ -216,7 +216,7 @@ def usercourse(request):
             ('Advanced', 'Advanced')]
         return render(request, 'index2.html', {'courses': courses, 'user':request.user,'choices':choices})
 
-    return render(request, 'student_home.html', {'courses': cours, 'user':request.user,'all_courses':all_courses})
+    return render(request, 'student_home.html', {'courses': student_enrolled_courses, 'user':request.user,'all_courses':all_courses})
 
 
 
