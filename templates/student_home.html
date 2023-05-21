@@ -73,7 +73,7 @@
                     <a href="#"><span><i class="fa-solid fa-table"></i>Grades</span></a>
                     <a href="#"><span><i class="fa-solid fa-comment"></i>Messages</span></a>
                     <a href="{% url 'teacher_profile' %}"><span><i class="fa-solid fa-wrench"></i>Teachers</span></a>
-                    <a href="#"><span><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</span></a>
+                    <a href="{%url 'logout'%}"><span><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</span></a>
                 </div>
             </div>
         </div>
@@ -144,7 +144,7 @@
                     </li>
 
                     <li class="mode">
-                        <div class="sun-moon">
+                        <!--<div class="sun-moon">
                             <i class='bx bx-moon icon moon'></i>
                             <i class='bx bx-sun icon sun'></i>
                         </div>
@@ -152,7 +152,11 @@
 
                         <div class="toggle-switch">
                             <span class="switch"></span>
-                        </div>
+                        </div>-->
+                        <a href="#">
+                            <i class='bx bx-mail-send icon'></i>
+                            <span class="text nav-text">contact</span>
+                        </a>
                     </li>
 
                 </div>

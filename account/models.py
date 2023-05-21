@@ -34,22 +34,19 @@ def current_year():
 def max_value_current_year(value):
     return MaxValueValidator(current_year()+10)(value)
 
-    
+
 gender_choices = (('M', 'MALE'),
 ('F', 'FEMALE'),
 ('O', 'OTHER'))
 class Profile(models.Model):
-    
-
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-
     # personal details
     department = models.CharField(max_length=500, null=True, blank=True)
     profile_pic = models.ImageField(upload_to='profile_pics', null=True, blank=True)
     full_name               =       models.CharField(max_length=100, blank=True, null=True)
     email                   =       models.EmailField()
     college = models.ForeignKey(College,on_delete = models.CASCADE,null=True, blank=True)
-    
+
     slug = models.SlugField(max_length=200, editable=False, null=True, blank=True)
     status = models.CharField(choices=status_choices, max_length=5, default='s')
     is_verified = models.BooleanField(default=False)
@@ -58,7 +55,7 @@ class Profile(models.Model):
     section                =       models.CharField(max_length=10)
     Year                =       models.DateField(default=datetime.datetime.now)
     roll_number         = models.IntegerField(blank=True,null=True)
-    #college status : undefined 
+    #college status : undefined
 
     def __str__(self):
         return str(self.user)

@@ -1,26 +1,23 @@
 {% extends "base2.html" %}
 {% load static %}
-
 {% block content %}
-        
         <div class="announcements-container">
-            
             <div class="ann">
                 <div style="display:flex">
                     <a href={% url 'usercourse' %}><button class="btn btn-link ">All Courses</button></a>
                     <a href={% url 'courseDetail' course.id %}><button class="btn btn-link ">{{course.title}}</button></a>
                     <a href={% url 'announceDetail' obj courseid %}><button class="btn btn-link ">{{obj}}</button></a>
-                    
-              </div>
+
+            </div>
                 <div class="heading ann-item">
                     <div class="head heading-item">
                         <p class="heading-name">
                             {{obj}}
                         </p>
                     </div>
-                    
+
                 </div>
-                
+
                 <div class="tabs ann-item">
                     <div class="tab dra not-current">
                         <img src="{% static "rsc/icons8-draft-48.png" %}" alt="" class="icon">
@@ -31,14 +28,14 @@
                         <p>Released</p>
                     </div>
                 </div>
-                
+
                 <div class="ann-item drafts-container">
                     <div class="drafts">
-                        
+
                         <div class="ann-content">
                             <div class="m-4">
                                 {% for courseunit in courseunits %}
-                                    
+
                                       {% if courseunit.name == obj %}
                                       <h2 class="mr-5">{{ courseunit.course }}</h2>
                                       <h5>{{courseunit.name}}</h5>
@@ -51,18 +48,18 @@
                                         </div>
                                         {% endif %}
                                       {% endfor %}
-                                    
-                          
+
+
                                     {% endif %}
-                                  
-                                    
+
+
                                     {% if courseunit.is_assignment %}
-                          
-                          
+
+
                                     {% else %}
-                          
-                          
-                                                <!-- create course topic Modal -->
+
+
+                                    <!-- create course topic Modal -->
                                       <div class="modal fade" id="topicmodal{{courseunit.id}}" tabindex="-1" aria-labelledby="topicmodal{{courseunit.id}}" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -96,33 +93,29 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          
+
                                             </div>
                                             </div>
                                         </div>
                                       </div>
-                          
-                                     
-                                    
-                          
                                 {% endif %}
                                 {% endfor %}
-                            
+
                         </div>
 
-                        
-                    </div>   
+
+                    </div>
                     </div>
                 </div>
                 <div class="ann-item released-container">
-                    
+
                     <div class="released">
-                        
-                        
+
+
                         <div class="ann-content">
                             <div class="m-4">
                                 {% for courseunit in courseunits %}
-                                    
+
                                       {% if courseunit.name == obj %}
                                       <h2 class="mr-5">{{ courseunit.course }}</h2>
                                       <h5>{{courseunit.name}}</h5>
@@ -135,18 +128,18 @@
                                         </div>
                                       {% endif %}
                                       {% endfor %}
-                                    
-                          
+
+
                                     {% endif %}
-                                  
-                                    
+
+
                                     {% if courseunit.is_assignment %}
-                          
-                          
+
+
                                     {% else %}
-                          
-                          
-                                                <!-- create course topic Modal -->
+
+
+                                    <!-- create course topic Modal -->
                                     <div class="modal fade" id="topicmodal{{courseunit.id}}" tabindex="-1" aria-labelledby="topicmodal{{courseunit.id}}" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -180,28 +173,22 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          
+
                                             </div>
                                             </div>
                                         </div>
                                       </div>
-                          
-                                     
-                                    
-                          
                                 {% endif %}
-                            
-                          
                                 {% endfor %}
                               </div>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
-    
-    
+
+
     </div>
 </div>
 {% endblock content %}

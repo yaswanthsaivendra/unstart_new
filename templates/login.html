@@ -10,6 +10,7 @@
         </h1>
         <div class="login-card">
             <form class="form-card"  action="{% url 'login' %}" method="POST" novalidate>
+                {% csrf_token %}
 
                 <label>Email address/Username</label><br>
                 <input type="text" name="username"><br>

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     # apps
+    'manager',
     'account',
     'courses',
     'django_extensions',
@@ -144,7 +145,7 @@ import os
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'static')
 # ]
-# STATIC_ROOT = os.path.join(BASE_DIR, 'assets') 
+# STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 
 
@@ -172,8 +173,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'newslettertechsnap@gmail.com'
-EMAIL_HOST_PASSWORD = 'ytbqcqizdoavrcyd'
+EMAIL_HOST_USER = 'yaswanthsaivendra@gmail.com'
+EMAIL_HOST_PASSWORD = 'vzwjjkbfykfbbahq'
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
