@@ -1,0 +1,107 @@
+from django.db import models
+from account.models import *
+import datetime
+from django.contrib.auth.models import User
+from django.utils.text import slugify
+import hashlib
+# Create your models here.
+
+def get_unique_string(body, time):
+    s = str(body)+str(time)
+    result_str = hashlib.sha1(s.encode()).hexdigest()[:10]
+    return result_str
+
+class announcement(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    announcement = models.CharField(max_length=200,blank=True,null=True)
+    created_at = models.DateTimeField()
+
+    slug = models.SlugField(max_length=16, null=True, unique=True, editable=False)
+
+    def __str__(self):
+        return self.announcement[0:15]
+
+    def save(self, *args, **kwargs):
+        super(announcement, self).save()
+        self.slug = slugify(get_unique_string(self.announcement,self.user))
+        super(announcement, self).save()
+
+class events(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    title= models.CharField(max_length=50,blank=True,null=True)
+    description = models.CharField(max_length=200,blank=True,null=True)
+    created_at = models.DateTimeField()
+
+    slug = models.SlugField(max_length=16, null=True, unique=True, editable=False)
+
+    def __str__(self):
+        return self.title[0:15]
+
+    def save(self, *args, **kwargs):
+        super(events, self).save()
+        self.slug = slugify(get_unique_string(self.description,self.user))
+        super(events, self).save()
+
+class news(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    title= models.CharField(max_length=50,blank=True,null=True)
+    description = models.CharField(max_length=200,blank=True,null=True)
+    created_at = models.DateTimeField()
+
+    slug = models.SlugField(max_length=16, null=True, unique=True, editable=False)
+
+    def __str__(self):
+        return self.announcement[0:15]
+
+    def save(self, *args, **kwargs):
+        super(news, self).save()
+        self.slug = slugify(get_unique_string(self.description,self.user))
+        super(news, self).save()
+
+class mainwebsite(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    header = models.CharField(max_length=200,blank=True,null=True)
+    footer = models.CharField(max_length=200,blank=True,null=True)
+    created_at = models.DateTimeField()
+
+    def __str__(self):
+        return self.user.username
+
+class testimonials(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    image = models.CharField(max_length=200,blank=True,null=True)
+    content = models.CharField(max_length=200,blank=True,null=True)
+    created_at = models.DateTimeField()
+
+    slug = models.SlugField(max_length=16, null=True, unique=True, editable=False)
+
+    def __str__(self):
+        return self.content[0:15]
+
+    def save(self, *args, **kwargs):
+        super(testimonials, self).save()
+        self.slug = slugify(get_unique_string(self.content,self.user))
+        super(testimonials, self).save()
+
+class mainpagenews(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    image = models.CharField(max_length=200,blank=True,null=True)
+    content = models.CharField(max_length=200,blank=True,null=True)
+    created_at = models.DateTimeField()
+
+    slug = models.SlugField(max_length=16, null=True, unique=True, editable=False)
+
+    def __str__(self):
+        return self.content[0:15]
+
+    def save(self, *args, **kwargs):
+        super(mainpagenews, self).save()
+        self.slug = slugify(get_unique_string(self.content,self.user))
+        super(mainpagenews, self).save()
+
+class Contact(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    msg = models.TextField()
+    def __str__(self):
+        return 'Msg from '+self.name

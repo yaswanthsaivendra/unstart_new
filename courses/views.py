@@ -982,6 +982,7 @@ def announceDetail(request,obj,courseid):
                         instance.save()
         return render(request, 'manager_announce.html', {'courseunits': courseunits})
 
+
     if request.user.profile.status == 't':
         coursedet = course.objects.get(id=courseid)
         #print(coursedet)
@@ -1585,8 +1586,6 @@ def manager_event(request):
                 form.save()
         event_form = ManagerEventForm()
         return render(request,'events.html',{"event_form":event_form,"events":event})
-
-
     return render(request,'events.html',{"event_form":event_form,"events":event})
 
 def manager_noti(request):

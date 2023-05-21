@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{% block title %}Contact Us{% endblock title %}</title>
+
+		{% block css %}
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+		<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+		<link rel="stylesheet" href="{% static 'assets/contact/contact.css' %}" />
+		<link rel="shortcut icon" type="image/png" href="{% static 'assets/main/favicon.png'%}"/>
+    {% endblock css %}
+    
+	</head>
+	<body>
+	{% block body %}
+    <section class="contactus">
+        <h1 style="font-family: 'ubuntu', sans-serif;font-weight:700;" class="contactus__primary connect__primary">Connect with us</h1>
+        <div class="contactus__row">
+            <div class="contactus__item">
+                <hr>
+                <h1 class="contactus__primary pad">
+                    Get in <span class="contactuss__primary-main">Touch</span> with Us!
+                </h1>
+                <form method="POST" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                <div class="contactus__con-form">
+                        <div class="form__group">
+                            <input id="name" type="text" class="form__input" placeholder="Enter Your Name" required name="name"
+                                oninvalid="this.setCustomValidity('Please Enter Your Name')"
+                                oninput="setCustomValidity('')">
+                            <label class="form__label" for="name">Enter Your Name</label>
+                        </div>
+                        <div class="form__group">
+                            <input id="email" type="email" class="form__input" placeholder="Enter Email" required name="email"
+                                oninvalid="this.setCustomValidity('Please Enter valid email')"
+                                oninput="setCustomValidity('')">
+                            <label class="form__label" for="email">Enter Email</label>
+                        </div>
+                        <div class="form__group">
+                            <textarea class="form__input" type="text" id="msg" name="message" placeholder="Message"
+                                required rows="8" spellcheck="false"></textarea>
+                            <label class="form__label" for="msg">Message</label>
+                            <h6 class="clickdrag">(click and drag to extend)</h6>
+                        </div>
+                        <div class="form__group">
+                            <div class="g-recaptcha" data-sitekey="6LcLBWwcAAAAAOeCS4m6f4tGR1iyUHxLmQr_VO7Q" data-callback="verifyCaptcha"></div>
+                        </div>
+
+                        <div id="g-recaptcha-error"></div>
+                        <div class="form__button">
+
+                            <input type='submit' class="form__button-btn" value="Send Message">
+                        </div>
+                </div>
+                </form>
+            </div>
+
+
+            </div>
+        </div>
+    </section>
+{% endblock body %}
+</body>
+
+</html>

@@ -25,7 +25,7 @@ class College(models.Model):
 # def max_value_current_year(value):
 #     return MaxValueValidator(current_year()+10)(value)
 
-    
+
 gender_choices = (('M', 'MALE'),
 ('F', 'FEMALE'),
 ('O', 'OTHER'))
@@ -39,7 +39,6 @@ class Profile(models.Model):
     ('m','Management')
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-
     # personal details
     profile_pic = models.ImageField(upload_to='profile_pics', null=True, blank=True)
     email                   =       models.EmailField()
