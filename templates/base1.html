@@ -112,7 +112,11 @@
         <div class="profile">
             <div class="user-info profile-item">
                 <div class="user-image">
+                    {% if request.user.profile.profile_pic %}
                     <img src="{{request.user.profile.profile_pic.url}}" alt="">
+                    {% else %}
+                    <img src="#" alt="profilepic">
+                    {% endif %}
                 </div>
                 <div class="user-details">
                     <p class="user-fullname">{{request.user.username}}</p>
@@ -215,7 +219,11 @@
                     <img src="{% static "rsc/icons8-notification-48 (1).png"%}" alt="" class="noti-icon">
                 </div>
                 <div class="profile-image nav-item">
+                    {% if request.user.profile.profile_pic %}
                     <img src="{{request.user.profile.profile_pic.url}}" alt="" class="image">
+                    {% else %}
+                    <img src="#" alt="profilepic" class="image">
+                    {% endif %}
                 </div>
             </div>
         </div>
