@@ -15,7 +15,10 @@
     <link rel="stylesheet" href="{% static "styles/courses-style.css"%}">
     <link rel="stylesheet" href="{% static "styles/add-popup.css"%}">
     <link rel="stylesheet" href="{% static "styles/profile-style.css"%}">
-    <link rel="stylesheet" href="{% static "css/w3.css"%}">
+    <link rel="stylesheet" href="{% static "styles/profile-style.css"%}">
+
+    <link rel="stylesheet" href="{% static "css/w3.css"%}"
+    >
 
     <link rel="icon" type="image/x-icon" href="rsc/icons8-project-management-48.png">
     <title>Courses</title>
@@ -24,44 +27,27 @@
     p{
         margin-bottom: 0 !important;
     }
+    .leftP{
+        background-image: radial-gradient( circle farthest-corner at 10% 20%, rgb(162, 88, 253) 0%, rgba(116,182,247,1) 90% );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    *:focus{
+        box-shadow: none !important;
+    }
+    @media(max-width:1000px){
+    .leftP{
+        width:100% !important;
+    }
+    .rightP{
+        width:100% !important;
+    }
+    
+}
 </style>
 <body>
-    <div class="add-course">
-        <div class="popup">
-            <div class="left">
-                <div class="left-cont">
-                    <img src="{% static "rsc/icons8-project-management-48.png"%}" alt="">
-                    <h3>managessnap</h3>
-                </div>
-            </div>
-            <div class="right">
-                <div class="right-cont">
-                    <form action={% url 'create-course' %} method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="right-item">
-                            <h3>
-                                Course Title
-                            </h3>
-                            <input type="text" name="title" id="" method="POST" placeholder="enter course title">
-                        </div>
-                        <div class="right-item">
-                            <input type="text" name="category" id="" placeholder="course category">
-
-                            <label for="img">Select image:</label>
-                            <input type="file" id="img" name="image" accept="image/*">
-
-
-                        </div>
-                        <div class="right-item ac-btn">
-                            <button class="a" type="submit" >Upload</button>
-                            <button class="cancel">Cancel</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <img src="{% static "rsc/icons8-close-50.png"%}" alt="" class="cancel-icon">
-        </div>
-    </div>
+    
 
     <div class="notification-list-container noti-notdisplay">
         <div class="notification-list">
@@ -243,8 +229,12 @@
                             <input type="text" name="" id="" placeholder="search" class="search-item searchbar">
                             <img src="rsc/icons8-search-50 (4).png" alt="" class="search-icon search-item">
                         </div>
+                        
                         <div class="add as-item">
-                            <button class="add-btn"><p>Add</p></button>
+                            <button type="button" class="add-btn" data-toggle="modal" data-target="#exampleModal">
+                                Add
+                              </button>
+                               
                         </div>
                     </div>
                 </div>
@@ -334,6 +324,51 @@
 
     </div>
 </div>
+ 
+<!-- add popup -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="d-flex flex-wrap-reverse">
+           
+            <div class="leftP w-50" style="min-height:400px ;">
+                <div class="left-cont">
+                    <img src="{% static 'rsc/icons8-project-management-48.png' %}" alt="">
+                    <h3>managesnap</h3>
+                </div>
+       
+            </div>
+            <div class="rightP px-4 w-50 my-2" >
+                
+                    <h5 class="modal-title py-3" id="exampleModalLabel">Add New accouncement</h5>
+                    <form action="
+                    ">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control w-100" id="title" name="title">
+                      </div>
+                    <div class="form-group">
+                        <label for="desc">Description</label>
+                        <textarea class="form-control w-100" id="desc" rows="3" name="desc"></textarea>
+                      </div>
+                      <div class="footer-btns mt-5">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                     </div>
+                </form>
+                  
+                
+         
+                 
+            </div>
+            
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 crossorigin="anonymous"></script>
@@ -343,11 +378,14 @@ crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
+    <script src="{% static "scripts/add-popup.js"%}"></script>
+
 <script src="{% static "scripts/script.js"%}"></script>
 <script src="{% static "scripts/add-course.js"%}"></script>
 <script src="{% static "scripts/groups-script.js"%}"></script>
 <script src="{% static "scripts/profile-script.js"%}"></script>
 <script src="{% static "scripts/announcements-script.js"%}"></script>
+
 </body>
 
 </html>
