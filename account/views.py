@@ -131,10 +131,18 @@ class LoginView(View):
                             return redirect(next)
                         # return redirect("index")
 
-                        if user.profile.is_verified == False:
-                            return redirect('access-pending-view')
-                        elif user.profile.status == 't':
-                            return redirect('teacher_home')
+                        if user.profile.status == 't':
+                            if user.profile.is_verified == False:
+                                return redirect('access-pending-view')
+                            else:
+                                return redirect('teacher_home')
+                        elif user.profile.status == 's':
+                            if user.profile.is_verified == False:
+                                return redirect('access-pending-view')
+                            else:
+                                return redirect('home')
+                        elif user.profile.status == 'm':
+                            return redirect('manager-home')
                         else:
                             return redirect('home')
 
@@ -154,10 +162,18 @@ class LoginView(View):
                         if next:
                             return redirect(next)
                         # return redirect("index")
-                        if user.profile.is_verified == False:
-                            return redirect('access-pending-view')
-                        elif user.profile.status == 't':
-                            return redirect('teacher_home')
+                        if user.profile.status == 't':
+                            if user.profile.is_verified == False:
+                                return redirect('access-pending-view')
+                            else:
+                                return redirect('teacher_home')
+                        elif user.profile.status == 's':
+                            if user.profile.is_verified == False:
+                                return redirect('access-pending-view')
+                            else:
+                                return redirect('home')
+                        elif user.profile.status == 'm':
+                            return redirect('manager-home')
                         else:
                             return redirect('home')
 

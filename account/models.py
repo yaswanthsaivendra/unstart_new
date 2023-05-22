@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.text import slugify
 import datetime
+from django.utils import timezone
 # from django.core.validators import MaxValueValidator
 # Create your models here.
 
@@ -74,7 +75,6 @@ class Student_profile(models.Model):
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
     semester                =       models.CharField(max_length=10)
     section                =       models.CharField(max_length=10)
-    Year                =       models.DateField(default=datetime.datetime.now)
     roll_number         = models.IntegerField(blank=True,null=True)
     full_name               =       models.CharField(max_length=100, blank=True, null=True)
     department = models.CharField(max_length=500, null=True, blank=True)
@@ -103,13 +103,11 @@ class Student_profile_application(models.Model):
     roll_number         = models.IntegerField(blank=True,null=True)
     full_name               =       models.CharField(max_length=100, blank=True, null=True)
     department = models.CharField(max_length=500, null=True, blank=True)
-    requested_on = models.DateField(datetime.datetime.now)
+    requested_on = models.DateField(default =timezone.now)
     request_seen = models.BooleanField(default=False)
     is_verified = models.BooleanField(default=False)
     is_rejected = models.BooleanField(default=False)
 
-
- 
 
 
 class Teacher_profile_application(models.Model):
@@ -119,7 +117,7 @@ class Teacher_profile_application(models.Model):
     section                =       models.CharField(max_length=10)
     full_name               =       models.CharField(max_length=100, blank=True, null=True)
     department = models.CharField(max_length=500, null=True, blank=True)
-    requested_on = models.DateField(datetime.datetime.now)
+    requested_on = models.DateField(default=timezone.now)
     request_seen = models.BooleanField(default=False)
     is_verified = models.BooleanField(default=False)
     is_rejected = models.BooleanField(default=False)

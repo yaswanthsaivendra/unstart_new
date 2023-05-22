@@ -1,9 +1,99 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import *
-# Create your views here.
+from account.models import (
+    Student_profile_application,
+    Teacher_profile_application,
+    Student_profile,
+    Teacher_profile,
+
+    )
+from itertools import chain
+from courses.forms import userform
+
+
+@login_required
+def manager_home(request):
+    if request.method == 'GET':
+        # Get all student and teacher applications
+        student_applications = Student_profile_application.objects.all()
+        teacher_applications = Teacher_profile_application.objects.all()
+    
+        # Combine and reverse-sort the applications based on 'requested_on'
+        all_applications = sorted(
+            chain(student_applications, teacher_applications),
+            key=lambda x: x.requested_on,
+            reverse=True
+        )
+
+        # Filter applications based on status
+        verified_applications = [app for app in all_applications if app.is_verified]
+        rejected_applications = [app for app in all_applications if app.is_rejected]
+        pending_applications = [app for app in all_applications if not app.is_verified and not app.is_rejected]
+        
+        # user form to create new user.
+        user_form = userform()
+        
+
+        return render(request, 'manager/requests.html', {
+        'verified_applications': verified_applications,
+        'rejected_applications': rejected_applications,
+        'pending_applications': pending_applications,
+        "user_form":user_form
+        })
+
+
+@login_required
+def application_details(request, pk, status):
+    if request.method == 'GET':
+        if status == 't':
+            application = Teacher_profile_application.objects.filter(id=pk).first()
+        elif status == 's':
+            application = Student_profile_application.objects.filter(id=pk).first()
+        
+
+        return render(request, 'manager/application_details.html', {'application': application })
+    elif request.method == 'POST':
+        action = request.POST.get('action')
+
+        if action == 'accept':
+            if status == 't':
+                ## accept teacher application
+                teacher_application = Teacher_profile_application.objects.filter(id=pk).first()
+                teacher_application.is_verified = True
+                teacher_application.save(update_fields=['is_verified'])
+                # create Teacher Profile
+                Teacher_profile.objects.create(
+                    profile = teacher_application.profile,
+                    semester = teacher_application.semester,
+                    section = teacher_application.section,
+                    full_name = teacher_application.full_name,
+                    department = teacher_application.department
+                )
+                # mark the profile as verified
+                profile = Profile.objects.filter(id = teacher_application.profile.id).first()
+                profile.is_verified = True
+                profile.save(update_fields = ['is_verified'])
+
+
+            elif status == 's':
+                student_application = Student_profile_application.objects.filter(id=pk).first()
+                student_application.is_verified = True
+                student_application.save(update_fields=['is_verified'])
+           
+            return redirect('application-details')
+
+        elif action == 'reject':
+            
+            return redirect('application-details')
+
+
+
+
+
+
 
 @login_required
 def contact(request):
