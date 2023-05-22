@@ -5,11 +5,11 @@
     color: rgb(30, 30, 30);
 }
 /* Heading and add button */
-.announcements-container
+/* .announcements-container
 {
     display: flex;
     justify-content: center;
-}
+} */
 .ann-item 
 {
     margin: 20px 30px;

@@ -154,7 +154,7 @@
 
                     <div class="detail announcements">
                         <img src="{% static "rsc/icons8-commercial-48.png"%}" alt="" class="item">
-                        <p class="name"><a href="{% url 'announceDetail' 'Announcement' 'manager' %}">Announcements</a></p>
+                        <p class="name current"><a href="{% url 'announceDetail' 'Announcement' 'manager' %}">Announcements</a></p>
                     </div>
 
                 </div>
@@ -217,11 +217,18 @@
           </button>
         </div>
         {% endfor %}
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/" style="color:initial">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Announcements</li>
+            </ol>
+          </nav>
 
         <div class="announcements-container">
+           
 
             <div class="ann">
-                <div style="display:flex">
+                <!-- <div style="display:flex">
 
 
               </div>
@@ -232,7 +239,7 @@
                         </p>
                     </div>
 
-                </div>
+                </div> -->
 
                 <div class="tabs ann-item">
                     <div class="tab dra current">
