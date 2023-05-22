@@ -161,7 +161,7 @@
             </div>
             <div class="dashboard panel-item">
                 <img src="{% static 'rsc/icons8-dashboard-layout-48.png' %}" alt="" class="item">
-                <p class="name"><a href="{% url 'manager-home' %}">Requests</a></p>
+                <p class="name"><a href="{% url 'manager:home' %}">Requests</a></p>
             </div>
 
             <div class="requests panel-item">
@@ -342,7 +342,7 @@
                                 <td class="invisible1">{{ app.requested_on }}</td>
                                 <td>
                                     <button class="view-btn">
-                                    <a href="{% url 'application-details' app.profile.status app.id %}">view</a>
+                                    <a href="{% url 'manager:application-details' app.profile.status app.id %}">view</a>
                                     </button>
                                 </td>
                             </tr>

@@ -29,11 +29,11 @@ class Announcement(models.Model):
     slug = models.SlugField(max_length=16, null=True, unique=True, editable=False)
 
     def __str__(self):
-        return self.announcement[0:15]
+        return self.title
 
     def save(self, *args, **kwargs):
         super(Announcement, self).save()
-        self.slug = slugify(get_unique_string(self.announcement,self.user))
+        self.slug = slugify(get_unique_string(self.title,self.user))
         super(Announcement, self).save()
 
 

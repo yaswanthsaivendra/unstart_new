@@ -262,7 +262,7 @@
                     <div class="prof-buttons">
 
 
-                        <form method="POST" action="{% url 'application-details' application.profile.status application.id  %}">
+                        <form method="POST" action="{% url 'manager:application-details' application.profile.status application.id  %}">
                             {% csrf_token %}
                         
                         <div class="accept">   

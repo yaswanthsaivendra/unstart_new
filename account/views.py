@@ -142,7 +142,7 @@ class LoginView(View):
                             else:
                                 return redirect('home')
                         elif user.profile.status == 'm':
-                            return redirect('manager-home')
+                            return redirect('manager:home')
                         else:
                             return redirect('home')
 
@@ -173,7 +173,7 @@ class LoginView(View):
                             else:
                                 return redirect('home')
                         elif user.profile.status == 'm':
-                            return redirect('manager-home')
+                            return redirect('manager:home')
                         else:
                             return redirect('home')
 

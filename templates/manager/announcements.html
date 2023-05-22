@@ -253,8 +253,7 @@
                 </div>
 
                 <div class="ann-item released-container">
-                    {% for announcement in announcements %}
-                    {% if announcement.status == 'RELEASED' %}
+                    {% for announcement in released_announcements %}
                     <div class="released">
                         <div class="ann-content">
                             <h3 class="ann-heading rd-item font-weight-bold">{{ announcement.title }}</h3>
@@ -271,11 +270,10 @@
                             </div>
                         </div>
                         <div class="ann-buttons">
-                            <button class="view"><a href="#">View</a></button>
-                            <button class="edit"><a href="#">Edit&nbsp;</a></button>
+                            <button class="view"><a href="{% url 'manager:announcement-detail' announcement.pk %}">View</a></button>
+
                         </div>
                     </div>
-                    {% endif %}
                     {% empty %}
                     <h3>No announcements available</h3>
                     {% endfor %}
@@ -283,8 +281,7 @@
                 </div>
 
                 <div class="ann-item drafts-container">
-                    {% for announcement in announcements %}
-                    {% if announcement.status == 'DRAFT' %}
+                    {% for announcement in draft_announcements %}
 
                     <div class="drafts">
                         <div class="ann-content">
@@ -292,20 +289,18 @@
                             <p class="ann-para rd-item">{{ announcement.description }}</p>
                             <div class="ann-links-docs rd-item">
                                 <div class="links">
-                                    <img src="rsc/icons8-link-24 (1).png" alt="" class="icon">
+                                    <img src="{% static 'rsc/icons8-link-24 (1).png' %}" alt="" class="icon">
                                     <p class="link-num">Links : {{ announcement.links.count }}</p>
                                 </div>
                                 <div class="docs">
-                                    <img src="rsc/icons8-documents-24.png" alt="" class="icon">
+                                    <img src="{% static 'rsc/icons8-documents-24.png' %}" alt="" class="icon">
                                     <p class="docs-num">Documents : {{ announcement.files.count }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="ann-buttons">
-                            <button class="view"><a href="">View</a></button>
-                            <button class="edit"><a href="">Edit&nbsp;</a></button>
+                            <button class="view"><a href="{% url 'manager:announcement-detail' announcement.pk %}">View</a></button>
                         </div>
-                        {% endif %}
                         {% empty %}
                         <h3>No announcements available</h3>
                         {% endfor %}

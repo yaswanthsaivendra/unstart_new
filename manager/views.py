@@ -128,6 +128,17 @@ class AnnouncementListView(ListView):
     context_object_name = 'announcements'
     ordering = ['-created_at']
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        released_announcements = self.get_queryset().filter(status='released')
+        draft_announcements = self.get_queryset().filter(status='draft')
+        
+        context['released_announcements'] = released_announcements
+        context['draft_announcements'] = draft_announcements
+        
+        return context
+
 
 class AnnouncementCreateView(CreateView):
     model = Announcement
@@ -149,7 +160,7 @@ class AnnouncementUpdateView(UpdateView):
 
 class AnnouncementDetailView(DetailView):
     model = Announcement
-    template_name = 'announcement/announcement_detail.html'
+    template_name = 'manager/announcement_detail.html'
     context_object_name = 'announcement'
 
 
