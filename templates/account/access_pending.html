@@ -1,4 +1,83 @@
-<!DOCTYPE html>
+{%extends 'header.html' %}
+{% load static %}
+{% block css %}
+<link href="{% static 'styles/mainpages/signup.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{% endblock css %}
+{% block content %}
+   <div class="container">
+       <div class="header d-flex justify-content-end">
+        <a href="{% url 'add-profile-details' %}" >
+            <button class="btn btn-dark m-3 ">
+                Submit New Application
+            </button>
+        </a>
+
+       </div>
+       <div class="mx-5">
+        {% if student_applications %}
+        <h2 class="text-xl font-weight-bold">Student Profile Applications</h2>
+        <hr>
+        <div class="d-flex justify-content-between align-items-center">
+            {% for application in student_applications %}
+            <div class="card m-3" style="width: 18rem;z-index: -1;">
+                <div class="card-body">
+                  <h5 class="card-title font-weight-bold">Details</h5>
+                  <p class="card-text">
+                   <p>Full Name: <span class="text-secondary">{{ application.full_name }}</span></p>
+                   <p>Semester: <span class="text-secondary">{{ application.semester }}</span></p>
+                   <p>Section: <span class="text-secondary">{{ application.section }}</span></p>
+                   <p>Roll Number: <span class="text-secondary">{{ application.roll_number }}</span></p>
+                   <p>Department: <span class="text-secondary">{{ application.department }}</span></p>
+
+                  </p>
+                  <a href="#" class="btn btn-outline-dark my-2">Edit Details</a>
+                </div>
+              </div>
+              {% endfor %}
+        </div>
+           
+        {% endif %}
+    
+    
+        <br>
+        {% if teacher_applications %}
+        <h1 class="text-xl font-weight-bold">Teacher Profile Applications</h1>
+        <hr>
+        <div class="d-flex justify-content-between align-items-center">
+            {% for application in teacher_applications %}
+            <div class="card m-3" style="width: 18rem;z-index: -1;">
+                <div class="card-body">
+                  <h5 class="card-title font-weight-bold">Details</h5>
+                  <p class="card-text">
+                   <p>Full Name: <span class="text-secondary">{{ application.full_name }}</span></p>
+                   <p>Semester: <span class="text-secondary">{{ application.semester }}</span></p>
+                   <p>Section: <span class="text-secondary">{{ application.section }}</span></p>
+                   <p>Date of Joining: <span class="text-secondary">{{ application.date_of_joining}}</span></p>
+                   <p>Department: <span class="text-secondary">{{ application.department }}</span></p>
+q
+                  </p>
+                  <a href="#" class="btn btn-outline-dark my-2">Edit Details</a>
+                </div>
+              </div>
+              {% endfor %}
+        </div>
+        
+        {% endif %}
+       </div>
+      
+   
+    
+   </div>
+
+{% endblock %}
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{% static "styles/mainpages/index.js"%}"></script>
+{% endblock js %}
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,7 +111,6 @@
 <body>
     
     <div>
-        <a href="{% url 'add-profile-details' %}" class="edit-button">Submit New Application</a>
     </div>
 
     {% if student_applications %}
@@ -96,4 +174,4 @@
 
     
 </body>
-</html>
+</html> -->
