@@ -233,8 +233,7 @@
                         <div class="add as-item">
                             <button type="button" class="add-btn" data-toggle="modal" data-target="#exampleModal">
                                 Add
-                              </button>
-                               
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -304,8 +303,6 @@
                         {% empty %}
                         <h3>No announcements available</h3>
                         {% endfor %}
-                           
-
 
                     </div>
                     </div>
@@ -336,24 +333,29 @@
             <div class="rightP px-4 w-50 my-2" >
                 
                     <h5 class="modal-title py-3" id="exampleModalLabel">Add New accouncement</h5>
-                    <form action="
-                    ">
+                    <form method="post" action="{% url 'manager:announcement-create' %}">
+                        {% csrf_token %}
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" class="form-control w-100" id="title" name="title">
                       </div>
                     <div class="form-group">
                         <label for="desc">Description</label>
-                        <textarea class="form-control w-100" id="desc" rows="3" name="desc"></textarea>
+                        <textarea class="form-control w-100" id="desc" rows="3" name="description"></textarea>
                       </div>
                       <div class="footer-btns mt-5">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                      </div>
                 </form>
-                  
+
+
+
                 
-         
+
+
+
+            
                  
             </div>
             
