@@ -12,6 +12,8 @@ from account.models import (
     )
 from itertools import chain
 from courses.forms import userform
+from django.views.generic import ListView, CreateView, UpdateView, DetailView
+from django.urls import reverse_lazy
 
 
 @login_required
@@ -107,13 +109,60 @@ def application_details(request, pk, status):
                 teacher_application.is_rejected = True
                 teacher_application.save(update_fields=['is_rejected'])
 
-
             elif status == 's':
                 student_application = Student_profile_application.objects.filter(id=pk).first()
                 student_application.is_verified = True
                 student_application.save(update_fields=['is_verified'])
             
             return redirect('application-details')
+
+
+
+
+class AnnouncementListView(ListView):
+    model = Announcement
+    template_name = 'manager/announcements.html'
+    context_object_name = 'announcements'
+    ordering = ['-created_at']
+
+
+class AnnouncementCreateView(CreateView):
+    model = Announcement
+    template_name = 'announcement/announcement_create.html'
+    fields = ['announcement', 'status']
+    success_url = reverse_lazy('announcement_list')
+
+
+class AnnouncementUpdateView(UpdateView):
+    model = Announcement
+    template_name = 'announcement/announcement_update.html'
+    fields = ['announcement', 'status']
+    context_object_name = 'announcement'
+
+    def get_success_url(self):
+        return reverse_lazy('announcement_detail', kwargs={'pk': self.object.pk})
+
+
+
+class AnnouncementDetailView(DetailView):
+    model = Announcement
+    template_name = 'announcement/announcement_detail.html'
+    context_object_name = 'announcement'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,6 +1,6 @@
 from django.db import models
 from account.models import *
-import datetime
+from django.utils import timezone
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 import hashlib
@@ -11,10 +11,20 @@ def get_unique_string(body, time):
     result_str = hashlib.sha1(s.encode()).hexdigest()[:10]
     return result_str
 
-class announcement(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    announcement = models.CharField(max_length=200,blank=True,null=True)
-    created_at = models.DateTimeField()
+class Announcement(models.Model):
+
+    DRAFT = 'draft'
+    RELEASED = 'released'
+    STATUS_CHOICES = [
+        (DRAFT, 'Draft'),
+        (RELEASED, 'Released'),
+    ]
+
+    user = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    title = models.CharField(max_length=50,blank=True,null=True)
+    description = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default=DRAFT)
 
     slug = models.SlugField(max_length=16, null=True, unique=True, editable=False)
 
@@ -22,9 +32,22 @@ class announcement(models.Model):
         return self.announcement[0:15]
 
     def save(self, *args, **kwargs):
-        super(announcement, self).save()
+        super(Announcement, self).save()
         self.slug = slugify(get_unique_string(self.announcement,self.user))
-        super(announcement, self).save()
+        super(Announcement, self).save()
+
+
+class AnnouncementFile(models.Model):
+    announcement = models.ForeignKey(Announcement, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='announcement_files/')
+
+
+class AnnouncementLink(models.Model):
+    announcement = models.ForeignKey(Announcement, on_delete=models.CASCADE)
+    link = models.URLField()
+
+
+
 
 class events(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
