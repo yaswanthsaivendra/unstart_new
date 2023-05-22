@@ -227,10 +227,10 @@ def add_profile_details(request):
             )
         elif status == 't':
             date_of_joining = request.POST.get('date_of_joining')
-            semester = request.POST.getlist('semester')[0]
-            section = request.POST.getlist('section')[0]
-            full_name = request.POST.getlist('full_name')[0]
-            department = request.POST.getlist('department')[0]
+            semester = request.POST.getlist('semester')[1]
+            section = request.POST.getlist('section')[1]
+            full_name = request.POST.getlist('full_name')[1]
+            department = request.POST.getlist('department')[1]
             Teacher_profile_application.objects.create(
                 profile=user_profile,
                 date_of_joining=date_of_joining,
@@ -248,7 +248,16 @@ def access_pending_view(request):
         student_applications = Student_profile_application.objects.filter(profile__in= [user_profile])
         teacher_applications = Teacher_profile_application.objects.filter(profile__in= [user_profile])
 
-        return render(request, 'account/access_pending.html', {'student_applications': student_applications, 'teacher_applications' : teacher_applications})
+        show_new_application_button = not (
+        teacher_applications.filter(is_rejected=False).exists() or
+        student_applications.filter(is_rejected=False).exists()
+        )
+
+        return render(request, 'account/access_pending.html', {
+            'student_applications': student_applications,
+            'teacher_applications' : teacher_applications,
+            'show_new_application_button': show_new_application_button
+        })
 
 
 

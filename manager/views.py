@@ -54,6 +54,8 @@ def application_details(request, pk, status):
             application = Teacher_profile_application.objects.filter(id=pk).first()
         elif status == 's':
             application = Student_profile_application.objects.filter(id=pk).first()
+        application.request_seen = True
+        application.save(update_fields=['request_seen'])
         
 
         return render(request, 'manager/application_details.html', {'application': application })
@@ -96,6 +98,7 @@ def application_details(request, pk, status):
                 )
                 # mark the profile as verified
                 profile = Profile.objects.filter(id = student_application.profile.id).first()
+                profile.status = student_application.status
                 profile.is_verified = True
                 profile.save(update_fields = ['is_verified'])
     
