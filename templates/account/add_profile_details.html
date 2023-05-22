@@ -1,4 +1,109 @@
-<!DOCTYPE html>
+{%extends 'header.html' %}
+{% load static %}
+{% block css %}
+<link href="{% static 'styles/mainpages/signup.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+  *:focus{
+    box-shadow: none !important;
+  }
+</style>
+{% endblock css %}
+{% block content %}
+    <div class="webpage">
+        <section id="signup">
+            {% include 'messages.html' %}
+            <h1 class="signup-text">
+                Enter your Details
+            </h1>
+            <p>Kickstart your career with UnStartED Certification Program</p>
+            <div class="signup-card">
+              <form method="post">
+                {% csrf_token %}
+            
+                <div class="field-group">
+                  <label for="status">Status:</label>
+                  <select id="status" name="status" class="form-control">
+                    <option value="">Select Status</option>
+                    <option value="s">Student</option>
+                    <option value="t">Teacher</option>
+                  </select>
+                </div>
+                <br>
+                <div id="student-fields" class="form-group">
+                  <label for="semester">Semester:</label>
+                  <input type="text" id="semester" name="semester"  class="form-control ">
+                  <br>
+            
+                  <label for="section">Section:</label>
+                  <input type="text" id="section" name="section" class="form-control">
+                  <br>
+            
+                  <label for="roll_number">Roll Number:</label>
+                  <input type="number" id="roll_number" name="roll_number" class="form-control">
+                  <br>
+            
+                  <label for="full_name">Full Name:</label>
+                  <input type="text" id="full_name" name="full_name" class="form-control">
+                  <br>
+            
+                  <label for="department">Department:</label>
+                  <input type="text" id="department" name="department" class="form-control">
+                  <br>
+                </div>
+            
+                <div id="teacher-fields" class="field-group">
+            
+                  <label for="date_of_joining">Date of Joining:</label>
+                  <input type="date" id="date_of_joining" name="date_of_joining" class="form-control">
+                  <br>
+            
+                  <label for="semester">Semester:</label>
+                  <input type="text" id="semester" name="semester" class="form-control">
+                  <br>
+            
+                  <label for="section">Section:</label>
+                  <input type="text" id="section" name="section" class="form-control">
+                  <br>
+            
+                  <label for="full_name">Full Name:</label>
+                  <input type="text" id="full_name" name="full_name" class="form-control">
+                  <br>
+            
+                  <label for="department">Department:</label>
+                  <input type="text" id="department" name="department" class="form-control">
+                  <br>
+                </div>
+            
+                <button type="submit" class="w-100 bg-dark text-white round my-2 p-2">Submit</button>
+              </form>
+            </div>
+        </section>
+
+{% endblock %}
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+
+  $('#teacher-fields').hide();
+  $('#student-fields').hide();
+
+  $('#status').change(function() {
+    if ($(this).val() === 's') {
+      $('#student-fields').show();
+      $('#teacher-fields').hide();
+    } else if ($(this).val() === 't') {
+      $('#student-fields').hide();
+      $('#teacher-fields').show();
+    }
+  });
+});
+</script>
+<script src="{% static "styles/mainpages/index.js"%}"></script>
+{% endblock js %}
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -107,25 +212,8 @@
   </form>
 </div>
   
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-  $(document).ready(function() {
-
-    $('#teacher-fields').hide();
-    $('#student-fields').hide();
-
-    $('#status').change(function() {
-      if ($(this).val() === 's') {
-        $('#student-fields').show();
-        $('#teacher-fields').hide();
-      } else if ($(this).val() === 't') {
-        $('#student-fields').hide();
-        $('#teacher-fields').show();
-      }
-    });
-  });
-  </script>
+ 
   
     
 </body>
-</html>
+</html> -->
