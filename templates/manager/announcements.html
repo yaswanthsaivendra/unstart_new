@@ -264,12 +264,12 @@
                             <p class="ann-para rd-item">{{ announcement.description }}</p>
                             <div class="ann-links-docs rd-item">
                                 <div class="links">
-                                    <img src="{% static 'rsc/icons8-link-24 (1).png' }" alt="" class="icon">
-                                    <p class="link-num">Links : {{ announcement.links.count }}</p>
+                                    <img src="{% static 'rsc/icons8-link-24 (1).png' %}" alt="" class="icon">
+                                    <p class="link-num">Links : {{ announcement.links.count|default:"0"  }}</p>
                                 </div>
                                 <div class="docs">
-                                    <img src="{% static 'rsc/icons8-documents-24.png' }" alt="" class="icon">
-                                    <p class="docs-num">Documents : {{ announcement.files.count }}</p>
+                                    <img src="{% static 'rsc/icons8-documents-24.png' %}" alt="" class="icon">
+                                    <p class="docs-num">Documents : {{ announcement.files.count|default:"0"  }}</p>
                                 </div>
                             </div>
                         </div>
@@ -295,11 +295,11 @@
                             <div class="ann-links-docs rd-item">
                                 <div class="links">
                                     <img src="{% static 'rsc/icons8-link-24 (1).png' %}" alt="" class="icon">
-                                    <p class="link-num">Links : {{ announcement.links.count }}</p>
+                                    <p class="link-num">Links : {{ announcement.links.count|default:"0"  }}</p>
                                 </div>
                                 <div class="docs">
                                     <img src="{% static 'rsc/icons8-documents-24.png' %}" alt="" class="icon">
-                                    <p class="docs-num">Documents : {{ announcement.files.count }}</p>
+                                    <p class="docs-num">Documents : {{ announcement.files.count|default:"0"  }}</p>
                                 </div>
                             </div>
                         </div>

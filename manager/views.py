@@ -1,14 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import *
+from .models import Announcement, AnnouncementFile, AnnouncementLink
 from account.models import (
     Student_profile_application,
     Teacher_profile_application,
     Student_profile,
     Teacher_profile,
-
+    Profile,
     )
 from itertools import chain
 from courses.forms import userform
@@ -153,12 +153,23 @@ class AnnouncementCreateView(CreateView):
 
 class AnnouncementUpdateView(UpdateView):
     model = Announcement
-    template_name = 'announcement/announcement_update.html'
-    fields = ['announcement', 'status']
+    template_name = 'manager/announcement_detail.html'
+    fields = ['title', 'description']
     context_object_name = 'announcement'
 
     def get_success_url(self):
-        return reverse_lazy('announcement_detail', kwargs={'pk': self.object.pk})
+        return reverse_lazy('manager:announcement-detail', kwargs={'pk': self.object.pk})
+    
+
+
+def AnnouncementStatusUpdateView(request, pk):
+    announcement = Announcement.objects.filter(id=pk).first()
+    if announcement.status == 'released':
+        announcement.status = 'draft'
+    elif announcement.status == 'draft':
+        announcement.status = 'released'
+    announcement.save(update_fields = ['status'])
+    return redirect('manager:announcement-list')
 
 
 
@@ -167,6 +178,37 @@ class AnnouncementDetailView(DetailView):
     template_name = 'manager/announcement_detail.html'
     context_object_name = 'announcement'
 
+def announcement_add_link(request, pk):
+    announcement = get_object_or_404(Announcement, pk=pk)
+    
+    if request.method == 'POST':
+        link_url = request.POST.get('link_url')
+        AnnouncementLink.objects.create(announcement=announcement, link=link_url)
+        return redirect('manager:announcement-detail', pk=pk)
+    
+def announcement_delete_link(request, pk, link_pk):
+    link = get_object_or_404(AnnouncementLink, pk=link_pk)
+    announcement_pk = link.announcement.pk
+    link.delete()
+    return redirect('manager:announcement-detail', pk=announcement_pk)
+
+
+def announcement_add_file(request, pk):
+    announcement = get_object_or_404(Announcement, pk=pk)
+
+    if request.method == 'POST':
+        file = request.FILES.get('file')
+        if file:
+            AnnouncementFile.objects.create(announcement=announcement, file=file)
+
+    return redirect('manager:announcement-detail', pk=pk)
+
+def announcement_delete_file(request, pk, file_pk):
+    announcement = get_object_or_404(Announcement, pk=pk)
+    file = get_object_or_404(AnnouncementFile, pk=file_pk)
+    file.delete()
+
+    return redirect('manager:announcement-detail', pk=pk)
 
 
 
@@ -188,56 +230,57 @@ class AnnouncementDetailView(DetailView):
 
 
 
-@login_required
-def contact(request):
-	if request.method=='POST':
-		message = request.POST['message']
-		name = request.POST['name']
-		email = request.POST['email']
-		message += '\n\nfrom\n'+name+'\n'+email
-		subject = 'Mail from '+name
-		c = Contact.objects.create(name=name, email=email, msg=message)
-		c.save()
-		send_mail(subject, message, settings.EMAIL_HOST_USER, ['saipavansaketh@gmail.com'], fail_silently=False)
-	return render(request, 'contact.html')
+
+# @login_required
+# def contact(request):
+# 	if request.method=='POST':
+# 		message = request.POST['message']
+# 		name = request.POST['name']
+# 		email = request.POST['email']
+# 		message += '\n\nfrom\n'+name+'\n'+email
+# 		subject = 'Mail from '+name
+# 		c = Contact.objects.create(name=name, email=email, msg=message)
+# 		c.save()
+# 		send_mail(subject, message, settings.EMAIL_HOST_USER, ['saipavansaketh@gmail.com'], fail_silently=False)
+# 	return render(request, 'contact.html')
 
 
-def manager_event(request):
-    event = events.objects.filter(user = request.user)
-    allevents=events.objects.all()
-    return render(request,'events.html',{"events":event,"allevents":allevents})
+# def manager_event(request):
+#     event = events.objects.filter(user = request.user)
+#     allevents=events.objects.all()
+#     return render(request,'events.html',{"events":event,"allevents":allevents})
 
 
-def update_man_not(request, obj):
-    if obj == 'notification':
-        id = request.POST.get('id')
+# def update_man_not(request, obj):
+#     if obj == 'notification':
+#         id = request.POST.get('id')
 
-        instance = Manager_notification.objects.get(pk = id)
-        form = ManagerNotificationForm(request.POST, instance=instance)
-        if form.is_valid():
+#         instance = Manager_notification.objects.get(pk = id)
+#         form = ManagerNotificationForm(request.POST, instance=instance)
+#         if form.is_valid():
 
-            form.save(commit=False)
-            form.user = request.user
-            form.save()
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+#             form.save(commit=False)
+#             form.user = request.user
+#             form.save()
+#         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-    if obj == 'news':
-            id = request.POST.get('id')
-            instance = News_feed.objects.get(pk = id)
-            form = NewsFeedForm(request.POST, instance=instance)
-            if form.is_valid():
-                form.save(commit=False)
-                form.user = request.user
-                form.save()
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+#     if obj == 'news':
+#             id = request.POST.get('id')
+#             instance = News_feed.objects.get(pk = id)
+#             form = NewsFeedForm(request.POST, instance=instance)
+#             if form.is_valid():
+#                 form.save(commit=False)
+#                 form.user = request.user
+#                 form.save()
+#             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-    if obj == 'events':
-            id = request.POST.get('id')
-            instance = Manager_Eveng.objects.get(pk = id)
-            form = ManagerEventForm(request.POST, instance=instance)
-            if form.is_valid():
-                print('e')
-                form.save(commit=False)
-                form.user = request.user
-                form.save()
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+#     if obj == 'events':
+#             id = request.POST.get('id')
+#             instance = Manager_Eveng.objects.get(pk = id)
+#             form = ManagerEventForm(request.POST, instance=instance)
+#             if form.is_valid():
+#                 print('e')
+#                 form.save(commit=False)
+#                 form.user = request.user
+#                 form.save()
+#             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

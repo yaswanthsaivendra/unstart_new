@@ -7,59 +7,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-     <link rel="stylesheet" href="{% static 'styles/view-style.css'%}">
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'styles/view-style.css'%}">
     <link rel="stylesheet" href="{% static 'styles/style.css'%}">
-   <link rel="stylesheet" href="{% static 'styles/announcements-style.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/announcements-style.css'%}">
     <link rel="stylesheet" href="{% static 'styles/groups-style.css' %}">
     <link rel="stylesheet" href="{% static 'styles/courses-style.css'%}">
     <link rel="stylesheet" href="{% static 'styles/add-popup.css'%}">
     <link rel="stylesheet" href="{% static 'styles/profile-style.css'%}">
     <link rel="stylesheet" href="{% static 'styles/profile-style.css'%}">
 
-    <link rel="stylesheet" href="{% static 'css/w3.css' %}"
-    >
+    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
 
     <link rel="icon" type="image/x-icon" href="rsc/icons8-project-management-48.png">
     <title>Courses</title>
 </head>
 <style>
-    p{
+    p {
         margin-bottom: 0 !important;
     }
-    .leftP{
-        background-image: radial-gradient( circle farthest-corner at 10% 20%, rgb(162, 88, 253) 0%, rgba(116,182,247,1) 90% );
+
+    .leftP {
+        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(162, 88, 253) 0%, rgba(116, 182, 247, 1) 90%);
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    *:focus{
+
+    *:focus {
         box-shadow: none !important;
     }
-    @media(max-width:1000px){
-    .leftP{
-        width:100% !important;
+
+    @media(max-width:1000px) {
+        .leftP {
+            width: 100% !important;
+        }
+
+        .rightP {
+            width: 100% !important;
+        }
+
     }
-    .rightP{
-        width:100% !important;
-    }
-    
-}
 </style>
+
 <body>
-    
+
 
     <div class="notification-list-container noti-notdisplay">
         <div class="notification-list">
             <div class="notification-heading">
                 <h3>Notifications</h3>
-                <img src="{% static "rsc/icons8-expand-50.png"%}" alt="" class="expand">
+                <img src="{% static " rsc/icons8-expand-50.png"%}" alt="" class="expand">
             </div>
             <div class="notifications">
                 <div class="notification">
                     <div class="noti-details">
                         <div class="noti-image">
-                            <img src="{% static "rsc/paul-castanie-WZB_ZOqR4dA-unsplash.jpg"%}" alt="">
+                            <img src="{% static " rsc/paul-castanie-WZB_ZOqR4dA-unsplash.jpg"%}" alt="">
                         </div>
                         <div class="noti-detail">
                             <p class="det">Paul updated the syllabus for Python</p>
@@ -70,7 +74,7 @@
                 <div class="notification">
                     <div class="noti-details">
                         <div class="noti-image">
-                            <img src="{% static "rsc/joshua-earle-ICE__bo2Vws-unsplash.jpg"%}" alt="">
+                            <img src="{% static " rsc/joshua-earle-ICE__bo2Vws-unsplash.jpg"%}" alt="">
                         </div>
                         <div class="noti-detail">
                             <p class="det">Josh assigned a test for you</p>
@@ -81,7 +85,7 @@
                 <div class="notification">
                     <div class="noti-details">
                         <div class="noti-image">
-                            <img src="{% static "rsc/radu-florin-4_QFycgpC4c-unsplash.jpg"%}" alt="">
+                            <img src="{% static " rsc/radu-florin-4_QFycgpC4c-unsplash.jpg"%}" alt="">
                         </div>
                         <div class="noti-detail">
                             <p class="det">Jim added you to python classroom</p>
@@ -107,11 +111,11 @@
                 </div>
             </div>
             <div class="settings profile-item">
-                <img src="{% static "rsc/icons8-settings-48.png"%}" alt="">
+                <img src="{% static " rsc/icons8-settings-48.png"%}" alt="">
                 <p>Account Settings</p>
             </div>
             <div class="logout profile-item">
-                <img src="{% static "rsc/icons8-logout-48.png"%}" alt="">
+                <img src="{% static " rsc/icons8-logout-48.png"%}" alt="">
                 <p> <a href="/logout"><button class="btn btn-link"> Logouts</button></p>
             </div>
         </div>
@@ -132,7 +136,7 @@
 
             <div class="requests panel-item">
                 <img src="{% static 'rsc/icons8-request-service-48.png' %}" alt="" class="item">
-                <p class="name"><a href="#" >Semester</a></p>
+                <p class="name"><a href="#">Semester</a></p>
             </div>
 
             <div class="course-details panel-item">
@@ -144,33 +148,34 @@
 
                     <div class="detail announcements">
                         <img src="{% static 'rsc/icons8-commercial-48.png' %}" alt="" class="item">
-                        <p class="name current"><a href="{% url 'announceDetail' 'Announcement' 'manager' %}">Announcements</a></p>
+                        <p class="name current"><a
+                                href="{% url 'announceDetail' 'Announcement' 'manager' %}">Announcements</a></p>
                     </div>
 
                 </div>
                 <div class="detail announcements">
                     <img src="{% static 'rsc/icons8-commercial-48.png' %}" alt="" class="item">
-                    <p class="name"><a href="{% url 'manager_noti' %}">Notifications</a></p>
+                    <p class="name"><a href="">Notifications</a></p>
                 </div>
 
                 <div class="detail announcements">
                     <img src="{% static 'rsc/icons8-commercial-48.png' %}" alt="" class="item">
-                    <p class="name"><a href="{% url "manager_event" %}">Events</a></p>
+                    <p class="name"><a href="">Events</a></p>
                 </div>
 
                 <div class="detail announcements">
-                    <img src="{% static "rsc/icons8-commercial-48.png" %}" alt="" class="item">
-                    <p class="name"><a href="{% url "manager_noti" %}">News</a></p>
+                    <img src="{% static " rsc/icons8-commercial-48.png" %}" alt="" class="item">
+                    <p class="name"><a href="">News</a></p>
                 </div>
 
                 <div class="detail announcements">
-                    <img src="{% static "rsc/icons8-commercial-48.png" %}" alt="" class="item">
-                    <p class="name"><a href="{% url "teacher_profile" %}">Teacher Profile</a></p>
+                    <img src="{% static " rsc/icons8-commercial-48.png" %}" alt="" class="item">
+                    <p class="name"><a href="">Teacher Profile</a></p>
                 </div>
             </div>
             <div class="panel-item support">
                 <button>
-                    <img src="{% static "rsc/icons8-support-60.png" %}" alt="">
+                    <img src="{% static " rsc/icons8-support-60.png" %}" alt="">
                     <p>Get Support</p>
                 </button>
             </div>
@@ -179,14 +184,14 @@
     <div class="navigation">
         <div class="navi">
             <div class="nav-logo">
-                <img src="{% static "rsc/icons8-menu-50.png"%}" alt="" id="menu" class="nav-logo-item">
-                <img src="{% static "rsc/icons8-project-management-48.png"%}" alt=""
+                <img src="{% static " rsc/icons8-menu-50.png"%}" alt="" id="menu" class="nav-logo-item">
+                <img src="{% static " rsc/icons8-project-management-48.png"%}" alt=""
                     class="nav-logo-item nav-logo-image">
                 <p class="nav-logo-item nav-logo-text">managesnap</p>
             </div>
             <div class="nav-rest">
                 <div class="nav-item">
-                    <img src="{% static "rsc/icons8-notification-48 (1).png"%}" alt="" class="noti-icon">
+                    <img src="{% static " rsc/icons8-notification-48 (1).png"%}" alt="" class="noti-icon">
                 </div>
                 {% if reqest.user.profile.profile_pic %}
                 <div class="profile-image nav-item">
@@ -198,254 +203,274 @@
     </div>
 
     <div class="body">
-        
+
 
         {% for message in messages %}
         <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-          <strong>Message!-</strong> {{ message }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
+            <strong>Message!-</strong> {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         {% endfor %}
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/" style="color:initial">Home</a></li>
-              <li class="breadcrumb-item"><a href="/" style="color:initial">Announcements</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Name</li>
+                <li class="breadcrumb-item"><a href="/" style="color:initial">Home</a></li>
+                <li class="breadcrumb-item"><a href="/" style="color:initial">Announcements</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Name</li>
             </ol>
-          </nav>
+        </nav>
 
-            <div class="view-container">
-                <div class="view">
-                    <div class="heading view-item">
-                        <div class="head heading-item">
-                            <p class="heading-name">
-                                {{ announcement.title }}
-                            </p>
-                        </div>
-                        <div class="release-edit heading-item">
-                            <div class="release">
-                                <button class="release-btn" >
+        <div class="view-container">
+            <div class="view">
+                <div class="heading view-item">
+                    <div class="head heading-item">
+                        <p class="heading-name">
+                            {{ announcement.title }}
+                        </p>
+                    </div>
+                    <div class="release-edit heading-item">
+                        <div class="release">
+                            <form method="post" action="{% url 'manager:announcement-status-update' announcement.id %}">
+                                {% csrf_token %}
+                                {% if announcement.status == 'draft' %}
+                                <button class="release-btn" type="submit">
                                     <img src="{%static 'rsc/icons8-telegram-app-30.png'%}" alt="" class="icon">
                                     <p>Release</p>
                                 </button>
-                            </div>
-                            <div class="edit">
-                                <button class="edit-btn" type="button" data-toggle="modal" data-target="#exampleModal">
-                                    <img src="{% static 'rsc/icons8-edit-26.png' %}" alt="" class="icon">
-                                    <p>Edit</p>
+                                {% elif announcement.status == 'released' %}
+                                <button class="release-btn" type="submit">
+                                    <img src="{%static 'rsc/icons8-draft-48.png'%}" alt="" class="icon">
+                                    <p>Draft</p>
+                                </button>
+                                {% endif %}
+                            </form>
+
+
+                        </div>
+                        <div class="edit">
+                            <button class="edit-btn" type="button" data-toggle="modal" data-target="#exampleModal">
+                                <img src="{% static 'rsc/icons8-edit-26.png' %}" alt="" class="icon">
+                                <p>Edit</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="announcement view-item">
+                    <p>{{ announcement.description }}</p>
+
+                </div>
+                <div class=" view-item">
+                    <div class="heading links-item">
+                        <div class="head heading-item">
+                            <p class="heading-name">
+                                Links
+                            </p>
+                        </div>
+                        <div class="add-item heading-item">
+                            <div class="add">
+                                <button class="add-btn" data-toggle="modal" data-target="#addLink">
+                                    <p>Add +</p>
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <div class="announcement view-item">
-                        <p>{{ announcement.description }}</p>
-                        
+                    <div class="links-item">
+                        <ol class="links-list">
+                            <li class="link">
+                                {% for link in object.announcementlink_set.all %}
+                                <span class="link-name"><a href="{{ link.link }}">{{ link.link }}</a></span>
+                                <span>
+                                    <a href="{% url 'manager:announcement-delete-link' pk=announcement.pk link_pk=link.pk %}">
+                                        <img src="{% static 'rsc/icons8-delete-24 (1).png' %}" alt="" class="dustbin mx-2 my-0">
+                                    </a>
+                                </span>
+                                {% empty %}
+                                <span>No links available</span>
+                                {% endfor %}
+                            </li>
+
+                        </ol>
                     </div>
-                    <div class=" view-item">
-                        <div class="heading links-item">
-                            <div class="head heading-item">
-                                <p class="heading-name">
-                                    Links
-                                </p>
-                            </div>
-                            <div class="add-item heading-item">
-                                <div class="add">
-                                    <button class="add-btn" data-toggle="modal" data-target="#addLink">
-                                        <p>Add +</p>
-                                    </button>
-                                </div>
-                            </div>
+                </div>
+                <div class=" view-item">
+                    <div class="heading docs-item">
+                        <div class="head heading-item">
+                            <p class="heading-name">
+                                Files
+                            </p>
                         </div>
-                        <div class="links-item">
-                            <ol class="links-list">
-                                <li class="link">
-                                    {% for link in object.announcementlink_set.all %}
-                                    <span class="link-name"><a href="{{ link.link }}">{{ link.link }}</a></span>
-                                    {% empty %}
-                                    <span>No links available</span> 
-                                    {% endfor %}
-                                    <span><a href=""><img src="{% static 'rsc/icons8-delete-24 (1).png' %}" alt="" class="dustbin mx-2 my-0"></a></span>
-                                </li>
-                               
-                            </ol>
+                        <div class="add-item heading-item">
+                            <div class="add">
+                                <button class="add-btn" data-toggle="modal" data-target="#addFile">
+                                    <p>Add +</p>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <div class=" view-item">
-                        <div class="heading docs-item">
-                            <div class="head heading-item">
-                                <p class="heading-name">
-                                    Files
-                                </p>
-                            </div>
-                            <div class="add-item heading-item">
-                                <div class="add">
-                                    <button class="add-btn" data-toggle="modal" data-target="#addFile">
-                                        <p>Add +</p>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="docs-item">
-                            <ol class="links-list">
-                                <li class="link">
-                                    {% for file in object.announcementfile_set.all %}
-                                    <span class="link-name"><a href="{{ file.file.url }}">{{ file.file.name }}</a></span>
-                                    {% empty %}
-                                    <span>No files available</span>
-                                    {% endfor %}
-                                    <span><a href=""><img src="{% static 'rsc/icons8-delete-24 (1).png' %}" alt="" class="dustbin mx-2 my-0"></a></span>
-                                </li>
+                    <div class="docs-item">
+                        <ol class="links-list">
+                            <li class="link">
+                                {% for file in object.announcementfile_set.all %}
+                                <span class="link-name"><a href="{{ file.file.url }}">{{ file.file.name }}</a></span>
+                                <span><a href="{% url 'manager:announcement-delete-file' file_pk=file.pk pk=announcement.pk %}"><img src="{% static 'rsc/icons8-delete-24 (1).png' %}" alt=""
+                                    class="dustbin mx-2 my-0"></a></span>
+                                {% empty %}
+                                <span>No files available</span>
+                                {% endfor %}
                                 
-                            </ol>
+                            </li>
+
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <!-- edit popup -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="d-flex flex-wrap-reverse">
+
+                    <div class="leftP w-50" style="min-height:400px ;">
+                        <div class="left-cont">
+                            <img src="{% static 'rsc/icons8-project-management-48.png' %}" alt="">
+                            <h3>managesnap</h3>
                         </div>
+
                     </div>
-                </div>
-            </div>
+                    <div class="rightP px-4 w-50 my-2">
 
-    </div>
-</div>
- 
-<!-- edit popup -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <div class="modal-content">
-        <div class="d-flex flex-wrap-reverse">
-           
-            <div class="leftP w-50" style="min-height:400px ;">
-                <div class="left-cont">
-                    <img src="{% static 'rsc/icons8-project-management-48.png' %}" alt="">
-                    <h3>managesnap</h3>
-                </div>
-       
-            </div>
-            <div class="rightP px-4 w-50 my-2" >
-                
-                    <h5 class="modal-title py-3" id="exampleModalLabel">Edit Announcement</h5>
-                    <form action="
-                    ">
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control w-100" id="title" name="title">
-                      </div>
-                    <div class="form-group">
-                        <label for="desc">Description</label>
-                        <textarea class="form-control w-100" id="desc" rows="3" name="desc"></textarea>
-                      </div>
-                      <div class="footer-btns mt-5">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                     </div>
-                </form>
-                  
-                
-         
-                 
-            </div>
-            
-        </div>
-        
-      </div>
-    </div>
-  </div>
+                        <h5 class="modal-title py-3" id="exampleModalLabel">Edit Announcement</h5>
+                        <form action="{% url 'manager:announcement-update' announcement.pk %}" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" class="form-control w-100" id="title" name="title" value="{{ announcement.title }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="desc">Description</label>
+                                <textarea class="form-control w-100" id="desc" rows="3" name="description">{{ announcement.description }}</textarea>
+                            </div>
+                            <div class="footer-btns mt-5">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
 
- <!-- add link popup -->
- <div class="modal fade" id="addLink" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <div class="modal-content">
-        <div class="d-flex flex-wrap-reverse">
-           
-            <div class="leftP w-50" style="min-height:400px ;">
-                <div class="left-cont">
-                    <img src="{% static 'rsc/icons8-project-management-48.png' %}" alt="">
-                    <h3>managesnap</h3>
-                </div>
-       
-            </div>
-            <div class="rightP px-4 w-50 my-2 d-flex flex-column justify-content-center" >
-                
-                    <h5 class="modal-title py-3" id="exampleModalLabel">Add link</h5>
-                    <form action="
-                    ">
-                    <div class="form-group">
-                        <label for="title">Link</label>
-                        <input type="text" class="form-control w-100" id="link" name="link">
+
+
+
                     </div>
-                    <div class="footer-btns mt-5">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                     </div>
-                   
-                </form>
-                  
-                
-         
-                 
-            </div>
-            
-        </div>
-        
-      </div>
-    </div>
-  </div>
 
-  <!-- add file popup -->
-  <div class="modal fade" id="addFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <div class="modal-content">
-        <div class="d-flex flex-wrap-reverse">
-           
-            <div class="leftP w-50" style="min-height:400px ;">
-                <div class="left-cont">
-                    <img src="{% static 'rsc/icons8-project-management-48.png' %}" alt="">
-                    <h3>managesnap</h3>
                 </div>
-       
+
             </div>
-            <div class="rightP px-4 w-50 my-2 d-flex flex-column justify-content-center" >
-                
-                    <h5 class="modal-title py-3" id="exampleModalLabel">Add File</h5>
-                    <form action="
-                    ">
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control w-100" id="title" name="title">
-                      </div>
-                    
-                      <div class="footer-btns mt-5">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                     </div>
-                </form>
-                  
-                
-         
-                 
-            </div>
-            
         </div>
-        
-      </div>
     </div>
-  </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-    crossorigin="anonymous"></script>
-    <script src="{% static "scripts/add-popup.js"%}"></script>
+    <!-- add link popup -->
+    <div class="modal fade" id="addLink" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="d-flex flex-wrap-reverse">
 
-<script src="{% static "scripts/script.js"%}"></script>
-<script src="{% static "scripts/add-course.js"%}"></script>
-<script src="{% static "scripts/groups-script.js"%}"></script>
-<script src="{% static "scripts/profile-script.js"%}"></script>
-<script src="{% static "scripts/announcements-script.js"%}"></script>
+                    <div class="leftP w-50" style="min-height:400px ;">
+                        <div class="left-cont">
+                            <img src="{% static 'rsc/icons8-project-management-48.png' %}" alt="">
+                            <h3>managesnap</h3>
+                        </div>
+
+                    </div>
+                    <div class="rightP px-4 w-50 my-2 d-flex flex-column justify-content-center">
+
+                        <h5 class="modal-title py-3" id="exampleModalLabel">Add link</h5>
+                        <form action="{% url 'manager:announcement-add-link' announcement.pk %}" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="title">Link</label>
+                                <input type="text" class="form-control w-100" id="link" name="link_url">
+                            </div>
+                            <div class="footer-btns mt-5">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- add file popup -->
+    <div class="modal fade" id="addFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="d-flex flex-wrap-reverse">
+
+                    <div class="leftP w-50" style="min-height:400px ;">
+                        <div class="left-cont">
+                            <img src="{% static 'rsc/icons8-project-management-48.png' %}" alt="">
+                            <h3>managesnap</h3>
+                        </div>
+
+                    </div>
+                    <div class="rightP px-4 w-50 my-2 d-flex flex-column justify-content-center">
+
+                        <h5 class="modal-title py-3" id="exampleModalLabel">Add File</h5>
+                        <form method="post" enctype="multipart/form-data" action="{% url 'manager:announcement-add-file' announcement.pk %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="file">File</label>
+                                <input type="file" class="form-control w-100" id="file" name="file">
+                            </div>
+
+                            <div class="footer-btns mt-5">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="{% static " scripts/add-popup.js"%}"></script>
+
+    <script src="{% static " scripts/script.js"%}"></script>
+    <script src="{% static " scripts/add-course.js"%}"></script>
+    <script src="{% static " scripts/groups-script.js"%}"></script>
+    <script src="{% static " scripts/profile-script.js"%}"></script>
+    <script src="{% static " scripts/announcements-script.js"%}"></script>
 
 </body>
 

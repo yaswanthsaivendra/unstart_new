@@ -9,8 +9,14 @@ urlpatterns = [
     path('announcements/', views.AnnouncementListView.as_view(), name='announcement-list'),
     path('announcements/create/', views.AnnouncementCreateView.as_view(), name='announcement-create'),
     path('announcements/<int:pk>/update/', views.AnnouncementUpdateView.as_view(), name='announcement-update'),
+    path('announcements/<int:pk>/statusupdate/', views.AnnouncementStatusUpdateView, name='announcement-status-update'),
     path('announcements/<int:pk>/', views.AnnouncementDetailView.as_view(), name='announcement-detail'),
+    path('announcements/<int:pk>/add-link/', views.announcement_add_link, name='announcement-add-link'),
+    path('announcements/<int:pk>/delete_link/<int:link_pk>/', views.announcement_delete_link, name='announcement-delete-link'),
+    path('announcements/<int:pk>/add-file/', views.announcement_add_file, name='announcement-add-file'),
+    path('announcements/<int:pk>/delete_file/<int:file_pk>/', views.announcement_delete_file, name='announcement-delete-file'),
 
-    path('contact/', views.contact, name='contact'),
-    path('events/', views.manager_event, name='events'),
+
+    # path('contact/', views.contact, name='contact'),
+    # path('events/', views.manager_event, name='events'),
 ]
