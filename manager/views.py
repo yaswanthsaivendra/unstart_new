@@ -70,7 +70,8 @@ def application_details(request, pk, status):
                     semester = teacher_application.semester,
                     section = teacher_application.section,
                     full_name = teacher_application.full_name,
-                    department = teacher_application.department
+                    department = teacher_application.department,
+                    date_of_joining = teacher_application.date_of_joining
                 )
                 # mark the profile as verified
                 profile = Profile.objects.filter(id = teacher_application.profile.id).first()
@@ -82,10 +83,35 @@ def application_details(request, pk, status):
                 student_application = Student_profile_application.objects.filter(id=pk).first()
                 student_application.is_verified = True
                 student_application.save(update_fields=['is_verified'])
+
+                Student_profile.objects.create(
+                    profile = student_application.profile,
+                    semester = student_application.semester,
+                    section = student_application.section,
+                    full_name = student_application.full_name,
+                    department = student_application.department,
+                    roll_number = student_application.roll_number
+                )
+                # mark the profile as verified
+                profile = Profile.objects.filter(id = student_application.profile.id).first()
+                profile.is_verified = True
+                profile.save(update_fields = ['is_verified'])
+    
            
             return redirect('application-details')
 
         elif action == 'reject':
+            if status == 't':
+                ## reject teacher application
+                teacher_application = Teacher_profile_application.objects.filter(id=pk).first()
+                teacher_application.is_rejected = True
+                teacher_application.save(update_fields=['is_rejected'])
+
+
+            elif status == 's':
+                student_application = Student_profile_application.objects.filter(id=pk).first()
+                student_application.is_verified = True
+                student_application.save(update_fields=['is_verified'])
             
             return redirect('application-details')
 
