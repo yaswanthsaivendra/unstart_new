@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+     <link rel="stylesheet" href="{% static "styles/view-style.css"%}">
+    <link rel="stylesheet" href="{% static "styles/style.css"%}">
+   <link rel="stylesheet" href="{% static "styles/announcements-style.css"%}">
+    <link rel="stylesheet" href="{% static "styles/groups-style.css" %}">
+    <link rel="stylesheet" href="{% static "styles/courses-style.css"%}">
+    <link rel="stylesheet" href="{% static "styles/add-popup.css"%}">
+    <link rel="stylesheet" href="{% static "styles/profile-style.css"%}">
+    <link rel="stylesheet" href="{% static "styles/profile-style.css"%}">
+
+    <link rel="stylesheet" href="{% static "css/w3.css"%}"
+    >
+
+    <link rel="icon" type="image/x-icon" href="rsc/icons8-project-management-48.png">
+    <title>Courses</title>
+</head>
+<style>
+    p{
+        margin-bottom: 0 !important;
+    }
+    .leftP{
+        background-image: radial-gradient( circle farthest-corner at 10% 20%, rgb(162, 88, 253) 0%, rgba(116,182,247,1) 90% );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    *:focus{
+        box-shadow: none !important;
+    }
+    @media(max-width:1000px){
+    .leftP{
+        width:100% !important;
+    }
+    .rightP{
+        width:100% !important;
+    }
+    
+}
+</style>
+<body>
+    
+
+    <div class="notification-list-container noti-notdisplay">
+        <div class="notification-list">
+            <div class="notification-heading">
+                <h3>Notifications</h3>
+                <img src="{% static "rsc/icons8-expand-50.png"%}" alt="" class="expand">
+            </div>
+            <div class="notifications">
+                <div class="notification">
+                    <div class="noti-details">
+                        <div class="noti-image">
+                            <img src="{% static "rsc/paul-castanie-WZB_ZOqR4dA-unsplash.jpg"%}" alt="">
+                        </div>
+                        <div class="noti-detail">
+                            <p class="det">Paul updated the syllabus for Python</p>
+                            <p class="time">5 min ago</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="notification">
+                    <div class="noti-details">
+                        <div class="noti-image">
+                            <img src="{% static "rsc/joshua-earle-ICE__bo2Vws-unsplash.jpg"%}" alt="">
+                        </div>
+                        <div class="noti-detail">
+                            <p class="det">Josh assigned a test for you</p>
+                            <p class="time">2 days ago</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="notification">
+                    <div class="noti-details">
+                        <div class="noti-image">
+                            <img src="{% static "rsc/radu-florin-4_QFycgpC4c-unsplash.jpg"%}" alt="">
+                        </div>
+                        <div class="noti-detail">
+                            <p class="det">Jim added you to python classroom</p>
+                            <p class="time">10 days ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="mark">Mark all as read</p>
+        </div>
+    </div>
+    <div class="profile-container prof-notdisplay">
+        <div class="profile">
+            <div class="user-info profile-item">
+                {% if reqest.user.profile.profile_pic %}
+                <div class="user-image">
+                    <img src="{{request.user.profile.profile_pic.url}}" alt="">
+                </div>
+                {% endif %}
+                <div class="user-details">
+                    <p class="user-fullname">{{request.user.username}}</p>
+                    <p class="user-name">@{{request.user.username}}</p>
+                </div>
+            </div>
+            <div class="settings profile-item">
+                <img src="{% static "rsc/icons8-settings-48.png"%}" alt="">
+                <p>Account Settings</p>
+            </div>
+            <div class="logout profile-item">
+                <img src="{% static "rsc/icons8-logout-48.png"%}" alt="">
+                <p> <a href="/logout"><button class="btn btn-link"> Logouts</button></p>
+            </div>
+        </div>
+    </div>
+    <div class="side-panel-container">
+        <div class="side-panel">
+            <div class="panel-item logo-item">
+                <div class="logo">
+                    <img src="{% static 'rsc/icons8-project-management-48.png' %}" alt="" class="logo-image">
+                    <p class="logo-name">managessnap</p>
+                </div>
+                <img src="{% static 'rsc/icons8-close-30 (1).png' %}" alt="" id="close">
+            </div>
+            <div class="dashboard panel-item">
+                <img src="{% static 'rsc/icons8-dashboard-layout-48.png' %}" alt="" class="item">
+                <p class="name"><a href="{% url 'home' %}">Dashboard</a></p>
+            </div>
+
+            <div class="requests panel-item">
+                <img src="{% static 'rsc/icons8-request-service-48.png' %}" alt="" class="item">
+                <p class="name"><a href="#" >Semester</a></p>
+            </div>
+
+            <div class="course-details panel-item">
+                <div class="panel-heading">
+                    <h3>Course Details</h3>
+                    <img src="{% static 'rsc/icons8-chevron-down-30.png' %}" alt="" class="down" id="arrow">
+                </div>
+                <div class="details">
+
+                    <div class="detail announcements">
+                        <img src="{% static 'rsc/icons8-commercial-48.png' %}" alt="" class="item">
+                        <p class="name current"><a href="{% url 'announceDetail' 'Announcement' 'manager' %}">Announcements</a></p>
+                    </div>
+
+                </div>
+                <div class="detail announcements">
+                    <img src="{% static 'rsc/icons8-commercial-48.png' %}" alt="" class="item">
+                    <p class="name"><a href="{% url 'manager_noti' %}">Notifications</a></p>
+                </div>
+
+                <div class="detail announcements">
+                    <img src="{% static 'rsc/icons8-commercial-48.png' %}" alt="" class="item">
+                    <p class="name"><a href="{% url "manager_event" %}">Events</a></p>
+                </div>
+
+                <div class="detail announcements">
+                    <img src="{% static "rsc/icons8-commercial-48.png" %}" alt="" class="item">
+                    <p class="name"><a href="{% url "manager_noti" %}">News</a></p>
+                </div>
+
+                <div class="detail announcements">
+                    <img src="{% static "rsc/icons8-commercial-48.png" %}" alt="" class="item">
+                    <p class="name"><a href="{% url "teacher_profile" %}">Teacher Profile</a></p>
+                </div>
+            </div>
+            <div class="panel-item support">
+                <button>
+                    <img src="{% static "rsc/icons8-support-60.png" %}" alt="">
+                    <p>Get Support</p>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="navigation">
+        <div class="navi">
+            <div class="nav-logo">
+                <img src="{% static "rsc/icons8-menu-50.png"%}" alt="" id="menu" class="nav-logo-item">
+                <img src="{% static "rsc/icons8-project-management-48.png"%}" alt=""
+                    class="nav-logo-item nav-logo-image">
+                <p class="nav-logo-item nav-logo-text">managesnap</p>
+            </div>
+            <div class="nav-rest">
+                <div class="nav-item">
+                    <img src="{% static "rsc/icons8-notification-48 (1).png"%}" alt="" class="noti-icon">
+                </div>
+                {% if reqest.user.profile.profile_pic %}
+                <div class="profile-image nav-item">
+                    <img src="{{request.user.profile.profile_pic.url}}" alt="" class="image">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="body">
+        
+
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          <strong>Message!-</strong> {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endfor %}
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/" style="color:initial">Home</a></li>
+              <li class="breadcrumb-item"><a href="/" style="color:initial">Announcements</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Name</li>
+            </ol>
+          </nav>
+
+            <div class="view-container">
+                <div class="view">
+                    <div class="heading view-item">
+                        <div class="head heading-item">
+                            <p class="heading-name">
+                                Announcement-1
+                            </p>
+                        </div>
+                        <div class="release-edit heading-item">
+                            <div class="release">
+                                <button class="release-btn" >
+                                    <img src="{%static 'rsc/icons8-telegram-app-30.png'%}" alt="" class="icon">
+                                    <p>Release</p>
+                                </button>
+                            </div>
+                            <div class="edit">
+                                <button class="edit-btn" type="button" data-toggle="modal" data-target="#exampleModal">
+                                    <img src="{% static 'rsc/icons8-edit-26.png' %}" alt="" class="icon">
+                                    <p>Edit</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="announcement view-item">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi blanditiis hic atque quisquam consequatur numquam illo tenetur nostrum quibusdam impedit eligendi doloribus ea ab fugit iure veritatis, debitis perferendis sint provident deserunt ex reiciendis omnis deleniti! Magnam, nemo magni? Harum.</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam accusantium dolores ipsam dignissimos minima voluptatem veniam dolore blanditiis possimus, adipisci iusto maxime obcaecati omnis explicabo fugiat? Incidunt vero repellendus debitis.</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam accusantium dolores ipsam dignissimos minima voluptatem veniam dolore blanditiis possimus, adipisci iusto maxime obcaecati omnis explicabo fugiat? Incidunt vero repellendus debitis.</p>
+                    </div>
+                    <div class=" view-item">
+                        <div class="heading links-item">
+                            <div class="head heading-item">
+                                <p class="heading-name">
+                                    Links
+                                </p>
+                            </div>
+                            <div class="add-item heading-item">
+                                <div class="add">
+                                    <button class="add-btn" data-toggle="modal" data-target="#addLink">
+                                        <p>Add +</p>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="links-item">
+                            <ol class="links-list">
+                                <li class="link">
+                                    <span class="link-name"><a href="">sb-how-img3.webp</a></span>
+                                    <span><a href=""><img src="{% static 'rsc/icons8-delete-24 (1).png' %}" alt="" class="dustbin mx-2 my-0"></a></span>
+                                </li>
+                               
+                            </ol>
+                        </div>
+                    </div>
+                    <div class=" view-item">
+                        <div class="heading docs-item">
+                            <div class="head heading-item">
+                                <p class="heading-name">
+                                    Files
+                                </p>
+                            </div>
+                            <div class="add-item heading-item">
+                                <div class="add">
+                                    <button class="add-btn" data-toggle="modal" data-target="#addFile">
+                                        <p>Add +</p>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="docs-item">
+                            <ol class="links-list">
+                                <li class="link">
+                                    <span class="link-name"><a href="">sb-how-img3.webp</a></span>
+                                    <span><a href=""><img src="{% static 'rsc/icons8-delete-24 (1).png' %}" alt="" class="dustbin mx-2 my-0"></a></span>
+                                </li>
+                                
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</div>
+ 
+<!-- edit popup -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="d-flex flex-wrap-reverse">
+           
+            <div class="leftP w-50" style="min-height:400px ;">
+                <div class="left-cont">
+                    <img src="{% static 'rsc/icons8-project-management-48.png' %}" alt="">
+                    <h3>managesnap</h3>
+                </div>
+       
+            </div>
+            <div class="rightP px-4 w-50 my-2" >
+                
+                    <h5 class="modal-title py-3" id="exampleModalLabel">Edit Announcement</h5>
+                    <form action="
+                    ">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control w-100" id="title" name="title">
+                      </div>
+                    <div class="form-group">
+                        <label for="desc">Description</label>
+                        <textarea class="form-control w-100" id="desc" rows="3" name="desc"></textarea>
+                      </div>
+                      <div class="footer-btns mt-5">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                     </div>
+                </form>
+                  
+                
+         
+                 
+            </div>
+            
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+ <!-- add link popup -->
+ <div class="modal fade" id="addLink" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="d-flex flex-wrap-reverse">
+           
+            <div class="leftP w-50" style="min-height:400px ;">
+                <div class="left-cont">
+                    <img src="{% static 'rsc/icons8-project-management-48.png' %}" alt="">
+                    <h3>managesnap</h3>
+                </div>
+       
+            </div>
+            <div class="rightP px-4 w-50 my-2 d-flex flex-column justify-content-center" >
+                
+                    <h5 class="modal-title py-3" id="exampleModalLabel">Add link</h5>
+                    <form action="
+                    ">
+                    <div class="form-group">
+                        <label for="title">Link</label>
+                        <input type="text" class="form-control w-100" id="link" name="link">
+                    </div>
+                    <div class="footer-btns mt-5">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                     </div>
+                   
+                </form>
+                  
+                
+         
+                 
+            </div>
+            
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- add file popup -->
+  <div class="modal fade" id="addFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="d-flex flex-wrap-reverse">
+           
+            <div class="leftP w-50" style="min-height:400px ;">
+                <div class="left-cont">
+                    <img src="{% static 'rsc/icons8-project-management-48.png' %}" alt="">
+                    <h3>managesnap</h3>
+                </div>
+       
+            </div>
+            <div class="rightP px-4 w-50 my-2 d-flex flex-column justify-content-center" >
+                
+                    <h5 class="modal-title py-3" id="exampleModalLabel">Add File</h5>
+                    <form action="
+                    ">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control w-100" id="title" name="title">
+                      </div>
+                    
+                      <div class="footer-btns mt-5">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                     </div>
+                </form>
+                  
+                
+         
+                 
+            </div>
+            
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+    <script src="{% static "scripts/add-popup.js"%}"></script>
+
+<script src="{% static "scripts/script.js"%}"></script>
+<script src="{% static "scripts/add-course.js"%}"></script>
+<script src="{% static "scripts/groups-script.js"%}"></script>
+<script src="{% static "scripts/profile-script.js"%}"></script>
+<script src="{% static "scripts/announcements-script.js"%}"></script>
+
+</body>
+
+</html>
