@@ -20,7 +20,7 @@ class Announcement(models.Model):
         (RELEASED, 'Released'),
     ]
 
-    user = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    user_profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
     title = models.CharField(max_length=50,blank=True,null=True)
     description = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
@@ -33,7 +33,7 @@ class Announcement(models.Model):
 
     def save(self, *args, **kwargs):
         super(Announcement, self).save()
-        self.slug = slugify(get_unique_string(self.title,self.user))
+        self.slug = slugify(get_unique_string(self.title,self.user_profile))
         super(Announcement, self).save()
 
 

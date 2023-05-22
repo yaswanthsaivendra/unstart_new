@@ -142,9 +142,13 @@ class AnnouncementListView(ListView):
 
 class AnnouncementCreateView(CreateView):
     model = Announcement
-    template_name = 'announcement/announcement_create.html'
-    fields = ['announcement', 'status']
-    success_url = reverse_lazy('announcement_list')
+    template_name = 'manager/announcements.html'
+    fields = ['title', 'description']
+    success_url = reverse_lazy('manager:announcement-list')
+
+    def form_valid(self, form):
+        form.instance.user_profile = self.request.user.profile
+        return super().form_valid(form)
 
 
 class AnnouncementUpdateView(UpdateView):
