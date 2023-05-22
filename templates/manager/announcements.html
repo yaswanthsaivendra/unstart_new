@@ -134,41 +134,41 @@
         <div class="side-panel">
             <div class="panel-item logo-item">
                 <div class="logo">
-                    <img src="{% static "rsc/icons8-project-management-48.png"%}" alt="" class="logo-image">
+                    <img src="{% static 'rsc/icons8-project-management-48.png' %}" alt="" class="logo-image">
                     <p class="logo-name">managessnap</p>
                 </div>
-                <img src="{% static "rsc/icons8-close-30 (1).png"%}" alt="" id="close">
+                <img src="{% static 'rsc/icons8-close-30 (1).png' %}" alt="" id="close">
             </div>
             <div class="dashboard panel-item">
-                <img src="{% static "rsc/icons8-dashboard-layout-48.png"%}" alt="" class="item">
-                <p class="name"><a href="{% url "home" %}">Dashboard</a></p>
+                <img src="{% static 'rsc/icons8-dashboard-layout-48.png' %}" alt="" class="item">
+                <p class="name"><a href="{% url 'home' %}">Dashboard</a></p>
             </div>
 
             <div class="requests panel-item">
-                <img src="{% static "rsc/icons8-request-service-48.png"%}" alt="" class="item">
+                <img src="{% static 'rsc/icons8-request-service-48.png' %}" alt="" class="item">
                 <p class="name"><a href="#" >Semester</a></p>
             </div>
 
             <div class="course-details panel-item">
                 <div class="panel-heading">
                     <h3>Course Details</h3>
-                    <img src="{% static "rsc/icons8-chevron-down-30.png"%}" alt="" class="down" id="arrow">
+                    <img src="{% static 'rsc/icons8-chevron-down-30.png' %}" alt="" class="down" id="arrow">
                 </div>
                 <div class="details">
 
                     <div class="detail announcements">
-                        <img src="{% static "rsc/icons8-commercial-48.png"%}" alt="" class="item">
+                        <img src="{% static 'rsc/icons8-commercial-48.png' %}" alt="" class="item">
                         <p class="name current"><a href="{% url 'announceDetail' 'Announcement' 'manager' %}">Announcements</a></p>
                     </div>
 
                 </div>
                 <div class="detail announcements">
-                    <img src="{% static "rsc/icons8-commercial-48.png" %}" alt="" class="item">
-                    <p class="name"><a href="{% url "manager_noti" %}">Notifications</a></p>
+                    <img src="{% static 'rsc/icons8-commercial-48.png' %}" alt="" class="item">
+                    <p class="name"><a href="{% url 'manager_noti' %}">Notifications</a></p>
                 </div>
 
                 <div class="detail announcements">
-                    <img src="{% static "rsc/icons8-commercial-48.png" %}" alt="" class="item">
+                    <img src="{% static 'rsc/icons8-commercial-48.png' %}" alt="" class="item">
                     <p class="name"><a href="{% url "manager_event" %}">Events</a></p>
                 </div>
 
@@ -184,7 +184,7 @@
             </div>
             <div class="panel-item support">
                 <button>
-                    <img src="{% static "rsc/icons8-support-60.png"%}" alt="">
+                    <img src="{% static "rsc/icons8-support-60.png" %}" alt="">
                     <p>Get Support</p>
                 </button>
             </div>
@@ -262,53 +262,68 @@
                 </div>
 
                 <div class="ann-item released-container">
+                    {% for announcement in announcements %}
+                    {% if announcement.status == 'RELEASED' %}
                     <div class="released">
                         <div class="ann-content">
-                            <h3 class="ann-heading rd-item font-weight-bold">Annocement name</h3>
-                            <p class="ann-para rd-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, debitis. Inventore rerum tempore ut, perferendis id autem quos aut esse, minus, incidunt magnam labore dolore.....</p>
+                            <h3 class="ann-heading rd-item font-weight-bold">{{ announcement.title }}</h3>
+                            <p class="ann-para rd-item">{{ announcement.description }}</p>
                             <div class="ann-links-docs rd-item">
                                 <div class="links">
-                                    <img src="rsc/icons8-link-24 (1).png" alt="" class="icon">
-                                    <p class="link-num">Links : 3</p>
+                                    <img src="{% static 'rsc/icons8-link-24 (1).png' }" alt="" class="icon">
+                                    <p class="link-num">Links : {{ announcement.links.count }}</p>
                                 </div>
                                 <div class="docs">
-                                    <img src="rsc/icons8-documents-24.png" alt="" class="icon">
-                                    <p class="docs-num">Documents : 3</p>
+                                    <img src="{% static 'rsc/icons8-documents-24.png' }" alt="" class="icon">
+                                    <p class="docs-num">Documents : {{ announcement.files.count }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="ann-buttons">
-                            <button class="view"><a href="view.html">View</a></button>
-                            <button class="edit"><a href="view.html">Edit&nbsp;</a></button>
+                            <button class="view"><a href="#">View</a></button>
+                            <button class="edit"><a href="#">Edit&nbsp;</a></button>
                         </div>
                     </div>
+                    {% endif %}
+                    {% empty %}
+                    <h3>No announcements available</h3>
+                    {% endfor %}
               
                 </div>
+
                 <div class="ann-item drafts-container">
+                    {% for announcement in announcements %}
+                    {% if announcement.status == 'DRAFT' %}
+
                     <div class="drafts">
                         <div class="ann-content">
-                            <h3 class="ann-heading rd-item font-weight-bold">Annocement name</h3>
-                            <p class="ann-para rd-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, debitis. Inventore rerum tempore ut, perferendis id autem quos aut esse, minus, incidunt magnam labore dolore.....</p>
+                            <h3 class="ann-heading rd-item font-weight-bold">{{ announcement.title }}</h3>
+                            <p class="ann-para rd-item">{{ announcement.description }}</p>
                             <div class="ann-links-docs rd-item">
                                 <div class="links">
                                     <img src="rsc/icons8-link-24 (1).png" alt="" class="icon">
-                                    <p class="link-num">Links : 3</p>
+                                    <p class="link-num">Links : {{ announcement.links.count }}</p>
                                 </div>
                                 <div class="docs">
                                     <img src="rsc/icons8-documents-24.png" alt="" class="icon">
-                                    <p class="docs-num">Documents : 3</p>
+                                    <p class="docs-num">Documents : {{ announcement.files.count }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="ann-buttons">
-                            <button class="view"><a href="view.html">View</a></button>
-                            <button class="edit"><a href="view.html">Edit&nbsp;</a></button>
+                            <button class="view"><a href="">View</a></button>
+                            <button class="edit"><a href="">Edit&nbsp;</a></button>
                         </div>
+                        {% endif %}
+                        {% empty %}
+                        <h3>No announcements available</h3>
+                        {% endfor %}
                            
 
 
                     </div>
                     </div>
+
                 </div>
                
 

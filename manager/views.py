@@ -121,7 +121,7 @@ def application_details(request, pk, status):
 
 class AnnouncementListView(ListView):
     model = Announcement
-    template_name = 'announcement/announcement_list.html'
+    template_name = 'manager/announcements.html'
     context_object_name = 'announcements'
     ordering = ['-created_at']
 

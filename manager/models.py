@@ -21,7 +21,8 @@ class Announcement(models.Model):
     ]
 
     user = models.ForeignKey(Profile,on_delete=models.CASCADE)
-    announcement = models.CharField(max_length=200,blank=True,null=True)
+    title = models.CharField(max_length=50,blank=True,null=True)
+    description = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default=DRAFT)
 
