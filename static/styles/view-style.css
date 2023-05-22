@@ -6,7 +6,7 @@
 }
 .view-container
 {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
 }
 .view-item 
