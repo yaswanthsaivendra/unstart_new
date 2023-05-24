@@ -220,6 +220,18 @@ class TeacherProfileListView(View):
     def get(self, request):
         teachers = Teacher_profile.objects.all()
         return render(request, 'manager/teacher_profile_list.html', {'teachers': teachers})
+    
+
+
+class StudentProfileDetailView(View):
+    def get(self, request, pk):
+        student = get_object_or_404(Student_profile, pk=pk)
+        return render(request, 'student_profile_detail.html', {'student': student})
+
+class TeacherProfileDetailView(View):
+    def get(self, request, pk):
+        teacher = get_object_or_404(Teacher_profile, pk=pk)
+        return render(request, 'teacher_profile_detail.html', {'teacher': teacher})
 
 
 
