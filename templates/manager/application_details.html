@@ -241,16 +241,21 @@
                 <div class="prof-item prof-details">
                     <div class="image-details">
                         <div class="prof-image">
-                            {% if application.application_pic %}
+                            {% if application.profile.profile_pic %}
                                 <img src="{{application.profile.profile_pic.url}}" alt="">
-                                {% else %}
+                            {% else %}
                                 <img src="" alt="">
                             {% endif %}
                             
                         </div>
+<<<<<<< HEAD
                         <div class="details p-2">
                             <p class="prof-name text-capitalize" >{{ application.full_name }}</p>
                             <p class="prof-mail">{{ application.email }}</p>
+=======
+                        <div class="details">
+                            <p class="prof-name">{{ application.full_name }}</p>
+>>>>>>> 73307d4d437f82bd3b5d7ed5859b36e0ba4b34de
                             {% if application.is_verified %}
                             <p class="status"><b>Status : </b><span>Verifed</span></p>
                             {% endif %}
@@ -310,7 +315,11 @@
                     </div>
                     <div class="info">
                         <img src="{% static 'rsc/icons8-mail-24.png' %}" alt="" class="icon">
+<<<<<<< HEAD
                         <p class="info-name">Email : </p>
+=======
+                        <p class="info-name">Email : {{ application.profile.email }} </p>
+>>>>>>> 73307d4d437f82bd3b5d7ed5859b36e0ba4b34de
                     </div>
                     <div class="info">
                         <img src="{% static 'rsc/icons8-location-24 (1).png' %}" alt="" class="icon">
@@ -335,6 +344,7 @@
                 </div>
                 <div class="prof-item education-info">
                     <div class="info">
+<<<<<<< HEAD
                         <img src="{% static 'rsc/icons8-iphone-24.png' %}" alt="" class="icon">
                         <p class="info-name">Mobile : </p>
                     </div>
@@ -345,6 +355,18 @@
                     <div class="info">
                         <img src="{% static 'rsc/icons8-location-24 (1).png' %}" alt="" class="icon">
                         <p class="info-name">Location</p>
+=======
+                        <img src="rsc/icons8-iphone-24.png" alt="" class="icon">
+                        <p class="info-name">Semester : {{ application.semester}}</p>
+                    </div>
+                    <div class="info">
+                        <img src="rsc/icons8-mail-24.png" alt="" class="icon">
+                        <p class="info-name">Section : {{ application.section}}</p>
+                    </div>
+                    <div class="info">
+                        <img src="rsc/icons8-location-24 (1).png" alt="" class="icon">
+                        <p class="info-name">Department: {{ application.department}}</p>
+>>>>>>> 73307d4d437f82bd3b5d7ed5859b36e0ba4b34de
                     </div>
                     <div class="info">
                         <img src="{% static 'rsc/icons8-visualization-skill-24.png' %}" alt="" class="icon">
