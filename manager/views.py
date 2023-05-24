@@ -102,7 +102,7 @@ def application_details(request, pk, status):
                 profile.save(update_fields = ['is_verified'])
     
            
-            return redirect('application-details')
+            return redirect('manager:application-details')
 
         elif action == 'reject':
             if status == 't':
@@ -116,7 +116,7 @@ def application_details(request, pk, status):
                 student_application.is_verified = True
                 student_application.save(update_fields=['is_verified'])
             
-            return redirect('application-details')
+            return redirect('manager:application-details')
 
 
 
