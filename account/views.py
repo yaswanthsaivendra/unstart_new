@@ -209,15 +209,17 @@ def add_profile_details(request):
 
         ## get the status - teacher or student
         status = request.POST.get('status')
+        print(request.POST)
+        print(request.FILES)
+
 
         if status == 's':
-            # print(request.POST)
             semester = request.POST.getlist('semester')[0]
             section = request.POST.getlist('section')[0]
             roll_number = request.POST.getlist('roll_number')[0]
             full_name = request.POST.getlist('full_name')[0]
             department = request.POST.getlist('department')[0]
-            profile_pic = request.POST.getlist('profile_pic')[0]
+            profile_pic = request.FILES.getlist('profile_pic')[0]
             Student_profile_application.objects.create(
                 profile=user_profile,
                 semester=semester,
@@ -233,7 +235,7 @@ def add_profile_details(request):
             section = request.POST.getlist('section')[1]
             full_name = request.POST.getlist('full_name')[1]
             department = request.POST.getlist('department')[1]
-            profile_pic = request.POST.getlist('profile_pic')[1]
+            profile_pic = request.FILES.getlist('profile_pic')[1]
             Teacher_profile_application.objects.create(
                 profile=user_profile,
                 date_of_joining=date_of_joining,
