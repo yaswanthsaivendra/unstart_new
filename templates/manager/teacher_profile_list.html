@@ -273,10 +273,9 @@
                         <table>
                             <tr>
                                 <th class="invisible1"></th>
-                                <th class="invisible1">Roll No.</th>
-                                <th>Full Name</th>
+                                <th >Department</th>
+                                <th class="invisible1">Full Name</th>
                                 <th class="invisible1">Email</th>
-                                <th class="invisible1">Requested On</th>
                                 <th>Profile</th>
                             </tr>
                         {% comment %} {% for i in request %}
@@ -293,20 +292,19 @@
                             <button> <a href="#" >Reject Request</a></button>
 
                         {% endfor %} {% endcomment %}
-                        {% for i in request %}
+                        {% for teacher in teachers %}
                             <tr>
-                                {% if i.user.profile.profile_pic %}
-                                <td class="invisible1"><img src={{i.user.profile.profile_pic.url}} alt="" class="icon"></td>
+                                {% if teacher.profile.profile_pic %}
+                                <td class="invisible1"><img src={{ teacher.profile.profile_pic.url }} alt="" class="icon"></td>
                                 {% else %}
                                 <td class="invisible1"><img src="" alt="" class="icon"></td>
                                 {% endif %}
-                                <td class="invisible1">{{i.roll_number}}</td>
-                                <td>{{i.user}}</td>
-                                <td class="invisible1">{{i.user.email}}</td>
-                                <td class="invisible1">{{i.Year}}</td>
-                                <td><button class="view-btn"><a href="{% url "profile" i.user.profile.id %}">view</a></button></td>
+                                <td >{{ teacher.department }}</td>
+                                <td class="invisible1">{{ teacher.full_name }}</td>
+                                <td class="invisible1">{{ teacher.profile.email }}</td>
+                                <td><button class="view-btn"><a href="">view</a></button></td>
                             </tr>
-                            {% endfor %}
+                        {% endfor %}
 
 
                         </table>

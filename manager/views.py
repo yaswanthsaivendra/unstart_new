@@ -12,7 +12,7 @@ from itertools import chain
 from courses.forms import userform
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from django.views import View
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 
 @login_required
@@ -78,6 +78,7 @@ def application_details(request, pk, status):
                 )
                 # mark the profile as verified
                 profile = Profile.objects.filter(id = teacher_application.profile.id).first()
+                profile.status = 't'
                 profile.is_verified = True
                 profile.save(update_fields = ['is_verified'])
 
@@ -97,12 +98,12 @@ def application_details(request, pk, status):
                 )
                 # mark the profile as verified
                 profile = Profile.objects.filter(id = student_application.profile.id).first()
-                profile.status = student_application.status
+                profile.status = 's'
                 profile.is_verified = True
                 profile.save(update_fields = ['is_verified'])
     
            
-            return redirect('manager:application-details')
+            return redirect(reverse('manager:application-details', kwargs={'pk': pk, 'status': status}))
 
         elif action == 'reject':
             if status == 't':
@@ -116,7 +117,7 @@ def application_details(request, pk, status):
                 student_application.is_verified = True
                 student_application.save(update_fields=['is_verified'])
             
-            return redirect('manager:application-details')
+            return redirect(reverse('manager:application-details', kwargs={'pk': pk, 'status': status}))
 
 
 
