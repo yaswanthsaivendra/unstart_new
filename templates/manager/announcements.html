@@ -258,7 +258,7 @@
 
                 <div class="ann-item released-container">
                     {% for announcement in released_announcements %}
-                    <div class="released">
+                    <div class="released my-3">
                         <div class="ann-content">
                             <h3 class="ann-heading rd-item font-weight-bold">{{ announcement.title }}</h3>
                             <p class="ann-para rd-item">{{ announcement.description }}</p>
@@ -280,7 +280,7 @@
                         </div>
                     </div>
                     {% empty %}
-                    <h3>No announcements available</h3>
+                    <h5 class="p-3 text-secondary">No announcements available</h5>
                     {% endfor %}
 
                 </div>
@@ -288,7 +288,7 @@
                 <div class="ann-item drafts-container">
                     {% for announcement in draft_announcements %}
 
-                    <div class="drafts">
+                    <div class="drafts my-3">
                         <div class="ann-content">
                             <h3 class="ann-heading rd-item font-weight-bold">{{ announcement.title }}</h3>
                             <p class="ann-para rd-item">{{ announcement.description }}</p>
@@ -310,7 +310,8 @@
                     </div>
 
                     {% empty %}
-                    <h3>No announcements available</h3>
+                    <h5 class="p-3 text-secondary">No announcements available</h5>
+
                     {% endfor %}
                 </div>
 

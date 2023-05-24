@@ -279,15 +279,20 @@
                         <ol class="links-list">
                             <li class="link">
                                 {% for link in object.announcementlink_set.all %}
-                                <span class="link-name"><a href="{{ link.link }}">{{ link.link }}</a></span>
-                                <span>
-                                    <a href="{% url 'manager:announcement-delete-link' pk=announcement.pk link_pk=link.pk %}">
-                                        <img src="{% static 'rsc/icons8-delete-24 (1).png' %}" alt="" class="dustbin mx-2 my-0">
-                                    </a>
-                                </span>
+                                <div>
+                                    <span class="link-name"><a href="{{ link.link }}">{{ link.link }}</a></span>
+                                    <span>
+                                        <a href="{% url 'manager:announcement-delete-link' pk=announcement.pk link_pk=link.pk %}">
+                                            <img src="{% static 'rsc/icons8-delete-24 (1).png' %}" alt="" class="dustbin mx-2 my-0">
+                                        </a>
+                                    </span>
+
+                               
                                 {% empty %}
                                 <span>No links available</span>
                                 {% endfor %}
+                            </div>
+
                             </li>
 
                         </ol>
@@ -312,12 +317,15 @@
                         <ol class="links-list">
                             <li class="link">
                                 {% for file in object.announcementfile_set.all %}
-                                <span class="link-name"><a href="{{ file.file.url }}">{{ file.file.name }}</a></span>
-                                <span><a href="{% url 'manager:announcement-delete-file' file_pk=file.pk pk=announcement.pk %}"><img src="{% static 'rsc/icons8-delete-24 (1).png' %}" alt=""
-                                    class="dustbin mx-2 my-0"></a></span>
-                                {% empty %}
-                                <span>No files available</span>
-                                {% endfor %}
+                                <div>
+                                    <span class="link-name"><a href="{{ file.file.url }}">{{ file.file.name }}</a></span>
+                                    <span><a href="{% url 'manager:announcement-delete-file' file_pk=file.pk pk=announcement.pk %}"><img src="{% static 'rsc/icons8-delete-24 (1).png' %}" alt=""
+                                        class="dustbin mx-2 my-0"></a></span>
+                                    {% empty %}
+                                    <span>No files available</span>
+                                    {% endfor %}
+                                </div>
+                               
                                 
                             </li>
 
