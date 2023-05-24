@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail
-from django.conf import settings
 from .models import Announcement, AnnouncementFile, AnnouncementLink
 from account.models import (
     Student_profile_application,
@@ -13,6 +11,7 @@ from account.models import (
 from itertools import chain
 from courses.forms import userform
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
+from django.views import View
 from django.urls import reverse_lazy
 
 
@@ -209,6 +208,19 @@ def announcement_delete_file(request, pk, file_pk):
     file.delete()
 
     return redirect('manager:announcement-detail', pk=pk)
+
+
+
+class StudentProfileListView(View):
+    def get(self, request):
+        students = Student_profile.objects.all()
+        return render(request, 'manager/student_profile_list.html', {'students': students})
+
+class TeacherProfileListView(View):
+    def get(self, request):
+        teachers = Teacher_profile.objects.all()
+        return render(request, 'manager/teacher_profile_list.html', {'teachers': teachers})
+
 
 
 

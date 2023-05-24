@@ -211,12 +211,13 @@ def add_profile_details(request):
         status = request.POST.get('status')
 
         if status == 's':
-            print(request.POST)
+            # print(request.POST)
             semester = request.POST.getlist('semester')[0]
             section = request.POST.getlist('section')[0]
             roll_number = request.POST.getlist('roll_number')[0]
             full_name = request.POST.getlist('full_name')[0]
             department = request.POST.getlist('department')[0]
+            profile_pic = request.POST.getlist('profile_pic')[0]
             Student_profile_application.objects.create(
                 profile=user_profile,
                 semester=semester,
@@ -225,12 +226,14 @@ def add_profile_details(request):
                 full_name=full_name,
                 department =department
             )
+
         elif status == 't':
             date_of_joining = request.POST.get('date_of_joining')
             semester = request.POST.getlist('semester')[1]
             section = request.POST.getlist('section')[1]
             full_name = request.POST.getlist('full_name')[1]
             department = request.POST.getlist('department')[1]
+            profile_pic = request.POST.getlist('profile_pic')[1]
             Teacher_profile_application.objects.create(
                 profile=user_profile,
                 date_of_joining=date_of_joining,
@@ -239,6 +242,8 @@ def add_profile_details(request):
                 full_name=full_name,
                 department=department
             )
+        user_profile.profile_pic = profile_pic
+        user_profile.save(update_fields=['profile_pic'])
         return redirect('access-pending-view')
         
 

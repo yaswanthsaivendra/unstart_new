@@ -17,6 +17,11 @@ urlpatterns = [
     path('announcements/<int:pk>/delete_file/<int:file_pk>/', views.announcement_delete_file, name='announcement-delete-file'),
 
 
+    path('students/', views.StudentProfileListView.as_view(), name='student-profile-list'),
+    path('teachers/', views.TeacherProfileListView.as_view(), name='teacher-profile-list'),
+
+
+
     # path('contact/', views.contact, name='contact'),
     # path('events/', views.manager_event, name='events'),
 ]
