@@ -24,6 +24,6 @@ urlpatterns = [
 
 
 
-    # path('contact/', views.contact, name='contact'),
+    path('contact/', views.contact, name='contact'),
     # path('events/', views.manager_event, name='events'),
 ]

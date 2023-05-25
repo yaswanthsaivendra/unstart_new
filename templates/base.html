@@ -107,9 +107,9 @@
         </div>
     {% endfor %}
 
-    
+
     {% block content %}{% endblock content %}
-    
+
 
     <!-- Sign up Modal -->
     <div class="modal fade" id="signupmodal" tabindex="-1" aria-labelledby="signupmodal" aria-hidden="true">
@@ -157,12 +157,12 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-  
+
             </div>
           </div>
         </div>
       </div>
-    
+
 
       <!-- Login Modal -->
     <div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
@@ -191,7 +191,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-  
+
             </div>
           </div>
         </div>
@@ -220,13 +220,13 @@
                   <label for="category">Category</label>
                   <input type="text" class="form-control" id="category" name="category"
                     placeholder="Enter category" required>
-                    
+
                 </div>
                 <div class="form-group">
                   <label for="category">Lourse Level</label>
                   <input type="text" class="form-control" id="level" name="level"
                     placeholder="Enter Level" required>
-                    
+
                 </div>
                 <div class="form-group">
                   <label for="image" class="form-label">Image</label>
@@ -237,13 +237,13 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-  
+
             </div>
           </div>
         </div>
       </div>
 
-    
+
 
     <!-- Teacher Sign up Modal -->
     <div class="modal fade" id="teachersignupmodal" tabindex="-1" aria-labelledby="teachersignupmodal" aria-hidden="true">
@@ -256,7 +256,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action={% url 'teacher-signup' %} method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="username">Username(cannot contain spaces)</label>
                 <input type="text" class="form-control" id="username" name="username"
@@ -292,7 +292,7 @@
 
 
 
-      
+
 
 
 
@@ -311,10 +311,10 @@
         crossorigin="anonymous"></script>
     {% block js %}{% endblock js %}
 
-    
-    
+
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    
+
   </body>
 </html>
