@@ -182,7 +182,6 @@ def home(request):
 
             # return render(request,'manager.html',{'Student':Student,'request':veri_req,"not_form":form,"news_form":news_form})
 
-
             return render(request, 'requests.html', {'Student':Student,'request':not_veri,'verified':veri_req,'rejected':rejected,"user_form":user_form})
 
     return render(request, 'index.html', {'college_choices': college_choices})
@@ -204,7 +203,7 @@ def usercourse(request):
     # student_announcements = courseTopic.objects.filter(course__in=student_enrolled_courses, title='Announcement')
     # print(student_announcements)
 
-    
+
 
     all_courses = mycourses.objects.all()
 

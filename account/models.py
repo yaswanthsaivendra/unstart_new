@@ -8,7 +8,13 @@ import datetime
 from django.utils import timezone
 # from django.core.validators import MaxValueValidator
 # Create your models here.
+from django.utils.text import slugify
+import hashlib
 
+def get_unique_string(body, time):
+    s = str(body)+str(time)
+    result_str = hashlib.sha1(s.encode()).hexdigest()[:10]
+    return result_str
 
 
 class College(models.Model):
@@ -69,8 +75,6 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 
-
-
 class Student_profile(models.Model):
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
     semester                =       models.CharField(max_length=10)
@@ -80,9 +84,6 @@ class Student_profile(models.Model):
     department = models.CharField(max_length=500, null=True, blank=True)
 
 
-    
-
-
 class Teacher_profile(models.Model):
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
     date_of_joining = models.DateField()
@@ -90,9 +91,6 @@ class Teacher_profile(models.Model):
     section                =       models.CharField(max_length=10)
     full_name               =       models.CharField(max_length=100, blank=True, null=True)
     department = models.CharField(max_length=500, null=True, blank=True)
-
-
-
 
 
 
@@ -123,7 +121,7 @@ class Teacher_profile_application(models.Model):
     is_rejected = models.BooleanField(default=False)
 
 
-   
+
 
 
 
@@ -140,3 +138,22 @@ class temp_verification(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class Notification(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='user_notifications')
+    image = models.ImageField(upload_to='notifications')
+    body = models.TextField()
+    url = models.URLField(null=True, blank=True)
+    url_name = models.CharField(max_length=255, default='View', null=True, blank=True)
+    notified_time = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(max_length=16, null=True, unique=True, editable=False)
+
+    def __str__(self):
+        return self.profile.user.username + ' ' + self.body[0:15]
+
+    def save(self, *args, **kwargs):
+        super(Notification, self).save()
+        self.slug = slugify(get_unique_string(self.body, self.notified_time))
+        super(Notification, self).save()
+
