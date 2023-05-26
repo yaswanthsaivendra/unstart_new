@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Announcement, AnnouncementFile, AnnouncementLink, Contact
+from .models import (
+    Announcement, AnnouncementFile, AnnouncementLink,
+    Events, EventsFile, EventsLink,
+    Contact
+    )
 from django.core.mail import send_mail
 from account.models import (
     Student_profile_application,
@@ -207,6 +211,87 @@ def announcement_delete_file(request, pk, file_pk):
     file.delete()
     return redirect('manager:announcement-detail', pk=pk)
 
+class EventsListView(ListView):
+    model = Events
+    template_name = 'manager/events.html'
+    context_object_name = 'events'
+    ordering = ['-created_at']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        released_events = self.get_queryset().filter(status='released')
+        draft_events= self.get_queryset().filter(status='draft')
+
+        context['released_events'] = released_events
+        context['draft_events'] = draft_events
+
+        return context
+
+
+class EventsCreateView(CreateView):
+    model = Events
+    template_name = 'manager/events.html'
+    fields = ['title', 'description']
+    success_url = reverse_lazy('manager:events-list')
+
+    def form_valid(self, form):
+        form.instance.user_profile = self.request.user.profile
+        return super().form_valid(form)
+
+
+class EventsUpdateView(UpdateView):
+    model = Events
+    template_name = 'manager/events_detail.html'
+    fields = ['title', 'description']
+    context_object_name = 'events'
+
+    def get_success_url(self):
+        return reverse_lazy('manager:events-detail', kwargs={'pk': self.object.pk})
+
+def EventsStatusUpdateView(request, pk):
+    events = Events.objects.filter(id=pk).first()
+    if events.status == 'released':
+        events.status = 'draft'
+    elif events.status == 'draft':
+        events.status = 'released'
+    events.save(update_fields = ['status'])
+    return redirect('manager:events-list')
+
+class EventsDetailView(DetailView):
+    model = Events
+    template_name = 'manager/events_detail.html'
+    context_object_name = 'events'
+
+def events_add_link(request, pk):
+    events = get_object_or_404(Events, pk=pk)
+
+    if request.method == 'POST':
+        link_url = request.POST.get('link_url')
+        EventsLink.objects.create(events=events, link=link_url)
+        return redirect('manager:events-detail', pk=pk)
+
+def events_delete_link(request, pk, link_pk):
+    link = get_object_or_404(EventsLink, pk=link_pk)
+    events_pk = link.events.pk
+    link.delete()
+    return redirect('manager:events-detail', pk=events_pk)
+
+
+def events_add_file(request, pk):
+    events = get_object_or_404(events, pk=pk)
+    if request.method == 'POST':
+        file = request.FILES.get('file')
+        if file:
+            EventsFile.objects.create(events=events, file=file)
+    return redirect('manager:events-detail', pk=pk)
+
+def events_delete_file(request, pk, file_pk):
+    events = get_object_or_404(events, pk=pk)
+    file = get_object_or_404(EventsFile, pk=file_pk)
+    file.delete()
+    return redirect('manager:events-detail', pk=pk)
+
 
 class StudentProfileListView(View):
     def get(self, request):
@@ -218,6 +303,11 @@ class TeacherProfileListView(View):
         teachers = Teacher_profile.objects.all()
         return render(request, 'manager/teacher_profile_list.html', {'teachers': teachers})
 
+class ManagerProfileListView(View):
+    def get(self, request):
+        teachers = Teacher_profile.objects.all()
+        return render(request, 'manager/teacher_profile_list.html', {'teachers': teachers})
+
 
 class StudentProfileDetailView(View):
     def get(self, request, pk):
@@ -225,6 +315,11 @@ class StudentProfileDetailView(View):
         return render(request, 'student_profile_detail.html', {'student': student})
 
 class TeacherProfileDetailView(View):
+    def get(self, request, pk):
+        teacher = get_object_or_404(Teacher_profile, pk=pk)
+        return render(request, 'teacher_profile_detail.html', {'teacher': teacher})
+
+class ManagerProfileDetailView(View):
     def get(self, request, pk):
         teacher = get_object_or_404(Teacher_profile, pk=pk)
         return render(request, 'teacher_profile_detail.html', {'teacher': teacher})

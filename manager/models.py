@@ -47,13 +47,20 @@ class AnnouncementLink(models.Model):
     link = models.URLField()
 
 
+class Events(models.Model):
 
+    DRAFT = 'draft'
+    RELEASED = 'released'
+    STATUS_CHOICES = [
+        (DRAFT, 'Draft'),
+        (RELEASED, 'Released'),
+    ]
 
-class events(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user_profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
     title= models.CharField(max_length=50,blank=True,null=True)
     description = models.CharField(max_length=200,blank=True,null=True)
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(default=timezone.now)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default=DRAFT)
 
     slug = models.SlugField(max_length=16, null=True, unique=True, editable=False)
 
@@ -61,9 +68,18 @@ class events(models.Model):
         return self.title[0:15]
 
     def save(self, *args, **kwargs):
-        super(events, self).save()
+        super(Events, self).save()
         self.slug = slugify(get_unique_string(self.description,self.user))
-        super(events, self).save()
+        super(Events, self).save()
+
+class EventsFile(models.Model):
+    announcement = models.ForeignKey(Events, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='event_files/')
+
+
+class EventsLink(models.Model):
+    announcement = models.ForeignKey(Events, on_delete=models.CASCADE)
+    link = models.URLField()
 
 class news(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
