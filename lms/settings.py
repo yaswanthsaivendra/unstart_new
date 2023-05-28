@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     # apps
     'manager',
+    'teacher',
+    'student',
     'account',
     'courses',
     'django_extensions',
