@@ -13,7 +13,10 @@ from .models import (
     Enrollment,
     Group,
     GroupMembership,
-    GroupCourseEnrollment
+    GroupCourseEnrollment,
+    Announcement,
+    AnnouncementFile,
+    AnnouncementLink,
 )
 
 from django.views.generic import (
@@ -350,3 +353,111 @@ class DeleteGroupCourseEnrollmentView(View):
         group_course_enrollment = get_object_or_404(GroupCourseEnrollment, group_id=group_id, course_id=course_id)
         group_course_enrollment.delete()
         return redirect('teacher:group-detail', group_id=group_id)
+
+
+
+## announcements
+
+class AnnouncementListView(LoginRequiredMixin, ListView):
+    model = Announcement
+    template_name = 'teacher/announcement_list.html'
+    context_object_name = 'announcements'
+    ordering = ['-created_at']
+
+    def get_queryset(self):
+        course = get_object_or_404(Course, pk=self.kwargs['course_pk'])
+        return self.model.objects.filter(course=course)
+
+
+class AnnouncementCreateView(LoginRequiredMixin, CreateView):
+    model = Announcement
+    template_name = 'teacher/announcement_create.html'
+    fields = ['title', 'description']
+    context_object_name = 'announcement'
+
+    def form_valid(self, form):
+        course = get_object_or_404(Course, pk=self.kwargs['course_pk'])
+        form.instance.course = course
+        form.instance.user_profile = self.request.user.profile
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('teacher:announcement_list', kwargs={'course_pk': self.kwargs['course_pk']})
+
+
+class AnnouncementDetailView(LoginRequiredMixin, DetailView):
+    model = Announcement
+    template_name = 'teacher/announcement_detail.html'
+    context_object_name = 'announcement'
+
+
+class AnnouncementUpdateView(LoginRequiredMixin, UpdateView):
+    model = Announcement
+    template_name = 'teacher/announcement_update.html'
+    fields = ['title', 'description']
+    context_object_name = 'announcement'
+
+    def get_success_url(self):
+        return reverse_lazy('teacher:announcement_detail', kwargs={'pk': self.object.pk})
+
+
+class AnnouncementDeleteView(LoginRequiredMixin, DeleteView):
+    model = Announcement
+    template_name = 'teacher/announcement_delete.html'
+    context_object_name = 'announcement'
+
+    def get_success_url(self):
+        course_pk = self.object.course.pk
+        return reverse_lazy('teacher:announcement_list', kwargs={'course_pk': course_pk})
+
+
+
+class AnnouncementFileCreateView(LoginRequiredMixin, CreateView):
+    model = AnnouncementFile
+    template_name = 'teacher/announcement_file_create.html'
+    fields = ['file']
+    context_object_name = 'announcement_file'
+
+    def form_valid(self, form):
+        announcement = get_object_or_404(Announcement, pk=self.kwargs['announcement_pk'])
+        form.instance.announcement = announcement
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('teacher:announcement_detail', kwargs={'pk': self.kwargs['announcement_pk']})
+
+
+class AnnouncementFileDeleteView(LoginRequiredMixin, DeleteView):
+    model = AnnouncementFile
+    template_name = 'teacher/announcement_file_delete.html'
+    context_object_name = 'announcement_file'
+
+    def get_success_url(self):
+        announcement_pk = self.object.announcement.pk
+        return reverse_lazy('teacher:announcement_detail', kwargs={'pk': announcement_pk})
+
+
+class AnnouncementLinkCreateView(LoginRequiredMixin, CreateView):
+    model = AnnouncementLink
+    template_name = 'teacher/announcement_link_create.html'
+    fields = ['link']
+    context_object_name = 'announcement_link'
+
+    def form_valid(self, form):
+        announcement = get_object_or_404(Announcement, pk=self.kwargs['announcement_pk'])
+        form.instance.announcement = announcement
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('teacher:announcement_detail', kwargs={'pk': self.kwargs['announcement_pk']})
+
+
+class AnnouncementLinkDeleteView(LoginRequiredMixin, DeleteView):
+    model = AnnouncementLink
+    template_name = 'teacher/announcement_link_delete.html'
+    context_object_name = 'announcement_link'
+
+    def get_success_url(self):
+        announcement_pk = self.object.announcement.pk
+        return reverse_lazy('teacher:announcement_detail', kwargs={'pk': announcement_pk})
+

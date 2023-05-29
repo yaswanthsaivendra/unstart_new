@@ -2,16 +2,19 @@ from django.urls import path
 
 from .views import (
     home,
+    
     CourseCreateView,
     CourseDetailView,
     CourseUpdateView,
     CourseDeleteView,
     CourseListView,
+
     UnitCreateView,
     UnitDetailView,
     UnitUpdateView,
     UnitDeleteView,
     UnitListView,
+
     LessonCreateView,
     LessonDetailView,
     LessonUpdateView,
@@ -21,17 +24,29 @@ from .views import (
     LessonFileDeleteView,
     LessonLinkCreateView,
     LessonLinkDeleteView,
+
     EnrollmentListView,
     EnrollmentCreateView,
     EnrollmentUpdateView, 
     EnrollmentDeleteView,
+
     GroupCreateView,
     GroupListView,
     GroupStudentListView,
     AddStudentToGroupView,
     RemoveStudentFromGroupView,
     CreateGroupCourseEnrollmentView,
-    DeleteGroupCourseEnrollmentView
+    DeleteGroupCourseEnrollmentView,
+
+    AnnouncementListView,
+    AnnouncementCreateView,
+    AnnouncementDetailView,
+    AnnouncementUpdateView,
+    AnnouncementDeleteView,
+    AnnouncementFileCreateView,
+    AnnouncementFileDeleteView,
+    AnnouncementLinkCreateView,
+    AnnouncementLinkDeleteView,
 )
 
 app_name = 'teacher'
@@ -85,6 +100,18 @@ urlpatterns = [
     ##group course enrollments
     path('group/<int:group_id>/course/<int:course_id>/enroll/', CreateGroupCourseEnrollmentView.as_view(), name='group-course-enroll'),
     path('group/<int:group_id>/course/<int:course_id>/enroll/delete/', DeleteGroupCourseEnrollmentView.as_view(), name='group-course-enrollment-delete'),
+
+    ## announcements
+    path('course/<int:course_pk>/announcements/', AnnouncementListView.as_view(), name='announcement-list'),
+    path('course/<int:course_pk>/announcements/create/', AnnouncementCreateView.as_view(), name='announcement-create'),
+    path('announcement/<int:pk>/', AnnouncementDetailView.as_view(), name='announcement-detail'),
+    path('announcement/<int:pk>/update/', AnnouncementUpdateView.as_view(), name='announcement-update'),
+    path('announcement/<int:pk>/delete/', AnnouncementDeleteView.as_view(), name='announcement-delete'),
+    path('announcement/<int:announcement_pk>/files/create/', AnnouncementFileCreateView.as_view(), name='announcement-file-create'),
+    path('announcement/files/<int:pk>/delete/', AnnouncementFileDeleteView.as_view(), name='announcement-file-delete'),
+    path('announcement/<int:announcement_pk>/links/create/', AnnouncementLinkCreateView.as_view(), name='announcement-link-create'),
+    path('announcement/links/<int:pk>/delete/', AnnouncementLinkDeleteView.as_view(), name='announcement-link-delete'),
+
 ]
 
 

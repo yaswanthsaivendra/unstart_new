@@ -125,3 +125,34 @@ class GroupCourseEnrollment(models.Model):
     def __str__(self):
         return f"{self.group.name} - {self.course.title}"
 
+
+
+## announcements
+
+class Announcement(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50, blank=True, null=True)
+    description = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
+    is_released = models.BooleanField(default=False)
+
+    slug = models.SlugField(max_length=16, null=True, unique=True, editable=False)
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        self.slug = slugify(get_unique_string(self.title, self.user))
+        super().save(*args, **kwargs)
+
+
+class AnnouncementFile(models.Model):
+    announcement = models.ForeignKey(Announcement, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='announcement_files/')
+
+
+class AnnouncementLink(models.Model):
+    announcement = models.ForeignKey(Announcement, on_delete=models.CASCADE)
+    link = models.URLField()
