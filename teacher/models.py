@@ -8,7 +8,6 @@ from django.utils import timezone
 
 class Course(models.Model):
     title = models.CharField(max_length=200)
-    category = models.CharField(max_length=200)
     image = models.ImageField(upload_to='course_images', null=True, blank=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     course_price = models.PositiveBigIntegerField(default=0, blank=True)

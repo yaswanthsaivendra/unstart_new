@@ -12,7 +12,7 @@
     <div class="popup">
         <div class="left">
             <div class="left-cont">
-                <img src="rsc/icons8-project-management-48.png" alt="">
+                <img src="{% static 'rsc/icons8-project-management-48.png' %}" alt="">
                 <h3>managesnap</h3>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <img src="rsc/icons8-close-50.png" alt="" class="cancel-icon">
+        <img src="{% static 'rsc/icons8-close-50.png' %}" alt="" class="cancel-icon">
     </div>
 </div>
 
@@ -53,126 +53,34 @@
             </div>
             <div class="courses course-item">
                 <div class="course-sets">
+                    {% for course in courses %}
                     <div class="course">
                         <div class="course-banner">
-                            <img src="{% static 'rsc/banner-1' %}" alt="" class="banner">
+                            <img src="{{ course.image.url }}" alt="" class="banner">
                         </div>
                         <div class="course-details">
                             <div class="course-author cd">
+                                {% if course.created_by.profile.profile_pic %}
+                                <img src="{{ course.created_by.profile.profile_pic.url }}" alt="" class="author">
+                                {% else %}
                                 <img src="{% static 'rsc/author-1' %}" alt="" class="author">
-                                <p>The Pragmatic Programmers</p>
+                                {% endif %}
+                                <p>{{ course.created_by.username }}</p>
                             </div>
-                            <h3 class="course-name cd">Fundamentals of Testing Using Rails</h3>
+                            <h3 class="course-name cd">{{ course.title }}</h3>
                             <div class="diff-preview cd">
                                 <div class="difficulty">
-                                    <p>Advanced</p>
+                                    <p>{{ course.course_level }}</p>
                                 </div>
                                 <div class="preview">
-                                    <button class="preview-btn">Preview</button>
+                                    <a href="{% url 'teacher:course-detail' course.pk %}"><button class="preview-btn">Preview</button></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="course">
-                        <div class="course-banner">
-                            <img src="{% static 'rsc/banner-2' %}" alt="" class="banner">
-                        </div>
-                        <div class="cds">
-                            <div class="course-author cd">
-                                <img src="{% static 'rsc/author-2' %}" alt="" class="author">
-                                <p>Alexandre Rousseau</p>
-                            </div>
-                            <h3 class="course-name cd">Building your own API with Rails</h3>
-                            <div class="diff-preview cd">
-                                <div class="difficulty">
-                                    <p>Beginner</p>
-                                </div>
-                                <div class="preview">
-                                    <button class="preview-btn">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <div class="course-banner">
-                            <img src="{% static 'rsc/banner-3' %}" alt="" class="banner">
-                        </div>
-                        <div class="course-details">
-                            <div class="course-author cd">
-                                <img src="{% static 'rsc/author-3' %}" alt="" class="author">
-                                <p>Eric Gitonga</p>
-                            </div>
-                            <h3 class="course-name cd">Develop Web Apps with Streamlit</h3>
-                            <div class="diff-preview cd">
-                                <div class="difficulty">
-                                    <p>Beginner</p>
-                                </div>
-                                <div class="preview">
-                                    <button class="preview-btn">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <div class="course-banner">
-                            <img src="{% static 'rsc/banner-4' %}" alt="" class="banner">
-                        </div>
-                        <div class="course-details">
-                            <div class="course-author cd">
-                                <img src="{% static 'rsc/author-4' %}" alt="" class="author">
-                                <p>Francesco Leardini</p>
-                            </div>
-                            <h3 class="course-name cd">Master the Deno JavaScript Runtime</h3>
-                            <div class="diff-preview cd">
-                                <div class="difficulty">
-                                    <p>Beginner</p>
-                                </div>
-                                <div class="preview">
-                                    <button class="preview-btn">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <div class="course-banner">
-                            <img src="{% static 'rsc/banner-5' %}" alt="" class="banner">
-                        </div>
-                        <div class="course-details">
-                            <div class="course-author cd">
-                                <img src="{% static 'rsc/author-5' %}" alt="" class="author">
-                                <p>Juan Bruno</p>
-                            </div>
-                            <h3 class="course-name cd">Mastering Big Data with Apache Spark and Java</h3>
-                            <div class="diff-preview cd">
-                                <div class="difficulty">
-                                    <p>Intermediate</p>
-                                </div>
-                                <div class="preview">
-                                    <button class="preview-btn">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <div class="course-banner">
-                            <img src="{% static 'rsc/banner-6' %}" alt="" class="banner">
-                        </div>
-                        <div class="course-details">
-                            <div class="course-author cd">
-                                <img src="{% static 'rsc/author-6' %}" alt="" class="author">
-                                <p>Raghav Aggarwal</p>
-                            </div>
-                            <h3 class="course-name cd">A Programmer’s Guide to AWS S3</h3>
-                            <div class="diff-preview cd">
-                                <div class="difficulty">
-                                    <p>Beginner</p>
-                                </div>
-                                <div class="preview">
-                                    <button class="preview-btn">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% empty %}
+                    No courses 
+                    {% endfor %}
                 </div>
             </div>
         </div>
