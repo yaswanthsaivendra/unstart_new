@@ -16,7 +16,6 @@ from .utils import token_generator
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, View
 
-
 from .models import Profile, Student_profile_application, Teacher_profile_application
 
 def index(request):
@@ -28,7 +27,11 @@ def coursestatic(request):
 
 class RegistrationView(View):
     def get(self, request):
-        return render(request, 'register.html')
+        if request.user.is_authenticated:
+            messages.error(request, "Please logout to signup")
+            return redirect('index')
+        else:
+            return render(request, 'register.html')
 
     def post(self, request):
         # create a user account
@@ -107,8 +110,13 @@ class VerificationView(View):
 
 
 class LoginView(View):
+
     def get(self, request):
-        return render(request, 'login.html')
+        if request.user.is_authenticated:
+            messages.success(request, "Already loggedin")
+            return redirect('index')
+        else:
+            return render(request,'login.html')
 
     def post(self, request):
         # if 'login_page' in request.POST:
@@ -247,7 +255,7 @@ def add_profile_details(request):
         user_profile.profile_pic = profile_pic
         user_profile.save(update_fields=['profile_pic'])
         return redirect('access-pending-view')
-        
+
 
 def access_pending_view(request):
     if request.method == 'GET':
@@ -269,6 +277,6 @@ def access_pending_view(request):
 
 
 
-        
-        
+
+
 
