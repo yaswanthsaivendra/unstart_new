@@ -55,14 +55,14 @@ app_name = 'teacher'
 urlpatterns = [
     path('', home, name='home'),
     # Course URLs
-    path('courses/create/', CourseCreateView.as_view(), name='course-create'),
-    path('courses/<int:pk>/', CourseDetailView.as_view(), name='course-detail'),
-    path('courses/<int:pk>/update/', CourseUpdateView.as_view(), name='course-update'),
-    path('courses/<int:pk>/delete/', CourseDeleteView.as_view(), name='course-delete'),
+    path('course/create/', CourseCreateView.as_view(), name='course-create'),
+    path('course/<int:pk>/', CourseDetailView.as_view(), name='course-detail'),
+    path('course/<int:pk>/update/', CourseUpdateView.as_view(), name='course-update'),
+    path('course/<int:pk>/delete/', CourseDeleteView.as_view(), name='course-delete'),
     path('courses/', CourseListView.as_view(), name='course-list'),
 
     # Unit URLs
-    path('courses/<int:course_pk>/units/create/', UnitCreateView.as_view(), name='unit-create'),
+    path('course/<int:course_pk>/units/create/', UnitCreateView.as_view(), name='unit-create'),
     path('units/<int:pk>/', UnitDetailView.as_view(), name='unit-detail'),
     path('units/<int:pk>/update/', UnitUpdateView.as_view(), name='unit-update'),
     path('units/<int:pk>/delete/', UnitDeleteView.as_view(), name='unit-delete'),

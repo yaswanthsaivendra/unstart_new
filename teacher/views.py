@@ -45,19 +45,19 @@ def home(request):
 class CourseCreateView(LoginRequiredMixin, CreateView):
     model = Course
     fields = ['title', 'category', 'image', 'course_price', 'is_paid', 'course_level']
-    template_name = 'teacher/course_create.html'
+    template_name = 'teacher/courses.html'
     success_url = reverse_lazy('teacher:course-list')
 
 class CourseDetailView(LoginRequiredMixin, DetailView):
     model = Course
-    template_name = 'teacher/course_detail.html'
+    template_name = 'teacher/course.html'
     context_object_name = 'course'
 
 
 class CourseUpdateView(LoginRequiredMixin, UpdateView):
     model = Course
     fields = ['title', 'category', 'image', 'course_price', 'is_paid', 'course_level']
-    template_name = 'teacher/course_update.html'
+    template_name = 'teacher/course.html'
     context_object_name = 'course'
 
     def get_success_url(self):
@@ -67,15 +67,18 @@ class CourseUpdateView(LoginRequiredMixin, UpdateView):
 class CourseDeleteView(LoginRequiredMixin, DeleteView):
     model = Course
     success_url = reverse_lazy('teacher:course-list')
-    template_name = 'teacher/course_delete.html'
+    template_name = 'teacher/course.html'
     context_object_name = 'course'
 
 
 class CourseListView(LoginRequiredMixin, ListView):
     model = Course
-    template_name = 'teacher/course_list.html'
+    template_name = 'teacher/courses.html'
     context_object_name = 'courses'
 
+
+    def get_queryset(self):
+        return Course.objects.filter(created_by=self.request.user).order_by('-created_at')
 
 # Unit Views
 class UnitCreateView(LoginRequiredMixin, CreateView):

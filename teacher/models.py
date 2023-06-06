@@ -20,6 +20,7 @@ class Course(models.Model):
         ],
         default='Beginner'
     )
+    created_at = models.DateTimeField(default=timezone.now)
     is_released = models.BooleanField(default = False)
 
     def __str__(self):
