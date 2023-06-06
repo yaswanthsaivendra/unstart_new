@@ -15,10 +15,21 @@ from django.contrib.sites.shortcuts import get_current_site
 from .utils import token_generator
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, View
-
-from .models import Profile, Student_profile_application, Teacher_profile_application
+from django.conf import settings
+from .models import Profile, Student_profile_application, Teacher_profile_application,Contact
+from django.core.mail import send_mail
 
 def index(request):
+    if request.method=='POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        number=request.POST['number']
+        interest=request.POST['interest']
+        message = '\n\nfrom\n'+name+'\n'+email
+        subject = 'Mail from '+name
+        c = Contact.objects.create(name=name, email=email, number=number,interest=interest)
+        c.save()
+        send_mail(subject, message, settings.EMAIL_HOST_USER, ['saipavansaketh@gmail.com'], fail_silently=False)
     return render(request,'mainindex.html')
 
 def coursestatic(request):
