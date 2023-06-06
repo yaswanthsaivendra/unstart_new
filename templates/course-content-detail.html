@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    
+
     <div class="add-course">
         <div class="popup">
             <div class="left">
@@ -226,17 +226,6 @@
     </div>
 
     <div class="body">
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-          <strong>Message!-</strong> {{ message }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-    {% endfor %}
-        {% comment %} path {% endcomment %}
-
-
     <div style="display: flex;" class="row d-flex justify-content-center">
         <div class = "col-md-4">
             <div style="display:flex">
@@ -252,9 +241,6 @@
         </a>
         <button class="btn btn-primary" data-toggle="modal" data-target="#editcoursemodal">Edit Course</button>
         </div>
-
-
-
     </div>
 
     <div class="modal fade" id="editcoursemodal" tabindex="-1" aria-labelledby="editcoursemodal" aria-hidden="true">

@@ -4,144 +4,59 @@
 {% block title %}coursedetail{% endblock title %}
 {% block body %}
     <div class="body">
-        <div class="courses-container">
-            <div class="courses-heading course-item">
-                <p class="main">Explore Courses</p>
-            </div>
-            <div class="filter-search course-item">
-                <div class="search fs-item">
-                    <input type="text" name="" id="" placeholder="search courses" class="search-item searchbar">
-                    <img src="{% static 'rsc/icons8-search-50 (4).png' %}" alt="" class="search-icon search-item">
-                </div>
-                <div class="filter fs-item">
-                    <button class="filter-btn" id="add-course-btn">Add</button>
-                </div>
-            </div>
-            <div class="courses course-item">
-                <div class="course-sets">
-                    <div class="course">
-                        <div class="course-banner">
-                            <img src="{% static 'rsc/banner-1' %}" alt="" class="banner">
-                        </div>
-                        <div class="course-details">
-                            <div class="course-author cd">
-                                <img src="{% static 'rsc/author-1' %}" alt="" class="author">
-                                <p>The Pragmatic Programmers</p>
-                            </div>
-                            <h3 class="course-name cd">Fundamentals of Testing Using Rails</h3>
-                            <div class="diff-preview cd">
-                                <div class="difficulty">
-                                    <p>Advanced</p>
-                                </div>
-                                <div class="preview">
-                                    <button class="preview-btn">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <div class="course-banner">
-                            <img src="{% static 'rsc/banner-2' %}" alt="" class="banner">
-                        </div>
-                        <div class="cds">
-                            <div class="course-author cd">
-                                <img src="{% static 'rsc/author-2' %}" alt="" class="author">
-                                <p>Alexandre Rousseau</p>
-                            </div>
-                            <h3 class="course-name cd">Building your own API with Rails</h3>
-                            <div class="diff-preview cd">
-                                <div class="difficulty">
-                                    <p>Beginner</p>
-                                </div>
-                                <div class="preview">
-                                    <button class="preview-btn">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <div class="course-banner">
-                            <img src="{% static 'rsc/banner-3' %}" alt="" class="banner">
-                        </div>
-                        <div class="course-details">
-                            <div class="course-author cd">
-                                <img src="{% static 'rsc/author-3' %}" alt="" class="author">
-                                <p>Eric Gitonga</p>
-                            </div>
-                            <h3 class="course-name cd">Develop Web Apps with Streamlit</h3>
-                            <div class="diff-preview cd">
-                                <div class="difficulty">
-                                    <p>Beginner</p>
-                                </div>
-                                <div class="preview">
-                                    <button class="preview-btn">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <div class="course-banner">
-                            <img src="{% static 'rsc/banner-4' %}" alt="" class="banner">
-                        </div>
-                        <div class="course-details">
-                            <div class="course-author cd">
-                                <img src="{% static 'rsc/author-4' %}" alt="" class="author">
-                                <p>Francesco Leardini</p>
-                            </div>
-                            <h3 class="course-name cd">Master the Deno JavaScript Runtime</h3>
-                            <div class="diff-preview cd">
-                                <div class="difficulty">
-                                    <p>Beginner</p>
-                                </div>
-                                <div class="preview">
-                                    <button class="preview-btn">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <div class="course-banner">
-                            <img src="{% static 'rsc/banner-5' %}" alt="" class="banner">
-                        </div>
-                        <div class="course-details">
-                            <div class="course-author cd">
-                                <img src="{% static 'rsc/author-5' %}" alt="" class="author">
-                                <p>Juan Bruno</p>
-                            </div>
-                            <h3 class="course-name cd">Mastering Big Data with Apache Spark and Java</h3>
-                            <div class="diff-preview cd">
-                                <div class="difficulty">
-                                    <p>Intermediate</p>
-                                </div>
-                                <div class="preview">
-                                    <button class="preview-btn">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="course">
-                        <div class="course-banner">
-                            <img src="{% static 'rsc/banner-6' %}" alt="" class="banner">
-                        </div>
-                        <div class="course-details">
-                            <div class="course-author cd">
-                                <img src="{% static 'rsc/author-6' %}" alt="" class="author">
-                                <p>Raghav Aggarwal</p>
-                            </div>
-                            <h3 class="course-name cd">A Programmer’s Guide to AWS S3</h3>
-                            <div class="diff-preview cd">
-                                <div class="difficulty">
-                                    <p>Beginner</p>
-                                </div>
-                                <div class="preview">
-                                    <button class="preview-btn">Preview</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div style="display: flex;" class="row d-flex justify-content-center">
+            <div class = "col-md-4">
+                <div style="display:flex">
+                    <a href=><button class="btn btn-link ">All Courses</button></a>
+                    <a href=><button class="btn btn-link ">lkmdmcsdc</button></a>
+              </div>
+            <h3 class="mr-5">kmdmwdk;</h3>
+            <img src = alt="Course Image" width="100" height="100">
+            <h4>kjndw</h4>
+            <h4>wdxcklwnd;kc</h4>
+            <a href="">
+                <button class="delete-btn">Delete</button>
+            </a>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#editcoursemodal">Edit Course</button>
             </div>
         </div>
+
+        <div class="modal fade" id="editcoursemodal" tabindex="-1" aria-labelledby="editcoursemodal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editcoursemodaltitle">Edit your course</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action= method="post" enctype="multipart/form-data">{% csrf_token %}
+                    <div class="form-group">
+                      <label for="title">Title</label>
+                      <input type="text" value="" class="form-control" id="title" name="title"
+                        placeholder="Enter title" required>
+                    </div>
+                    <input type="hidden" value= name="courseid" id="courseid" />
+                    <div class="form-group">
+                      <label for="category">Category</label>
+                      <input type="text" value="" class="form-control" id="category" name="category"
+                        placeholder="Enter category" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="image" class="form-label">Image</label>
+                      <input type="file" class="form-control" id="image" name="image">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
 
     {% endblock body %}
