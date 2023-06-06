@@ -38,8 +38,7 @@ from django.views.generic import (
 def home(request):
     if request.user.profile.status == 't':
         courses = Course.objects.filter(created_by = request.user)
-        # courses.count
-        return render(request, 'teacher/example.html' , {'courses': courses})
+        return render(request, 'teacher/home.html' , {'courses': courses})
 
 
 # Course Views
