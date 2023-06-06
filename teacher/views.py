@@ -49,7 +49,6 @@ class CourseCreateView(LoginRequiredMixin, CreateView):
     template_name = 'teacher/course_create.html'
     success_url = reverse_lazy('teacher:course-list')
 
-
 class CourseDetailView(LoginRequiredMixin, DetailView):
     model = Course
     template_name = 'teacher/course_detail.html'
@@ -334,7 +333,7 @@ class RemoveStudentFromGroupView(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         group_id = self.kwargs['group_id']
         return reverse_lazy('teacher:group-student-list', kwargs={'group_id': group_id})
-    
+
     def delete(self, request, *args, **kwargs):
         group_membership = self.get_object()
         group = group_membership.group

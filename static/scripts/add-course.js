@@ -29,4 +29,3 @@ cancel_icon.addEventListener("click", () => {
     panel.style.filter = "none"
     document.body.style.position = "relative"
 })
-

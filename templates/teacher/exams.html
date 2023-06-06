@@ -1,0 +1,82 @@
+{% extends 'teacher/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}exams{% endblock title %}
+{% block body %}
+    <div class="body">
+        <div class="announcements-container">
+            <div class="ann">
+                <div class="heading ann-item">
+                    <div class="head heading-item">
+                        <p class="heading-name">
+                            Exams
+                        </p>
+                    </div>
+                    <div class="add-search ann-item heading-item">
+                        <div class="search as-item">
+                            <input type="text" name="" id="" placeholder="search" class="search-item searchbar">
+                            <img src="rsc/icons8-search-50 (4).png" alt="" class="search-icon search-item">
+                        </div>
+                        <div class="add as-item">
+                            <button class="add-btn"><p>Add</p></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs ann-item">
+                    <div class="tab rel current">
+                        <img src="rsc/icons8-sent-50.png" alt="" class="icon">
+                        <p>Released</p>
+                    </div>
+                    <div class="tab dra not-current">
+                        <img src="rsc/icons8-draft-48.png" alt="" class="icon">
+                        <p>Drafts</p>
+                    </div>
+                </div>
+                <div class="ann-item released-container">
+                    <div class="released">
+                        <div class="ann-content">
+                            <h3 class="ann-heading rd-item">Announcement-1</h3>
+                            <p class="ann-para rd-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, debitis. Inventore rerum tempore ut, perferendis id autem quos aut esse, minus, incidunt magnam labore dolore.....</p>
+                            <div class="ann-links-docs rd-item">
+                                <div class="links">
+                                    <img src="rsc/icons8-link-24 (1).png" alt="" class="icon">
+                                    <p class="link-num">Links : 3</p>
+                                </div>
+                                <div class="docs">
+                                    <img src="rsc/icons8-documents-24.png" alt="" class="icon">
+                                    <p class="docs-num">Documents : 3</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ann-buttons">
+                            <button class="view"><a href="view.html">View</a></button>
+                            <button class="edit"><a href="view.html">Edit&nbsp;</a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ann-item drafts-container">
+                    <div class="drafts">
+                        <div class="ann-content">
+                            <h3 class="ann-heading rd-item">Lorem ipsum</h3>
+                            <p class="ann-para rd-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, debitis. Inventore rerum tempore ut, perferendis id autem quos aut esse, minus, incidunt magnam labore dolore.....</p>
+                            <div class="ann-links-docs rd-item">
+                                <div class="links">
+                                    <img src="rsc/icons8-link-24 (1).png" alt="" class="icon">
+                                    <p class="link-num">Links : 2</p>
+                                </div>
+                                <div class="docs">
+                                    <img src="rsc/icons8-documents-24.png" alt="" class="icon">
+                                    <p class="docs-num">Documents : 1</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ann-buttons">
+                            <button class="view"><a href="view.html">View</a></button>
+                            <button class="edit"><a href="view.html">Edit&nbsp;</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock body %}

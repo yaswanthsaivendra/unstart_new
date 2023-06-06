@@ -2,7 +2,8 @@ from django.urls import path
 
 from .views import (
     home,
-    
+    testing,
+
     CourseCreateView,
     CourseDetailView,
     CourseUpdateView,
@@ -27,7 +28,7 @@ from .views import (
 
     EnrollmentListView,
     EnrollmentCreateView,
-    EnrollmentUpdateView, 
+    EnrollmentUpdateView,
     EnrollmentDeleteView,
 
     GroupCreateView,
@@ -112,6 +113,7 @@ urlpatterns = [
     path('announcement/<int:announcement_pk>/links/create/', AnnouncementLinkCreateView.as_view(), name='announcement-link-create'),
     path('announcement/links/<int:pk>/delete/', AnnouncementLinkDeleteView.as_view(), name='announcement-link-delete'),
 
+    path('testing',testing,name="testing")
 ]
 
 

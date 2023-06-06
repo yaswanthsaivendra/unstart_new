@@ -1,0 +1,311 @@
+{% extends 'teacher/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}requests{% endblock title %}
+{% block body %}
+    <div class="body">
+        <div class="groups-container">
+            <div class="gp">
+                <div class="heading groups-item">
+                    <div class="head heading-item">
+                        <p class="heading-name">
+                            Requests
+                        </p>
+                    </div>
+                    <div class="filter-search heading-item">
+                        <div class="search fs-item">
+                            <input type="text" name="" id="" placeholder="search courses" class="search-item searchbar">
+                            <img src="rsc/icons8-search-50 (4).png" alt="" class="search-icon search-item">
+                        </div>
+                        <div class="filter fs-item">
+                            <button class="filter-btn"><img src="rsc/icons8-settings-34.png" alt=""><p>Filter</p></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabs groups-item">
+                    <div class="tab default current">
+                        <img src="rsc/icons8-clock-48.png" alt="" class="icon">
+                        <p class="default-hov">New</p>
+                    </div>
+                    <div class="tab private not-current">
+                        <img src="rsc/icons8-checkmark-32.png" alt="" class="icon">
+                        <p class="private-hov">Accepted</p>
+                    </div>
+                    <div class="tab public not-current">
+                        <img src="rsc/icons8-close-30 (2).png" alt="" class="icon">
+                        <p class="public-hov">Rejected</p>
+                    </div>
+                </div>
+                <div class="table groups-item default-table">
+                    <div class="table-item">
+                        <table>
+                            <tr>
+                                <th class="invisible"></th>
+                                <th class="invisible">Roll No.</th>
+                                <th>Full Name</th>
+                                <th class="invisible">Email</th>
+                                <th class="invisible">Requested On</th>
+                                <th>Profile</th>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-clock-48.png" alt="" class="icon"></td>
+                                <td class="invisible">45</td>
+                                <td>Sadie Sink</td>
+                                <td class="invisible">sadie45@gmail.com</td>
+                                <td class="invisible">24/07</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-clock-48.png" alt="" class="icon"></td>
+                                <td class="invisible">45</td>
+                                <td>Sadie Sink</td>
+                                <td class="invisible">sadie45@gmail.com</td>
+                                <td class="invisible">24/07</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-clock-48.png" alt="" class="icon"></td>
+                                <td class="invisible">45</td>
+                                <td>Sadie Sink</td>
+                                <td class="invisible">sadie45@gmail.com</td>
+                                <td class="invisible">24/07</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-clock-48.png" alt="" class="icon"></td>
+                                <td class="invisible">45</td>
+                                <td>Sadie Sink</td>
+                                <td class="invisible">sadie45@gmail.com</td>
+                                <td class="invisible">24/07</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-clock-48.png" alt="" class="icon"></td>
+                                <td class="invisible">45</td>
+                                <td>Sadie Sink</td>
+                                <td class="invisible">sadie45@gmail.com</td>
+                                <td class="invisible">24/07</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-clock-48.png" alt="" class="icon"></td>
+                                <td class="invisible">45</td>
+                                <td>Sadie Sink</td>
+                                <td class="invisible">sadie45@gmail.com</td>
+                                <td class="invisible">24/07</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-clock-48.png" alt="" class="icon"></td>
+                                <td class="invisible">45</td>
+                                <td>Sadie Sink</td>
+                                <td class="invisible">sadie45@gmail.com</td>
+                                <td class="invisible">24/07</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-clock-48.png" alt="" class="icon"></td>
+                                <td class="invisible">45</td>
+                                <td>Sadie Sink</td>
+                                <td class="invisible">sadie45@gmail.com</td>
+                                <td class="invisible">24/07</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                        </table>
+                        <div class="page-num">
+                            <p class="bracket"><</p>
+                            <p class="num">1</p>
+                            <p class="num">2</p>
+                            <p class="num">3</p>
+                            <p class="num">4</p>
+                            <p class="num">5</p>
+                            <p class="num">6</p>
+                            <p class="bracket">></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="table groups-item private-table">
+                    <div class="table-item">
+                        <table>
+                            <tr>
+                                <th class="invisible"></th>
+                                <th class="invisible">Roll No.</th>
+                                <th>Full Name</th>
+                                <th class="invisible">Email</th>
+                                <th class="invisible">Requested On</th>
+                                <th>Profile</th>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-checkmark-32.png" alt="" class="icon"></td>
+                                <td class="invisible">21</td>
+                                <td>Esha Gupta</td>
+                                <td class="invisible">esha003@gmail.com</td>
+                                <td class="invisible">05/06</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-checkmark-32.png" alt="" class="icon"></td>
+                                <td class="invisible">21</td>
+                                <td>Esha Gupta</td>
+                                <td class="invisible">esha003@gmail.com</td>
+                                <td class="invisible">05/06</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-checkmark-32.png" alt="" class="icon"></td>
+                                <td class="invisible">21</td>
+                                <td>Esha Gupta</td>
+                                <td class="invisible">esha003@gmail.com</td>
+                                <td class="invisible">05/06</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-checkmark-32.png" alt="" class="icon"></td>
+                                <td class="invisible">21</td>
+                                <td>Esha Gupta</td>
+                                <td class="invisible">esha003@gmail.com</td>
+                                <td class="invisible">05/06</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-checkmark-32.png" alt="" class="icon"></td>
+                                <td class="invisible">21</td>
+                                <td>Esha Gupta</td>
+                                <td class="invisible">esha003@gmail.com</td>
+                                <td class="invisible">05/06</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-checkmark-32.png" alt="" class="icon"></td>
+                                <td class="invisible">21</td>
+                                <td>Esha Gupta</td>
+                                <td class="invisible">esha003@gmail.com</td>
+                                <td class="invisible">05/06</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-checkmark-32.png" alt="" class="icon"></td>
+                                <td class="invisible">21</td>
+                                <td>Esha Gupta</td>
+                                <td class="invisible">esha003@gmail.com</td>
+                                <td class="invisible">05/06</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-checkmark-32.png" alt="" class="icon"></td>
+                                <td class="invisible">21</td>
+                                <td>Esha Gupta</td>
+                                <td class="invisible">esha003@gmail.com</td>
+                                <td class="invisible">05/06</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                        </table>
+                        <div class="page-num table-item">
+                            <p class="bracket"><</p>
+                            <p class="num">1</p>
+                            <p class="num">2</p>
+                            <p class="num">3</p>
+                            <p class="num">4</p>
+                            <p class="num">5</p>
+                            <p class="num">6</p>
+                            <p class="bracket">></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="table groups-item public-table">
+                    <div class="table-item">
+                        <table>
+                            <tr>
+                                <th class="invisible"></th>
+                                <th class="invisible">Roll No.</th>
+                                <th>Full Name</th>
+                                <th class="invisible">Email</th>
+                                <th class="invisible">Requested On</th>
+                                <th>Profile</th>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-close-30 (2).png" alt="" class="icon"></td>
+                                <td class="invisible">13</td>
+                                <td>Rohan Sharma</td>
+                                <td class="invisible">rohan23@gmail.com</td>
+                                <td class="invisible">12/05</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-close-30 (2).png" alt="" class="icon"></td>
+                                <td class="invisible">13</td>
+                                <td>Rohan Sharma</td>
+                                <td class="invisible">rohan23@gmail.com</td>
+                                <td class="invisible">12/05</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-close-30 (2).png" alt="" class="icon"></td>
+                                <td class="invisible">13</td>
+                                <td>Rohan Sharma</td>
+                                <td class="invisible">rohan23@gmail.com</td>
+                                <td class="invisible">12/05</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-close-30 (2).png" alt="" class="icon"></td>
+                                <td class="invisible">13</td>
+                                <td>Rohan Sharma</td>
+                                <td class="invisible">rohan23@gmail.com</td>
+                                <td class="invisible">12/05</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-close-30 (2).png" alt="" class="icon"></td>
+                                <td class="invisible">13</td>
+                                <td>Rohan Sharma</td>
+                                <td class="invisible">rohan23@gmail.com</td>
+                                <td class="invisible">12/05</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-close-30 (2).png" alt="" class="icon"></td>
+                                <td class="invisible">13</td>
+                                <td>Rohan Sharma</td>
+                                <td class="invisible">rohan23@gmail.com</td>
+                                <td class="invisible">12/05</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-close-30 (2).png" alt="" class="icon"></td>
+                                <td class="invisible">13</td>
+                                <td>Rohan Sharma</td>
+                                <td class="invisible">rohan23@gmail.com</td>
+                                <td class="invisible">12/05</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                            <tr>
+                                <td class="invisible"><img src="rsc/icons8-close-30 (2).png" alt="" class="icon"></td>
+                                <td class="invisible">13</td>
+                                <td>Rohan Sharma</td>
+                                <td class="invisible">rohan23@gmail.com</td>
+                                <td class="invisible">12/05</td>
+                                <td><button class="view-btn"><a href="profile.html">view</a></button></td>
+                            </tr>
+                        </table>
+                        <div class="page-num table-item">
+                            <p class="bracket">&lt;</p>
+                            <p class="num">1</p>
+                            <p class="num">2</p>
+                            <p class="num">3</p>
+                            <p class="num">4</p>
+                            <p class="num">5</p>
+                            <p class="num">6</p>
+                            <p class="bracket">&gt;</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock body %}
+    {% block script %}
+    <script src="{% static 'scripts/requests-script.js'%}"></script>
+    <script src="{% static 'scripts/filter-popup.js'%}"></script>
+    {% endblock script %}

@@ -1,0 +1,108 @@
+{% extends 'teacher/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}view{% endblock title %}
+{% block body %}
+    <div class="body">
+        <div class="view-container">
+            <div class="view">
+                <div class="heading view-item">
+                    <div class="head heading-item">
+                        <p class="heading-name">
+                            Announcement-1
+                        </p>
+                    </div>
+                    <div class="release-edit heading-item">
+                        <div class="release">
+                            <button class="release-btn">
+                                <img src="rsc/icons8-telegram-app-30.png" alt="" class="icon">
+                                <p>Release</p>
+                            </button>
+                        </div>
+                        <div class="edit">
+                            <button class="edit-btn">
+                                <img src="rsc/icons8-edit-26.png" alt="" class="icon">
+                                <p>Edit</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="announcement view-item">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi blanditiis hic atque quisquam consequatur numquam illo tenetur nostrum quibusdam impedit eligendi doloribus ea ab fugit iure veritatis, debitis perferendis sint provident deserunt ex reiciendis omnis deleniti! Magnam, nemo magni? Harum.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam accusantium dolores ipsam dignissimos minima voluptatem veniam dolore blanditiis possimus, adipisci iusto maxime obcaecati omnis explicabo fugiat? Incidunt vero repellendus debitis.</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam accusantium dolores ipsam dignissimos minima voluptatem veniam dolore blanditiis possimus, adipisci iusto maxime obcaecati omnis explicabo fugiat? Incidunt vero repellendus debitis.</p>
+                </div>
+                <div class="links view-item">
+                    <div class="heading links-item">
+                        <div class="head heading-item">
+                            <p class="heading-name">
+                                Links
+                            </p>
+                        </div>
+                        <div class="add-item heading-item">
+                            <div class="add">
+                                <button class="add-btn">
+                                    <p>Add +</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="links-item">
+                        <ol class="links-list">
+                            <li class="link">
+                                <span class="link-name"><a href="">sb-how-img3.webp</a></span>
+                                <span><a href=""><img src="rsc/icons8-trash-32 (1).png" alt="" class="dustbin"></a></span>
+                            </li>
+                            <li class="link">
+                                <span class="link-name"><a href="">sb-how-img3.webp</a></span>
+                                <span><a href=""><img src="rsc/icons8-trash-32 (1).png" alt="" class="dustbin"></a></span>
+                            </li>
+                            <li class="link">
+                                <span class="link-name"><a href="">sb-how-img3.webp</a></span>
+                                <span><a href=""><img src="rsc/icons8-trash-32 (1).png" alt="" class="dustbin"></a></span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="docs view-item">
+                    <div class="heading docs-item">
+                        <div class="head heading-item">
+                            <p class="heading-name">
+                                Files
+                            </p>
+                        </div>
+                        <div class="add-item heading-item">
+                            <div class="add">
+                                <button class="add-btn">
+                                    <p>Add +</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="docs-item">
+                        <ol class="links-list">
+                            <li class="link">
+                                <span class="link-name"><a href="">sb-how-img3.webp</a></span>
+                                <span><a href=""><img src="rsc/icons8-trash-32 (1).png" alt="" class="dustbin"></a></span>
+                            </li>
+                            <li class="link">
+                                <span class="link-name"><a href="">sb-how-img3.webp</a></span>
+                                <span><a href=""><img src="rsc/icons8-trash-32 (1).png" alt="" class="dustbin"></a></span>
+                            </li>
+                            <li class="link">
+                                <span class="link-name"><a href="">sb-how-img3.webp</a></span>
+                                <span><a href=""><img src="rsc/icons8-trash-32 (1).png" alt="" class="dustbin"></a></span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock body %}
+
+
+    {% block script %}
+    <script src="scripts/add-popup.js"></script>
+    {% endblock script %}
+
