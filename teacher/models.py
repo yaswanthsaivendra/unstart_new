@@ -152,7 +152,55 @@ class AnnouncementFile(models.Model):
     announcement = models.ForeignKey(Announcement, on_delete=models.CASCADE)
     file = models.FileField(upload_to='announcement_files/')
 
+    def __str__(self) -> str:
+        return f"{self.announcement.title} - file {self.id}"
+
 
 class AnnouncementLink(models.Model):
     announcement = models.ForeignKey(Announcement, on_delete=models.CASCADE)
     link = models.URLField()
+
+    def __str__(self) -> str:
+        return f"{self.announcement.title} - link {self.id}"
+
+
+## assignments
+
+class Assignment(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='assignments')
+    title = models.CharField(max_length=500)
+    description = models.TextField()
+    max_grade = models.PositiveIntegerField()
+    due_date = models.DateTimeField()
+    created_at = models.DateTimeField(default=timezone.now)
+    is_released = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+
+
+class AssignmentFile(models.Model):
+    assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='assignment_files/')
+
+    def __str__(self) -> str:
+        return f"{self.assignment.title} - file {self.id}"
+
+
+class AssignmentLink(models.Model):
+    assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
+    link = models.URLField()
+
+    def __str__(self) -> str:
+        return f"{self.assignment.title} - link {self.id}"
+
+
+class AssignmentSubmission(models.Model):
+    assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
+    student = models.ForeignKey(User, on_delete=models.CASCADE)
+    submission_date = models.DateTimeField(default=timezone.now)
+    file = models.FileField(upload_to='assignment_submissions/')
+    grade = models.PositiveIntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.student.username}'s submission for {self.assignment.title}"

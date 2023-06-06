@@ -17,6 +17,10 @@ from .models import (
     Announcement,
     AnnouncementFile,
     AnnouncementLink,
+    Assignment,
+    AssignmentFile,
+    AssignmentLink,
+    AssignmentSubmission
 )
 
 from django.views.generic import (
@@ -27,6 +31,7 @@ from django.views.generic import (
     ListView,
     View
 )
+
 
 
 @login_required
@@ -461,3 +466,95 @@ class AnnouncementLinkDeleteView(LoginRequiredMixin, DeleteView):
         announcement_pk = self.object.announcement.pk
         return reverse_lazy('teacher:announcement_detail', kwargs={'pk': announcement_pk})
 
+
+
+
+
+# Assignment views
+class AssignmentListView(LoginRequiredMixin, ListView):
+    model = Assignment
+    template_name = 'teacher/assignment_list.html'
+    context_object_name = 'assignments'
+
+
+class AssignmentUpdateView(LoginRequiredMixin, UpdateView):
+    model = Assignment
+    template_name = 'teacher/assignment_update.html'
+    fields = ['title', 'description', 'max_grade', 'due_date', 'is_released']
+    success_url = reverse_lazy('teacher:assignment-list')
+
+
+class AssignmentDeleteView(LoginRequiredMixin, DeleteView):
+    model = Assignment
+    template_name = 'teacher/assignment_confirm_delete.html'
+    success_url = reverse_lazy('teacher:assignment-list')
+
+
+class AssignmentDetailView(LoginRequiredMixin, DetailView):
+    model = Assignment
+    template_name = 'teacher/assignment_detail.html'
+    context_object_name = 'assignment'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        assignment = self.get_object()
+        context['linked_files'] = assignment.assignmentfile_set.all()
+        context['linked_links'] = assignment.assignmentlink_set.all()
+        return context
+
+
+class AssignmentCreateView(LoginRequiredMixin, CreateView):
+    model = Assignment
+    template_name = 'teacher/assignment_create.html'
+    fields = ['title', 'description', 'max_grade', 'due_date']
+    success_url = reverse_lazy('teacher:assignment-list')
+
+
+# AssignmentFile views
+class AssignmentFileCreateView(LoginRequiredMixin, CreateView):
+    model = AssignmentFile
+    template_name = 'teacher/assignmentfile_create.html'
+    fields = ['file']
+    success_url = reverse_lazy('teacher:assignment-list')
+
+    def form_valid(self, form):
+        assignment = get_object_or_404(Assignment, pk=self.kwargs['assignment_pk'])
+        form.instance.assignment = assignment
+        return super().form_valid(form)
+
+
+class AssignmentFileDeleteView(LoginRequiredMixin, DeleteView):
+    model = AssignmentFile
+    template_name = 'teacher/assignmentfile_confirm_delete.html'
+
+    def get_success_url(self):
+        return reverse_lazy('teacher:assignment-detail', kwargs={'pk': self.object.assignment.pk})
+
+
+# AssignmentLink views
+class AssignmentLinkCreateView(LoginRequiredMixin, CreateView):
+    model = AssignmentLink
+    template_name = 'teacher/assignmentlink_create.html'
+    fields = ['assignment', 'link']
+    success_url = reverse_lazy('teacher:assignment-list')
+
+    def form_valid(self, form):
+        assignment = get_object_or_404(Assignment, pk=self.kwargs['assignment_pk'])
+        form.instance.assignment = assignment
+        return super().form_valid(form)
+
+
+class AssignmentLinkDeleteView(LoginRequiredMixin, DeleteView):
+    model = AssignmentLink
+    template_name = 'teacher/assignmentlink_confirm_delete.html'
+
+    def get_success_url(self):
+        return reverse_lazy('teacher:assignment-detail', kwargs={'pk': self.object.assignment.pk})
+
+
+# Update release status view
+class AssignmentReleaseUpdateView(LoginRequiredMixin, UpdateView):
+    model = Assignment
+    template_name = 'teacher/assignment_release_update.html'
+    fields = ['is_released']
+    success_url = reverse_lazy('teacher:assignment-list')
