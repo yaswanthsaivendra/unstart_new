@@ -17,30 +17,49 @@
     <div class="popup">
         <div class="left">
             <div class="left-cont">
-                <img src="rsc/icons8-project-management-48.png" alt="">
+                <img src="{% static 'rsc/icons8-project-management-48.png' %}" alt="">
                 <h3>managesnap</h3>
             </div>
         </div>
-        <div class="right">
-            <div class="right-cont">
-                <div class="right-item">
-                    <h3>
-                        Course Title
-                    </h3>
-                    <input type="text" name="" id="" placeholder="enter course title">
-                </div>
-                <div class="right-item">
-                    <button class="upload">Upload Banner Image</button>
-                </div>
-                <div class="right-item ac-btn">
-                    <button class="a"><a href="">Upload</a></button>
-                    <button class="cancel">Cancel</button>
+        <form method="POST" action="{% url 'teacher:course-update' course.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="right">
+                <div class="right-cont">
+                    <div class="right-item">
+                        <h3>Course Title</h3>
+                        <input type="text" name="title" placeholder="Enter course title" value="{{ course.title }}" required>
+                    </div>
+                    <div class="right-item">
+                        <h3>Banner Image</h3>
+                        <input type="file" name="image" accept="image/*">
+                    </div>
+                    <div class="right-item">
+                        <h3>Course Price</h3>
+                        <input type="number" name="course_price" placeholder="Enter course price" value="{{ course.course_price }}" required>
+                    </div>
+                    <div class="right-item">
+                        <h3>Is Paid?</h3>
+                        <input type="checkbox" name="is_paid" {% if course.is_paid %}checked{% endif %}>
+                    </div>
+                    <div class="right-item">
+                        <h3>Course Level</h3>
+                        <select name="course_level">
+                            <option value="Beginner" {% if course.course_level == 'Beginner' %}selected{% endif %}>Beginner</option>
+                            <option value="Intermediate" {% if course.course_level == 'Intermediate' %}selected{% endif %}>Intermediate</option>
+                            <option value="Advanced" {% if course.course_level == 'Advanced' %}selected{% endif %}>Advanced</option>
+                        </select>
+                    </div>
+                    <div class="right-item ac-btn">
+                        <button type="submit">Update</button>
+                        <button class="cancel">Cancel</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <img src="rsc/icons8-close-50.png" alt="" class="cancel-icon">
+        </form>
+        <img src="{% static 'rsc/icons8-close-50.png' %}" alt="" class="cancel-icon">
     </div>
 </div>
+
 
     <div class="body">
         <div class="courses-container">
@@ -49,25 +68,40 @@
             </div>
             <div class="courses course-item">
                 <div class="course-sets">
+
                     <div class="course">
                         <div class="course-banner">
-                            <img src="{% static 'rsc/banner-1' %}" alt="" class="banner">
+                            <img src="{{ course.image.url }}" alt="" class="banner">
                         </div>
                         <div class="course-details">
                             <div class="course-author cd">
+                                {% if course.created_by.profile.profile_pic %}
+                                <img src="{{ course.created_by.profile.profile_pic.url }}" alt="" class="author">
+                                {% else %}
                                 <img src="{% static 'rsc/author-1' %}" alt="" class="author">
-                                <p>The Pragmatic Programmers</p>
+                                {% endif %}
+                                <p>{{ course.created_by.username }}</p>
                             </div>
-                            <h3 class="course-name cd">Fundamentals of Testing Using Rails</h3>
+                            <h3 class="course-name cd">{{ course.title }}</h3>
                             <div class="diff-preview cd">
                                 <div class="difficulty">
-                                    <p>Advanced</p>
+                                    <p>{{ course.course_level }}</p>
                                 </div>
                                 <div class="preview">
-                                    <button class="preview-btn">Pause</button>
+                                    <form method="POST" action="{% url 'teacher:course-release' course.id %}">
+                                        {% csrf_token %}
+                                    {% if course.is_released %}
+                                    <button type="submit" class="preview-btn">Draft</button>
+                                    {% else %}
+                                    <button type="submit" class="preview-btn">Release</button>
+                                    {% endif %}
+                                </form>
                                 </div>
                                 <div class="preview">
                                 <button class="filter-btn" id="add-course-btn">edit</button>
+                                </div>
+                                <div class="preview">
+                                    <button class="filter-btn">Enroll Students</button>
                                 </div>
                             </div>
                         </div>

@@ -8,6 +8,7 @@ from .views import (
     CourseUpdateView,
     CourseDeleteView,
     CourseListView,
+    CourseReleaseView,
 
     UnitCreateView,
     UnitDetailView,
@@ -60,6 +61,7 @@ urlpatterns = [
     path('course/<int:pk>/update/', CourseUpdateView.as_view(), name='course-update'),
     path('course/<int:pk>/delete/', CourseDeleteView.as_view(), name='course-delete'),
     path('courses/', CourseListView.as_view(), name='course-list'),
+    path('course/release/<int:course_id>/', CourseReleaseView.as_view(), name='course-release'),
 
     # Unit URLs
     path('course/<int:course_pk>/units/create/', UnitCreateView.as_view(), name='unit-create'),

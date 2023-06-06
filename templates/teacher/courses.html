@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="{% static 'styles/add-popup.css'%}">
 {% endblock css %}
 {% block body %}
-
 <div class="add-course">
     <div class="popup">
         <div class="left">
@@ -16,23 +15,41 @@
                 <h3>managesnap</h3>
             </div>
         </div>
+        <form method="POST" action="{% url 'teacher:course-create' %}" enctype="multipart/form-data">
+            {% csrf_token %}
         <div class="right">
             <div class="right-cont">
                 <div class="right-item">
-                    <h3>
-                        Course Title
-                    </h3>
-                    <input type="text" name="" id="" placeholder="enter course title">
+                    <h3>Course Title</h3>
+                    <input type="text" name="title" placeholder="Enter course title" required>
                 </div>
                 <div class="right-item">
-                    <button class="upload">Upload Banner Image</button>
+                    <h3>Banner Image</h3>
+                    <input type="file" name="image" accept="image/*">
+                </div>
+                <div class="right-item">
+                    <h3>Course Price</h3>
+                    <input type="number" name="course_price" placeholder="Enter course price" required>
+                </div>
+                <div class="right-item">
+                    <h3>Is Paid?</h3>
+                    <input type="checkbox" name="is_paid">
+                </div>
+                <div class="right-item">
+                    <h3>Course Level</h3>
+                    <select name="course_level">
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                    </select>
                 </div>
                 <div class="right-item ac-btn">
-                    <button class="a"><a href="">Upload</a></button>
+                    <button type="submit">Create</button>
                     <button class="cancel">Cancel</button>
                 </div>
             </div>
         </div>
+    </form>
         <img src="{% static 'rsc/icons8-close-50.png' %}" alt="" class="cancel-icon">
     </div>
 </div>
@@ -87,6 +104,7 @@
     </div>
 
     <script src="{% static 'scripts/add-course.js' %}"></script>
+    
     {% endblock body %}
 
 

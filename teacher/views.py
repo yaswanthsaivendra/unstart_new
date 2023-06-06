@@ -44,9 +44,13 @@ def home(request):
 # Course Views
 class CourseCreateView(LoginRequiredMixin, CreateView):
     model = Course
-    fields = ['title', 'category', 'image', 'course_price', 'is_paid', 'course_level']
+    fields = ['title', 'image', 'course_price', 'is_paid', 'course_level']
     template_name = 'teacher/courses.html'
     success_url = reverse_lazy('teacher:course-list')
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
 
 class CourseDetailView(LoginRequiredMixin, DetailView):
     model = Course
@@ -56,7 +60,7 @@ class CourseDetailView(LoginRequiredMixin, DetailView):
 
 class CourseUpdateView(LoginRequiredMixin, UpdateView):
     model = Course
-    fields = ['title', 'category', 'image', 'course_price', 'is_paid', 'course_level']
+    fields = ['title', 'image', 'course_price', 'is_paid', 'course_level']
     template_name = 'teacher/course.html'
     context_object_name = 'course'
 
@@ -69,6 +73,13 @@ class CourseDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('teacher:course-list')
     template_name = 'teacher/course.html'
     context_object_name = 'course'
+
+class CourseReleaseView(LoginRequiredMixin, View):
+    def post(self, request, course_id):
+        course = Course.objects.get(pk=course_id)
+        course.is_released = not course.is_released
+        course.save()
+        return redirect('teacher:course-detail', pk=course_id)
 
 
 class CourseListView(LoginRequiredMixin, ListView):
@@ -366,7 +377,7 @@ class DeleteGroupCourseEnrollmentView(View):
 
 class AnnouncementListView(LoginRequiredMixin, ListView):
     model = Announcement
-    template_name = 'teacher/announcement_list.html'
+    template_name = 'teacher/announcements.html'
     context_object_name = 'announcements'
     ordering = ['-created_at']
 
