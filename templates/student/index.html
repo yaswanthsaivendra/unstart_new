@@ -1,0 +1,131 @@
+{% extends 'student/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}index{% endblock title %}
+{% block body %}
+        <section class="home">
+            <div class="img-banner">
+                <img src="https://www.westcoastcollege.co.za/wcc2/wp-content/uploads/2020/07/West_Coast_College_About_slider2.jpg" alt=""
+                    srcset="">
+            </div>
+
+            <div class="main-content">
+                <div class="leftside-content">
+                    <div class="my-courses-container">
+                        <button type="button" class="collapsible">Recently Accessed Courses
+                            <span class="buttonheader"><i class="fa-solid fa-angle-down"></i>
+                                <i class="fa-solid fa-angle-up"></i></span>
+                        </button>
+                        <section class="content">
+                            <div class="wrapper_tab-content">
+                                <div class="course-list">
+
+                                    <div class="course-card">
+                                        <img
+                                            src="https://www.educative.io/cdn-cgi/image/f=auto,fit=cover,w=620/v2api/collection/10370001/6183193425739776/image/5306219095130112">
+                                        <div class="details">
+                                            <a href="course_detail.html" target="_blank">Lern Node.js from
+                                                scratch</a>
+
+                                            <p>DAC1101-MAY-21</p>
+                                            <p class="spec">BCA_Sem1</p>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="bottom-view-more">
+                                    <a href="all_courses_page.html" target="_blank">View All Courses (<span
+                                            class="courses-count">5</span>)
+                                        <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="announcment-container">
+                        <button type="button" class="collapsible">Announcments<span><i
+                                    class="fa-solid fa-angle-down"></i>
+                                <i class="fa-solid fa-angle-up"></i></span></button>
+                        <div class="content">
+
+                            <div class="banner banner-img-type">
+                                <div class="row-1">
+                                    <h1>Welcome to Online LMS ! <span><i class="fa-solid fa-xmark"></i></span></h1>
+
+                                    <p>Posted by admin
+                                        &#x2022;
+                                        <span><i class="fa-solid fa-globe"></i></span>
+                                        Global
+                                        &#x2022;
+                                        <!--<span><i class="fa-solid fa-clock-rotate-left"></i></span>
+                                        Edited
+                                        &#x2022;-->
+                                        <span><i class="fa-solid fa-sitemap"></i></span>
+                                        Confidentially Released
+                                    </p>
+                                </div>
+
+                                <div class="row-2">
+                                    <img src="{% static "images/logoblue.png"%}">
+                                </div>
+
+                                <div class="row-3">
+                                    <i class="fa-solid fa-thumbs-up"></i>
+                                    <i class="fa-solid fa-share-nodes"></i>
+                                    <button class="btn-subscribe">Subscribe</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rightside-content">
+                    <div class="guest-lecture-link-container">
+                        <button type="button" class="collapsible">Upcoming Assignments<span><i
+                                    class="fa-solid fa-angle-down"></i>
+                                <i class="fa-solid fa-angle-up"></i></span></button>
+
+                                <div class="content">
+                                    <p>No Assignments</p>
+                                </div>
+                        <!--<div class="content">
+                            <p><a href="course_detail.html" target="_blank">Network Analysis</a> by Ms. Apoorva KA</p>
+                        </div>-->
+                    </div>
+
+                    <div class="calender-container">
+                        <button type="button" class="collapsible">Calender<span><i class="fa-solid fa-angle-down"></i>
+                                <i class="fa-solid fa-angle-up"></i></span></button>
+                        <div class="content">
+                            <div class="btn-events">
+                                <button class="events">Friday, 1 July 2022 <span><i
+                                            class="fa-solid fa-angle-right"></i></span></button>
+
+                                <button class="events">Upcoming Events <span><i
+                                            class="fa-solid fa-angle-right"></i></span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="expert-speak-recording-container">
+                        <button type="button" class="collapsible">Watch Videos<span><i
+                                    class="fa-solid fa-angle-down"></i>
+                                <i class="fa-solid fa-angle-up"></i></span></button>
+                        <div class="content">
+                            <div class="links">
+                                <p>No Videos</p>
+                                <hr>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    {% endblock body %}

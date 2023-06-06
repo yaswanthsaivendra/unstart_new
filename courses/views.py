@@ -1495,10 +1495,6 @@ def delete_link_topic(request,obj, topicid, link,courseid):
         return redirect('lesson-detail', lessonid=topic.id,courseid=courseid)
 
 
-
-
-
-
 def edit_topic(request,courseid):
     if request.method == 'POST':
         assignmentid = request.POST['assignmentid']

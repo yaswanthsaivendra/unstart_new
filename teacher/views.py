@@ -40,6 +40,8 @@ def home(request):
         courses = Course.objects.filter(created_by = request.user)
         return render(request, 'teacher/home.html' , {'courses': courses})
 
+def testing(request):
+    return render(request,'student/index.html')
 
 # Course Views
 class CourseCreateView(LoginRequiredMixin, CreateView):
