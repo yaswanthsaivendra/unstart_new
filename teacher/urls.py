@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import (
     home,
-
+testing,
     CourseCreateView,
     CourseDetailView,
     CourseUpdateView,
@@ -55,6 +55,7 @@ app_name = 'teacher'
 urlpatterns = [
     path('', home, name='home'),
     # Course URLs
+    path('testing',testing,name="testing"),
     path('course/create/', CourseCreateView.as_view(), name='course-create'),
     path('course/<int:pk>/', CourseDetailView.as_view(), name='course-detail'),
     path('course/<int:pk>/update/', CourseUpdateView.as_view(), name='course-update'),
