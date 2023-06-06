@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> 
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
      {% block css %}{% endblock css %}
      <link rel="stylesheet" href="{% static 'styles/view-style.css' %}">
      <link rel="stylesheet" href="{% static 'styles/style.css' %}">
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{% static 'styles/courses-style.css'%}">
     <link rel="stylesheet" href="{% static 'styles/add-popup.css'%}">
     <link rel="stylesheet" href="{% static 'styles/profile-style.css'%}">
-    
+
     <link rel="stylesheet" href="{% static 'css/w3.css'%}">
     <link rel="icon" type="image/x-icon" href="rsc/icons8-project-management-48.png">
     <title>Courses</title>
@@ -46,11 +46,11 @@
                         </div>
                         <div class="right-item">
                             <input type="text" name="category" id="" placeholder="course category">
-                            
+
                             <label for="img">Select image:</label>
                             <input type="file" id="img" name="image" accept="image/*">
-                            
-                            
+
+
                         </div>
                         <div class="right-item ac-btn">
                             <button class="a" type="submit" >Upload</button>
@@ -62,7 +62,7 @@
             <img src="{% static 'rsc/icons8-close-50.png'%}" alt="" class="cancel-icon">
         </div>
     </div>
-    
+
     <div class="notification-list-container noti-notdisplay">
         <div class="notification-list">
             <div class="notification-heading">
@@ -199,7 +199,7 @@
             </div>
             <div class="panel-item support">
                 <button>
-                    <img src="{% static 'rsc/icons8-support-60.png' %}"" alt="">
+                    <img src="{% static 'rsc/icons8-support-60.png' %}" alt="">
                     <p>Get Support</p>
                 </button>
             </div>
@@ -227,7 +227,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="body">
         {% include 'messages.html' %}
         {% block content %}{% endblock content %}
@@ -252,5 +252,5 @@
         <script src="{% static 'scripts/script.js' %}"></script>
         <script src="{% static 'scripts/students-script.js' %}"></script>
     </body>
-    
+
     </html>
