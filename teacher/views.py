@@ -41,7 +41,7 @@ def home(request):
         return render(request, 'teacher/home.html' , {'courses': courses})
 
 def testing(request):
-    return render(request,'student/index.html')
+    return render(request,'mainabout.html')
 
 # Course Views
 class CourseCreateView(LoginRequiredMixin, CreateView):

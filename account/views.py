@@ -35,6 +35,20 @@ def index(request):
 def coursestatic(request):
     return render(request,'staticcourse.html')
 
+def aboutus(request):
+    return render(request,'mainabout.html')
+
+def teach(request):
+    return render(request,'mainteach.html')
+
+def contactus(request):
+    return render(request,'maincontact.html')
+
+def privacy(request):
+    return render(request,'mainprivacy.html')
+
+def hire(request):
+    return render(request,'mainhire.html')
 
 class RegistrationView(View):
     def get(self, request):
