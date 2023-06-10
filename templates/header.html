@@ -28,10 +28,10 @@
             <i class="bi bi-x-lg text-2xl"></i>
         </button>
         <nav class="pc-nav items-center hidden md:flex">
-            <a href="#" class="text-black text-base font-medium mx-4" style="font-weight:bolder">Executive Management</a>
+            <a href="{% url 'coursestatic'%}" class="text-black text-base font-medium mx-4" style="font-weight:bolder">Executive Management</a>
             <a href="#" class="text-black text-base font-medium mx-4"  style="font-weight:bolder">Hire from us</a>
-            <a href="#" class="text-black text-base font-medium mx-4" style="font-weight:bolder">Blog</a>
-            <a href="#" class="text-black text-base font-medium mx-4" style="font-weight:bolder">Support</a>
+            <a href="{% url 'aboutus' %}" class="text-black text-base font-medium mx-4" style="font-weight:bolder">About us</a>
+            <a href="{% url 'contactus' %}" class="text-black text-base font-medium mx-4" style="font-weight:bolder">Support</a>
             {% if not user.is_authenticated %}
             <a href="{% url 'login' %}" class="text-black text-base font-medium mx-4"  style="font-weight:bolder">Login</a>
             <a href="{%url 'register'%}"
