@@ -111,6 +111,9 @@ class UnitCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
+        course_pk = self.kwargs.get('course_pk')
+        course = get_object_or_404(Course, pk=course_pk)
+        form.instance.course = course
         return super().form_valid(form)
 
 
@@ -129,12 +132,28 @@ class UnitUpdateView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('teacher:unit-detail', kwargs={'pk': self.kwargs['pk']})
 
-
 class UnitDeleteView(LoginRequiredMixin, DeleteView):
     model = Unit
-    success_url = reverse_lazy('teacher:unit-list')
-    template_name = 'teacher/unit_delete.html'
+    template_name = 'teacher/units.html'
     context_object_name = 'unit'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        course_id = self.kwargs['course_id']
+        context['course_id'] = course_id
+        return context
+
+    def get_success_url(self):
+        course_id = self.kwargs['course_id']
+        return reverse_lazy('teacher:unit-list', kwargs={'course_pk': course_id})
+
+    def get_object(self, queryset=None):
+        queryset = self.get_queryset()
+        course_id = self.kwargs['course_id']
+        pk = self.kwargs['pk']
+        return get_object_or_404(queryset, course_id=course_id, pk=pk)
+
+
 
 
 class UnitListView(LoginRequiredMixin, ListView):
@@ -150,10 +169,20 @@ class UnitListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        course_id = self.kwargs['course_pk']
+        context['course_id'] = course_id
         released_units, draft_units = self.get_queryset()
         context['released_units'] = released_units
         context['draft_units'] = draft_units
         return context
+
+
+class UnitReleaseView(LoginRequiredMixin, View):
+    def post(self, request, unit_id):
+        unit = Unit.objects.get(pk=unit_id)
+        unit.is_released = not unit.is_released
+        unit.save()
+        return redirect('teacher:unit-detail', pk=unit_id)
 
 
 # Lesson Views

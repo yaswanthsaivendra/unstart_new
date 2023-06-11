@@ -15,6 +15,7 @@ testing,
     UnitUpdateView,
     UnitDeleteView,
     UnitListView,
+    UnitReleaseView,
 
     LessonCreateView,
     LessonDetailView,
@@ -68,8 +69,9 @@ urlpatterns = [
     path('course/<int:course_pk>/units/create/', UnitCreateView.as_view(), name='unit-create'),
     path('units/<int:pk>/', UnitDetailView.as_view(), name='unit-detail'),
     path('units/<int:pk>/update/', UnitUpdateView.as_view(), name='unit-update'),
-    path('units/<int:pk>/delete/', UnitDeleteView.as_view(), name='unit-delete'),
+    path('course/<int:course_id>/units/<int:pk>/delete/', UnitDeleteView.as_view(), name='unit-delete'),
     path('course/<int:course_pk>/units/', UnitListView.as_view(), name='unit-list'),
+    path('unit/<int:unit_id>/release/', UnitReleaseView.as_view(), name='unit-release'),
 
     # Lesson URLs
     path('units/<int:unit_pk>/lessons/create/', LessonCreateView.as_view(), name='lesson-create'),
