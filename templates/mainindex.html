@@ -1,7 +1,6 @@
 {%extends 'header.html' %}
 {% load static %}
 {% block content %}
-
     <section id="page-1">
         <div class="page-1-row">
             <div class="page-1-col-1">
@@ -20,27 +19,31 @@
 
             </div>
             <div class="page-1-col-2">
-                <form class="page-1-form">
+                <form class="page-1-form" method="POST" action="{% url 'index' %}">
+                    {% csrf_token %}
                     <div class="form-text" style="color: blue;font-weight: bold;text-align: center;">Let our experts find a better solution</div>
 
                     <label>Full name</label>
-                    <input type="text" placeholder="Enter your Full name"><br>
+                    <input name="name"
+                    type="text" placeholder="Enter your Full name"><br>
 
                     <label>Email</label>
-                    <input type="text" placeholder="Your@company.com"><br>
+                    <input name="email"
+                    type="text" placeholder="Your@company.com"><br>
 
                     <label>Mobile Number</label>
-                    <input type="number"><br>
+                    <input name="number"
+                    type="number"><br>
 
                     <label>Course of interest</label>
-                    <select>
-                        <option value="#">Sales</option>
-                        <option value="#">HR</option>
-                        <option value="#">Marketing</option>
-                        <option value="#">Executive Management</option>
+                    <select name="interest">
+                        <option value="Sales">Sales</option>
+                        <option value="HR">HR</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Management">Executive Management</option>
                     </select>
                     <div class="flex w-full justify-center items-center mt-6">
-                        <button
+                        <button type='submit'
                             class="text-xl bg-black px-[85px] md:px-[170px] py-2 text-white rounded-md">Submit</button>
                     </div>
                 </form>
@@ -179,7 +182,7 @@
 
     <section class="w-full py-10">
         <div class="page-3-text-1">Our Offerings</div>
-        <div class="page-3-text-2">Certification Programs in Exevutive management</div>
+        <div class="page-3-text-2">Certification Programs in Executive management</div>
         <div class="flex flex-col items-center mt-[2.5rem] pl-8 md:-pl-[200rem]">
             <div class="flex flex-col md:flex-row justify-around">
                 <div class="flex">

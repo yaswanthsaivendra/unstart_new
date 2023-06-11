@@ -1,41 +1,15 @@
+{%extends 'header.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Course</title>
-  <!--bootstrap-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+{% block css %}
+<link rel="stylesheet" href="{% static "styles/mainpages/exec.css"%}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="{% static "styles/css/navbar.css"%}">
-  <link rel="stylesheet" href="{% static "styles/css/styles.css"%}">
-  <link rel="stylesheet" href="{% static "styles/css/open.css"%}">
-  <link rel="stylesheet" href="{% static "styles/mainstyle.css"%}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" integrity="sha512-ZnR2wlLbSbr8/c9AgLg3jQPAattCUImNsae6NHYnS9KrIwRdcY9DxFotXhNAKIKbAXlRnujIqUWoXXwqyFOeIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
+{% endblock css %}
+{% block content %}
 
-<body class="">
-    <section class="shadow-sm sticky-top" style="background-color:black;">
-        <div id="header" class="d-flex align-items-center justify-content-center">
-        <header>
-            <div class="logo">
-                <img src="{% static 'styles/imgs/400PngdpiLogo.png'%}" alt="logo" width="200px">
-            </div>
-            <nav>
-                <span>Executive Management</span>
-                <span>Hire From Us</span>
-                <span>Blog</span>
-                <span>Pricing</span>
-                <button class="signup">sign up</button>
-                <button class="free-btn">Join for free</button>
-            </nav>
-        </header>
-    </div>
-  </section>
   <section class="banner-section" style="padding-top: 105px;">
     <div class="banner container-fluid text-start d-flex justify-content-between">
         <div class="course-content text-white d-flex flex-column align-items-start">
@@ -80,10 +54,8 @@
                 </div>
               </div>
             </div>
-            <h1 class="my-4" style="font-size: 50px;color:black;">Executive Management</h1>
-            <p style="width: 70%;">The Executive Management Program provides a
-                comprehensive learning experience for professionals seeking
-                to advance their career in management.</p>
+            <h1 class="my-4" style="font-size: 50px;">Web Design & Development</h1>
+            <p style="width: 70%;">Sed viverra ipsum nunc aliquet bibendum enim facilisis gravida. Diam phasellus vestibulum lorem sed risus ultricies.</p>
           </div>
           <div style="position:relative;">
             <div class="course-preview-filter ms-5" style>
@@ -118,19 +90,7 @@
               <div id="pages">
                 <div class="mt-5 mb-5 border-bottom text-black page" data-page="Heading1">
                   <h2 class="mb-4">About the course</h2>
-                  <p class="mb-4 pb-5">With a curriculum
-                    covering essential topics like strategic planning, marketing,
-                    human resource management, and leadership, participants will
-                    learn from experienced instructors, work on real-world case
-                    studies, and collaborate with peers to develop practical skills
-                    valued by employers.
-                    Completing the program can lead to exciting new career
-                    opportunities, including management positions in various
-                    industries, and provide valuable networking opportunities with
-                    industry experts and peers. Overall, the Executive
-                    Management Program is an excellent investment in
-                    professional development, providing the knowledge, skills, and
-                    connections needed to take your career to the next level.</p>
+                  <p class="mb-4 pb-5">Lorem ipsum dolor sit amet, consectetur dolorili adipiscing elit. Felis donec massa aliquam id.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus viverra praesent felis consequat pellentesque turpis et quisque platea. Eu, elit ut nunc ac mauris bibendum nulla placerat. Sagittis sit eu sit massa sapien, risus diam. In lorem eu sed euismod laoreet urna, feugiat et. Euismod sem purus rutrum in. Tortor varius a bibendum nisl et tellus. Aliquet elit senectus iaculis netus gravida.</p>
                   <h2 class="mb-4">Instructor</h2>
                   <h5 class="mb-2 text-primary" style="font-style: underline;">Dr. Angela Yu</h5>
                   <h6 class="mb-4 text-secondary">Developer and Lead Instructor</h6>
@@ -180,13 +140,13 @@
                 <div class="mt-5 mb-5 border-bottom text-black hide page" data-page="Heading2">
                   <h2 class="mb-4">Course Content</h2>
                   <div class="accordion" id="accordionExample">
-                    <div class="accordion-item  text-secondary shadow-sm mb-4">
+                    <div class="accordion-item card text-secondary shadow-sm mb-4">
                       <div class="accordion-button"type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         <div class="col-9 p-0 d-flex align-items-center">
                           <div class="col-sm-12 col-md-8 p-0">
-                            <h5 class="m-0 pl-0 pointer col-12 d-flex align-items-center">Orientation</h5>
+                            <h5 class="m-0 pl-0 pointer col-12 d-flex align-items-center">Beginner Module</h5>
                           </div>
-                          <h6 class="m-0 pointer col-sm-12 col-md-4 d-none d-md-block align-items-center text-secondary">4 Lessons</h6>
+                          <h6 class="m-0 pointer col-sm-12 col-md-4 d-none d-md-block align-items-center text-secondary">7 Lessons</h6>
                         </div>
                       </div>
                       <div id="collapseOne" class="accordion-collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -194,351 +154,98 @@
                           <div class="row">
                             <div class="col">
                               <ul class="list-unstyled steps" >
-                                <li>Onboarding & Introduction</li>
-                                    <li>Introduction of the program</li>
-                                        <li>Introduction to Webapp</li>
-                                            <li>Interaction Class with mentors</li>
+                                <li>Why to use python ?</li>
+                                <li>Python IDE</li>
+                                <li>Hello World Program in Python</li>
+                                <li>Numbers And Math functions</li>
+                                <li>Common Errors in Python</li>
+                                <li>Assignment 1</li>
+                                <li>Final Quiz</li>
                               </ul>
                             </div>
                           </div>
                           </div>
                         </div>
                       </div>
-
-                    <div class="accordion-item  text-secondary shadow-sm mb-4">
-                        <div class="accordion-button" type="button" data-bs-toggle="collapse"             data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                            <div class="col-9 p-0 d-flex align-items-center">
-                              <div class="col-sm-12 col-md-8 p-0">
-                                  <h5 class="m-0 pl-0 pointer col-12 d-flex align-items-center">Communication</h5>
-                              </div>
-                              <h6 class="m-0 pointer col-sm-12 col-md-4 d-none d-md-block align-items-center text-secondary">10 Lessons</h6>
-                            </div>
+                    <div class="accordion-item card text-secondary shadow-sm mb-4">
+                      <div class="accordion-button"type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <div class="col-9 p-0 d-flex align-items-center">
+                          <div class="col-sm-12 col-md-8 p-0">
+                            <h5 class="m-0 pl-0 pointer col-12 d-flex align-items-center">Intermediate Module</h5>
+                          </div>
+                          <h6 class="m-0 pointer col-sm-12 col-md-4 d-none d-md-block align-items-center text-secondary">7 Lessons</h6>
                         </div>
-                        <div id="collapseTwo" class="accordion-collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <div class="col">
-                                    <ul class="list-unstyled steps">
-                                        <li>Introduction</li>
-                                        <li>The Communication Process</li>
-                                        <li>Barriers in Communication</li>
-                                        <li>Perspectives in Communication</li>
-                                        <li>Elements of Communication</li>
-                                        <li>Communication Styles</li>
-                                        <li>Listening Skills</li>
-                                        <li>Written Communication</li>
-                                        <li>Effective Corporate Writing</li>
-                                        <li>Presentations</li>
-                                    </ul>
-                                    </div>
-                                </div>
+                      </div>
+                      <div id="collapseTwo" class="accordion-collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <div class="row">
+                            <div class="col">
+                              <ul class="list-unstyled steps" >
+                                <li>Why to use python ?</li>
+                                <li>Python IDE</li>
+                                <li>Hello World Program in Python</li>
+                                <li>Numbers And Math functions</li>
+                                <li>Common Errors in Python</li>
+                                <li>Assignment 1</li>
+                                <li>Final Quiz</li>
+                              </ul>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item text-secondary shadow-sm mb-4">
-                        <div class="accordion-button"type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                          <div class="col-9 p-0 d-flex align-items-center">
-                            <div class="col-sm-12 col-md-8 p-0">
-                                <h5 class="m-0 pl-0 pointer col-12 d-flex align-items-center">Google Sheets</h5>
-                            </div>
-                            <h6 class="m-0 pointer col-sm-12 col-md-4 d-none d-md-block align-items-center text-secondary">9 Lessons</h6>
                           </div>
                         </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item card text-secondary shadow-sm mb-4">
+                      <div class="accordion-button"type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        <div class="col-9 p-0 d-flex align-items-center">
+                          <div class="col-sm-12 col-md-8 p-0">
+                            <h5 class="m-0 pl-0 pointer col-12 d-flex align-items-center">Advanced Module</h5>
+                          </div>
+                          <h6 class="m-0 pointer col-sm-12 col-md-4 d-none d-md-block align-items-center text-secondary">8 Lessons</h6>
+                        </div>
+                      </div>
                       <div id="collapseThree" class="accordion-collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                           <div class="row">
                             <div class="col">
                               <ul class="list-unstyled steps" >
-                                <li>Getting Started with Google Sheets </li>
-                                <li>Data Entry</li>
-                                <li>Manipulation</li>
-                                <li>Data Analysis</li>
-                                <li>Collaboration and Sharing</li>
-                                <li>Advanced functions and formula</li>
-                                <li>Using add-ons</li>
-                                <li>Importing and exporting data</li>
-                                <li>Tips and tricks for efficiency and productivity</li>
+                                <li>Why to use python ?</li>
+                                <li>Python IDE</li>
+                                <li>Hello World Program in Python</li>
+                                <li>Numbers And Math functions</li>
+                                <li>Common Errors in Python</li>
+                                <li>Assignment 1</li>
+                                <li>Final Quiz</li>
                               </ul>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-
-
-                  <div class="accordion-item text-secondary shadow-sm mb-4">
-                    <div class="accordion-button"type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                      <div class="col-9 p-0 d-flex align-items-center">
-                        <div class="col-sm-12 col-md-8 p-0">
-                          <h5 class="m-0 pl-0 pointer col-12 d-flex align-items-center">Excel</h5>
-                        </div>
-                        <h6 class="m-0 pointer col-sm-12 col-md-4 d-none d-md-block align-items-center text-secondary">11 Lessons</h6>
-                      </div>
-                    </div>
-                    <div id="collapseThree" class="accordion-collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                        <div class="row">
-                          <div class="col">
-                            <ul class="list-unstyled steps" >
-                              <li>Introduction to Excel </li>
-                              <li>Merging & Looking Up Data</li>
-                              <li>Formulas and Functions</li>
-                              <li>Data Manipulation</li>
-                              <li>Charts and Graphs</li>
-                              <li>Pivot Tables</li>
-                              <li>Collaboration and Sharing</li>
-                              <li>Advanced formulas and functions</li>
-                              <li>Using add-ins</li>
-                              <li>Importing and exporting data</li>
-                              <li>Tips and tricks for efficiency and productivity</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
-
-
-                <div class="accordion-item text-secondary shadow-sm mb-4">
-                    <div class="accordion-button"type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                      <div class="col-9 p-0 d-flex align-items-center">
-                        <div class="col-sm-12 col-md-8 p-0">
-                          <h5 class="m-0 pl-0 pointer col-12 d-flex align-items-center">Canva</h5>
-                        </div>
-                        <h6 class="m-0 pointer col-sm-12 col-md-4 d-none d-md-block align-items-center text-secondary">5 Lessons</h6>
-                      </div>
-                    </div>
-                    <div id="collapseThree" class="accordion-collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                      <div class="accordion-body">
-                        <div class="row">
-                          <div class="col">
-                            <ul class="list-unstyled steps" >
-                              <li>Introduction to Canva</li>
-                              <li>Designing with Canva</li>
-                              <li>Presentations</li>
-                              <li>Infographics</li>
-                              <li>Business Crads</li>
-                            </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              <div class="accordion-item text-secondary shadow-sm mb-4">
-                <div class="accordion-button"type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                  <div class="col-9 p-0 d-flex align-items-center">
-                    <div class="col-sm-12 col-md-8 p-0">
-                      <h5 class="m-0 pl-0 pointer col-12 d-flex align-items-center">Canva</h5>
-                    </div>
-                    <h6 class="m-0 pointer col-sm-12 col-md-4 d-none d-md-block align-items-center text-secondary">5 Lessons</h6>
-                  </div>
-                </div>
-                <div id="collapseThree" class="accordion-collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <div class="row">
-                      <div class="col">
-                        <ul class="list-unstyled steps" >
-                          <li>Introduction to Canva</li>
-                          <li>Designing with Canva</li>
-                          <li>Presentations</li>
-                          <li>Infographics</li>
-                          <li>Business Crads</li>
-                        </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-              <div class="accordion-item text-secondary shadow-sm mb-4">
-                <div class="accordion-button"type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                  <div class="col-9 p-0 d-flex align-items-center">
-                    <div class="col-sm-12 col-md-8 p-0">
-                      <h5 class="m-0 pl-0 pointer col-12 d-flex align-items-center">CRM</h5>
-                    </div>
-                    <h6 class="m-0 pointer col-sm-12 col-md-4 d-none d-md-block align-items-center text-secondary">17 Lessons</h6>
-                  </div>
-                </div>
-                <div id="collapseThree" class="accordion-collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <div class="row">
-                      <div class="col">
-                        <ul class="list-unstyled steps" >
-                          <li>Introduction to CRM</li>
-                          <li>Customer Lifecycle</li>
-                          <li>Sales Process</li>
-                          <li>Data Management</li>
-                          <li>Analytics and Reporting</li>
-                          <li>CRM Platforms</li>
-                          <li>Introduction to Salesforce</li>
-                          <li>Salesforce Platform</li>
-                          <li>Salesforce View</li>
-                          <li>Reports</li>
-                          <li>Dashboards</li>
-                          <li>Setup Salesforce Trailhead Account</li>
-                          <li>Introduction to Leadsquared</li>
-                          <li>Leadsquared Platform</li>
-                          <li>Reports</li>
-                          <li>Dashboards</li>
-                          <li>Setup Leadsquared Academy</li>
-                        </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-          <div class="accordion-item text-secondary shadow-sm mb-4">
-            <div class="accordion-button"type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-              <div class="col-9 p-0 d-flex align-items-center">
-                <div class="col-sm-12 col-md-8 p-0">
-                  <h5 class="m-0 pl-0 pointer col-12 d-flex align-items-center">Sales & Operations</h5>
-                </div>
-                <h6 class="m-0 pointer col-sm-12 col-md-4 d-none d-md-block align-items-center text-secondary">9 Lessons</h6>
-              </div>
-            </div>
-            <div id="collapseThree" class="accordion-collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <div class="row">
-                  <div class="col">
-                    <ul class="list-unstyled steps" >
-                      <li>Introduction to Sales</li>
-                      <li>Understanding your Market</li>
-                      <li>The sales process</li>
-                      <li>Sales forecasting and planning</li>
-                      <li>Sales data management analysis</li>
-                      <li>Sales Operation Management</li>
-                      <li>Sales Ethics and Legal Compliance</li>
-                      <li>Master Class on Sales Pitch</li>
-                      <li>Case Studies</li>
-                    </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      <div class="accordion-item text-secondary shadow-sm mb-4">
-        <div class="accordion-button"type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-          <div class="col-9 p-0 d-flex align-items-center">
-            <div class="col-sm-12 col-md-8 p-0">
-              <h5 class="m-0 pl-0 pointer col-12 d-flex align-items-center">Advertisement & Marketing</h5>
-            </div>
-            <h6 class="m-0 pointer col-sm-12 col-md-4 d-none d-md-block align-items-center text-secondary">9 Lessons</h6>
-          </div>
-        </div>
-        <div id="collapseThree" class="accordion-collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <div class="row">
-              <div class="col">
-                <ul class="list-unstyled steps">
-                  <li>Introduction to Marketing</li>
-                  <li>Understanding Your Market</li>
-                  <li>Marketing Strategy</li>
-                  <li>Content Marketing and Copywriting</li>
-                  <li>Social Media Marketing</li>
-                  <li>Email Marketing and Marketing Automation</li>
-                  <li>Search Engine Optimization (SEO)</li>
-                  <li>Analytics and Reporting</li>
-                  <li>Marketing Tools -SEMrush, Google Analytics, Hootsuite, SendGrid, Typeform</li>
-                </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-  <div class="accordion-item text-secondary shadow-sm mb-4">
-    <div class="accordion-button"type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-      <div class="col-9 p-0 d-flex align-items-center">
-        <div class="col-sm-12 col-md-8 p-0">
-          <h5 class="m-0 pl-0 pointer col-12 d-flex align-items-center">HRM-Human Resource Management</h5>
-        </div>
-        <h6 class="m-0 pointer col-sm-12 col-md-4 d-none d-md-block align-items-center text-secondary">8 Lessons</h6>
-      </div>
-    </div>
-    <div id="collapseThree" class="accordion-collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <div class="row">
-          <div class="col">
-            <ul class="list-unstyled steps" >
-              <li>Introduction to HRM</li>
-              <li>Workforce Planning and Staffing</li>
-              <li>Performance management</li>
-              <li>Compensation and benefits</li>
-              <li>Employee relations</li>
-              <li>Training and development</li>
-              <li>HR metrics and analytics</li>
-              <li>Legal and ethical issues in HRM</li>
-            </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="accordion-item text-secondary shadow-sm mb-4">
-    <div class="accordion-button"type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-      <div class="col-9 p-0 d-flex align-items-center">
-        <div class="col-sm-12 col-md-8 p-0">
-          <h5 class="m-0 pl-0 pointer col-12 d-flex align-items-center">Leadership Program</h5>
-        </div>
-        <h6 class="m-0 pointer col-sm-12 col-md-4 d-none d-md-block align-items-center text-secondary">7 Lessons</h6>
-      </div>
-    </div>
-    <div id="collapseThree" class="accordion-collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <div class="row">
-          <div class="col">
-            <ul class="list-unstyled steps" >
-              <li>Introduction to Leadership</li>
-              <li>Self-awareness and personal development</li>
-              <li>Communication skills</li>
-              <li>Team building and collaboration</li>
-              <li>Change management and innovation</li>
-              <li>Ethics and value based leaderships</li>
-              <li>Coaching and mentoring</li>
-            </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-                  <h2 class="mb-4">Weekly Commitments</h2>
+                  <h2 class="mb-4">What you will learn</h2>
                   <div class="row mb-4 pb-5">
                     <div class="col-md-6">
                       <ul class="px-2" style="list-style-position: inside;">
-                        <li class="tick ps-2">15 hrs
-                            of live learning</li>
-                        <li class="tick ps-2">Instructor &
-                            Mentor sessions</li>
-                        <li class="tick ps-2">5-10 hrs
-                            of assignments</li>
-                        <li class="tick ps-2">Case Studies
-                            projects</li>
+                        <li class="tick ps-2">You will learn automation, game, app and web development, data science and machine learning all using Python.</li>
+                        <li class="tick ps-2">You will learn Selenium, Beautiful Soup, Request, Flask, Pandas, NumPy, Scikit Learn, Plotly, and Matplotlib.</li>
+                        <li class="tick ps-2">Be able to build fully fledged websites and web apps with Python</li>
+                        <li class="tick ps-2">Build games like Blackjack, Pong and Snake using Python</li>
+                        <li class="tick ps-2">Build GUIs and Desktop applications with Python</li>
                       </ul>
                     </div>
-
+                    <div class="col-md-6">
+                      <ul class="px-2" style="list-style-position: inside;">
+                        <li class="tick ps-2">You will master the Python programming language by building 100 unique projects over 100 days.</li>
+                        <li class="tick ps-2">You will be able to program in Python professionally</li>
+                        <li class="tick ps-2">Create a portfolio of 100 Python projects to apply for developer jobs</li>
+                        <li class="tick ps-2">Be able to use Python for data science and machine learning</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
                 <div class="mt-5 mb-5 border-bottom text-black hide page" data-page="Heading3">
-                  <h2 class="mb-4">Admission Process</h2>
-                  <p class="mb-4">Duration : 05-06 Months Registration Fees: ₹15000/-
-                    Step 1: Fill out the Eligibility Application Form
-                    Step 2: Based on candidature and selection, appear
-                    for a Screening Round.
-                    Step 3: On clearing the Screening Round, receive
-                    offer letter and scholarship, if eligible Step 4: Block
-                    your seat by paying registration fees: ₹15000/-
-                    </p>
+                  <h2 class="mb-4">Results after course completion</h2>
+                  <p class="mb-4">Eget aliquet nibh praesent tristique magna sit amet purus. Consequat id porta nibh venenatis cras sed felis. Nisl rhoncus mattis rhoncus urna neque viverra justo nec. Habitant morbi tristique senectus et netus et malesuada fames ac. Et tortor consequat id porta nibh venenatis cras sed felis.</p>
                   <p class="mb-4 pb-5">Mi sit amet mauris commodo quis. Eget arcu dictum varius duis at consectetur lorem.Venenatis cras sed felis eget velit aliquet.</p>
                   <img src="images/feature.jpeg" style="width: auto; height: 350px; object-fit: cover;" class="mb-4">
                 </div>
@@ -638,7 +345,7 @@
           </div>
         </div>
         <div class="course-sidebar mb-5">
-          <div class="mr-md-1 shadow" id="formCard">
+          <div class="card mr-md-1 shadow" id="formCard">
             <div class="card-body">
                 <h1>$ 99.00 USD</h1>
                 <p  class="fs-5 mb-4">Lorem ipsum dolor sit amet, dolor consectetur adipiscing elit purus vivera.</p>
@@ -676,65 +383,6 @@
         </div>
     </div>
   </section>
-  <footer style="background-color:black;color:white;">
-    <div class="f-row">
-        <div class="f-col-1">
-            <img src="{% static 'styles/imgs/400PngdpiLogo.png'%}" width="200px">
-            <div class="icons">
-                <span><i class="bi bi-facebook"></i></span>
-                <span><i class="bi bi-google"></i></span>
-                <span><i class="bi bi-twitter"></i></span>
-                <span><i class="bi bi-github"></i></span>
-            </div>
-        </div>
-        <div class="f-col-2">
-            <span>Company</span>
-            <ul>
-                <li>About us</li>
-                <li>Partner with US</li>
-                <li>Wall of Love</li>
-                <li>Hire from US</li>
-                <li>Teach with us</li>
-            </ul>
-        </div>
-        <div class="f-col-3">
-            <span>Learn</span>
-            <ul>
-                <li>Marketing</li>
-                <li>Sales</li>
-                <li>HR</li>
-                <li>Industry Tools</li>
-                <li>Case Studies</li>
-            </ul>
-        </div>
-        <div class="f-col-5">
-            <span>Resources</span>
-            <ul>
-                <li>Blog</li>
-                <li>QuickLinks</li>
-                <li>Careers</li>
-                <li>Demos</li>
-                <li>Companies</li>
-            </ul>
-        </div>
-        <div class="f-col-6">
-            <span>Support</span>
-            <ul>
-                <li>Contact</li>
-                <li>Help Center</li>
-                <li>FAQs</li>
-                <li>Forums</li>
-                <li>Sitemap</li>
-            </ul>
-        </div>
-    </div>
-    <div class="f-row-2">
-        <div>Copywrite @2023 Unstarted Private limited</div>
-        <div>Terms of Use</div>
-        <div>Privacy Notice</div>
-        <div>Cookie Notice</div>
-    </div>
-</footer>
   <script>
     const lists = document.querySelectorAll(".active-nav li");
         lists.forEach((item) => {
@@ -753,8 +401,6 @@
         });
     });
 });
+</script>
 
-  </script>
-  </body>
-  </html>
-
+{% endblock %}

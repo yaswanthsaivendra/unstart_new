@@ -15,20 +15,48 @@ from django.contrib.sites.shortcuts import get_current_site
 from .utils import token_generator
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, View
-
-
-from .models import Profile, Student_profile_application, Teacher_profile_application
+from django.conf import settings
+from .models import Profile, Student_profile_application, Teacher_profile_application,Contact
+from django.core.mail import send_mail
 
 def index(request):
+    if request.method=='POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        number=request.POST['number']
+        interest=request.POST['interest']
+        message = '\n\nfrom\n'+name+'\n'+email
+        subject = 'Mail from '+name
+        c = Contact.objects.create(name=name, email=email, number=number,interest=interest)
+        c.save()
+        send_mail(subject, message, settings.EMAIL_HOST_USER, ['saipavansaketh@gmail.com'], fail_silently=False)
     return render(request,'mainindex.html')
 
 def coursestatic(request):
-    return render(request,'staticcourse.html')
+    return render(request,'executive.html')
 
+def aboutus(request):
+    return render(request,'mainabout.html')
+
+def teach(request):
+    return render(request,'mainteach.html')
+
+def contactus(request):
+    return render(request,'maincontact.html')
+
+def privacy(request):
+    return render(request,'mainprivacy.html')
+
+def hire(request):
+    return render(request,'mainhire.html')
 
 class RegistrationView(View):
     def get(self, request):
-        return render(request, 'register.html')
+        if request.user.is_authenticated:
+            messages.error(request, "Please logout to signup")
+            return redirect('index')
+        else:
+            return render(request, 'register.html')
 
     def post(self, request):
         # create a user account
@@ -107,8 +135,13 @@ class VerificationView(View):
 
 
 class LoginView(View):
+
     def get(self, request):
-        return render(request, 'login.html')
+        if request.user.is_authenticated:
+            messages.success(request, "Already loggedin")
+            return redirect('index')
+        else:
+            return render(request,'login.html')
 
     def post(self, request):
         # if 'login_page' in request.POST:
@@ -247,7 +280,7 @@ def add_profile_details(request):
         user_profile.profile_pic = profile_pic
         user_profile.save(update_fields=['profile_pic'])
         return redirect('access-pending-view')
-        
+
 
 def access_pending_view(request):
     if request.method == 'GET':
@@ -269,6 +302,6 @@ def access_pending_view(request):
 
 
 
-        
-        
+
+
 

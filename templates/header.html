@@ -16,11 +16,11 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body>
+    {% include 'messages.html' %}
     <header
         class="border-b border-black w-full top-0 sticky bg-white px-4 md:px-8 py-2 flex justify-between items-center" style="height:70px;">
-        <h1 class="logo text-2xl">Unstarted</h1>
+        <img src="{% static "images/logoblue.png"%}" alt="" class="h-[7rem]">
         <button class="menu-button lg:hidden absolute right-4 top-3 z-20" onclick="btnClick('open')">
             <i class="bi bi-list text-2xl"></i>
         </button>
@@ -28,13 +28,18 @@
             <i class="bi bi-x-lg text-2xl"></i>
         </button>
         <nav class="pc-nav items-center hidden md:flex">
-            <a href="#" class="text-black text-base font-medium mx-4" style="font-weight:bolder">Executive Management</a>
+            <a href="{% url 'coursestatic'%}" class="text-black text-base font-medium mx-4" style="font-weight:bolder">Executive Management</a>
             <a href="#" class="text-black text-base font-medium mx-4"  style="font-weight:bolder">Hire from us</a>
-            <a href="#" class="text-black text-base font-medium mx-4" style="font-weight:bolder">Blog</a>
-            <a href="#" class="text-black text-base font-medium mx-4" style="font-weight:bolder">Support</a>
+            <a href="{% url 'aboutus' %}" class="text-black text-base font-medium mx-4" style="font-weight:bolder">About us</a>
+            <a href="{% url 'contactus' %}" class="text-black text-base font-medium mx-4" style="font-weight:bolder">Support</a>
+            {% if not user.is_authenticated %}
             <a href="{% url 'login' %}" class="text-black text-base font-medium mx-4"  style="font-weight:bolder">Login</a>
             <a href="{%url 'register'%}"
                 class="header-btn bg-black text-white px-4 py-2 rounded-md text-base font-medium">Signup</a>
+                {% else %}
+                <a href="{% url 'home' %}" class="text-black text-base font-medium mx-4">View LMS</a>
+                <a href="{%url 'logout'%}" class="header-btn bg-black text-white px-4 py-2 rounded-md text-base font-medium">logout</a>
+                {% endif %}
             <!-- <button class="header-btn bg-black text-white px-4 py-2 rounded-md text-base font-medium">Login</button> -->
         </nav>
         <nav
@@ -43,8 +48,14 @@
             <a href="#" class="text-white my-2 text-2xl">Hire from us</a>
             <a href="#" class="text-white my-2 text-2xl">Blog</a>
             <a href="#" class="text-white my-2 text-2xl">Support</a>
+
+            {% if not user.is_authenticated %}
             <a href="{% url 'login' %}" class="text-white my-2 text-2xl">Login</a>
             <a href="{%url 'register'%}" class="bg-white text-black px-4 py-2 rounded-md mt-4 text-2xl">Signup</a>
+            {% else %}
+            <a href="{% url 'home' %}" class="text-white my-2 text-2xl">View LMS</a>
+            <a href="{%url 'logout'%}" class="bg-white text-black px-4 py-2 rounded-md mt-4 text-2xl">logout</a>
+            {% endif %}
             <!-- <button class="bg-white text-black px-4 py-2 rounded-md mt-4 text-2xl">Login</button> -->
         </nav>
     </header>
@@ -63,8 +74,8 @@
                         gender, or socio-economic status. </p>
                     <div class="flex justify-center mt-4">
                         <a href="#"><i class="bi bi-facebook text-white text-2xl mx-2"></i></a>
-                        <a href="#"><i class="bi bi-instagram text-white text-2xl mx-2"></i></a>
-                        <a href="#"><i class="bi bi-linkedin text-white text-2xl mx-2"></i></a>
+                        <a href="https://instagram.com/unstarted.in?igshid=OGQ5ZDc2ODk2ZA=="><i class="bi bi-instagram text-white text-2xl mx-2"></i></a>
+                        <a href="https://www.linkedin.com/company/unstarted/"><i class="bi bi-linkedin text-white text-2xl mx-2"></i></a>
                         <a href="#"><i class="bi bi-youtube text-white text-2xl mx-2"></i></a>
                     </div>
                 </div>

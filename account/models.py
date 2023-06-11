@@ -64,6 +64,13 @@ class Profile(models.Model):
         self.slug = slugify(self.user.username)
         super(Profile, self).save()
 
+class Contact(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    number = models.CharField(max_length=200)
+    interest=models.CharField(max_length=200)
+    def __str__(self):
+        return 'Msg from '+self.name
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

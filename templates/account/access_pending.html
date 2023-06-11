@@ -2,20 +2,29 @@
 {% load static %}
 {% block css %}
 <link href="{% static 'styles/mainpages/signup.css' %}" rel="stylesheet">
+<link href="{% static 'styles/mainpages/login1.css' %}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 {% endblock css %}
 {% block content %}
 <div class="container">
-    <div class="header d-flex justify-content-end">
-        {% if show_new_application_button %}
+    <section id="login">
+        <h1 class="login-text">
+            Get Access to LMS
+        </h1>
+        <div class="login-card">
+            <img src="https://img.freepik.com/premium-vector/theatre-camp-abstract-concept-vector-illustration_107173-20685.jpg">
+            {% if show_new_application_button %}
         <a href="{% url 'add-profile-details' %}">
-            <button class="btn btn-dark m-3 ">
+            <button class="login-btn" style="background-color:black;">
                 Submit New Application
             </button>
         </a>
         {% endif %}
+        </div>
+    </section>
 
+    <div class="header d-flex justify-content-end">
     </div>
     <div class="mx-5">
         {% if student_applications %}
@@ -39,7 +48,7 @@
                         <span class="text-secondary">No</span>
                         {% endif %}
                     </p>
-                    <p>Application Status: 
+                    <p>Application Status:
                         {% if not application.is_verified and not application.is_rejected %}
                         <span class="text-secondary">Pending</span>
                         {% elif application.is_rejected %}
@@ -78,7 +87,7 @@
                         <span class="text-secondary">No</span>
                         {% endif %}
                     </p>
-                    <p>Application Status: 
+                    <p>Application Status:
                         {% if not application.is_verified and not application.is_rejected %}
                         <span class="text-secondary">Pending</span>
                         {% elif application.is_rejected %}
@@ -144,7 +153,7 @@
 
 </head>
 <body>
-    
+
     <div>
     </div>
 
@@ -207,6 +216,6 @@
     {% endif %}
 
 
-    
+
 </body>
 </html> -->
