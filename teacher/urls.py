@@ -69,7 +69,7 @@ urlpatterns = [
     path('units/<int:pk>/', UnitDetailView.as_view(), name='unit-detail'),
     path('units/<int:pk>/update/', UnitUpdateView.as_view(), name='unit-update'),
     path('units/<int:pk>/delete/', UnitDeleteView.as_view(), name='unit-delete'),
-    path('courses/<int:course_pk>/units/', UnitListView.as_view(), name='unit-list'),
+    path('course/<int:course_pk>/units/', UnitListView.as_view(), name='unit-list'),
 
     # Lesson URLs
     path('units/<int:unit_pk>/lessons/create/', LessonCreateView.as_view(), name='lesson-create'),

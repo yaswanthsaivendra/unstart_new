@@ -3,6 +3,43 @@
 {% load crispy_forms_tags %}
 {% block title %}units{% endblock title %}
 {% block body %}
+
+<div class="add-course">
+    <div class="popup">
+        <div class="left">
+            <div class="left-cont">
+                <img src="{% static 'rsc/icons8-project-management-48.png' %}" alt="">
+                <h3>managesnap</h3>
+            </div>
+        </div>
+        <form method="POST" action="{% url 'teacher:unit-create' unit.course.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="right">
+                <div class="right-cont">
+                    <div class="right-item">
+                        <h3>Unit Title</h3>
+                        <input type="text" name="title" placeholder="Enter unit title" required>
+                    </div>
+                    <div class="right-item">
+                        <h3>Description</h3>
+                        <textarea name="description" placeholder="Enter unit description" required></textarea>
+                    </div>
+                    <div class="right-item">
+                        <h3>Due Date</h3>
+                        <input type="date" name="due_date" required>
+                    </div>
+                    <div class="right-item ac-btn">
+                        <button type="submit">Create</button>
+                        <button class="cancel">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <img src="{% static 'rsc/icons8-close-50.png' %}" alt="" class="cancel-icon">
+    </div>
+</div>
+
+
     <div class="body">
         <div class="announcements-container">
             <div class="ann">
@@ -15,7 +52,7 @@
                     <div class="add-search ann-item heading-item">
                         <div class="search as-item">
                             <input type="text" name="" id="" placeholder="search" class="search-item searchbar">
-                            <img src="rsc/icons8-search-50 (4).png" alt="" class="search-icon search-item">
+                            <img src="{% static 'rsc/icons8-search-50 (4).png' %}" alt="" class="search-icon search-item">
                         </div>
                         <div class="add as-item">
                             <button class="add-btn"><p>Add</p></button>
@@ -24,20 +61,21 @@
                 </div>
                 <div class="tabs ann-item">
                     <div class="tab rel current">
-                        <img src="rsc/icons8-sent-50.png" alt="" class="icon">
+                        <img src="{% static 'rsc/icons8-sent-50.png' %}" alt="" class="icon">
                         <p>Released</p>
                     </div>
                     <div class="tab dra not-current">
-                        <img src="rsc/icons8-draft-48.png" alt="" class="icon">
+                        <img src="{% static 'rsc/icons8-draft-48.png' %}" alt="" class="icon">
                         <p>Drafts</p>
                     </div>
                 </div>
                 <div class="ann-item released-container">
+                    {% for unit in released_units %}
                     <div class="released">
                         <div class="ann-content">
-                            <h3 class="ann-heading rd-item">Announcement-1</h3>
-                            <p class="ann-para rd-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, debitis. Inventore rerum tempore ut, perferendis id autem quos aut esse, minus, incidunt magnam labore dolore.....</p>
-                            <div class="ann-links-docs rd-item">
+                            <h3 class="ann-heading rd-item">{{ unit.title }}</h3>
+                            <p class="ann-para rd-item">{{ unit.description }}</p>
+                            <!-- <div class="ann-links-docs rd-item">
                                 <div class="links">
                                     <img src="rsc/icons8-link-24 (1).png" alt="" class="icon">
                                     <p class="link-num">Links : 3</p>
@@ -46,20 +84,28 @@
                                     <img src="rsc/icons8-documents-24.png" alt="" class="icon">
                                     <p class="docs-num">Documents : 3</p>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="ann-buttons">
-                            <button class="view"><a href="view.html">View</a></button>
-                            <button class="edit"><a href="view.html">Edit&nbsp;</a></button>
+                            <button class="view"><a href="#">View</a></button>
+                            <button class="edit"><a href="#">Edit&nbsp;</a></button>
+                            <button class="edit"><a href="#">Delete&nbsp;</a></button>
+                            <button class="edit"><a href="#">draft&nbsp;</a></button>
                         </div>
                     </div>
+                    {% empty %}
+                    No released units
+                    {% endfor %}
+
+
                 </div>
                 <div class="ann-item drafts-container">
+                    {% for unit in draft_units %}
                     <div class="drafts">
                         <div class="ann-content">
-                            <h3 class="ann-heading rd-item">Lorem ipsum</h3>
-                            <p class="ann-para rd-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, debitis. Inventore rerum tempore ut, perferendis id autem quos aut esse, minus, incidunt magnam labore dolore.....</p>
-                            <div class="ann-links-docs rd-item">
+                            <h3 class="ann-heading rd-item">{{ unit.title }}</h3>
+                            <p class="ann-para rd-item">{{ unit.description }}</p>
+                            <!-- <div class="ann-links-docs rd-item">
                                 <div class="links">
                                     <img src="rsc/icons8-link-24 (1).png" alt="" class="icon">
                                     <p class="link-num">Links : 2</p>
@@ -68,13 +114,18 @@
                                     <img src="rsc/icons8-documents-24.png" alt="" class="icon">
                                     <p class="docs-num">Documents : 1</p>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="ann-buttons">
-                            <button class="view"><a href="view.html">View</a></button>
-                            <button class="edit"><a href="view.html">Edit&nbsp;</a></button>
+                            <button class="view"><a href="#">View</a></button>
+                            <button class="edit"><a href="">Edit&nbsp;</a></button>
+                            <button class="edit"><a href="">Delete&nbsp;</a></button>
+                            <button class="edit"><a href="">release&nbsp;</a></button>
                         </div>
                     </div>
+                    {% empty %}
+                    No drafted units
+                    {% endfor %}
                 </div>
             </div>
         </div>

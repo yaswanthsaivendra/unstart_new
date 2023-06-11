@@ -97,7 +97,7 @@ class CourseListView(LoginRequiredMixin, ListView):
 class UnitCreateView(LoginRequiredMixin, CreateView):
     model = Unit
     fields = ['title', 'description', 'due_date']
-    template_name = 'teacher/unit_create.html'
+    template_name = 'teacher/units.html'
 
     def get_success_url(self):
         return reverse_lazy('teacher:unit-list', kwargs={'course_pk': self.kwargs['course_pk']})
@@ -139,8 +139,21 @@ class UnitDeleteView(LoginRequiredMixin, DeleteView):
 
 class UnitListView(LoginRequiredMixin, ListView):
     model = Unit
-    template_name = 'teacher/unit_list.html'
+    template_name = 'teacher/units.html'
     context_object_name = 'units'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        released_units = queryset.filter(is_released=True)
+        draft_units = queryset.filter(is_released=False)
+        return draft_units, released_units
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        released_units, draft_units = self.get_queryset()
+        context['released_units'] = released_units
+        context['draft_units'] = draft_units
+        return context
 
 
 # Lesson Views
