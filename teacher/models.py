@@ -100,9 +100,11 @@ class LessonProgress(models.Model):
 ## for student Groups
 class Group(models.Model):
     name = models.CharField(max_length=200)
-    # students = models.ManyToManyField(User, through='GroupMembership', related_name='student_groups')
-    # created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_groups')
-    courses = models.ManyToManyField(Course, through='GroupCourseEnrollment', related_name='enrolled_groups')
+    students = models.ManyToManyField(User, through='GroupMembership', related_name='student_groups')
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_groups')
+    created_at = models.DateTimeField(default=timezone.now)
+    is_private = models.BooleanField(default=False)
+    # courses = models.ManyToManyField(Course, through='GroupCourseEnrollment', related_name='enrolled_groups')
 
     def __str__(self):
         return self.name

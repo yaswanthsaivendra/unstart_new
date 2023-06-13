@@ -257,8 +257,8 @@ group_statuses = [
 class Groups(models.Model):
 
     name    = models.CharField(max_length=50)
-    students = models.ManyToManyField(Profile, related_name="enrolled_groups")
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_groups')
+    # students = models.ManyToManyField(Profile, related_name="enrolled_groups")
+    # created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_groups')
     status    = models.CharField(choices=group_statuses, max_length=5, default='d')
     enrolled_courses = models.ManyToManyField(course)
 

@@ -413,10 +413,22 @@ class GroupCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class GroupListView(LoginRequiredMixin, ListView):
-    model = Group
+class GroupListView(View):
     template_name = 'teacher/group_list.html'
-    context_object_name = 'groups'
+
+    def get(self, request):
+
+        # Separate public and private groups
+        public_groups = Group.objects.filter(is_private=False)
+        private_groups = Group.objects.filter(is_private=True, created_by=request.user)
+
+        context = {
+            'public_groups': public_groups,
+            'private_groups': private_groups,
+        }
+
+        return render(request, self.template_name, context)
+
 
 
 class GroupStudentListView(LoginRequiredMixin, ListView):
