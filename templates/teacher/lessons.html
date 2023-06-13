@@ -106,7 +106,7 @@
                             </div>
                         </div>
                         <div class="ann-buttons">
-                            <button class="view"><a href="{% url 'teacher:lesson-list' lesson.pk %}">View</a></button>
+                            <button class="view"><a href="{% url 'teacher:lesson-detail' lesson.pk %}">View</a></button>
 
                             <form method="POST" action="{% url 'teacher:lesson-delete' unit_id=unit.id pk=lesson.pk %}">
                                 {% csrf_token %}
@@ -138,7 +138,7 @@
                             </div>
                         </div>
                         <div class="ann-buttons">
-                            <button class="view"><a href="{% url 'teacher:lesson-list' lesson.pk %}">View</a></button>
+                            <button class="view"><a href="{% url 'teacher:lesson-detail' lesson.pk %}">View</a></button>
                             <form method="POST" action="{% url 'teacher:lesson-delete' unit_id=unit.id pk=lesson.pk %}">
                                 {% csrf_token %}
                                 <button type="submit" class="edit">Delete</button>
