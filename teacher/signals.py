@@ -48,6 +48,13 @@ def create_lesson_progress(sender, instance, created, **kwargs):
 
 
 
+@receiver(post_delete, sender=Enrollment)
+def delete_lesson_progress(sender, instance, **kwargs):
+    lesson_progresses = LessonProgress.objects.filter(enrollment=instance)
+    lesson_progresses.delete()
+
+
+
 @receiver(post_save, sender=GroupMembership)
 def add_student_to_group(sender, instance, created, **kwargs):
     if created:

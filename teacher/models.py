@@ -27,7 +27,7 @@ class Course(models.Model):
 
 
 class Unit(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE,related_name='unit')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField()
     due_date = models.DateField(null=True)
@@ -44,7 +44,7 @@ class Unit(models.Model):
 
 class Lesson(models.Model):
     lesson_number = models.IntegerField(null=False, default=1)
-    unit = models.ForeignKey(Unit, on_delete=models.CASCADE,related_name='lessons')
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField()
     is_released = models.BooleanField(default = False)
@@ -75,7 +75,7 @@ class Enrollment(models.Model):
     is_completed = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.student.username} enrolled in {self.course.name}"
+        return f"{self.student.username} enrolled in {self.course.title}"
 
     def calculate_completion_percentage(self):
         total_lessons = self.course.unit_set.aggregate(total_lessons=models.Count('lesson'))['total_lessons']
@@ -93,7 +93,7 @@ class LessonProgress(models.Model):
         unique_together = ('enrollment', 'lesson')
 
     def __str__(self):
-        return f"{self.enrollment.student.username} - {self.lesson.name}"
+        return f"{self.enrollment.student.username} - {self.lesson.title}"
 
 
 

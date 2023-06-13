@@ -329,24 +329,37 @@ class LessonLinkDeleteView(LoginRequiredMixin, DeleteView):
 # For student stats and enrollments
 
 
-class EnrollmentListView(LoginRequiredMixin, ListView):
-    model = Enrollment
+
+
+class EnrollmentListView(View):
     template_name = 'teacher/enrollment_list.html'
-    context_object_name = 'enrollments'
 
-    def get_queryset(self):
-        course_id = self.kwargs['course_id']
-        return Enrollment.objects.filter(course_id=course_id)
+    def get(self, request, course_id):
+        course = Course.objects.get(id=course_id)
+        student_enrollments = course.enrollment_set.all().select_related('student')
+        # print(enrolled_students)
+        all_students = User.objects.filter(profile__status = 's')
+
+        not_enrolled_students = all_students.exclude(enrollment__course=course)
+
+        context = {
+            'course': course,
+            'student_enrollments': student_enrollments,
+            'not_enrolled_students': not_enrolled_students
+        }
+
+        return render(request, self.template_name, context)
 
 
-class EnrollmentCreateView(LoginRequiredMixin, CreateView):
-    model = Enrollment
-    template_name = 'teacher/enrollment_form.html'
-    success_url = reverse_lazy('teacher:enrollment-list')
 
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        return super().form_valid(form)
+class EnrollmentCreateView(View):
+    def get(self, request, course_id, student_id):
+        course = Course.objects.get(id=course_id)
+        student = User.objects.get(id=student_id)
+
+        Enrollment.objects.create(course=course, student=student)
+        
+        return redirect('teacher:enrollment-list', course_id=course_id)
 
 
 class EnrollmentUpdateView(LoginRequiredMixin, UpdateView):
@@ -356,11 +369,32 @@ class EnrollmentUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('teacher:enrollment-list')
 
 
-class EnrollmentDeleteView(LoginRequiredMixin, DeleteView):
-    model = Enrollment
-    template_name = 'teacher/enrollment_confirm_delete.html'
-    context_object_name = 'enrollment'
-    success_url = reverse_lazy('teacher:enrollment-list')
+class EnrollmentDeleteView(View):
+    def get(self, request, course_id, enrollment_id):
+        enrollment = get_object_or_404(Enrollment, course_id=course_id, id=enrollment_id)
+        enrollment.delete()
+        return redirect('teacher:enrollment-list', course_id=course_id)
+
+
+def course_stats_view(request, course_id):
+    course = get_object_or_404(Course, pk=course_id)
+    enrollments = Enrollment.objects.filter(course=course)
+
+    completion_data = []
+    for enrollment in enrollments:
+        student = enrollment.student
+        completion_percentage = enrollment.calculate_completion_percentage()
+        completion_data.append({
+            'student': student,
+            'completion_percentage': completion_percentage
+        })
+
+    context = {
+        'course': course,
+        'completion_data': completion_data
+    }
+    return render(request, 'teacher/course_stats.html', context)
+
 
 
 

@@ -1,0 +1,46 @@
+{% extends 'teacher/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}units{% endblock title %}
+{% block css %}
+{% endblock css %}
+{% block body %}
+
+<div class="body">
+    <div>
+        <div>
+            <h1>Enrolled Students</h1>
+            <div>
+                {% for enrollment in student_enrollments %}
+                <div>
+                    <p>{{ enrollment.student.username }}</p>
+                    <a href="{% url 'teacher:enrollment-delete' course_id=enrollment.course.id enrollment_id=enrollment.id %}"><button>Remove</button></a>
+                </div>
+                {% empty %}
+                <p>no enrolled students</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div>
+            <h1>Not Enrolled Students</h1>
+            <div>
+                {% for student in not_enrolled_students %}
+                <div>
+                    <p>{{ student.username }}</p>
+                    <a href="{% url 'teacher:enrollment-create' course_id=course.id student_id=student.id %}"><button>Enroll</button></a>
+                </div>
+                {% empty %}
+                <p>all students are already enrolled</p>
+                {% endfor %}
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+{% endblock body %}

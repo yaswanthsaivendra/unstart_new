@@ -1,0 +1,24 @@
+{% extends 'teacher/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}units{% endblock title %}
+{% block css %}
+{% endblock css %}
+{% block body %}
+
+<div class="body">
+    <div>
+        {% for stat in completion_data %}
+        <div>
+            <p>{{ stat.student.username }}</p>
+            <p>Completion Percentage : {{ stat.completion_percentage }} %</p>
+        </div>
+        {% empty %}
+        <p>No enrolled students in this course</p>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock body %}

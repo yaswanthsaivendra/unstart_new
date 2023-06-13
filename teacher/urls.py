@@ -31,6 +31,7 @@ testing,
     EnrollmentCreateView,
     EnrollmentUpdateView,
     EnrollmentDeleteView,
+    course_stats_view,
 
     GroupCreateView,
     GroupListView,
@@ -90,9 +91,10 @@ urlpatterns = [
 
     #FOr student stats and enrollments
     path('course/<int:course_id>/enrollment/', EnrollmentListView.as_view(), name='enrollment-list'),
-    path('course/<int:course_id>/enrollment/create/', EnrollmentCreateView.as_view(), name='enrollment-create'),
+    path('enrollment/create/<int:course_id>/<int:student_id>/', EnrollmentCreateView.as_view(), name='enrollment-create'),
     path('course/<int:course_id>/enrollment/<int:pk>/update/', EnrollmentUpdateView.as_view(), name='enrollment-update'),
-    path('course/<int:course_id>/enrollment/<int:pk>/delete/', EnrollmentDeleteView.as_view(), name='enrollment-delete'),
+    path('enrollment/<int:course_id>/<int:enrollment_id>/delete/', EnrollmentDeleteView.as_view(), name='enrollment-delete'),
+    path('course/<int:course_id>/stats/', course_stats_view, name='course-stats'),
 
     ## groups
     path('groups/create/', GroupCreateView.as_view(), name='group-create'),

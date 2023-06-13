@@ -101,7 +101,14 @@
                                 <button class="filter-btn" id="add-course-btn">edit</button>
                                 </div>
                                 <div class="preview">
-                                    <button class="filter-btn">Enroll Students</button>
+                                    <a href="{% url 'teacher:enrollment-list' course.id %}">
+                                        <button class="filter-btn">Enroll Students</button>
+                                    </a>
+                                </div>
+                                <div class="preview">
+                                    <a href="{% url 'teacher:course-stats' course.id %}">
+                                        <button class="filter-btn">Student stats</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
