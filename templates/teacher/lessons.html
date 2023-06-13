@@ -15,12 +15,16 @@
                 <h3>managesnap</h3>
             </div>
         </div>
-        <form method="POST" action="{% url 'teacher:unit-create' course_id %}" enctype="multipart/form-data">
+        <form method="POST" action="{% url 'teacher:lesson-create' unit.id %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="right">
                 <div class="right-cont">
                     <div class="right-item">
-                        <h3>Unit Title</h3>
+                        <h3>Lesson Number</h3>
+                        <input type="number" name="lesson_number" min="1" required>
+                    </div>
+                    <div class="right-item">
+                        <h3>Lesson Title</h3>
                         <input type="text" name="title" placeholder="Enter unit title" required>
                     </div>
                     <div class="right-item">
@@ -48,7 +52,7 @@
                 <div class="heading ann-item">
                     <div class="head heading-item">
                         <p class="heading-name">
-                            Units
+                            {{unit.title}}
                         </p>
                     </div>
                     <div class="add-search ann-item heading-item">
@@ -61,6 +65,19 @@
                         </div>
                     </div>
                 </div>
+                <div>
+                    <button class="add-btn"><p>Edit</p></button>
+                </div>
+                <div>
+                    <form method="POST" action="{% url 'teacher:unit-release' unit.id %}">
+                        {% csrf_token %}
+                    {% if unit.is_released %}
+                    <button class="add-btn" type="submit"><p>Draft</p></button>
+                    {% else %}
+                    <button type="submit" class="add-btn"><p>Release</p></button>
+                    {% endif %}
+                    </form>
+                </div>
                 <div class="tabs ann-item">
                     <div class="tab rel current">
                         <img src="{% static 'rsc/icons8-sent-50.png' %}" alt="" class="icon">
@@ -72,64 +89,64 @@
                     </div>
                 </div>
                 <div class="ann-item released-container">
-                    {% for unit in released_units %}
+                    {% for unit in released_lessons %}
                     <div class="released">
                         <div class="ann-content">
-                            <h3 class="ann-heading rd-item">{{ unit.title }}</h3>
-                            <p class="ann-para rd-item">{{ unit.description }}</p>
-                            <!-- <div class="ann-links-docs rd-item">
+                            <h3 class="ann-heading rd-item">{{ lesson.title }}</h3>
+                            <p class="ann-para rd-item">{{ lesson.description }}</p>
+                            <div class="ann-links-docs rd-item">
                                 <div class="links">
-                                    <img src="rsc/icons8-link-24 (1).png" alt="" class="icon">
-                                    <p class="link-num">Links : 3</p>
+                                    <img src="{% static 'rsc/icons8-link-24 (1).png' %}" alt="" class="icon">
+                                    <p class="link-num">Links : {{ lesson.lessonlink_count }}</p>
                                 </div>
                                 <div class="docs">
-                                    <img src="rsc/icons8-documents-24.png" alt="" class="icon">
-                                    <p class="docs-num">Documents : 3</p>
+                                    <img src="{% static 'rsc/icons8-documents-24.png' %}" alt="" class="icon">
+                                    <p class="docs-num">Documents : {{ lesson.lessonfiles_count }}</p>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                         <div class="ann-buttons">
-                            <button class="view"><a href="{% url 'teacher:lesson-list' unit.pk %}">View</a></button>
+                            <button class="view"><a href="{% url 'teacher:lesson-list' lesson.pk %}">View</a></button>
 
-                            <form method="POST" action="{% url 'teacher:unit-delete' course_id=course_id pk=unit.pk %}">
+                            <form method="POST" action="{% url 'teacher:lesson-delete' unit_id=unit.id pk=lesson.pk %}">
                                 {% csrf_token %}
                                 <button type="submit" class="edit">Delete</button>
                             </form>
                         </div>
                     </div>
                     {% empty %}
-                    No released units
+                    No released lessons
                     {% endfor %}
 
 
                 </div>
                 <div class="ann-item drafts-container">
-                    {% for unit in draft_units %}
+                    {% for lesson in draft_lessons %}
                     <div class="drafts">
                         <div class="ann-content">
-                            <h3 class="ann-heading rd-item">{{ unit.title }}</h3>
-                            <p class="ann-para rd-item">{{ unit.description }}</p>
-                            <!-- <div class="ann-links-docs rd-item">
+                            <h3 class="ann-heading rd-item">{{ lesson.title }}</h3>
+                            <p class="ann-para rd-item">{{ lesson.description }}</p>
+                            <div class="ann-links-docs rd-item">
                                 <div class="links">
-                                    <img src="rsc/icons8-link-24 (1).png" alt="" class="icon">
-                                    <p class="link-num">Links : 2</p>
+                                    <img src="{% static 'rsc/icons8-link-24 (1).png' %}" alt="" class="icon">
+                                    <p class="link-num">Links : {{ lesson.lessonlink_count }}</p>
                                 </div>
                                 <div class="docs">
-                                    <img src="rsc/icons8-documents-24.png" alt="" class="icon">
-                                    <p class="docs-num">Documents : 1</p>
+                                    <img src="{% static 'rsc/icons8-documents-24.png' %}" alt="" class="icon">
+                                    <p class="docs-num">Documents : {{ lesson.lessonfile_count }}</p>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                         <div class="ann-buttons">
-                            <button class="view"><a href="{% url 'teacher:lesson-list' unit.pk %}">View</a></button>
-                            <form method="POST" action="{% url 'teacher:unit-delete' course_id=course_id pk=unit.pk %}">
+                            <button class="view"><a href="{% url 'teacher:lesson-list' lesson.pk %}">View</a></button>
+                            <form method="POST" action="{% url 'teacher:lesson-delete' unit_id=unit.id pk=lesson.pk %}">
                                 {% csrf_token %}
                                 <button type="submit" class="edit">Delete</button>
                             </form>
                         </div>
                     </div>
                     {% empty %}
-                    No drafted units
+                    No drafted lessons
                     {% endfor %}
                 </div>
             </div>

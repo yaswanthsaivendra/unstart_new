@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.db.models import Count
 from .models import (
     Course,
     Unit,
@@ -126,11 +127,11 @@ class UnitDetailView(LoginRequiredMixin, DetailView):
 class UnitUpdateView(LoginRequiredMixin, UpdateView):
     model = Unit
     fields = ['title', 'description', 'due_date']
-    template_name = 'teacher/unit_update.html'
+    template_name = 'teacher/lessons.html'
     context_object_name = 'unit'
 
     def get_success_url(self):
-        return reverse_lazy('teacher:unit-detail', kwargs={'pk': self.kwargs['pk']})
+        return reverse_lazy('teacher:lessons-list', kwargs={'unit_pk': self.kwargs['pk']})
 
 class UnitDeleteView(LoginRequiredMixin, DeleteView):
     model = Unit
@@ -162,7 +163,8 @@ class UnitListView(LoginRequiredMixin, ListView):
     context_object_name = 'units'
 
     def get_queryset(self):
-        queryset = super().get_queryset()
+        course_id = self.kwargs.get('course_pk')
+        queryset = super().get_queryset().filter(course_id=course_id)
         released_units = queryset.filter(is_released=True)
         draft_units = queryset.filter(is_released=False)
         return draft_units, released_units
@@ -171,7 +173,7 @@ class UnitListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         course_id = self.kwargs['course_pk']
         context['course_id'] = course_id
-        released_units, draft_units = self.get_queryset()
+        draft_units, released_units = self.get_queryset()
         context['released_units'] = released_units
         context['draft_units'] = draft_units
         return context
@@ -182,15 +184,17 @@ class UnitReleaseView(LoginRequiredMixin, View):
         unit = Unit.objects.get(pk=unit_id)
         unit.is_released = not unit.is_released
         unit.save()
-        return redirect('teacher:unit-detail', pk=unit_id)
+        return redirect('teacher:lesson-list', unit_pk=unit_id)
 
 
 # Lesson Views
 class LessonCreateView(LoginRequiredMixin, CreateView):
     model = Lesson
     fields = ['lesson_number', 'title', 'description']
-    template_name = 'teacher/lesson_create.html'
-    success_url = reverse_lazy('teacher:lesson-list')
+    template_name = 'teacher/lessons.html'
+
+    def get_success_url(self):
+        return reverse_lazy('teacher:lesson-list', kwargs={'unit_pk': self.kwargs['unit_pk']})
 
     def get_initial(self):
         initial = super().get_initial()
@@ -199,6 +203,9 @@ class LessonCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
+        unit_pk = self.kwargs.get('unit_pk')
+        unit = get_object_or_404(Unit, pk=unit_pk)
+        form.instance.unit = unit
         return super().form_valid(form)
 
 
@@ -220,15 +227,51 @@ class LessonUpdateView(LoginRequiredMixin, UpdateView):
 
 class LessonDeleteView(LoginRequiredMixin, DeleteView):
     model = Lesson
-    success_url = reverse_lazy('teacher:lesson-list')
-    template_name = 'teacher/lesson_delete.html'
+    template_name = 'teacher/lessons.html'
     context_object_name = 'lesson'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        unit_id = self.kwargs['unit_id']
+        context['unit_id'] = unit_id
+        return context
+
+    def get_success_url(self):
+        unit_id = self.kwargs['unit_id']
+        return reverse_lazy('teacher:lesson-list', kwargs={'unit_pk': unit_id})
+
+    def get_object(self, queryset=None):
+        queryset = self.get_queryset()
+        unit_id = self.kwargs['unit_id']
+        pk = self.kwargs['pk']
+        return get_object_or_404(queryset, unit_id=unit_id, pk=pk)
 
 
 class LessonListView(LoginRequiredMixin, ListView):
     model = Lesson
-    template_name = 'teacher/lesson_list.html'
+    template_name = 'teacher/lessons.html'
     context_object_name = 'lessons'
+
+    def get_queryset(self):
+        unit_id = self.kwargs.get('unit_pk')
+        queryset = super().get_queryset().filter(unit_id=unit_id)
+        queryset = queryset.annotate(
+            lessonfile_count=Count('files'),
+            lessonlink_count=Count('links')
+        )
+        released_lessons = queryset.filter(is_released=True)
+        draft_lessons = queryset.filter(is_released=False)
+        return draft_lessons, released_lessons
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        unit_id = self.kwargs['unit_pk']
+        unit = Unit.objects.filter(id = unit_id).first()
+        context['unit'] = unit
+        draft_lessons, released_lessons = self.get_queryset()
+        context['released_lessons'] = released_lessons
+        context['draft_lessons'] = draft_lessons
+        return context
 
 
 # LessonFile Views
