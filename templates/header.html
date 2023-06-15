@@ -15,6 +15,7 @@
         integrity="sha512-ZnR2wlLbSbr8/c9AgLg3jQPAattCUImNsae6NHYnS9KrIwRdcY9DxFotXhNAKIKbAXlRnujIqUWoXXwqyFOeIQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
+    {% block gtag %}{% endblock gtag %}
 </head>
 <body>
     {% include 'messages.html' %}
@@ -29,7 +30,7 @@
         </button>
         <nav class="pc-nav items-center hidden md:flex">
             <a href="{% url 'coursestatic'%}" class="text-black text-base font-medium mx-4" style="font-weight:bolder">Executive Management</a>
-            <a href="#" class="text-black text-base font-medium mx-4"  style="font-weight:bolder">Hire from us</a>
+            <a href="{%url 'hire'}" class="text-black text-base font-medium mx-4"  style="font-weight:bolder">Hire from us</a>
             <a href="{% url 'aboutus' %}" class="text-black text-base font-medium mx-4" style="font-weight:bolder">About us</a>
             <a href="{% url 'contactus' %}" class="text-black text-base font-medium mx-4" style="font-weight:bolder">Support</a>
             {% if not user.is_authenticated %}

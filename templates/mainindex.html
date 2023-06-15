@@ -1,5 +1,16 @@
 {%extends 'header.html' %}
 {% load static %}
+{% block gtag %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXLDDT540"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXLDDT540');
+</script>
+{% endblock gtag %}
 {% block content %}
     <section id="page-1">
         <div class="page-1-row">
