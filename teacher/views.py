@@ -215,6 +215,14 @@ class LessonDetailView(LoginRequiredMixin, DetailView):
     context_object_name = 'lesson'
 
 
+class LessonReleaseView(LoginRequiredMixin, View):
+    def post(self, request, lesson_id):
+        lesson = Lesson.objects.get(pk=lesson_id)
+        lesson.is_released = not lesson.is_released
+        lesson.save()
+        return redirect('teacher:lesson-detail', pk=lesson_id)
+
+
 class LessonUpdateView(LoginRequiredMixin, UpdateView):
     model = Lesson
     fields = ['lesson_number', 'title', 'description']
