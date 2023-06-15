@@ -211,7 +211,7 @@ class LessonCreateView(LoginRequiredMixin, CreateView):
 
 class LessonDetailView(LoginRequiredMixin, DetailView):
     model = Lesson
-    template_name = 'teacher/lesson.html'
+    template_name = 'teacher/lesson_detail.html'
     context_object_name = 'lesson'
 
 
