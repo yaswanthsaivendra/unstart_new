@@ -1,0 +1,463 @@
+
+{% extends 'student/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}index{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/student/all.css' %}">
+<link rel="stylesheet" href="{% static 'styles/student/all_courses_style.css' %}">
+<!----===== Boxicons CSS ===== -->
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+{% endblock css %}
+{% block body %}
+<div class="second-header special-header">
+    <nav class="nav-bar">
+        <ul class="navigation">
+            <li class="tab-item"><a href="#item1" class="active" onclick="return false">All</a></li>
+            <li class="tab-item"><a href="#item2" onclick="return false">BCA_Sem1</a></li>
+            <li class="tab-item"><a href="#item3" onclick="return false">BCA_Sem2</a></li>
+            <li class="tab-item"><a href="#item4" onclick="return false">BCA_Sem3</a></li>
+            <li class="tab-item"><a href="#item5" onclick="return false">BCA_Sem4</a></li>
+            <li class="tab-item"><a href="#item6" onclick="return false">BCA_Sem5</a></li>
+            <li class="tab-item"><a href="#item7" onclick="return false">BCA_Sem6</a></li>
+            <li class="tab-item"><a href="#item8" onclick="return false">BCA_Sem7</a></li>
+            <li class="tab-item"><a href="#item9" onclick="return false">BCA_Sem8</a></li>
+            <li class="tab-item"><a href="#item10" onclick="return false">Additional</a></li>
+        </ul>
+    </nav>
+</div>
+
+<section class="home">
+    <div class="wrapper_tab-content">
+        <section id="item1" class="tab-content content-visible">
+            <div class="course-list">
+                {% for enrollment in enrolled_courses %}
+                <div class="course-card">
+                    <img
+                        src="{{ enrollment.course.image.url }}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">{{ enrollment.course.title }}</a>
+
+                        <p>{{ enrollment.course.created_at }}</p>
+                        <p class="spec">{{ enrollment.course.course_level }}</p>
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="item2" class="tab-content">
+            <div class="course-list">
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="item3" class="tab-content">
+            <div class="course-list">
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="item4" class="tab-content">
+            <div class="course-list">
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="item5" class="tab-content">
+            <div class="course-list">
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="item6" class="tab-content">
+            <div class="course-list">
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="item7" class="tab-content">
+            <div class="course-list">
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="item8" class="tab-content">
+            <div class="course-list">
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="item9" class="tab-content">
+            <div class="course-list">
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="item10" class="tab-content">
+            <div class="course-list">
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="{% static 'images/logo.png' %}">
+                    <div class="details">
+                        <a href="course_detail.html"
+                            target="_blank">Fundamentals of IT and Programming</a>
+
+                        <p>DAC1101-MAY-21</p>
+                        <p>BCA_Sem1</p>
+
+                        <div class="message">
+                            <a href="course_detail.html"
+                                target="_blank"><i class="fa-solid fa-message"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+{% endblock body %}
+
+{% block script %}
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/all_courses.js' %}"></script>
+{% endblock script %}
