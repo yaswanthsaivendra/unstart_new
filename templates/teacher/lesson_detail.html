@@ -9,15 +9,26 @@
                 <div class="heading view-item">
                     <div class="head heading-item">
                         <p class="heading-name">
-                            Announcement-1
+                            {{ lesson.title }}
                         </p>
                     </div>
                     <div class="release-edit heading-item">
                         <div class="release">
-                            <button class="release-btn">
+                            <form method="POST" action="{% url 'teacher:lesson-release' lesson.id %}">
+                                {% csrf_token %}
+                            {% if lesson.is_released %}
+                            <button class="release-btn" type="submit">
+                                <img src="rsc/icons8-telegram-app-30.png" alt="" class="icon">
+                                <p>Draft</p>
+                            </button>
+                           
+                            {% else %}
+                            <button class="release-btn" type="submit">
                                 <img src="rsc/icons8-telegram-app-30.png" alt="" class="icon">
                                 <p>Release</p>
                             </button>
+                            {% endif %}
+                            </form>
                         </div>
                         <div class="edit">
                             <button class="edit-btn">
@@ -28,9 +39,7 @@
                     </div>
                 </div>
                 <div class="announcement view-item">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi blanditiis hic atque quisquam consequatur numquam illo tenetur nostrum quibusdam impedit eligendi doloribus ea ab fugit iure veritatis, debitis perferendis sint provident deserunt ex reiciendis omnis deleniti! Magnam, nemo magni? Harum.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam accusantium dolores ipsam dignissimos minima voluptatem veniam dolore blanditiis possimus, adipisci iusto maxime obcaecati omnis explicabo fugiat? Incidunt vero repellendus debitis.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam accusantium dolores ipsam dignissimos minima voluptatem veniam dolore blanditiis possimus, adipisci iusto maxime obcaecati omnis explicabo fugiat? Incidunt vero repellendus debitis.</p>
+                    <p>{{ lesson.description }}</p>
                 </div>
                 <div class="links view-item">
                     <div class="heading links-item">

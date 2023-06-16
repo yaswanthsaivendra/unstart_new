@@ -242,8 +242,8 @@ def add_profile_details(request):
 
         ## get the status - teacher or student
         status = request.POST.get('status')
-        print(request.POST)
-        print(request.FILES)
+        # print(request.POST)
+        # print(request.FILES)
 
 
         if status == 's':
@@ -268,7 +268,7 @@ def add_profile_details(request):
             section = request.POST.getlist('section')[1]
             full_name = request.POST.getlist('full_name')[1]
             department = request.POST.getlist('department')[1]
-            profile_pic = request.FILES.getlist('profile_pic')[1]
+            profile_pic = request.FILES.getlist('profile_pic')[0]
             Teacher_profile_application.objects.create(
                 profile=user_profile,
                 date_of_joining=date_of_joining,
@@ -278,8 +278,56 @@ def add_profile_details(request):
                 department=department
             )
         user_profile.profile_pic = profile_pic
+        user_profile.status = status
+        user_profile.save(update_fields=['profile_pic', 'status'])
+        return redirect('access-pending-view')
+
+
+def edit_profile_details(request, application_id):
+    # Retrieve the user profile
+    user_profile = Profile.objects.filter(user=request.user).first()
+
+    if request.method == 'GET':
+        # Pass the user profile to the template
+        if user_profile.status == 's':
+            print("student")
+            student_profile = Student_profile_application.objects.filter(id = application_id).first()
+            return render(request, 'account/edit_student_application_profile_details.html', {'user_profile': user_profile, 'student_profile' : student_profile})
+        if user_profile.status == 't':
+            teacher_profile = Teacher_profile_application.objects.filter(id = application_id).first()
+            return render(request, 'account/edit_teacher_application_profile_details.html', {'user_profile': user_profile, 'teacher_profile' : teacher_profile})
+
+
+    elif request.method == 'POST':
+        ## getting user profile
+        user_profile = Profile.objects.filter(user=request.user).first()
+        # print(request.POST)
+        # print(request.FILES)
+
+        if user_profile.status == 's':
+            student_profile = Student_profile_application.objects.filter(id=application_id).first()
+            student_profile.semester = request.POST.get('semester')
+            student_profile.section = request.POST.get('section')
+            student_profile.roll_number = request.POST.get('roll_number')
+            student_profile.full_name = request.POST.get('full_name')
+            student_profile.department = request.POST.get('department')
+            profile_pic = request.FILES.get('profile_pic')
+            student_profile.save()
+
+        elif user_profile.status == 't':
+            teacher_profile = Teacher_profile_application.objects.filter(id=application_id).first()
+            teacher_profile.date_of_joining = request.POST.get('date_of_joining')
+            teacher_profile.semester = request.POST.get('semester')
+            teacher_profile.section = request.POST.get('section')
+            teacher_profile.full_name = request.POST.get('full_name')
+            teacher_profile.department = request.POST.get('department')
+            profile_pic = request.FILES.get('profile_pic')
+            teacher_profile.save()
+        user_profile.profile_pic = profile_pic
         user_profile.save(update_fields=['profile_pic'])
         return redirect('access-pending-view')
+        
+
 
 
 def access_pending_view(request):

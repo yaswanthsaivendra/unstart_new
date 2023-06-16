@@ -12,7 +12,8 @@ from .models import (
     Assignment,
     AssignmentFile,
     AssignmentLink,
-    AssignmentSubmission
+    AssignmentSubmission,
+    Enrollment,
 )
 
 admin.site.register(Course)
@@ -22,5 +23,6 @@ admin.site.register(LessonFile)
 admin.site.register(LessonLink)
 admin.site.register(LessonProgress)
 admin.site.register(Announcement)
+admin.site.register(Enrollment)
 
 # Register your models here.

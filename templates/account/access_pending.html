@@ -14,7 +14,7 @@
         </h1>
         <div class="login-card">
             <img src="https://img.freepik.com/premium-vector/theatre-camp-abstract-concept-vector-illustration_107173-20685.jpg">
-            {% if show_new_application_button %}
+        {% if show_new_application_button %}
         <a href="{% url 'add-profile-details' %}">
             <button class="login-btn" style="background-color:black;">
                 Submit New Application
@@ -56,7 +56,11 @@
                         {% endif %}
                     </p>
                     </p>
-                    <a href="#" class="btn btn-outline-dark my-2">Edit Details</a>
+                    {% if not application.is_verified and not application.is_rejected %}
+                    <a href="{% url 'edit-profile-details' application.id %}" >
+                        <button class="btn btn-outline-dark my-2">Edit Details</button>
+                    </a>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
@@ -95,7 +99,9 @@
                         {% endif %}
                     </p>
                     </p>
-                    <a href="#" class="btn btn-outline-dark my-2">Edit Details</a>
+                    {% if not application.is_verified and not application.is_rejected %}
+                    <a href="{% url 'edit-profile-details' application.id %}"><button class="btn btn-outline-dark my-2">Edit Details</button></a>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
@@ -119,7 +125,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-<script src="{% static " styles/mainpages/index.js"%}"></script>
+<script src="{% static "styles/mainpages/index.js" %}"></script>
 {% endblock js %}
 <!-- <!DOCTYPE html>
 <html lang="en">

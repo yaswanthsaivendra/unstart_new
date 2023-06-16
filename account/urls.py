@@ -12,6 +12,7 @@ urlpatterns = [
     path('register/', views.RegistrationView.as_view(), name='register'),
     path('login/', views.LoginView.as_view(), name='login'),
     path('add-profile-details/', views.add_profile_details, name='add-profile-details'),
+    path('edit-profile-details/<int:application_id>/', views.edit_profile_details, name='edit-profile-details'),
     path('logout/', views.handlelogout, name='logout'),
     path('access-pending/', views.access_pending_view, name='access-pending-view'),
 ]

@@ -211,8 +211,16 @@ class LessonCreateView(LoginRequiredMixin, CreateView):
 
 class LessonDetailView(LoginRequiredMixin, DetailView):
     model = Lesson
-    template_name = 'teacher/lesson.html'
+    template_name = 'teacher/lesson_detail.html'
     context_object_name = 'lesson'
+
+
+class LessonReleaseView(LoginRequiredMixin, View):
+    def post(self, request, lesson_id):
+        lesson = Lesson.objects.get(pk=lesson_id)
+        lesson.is_released = not lesson.is_released
+        lesson.save()
+        return redirect('teacher:lesson-detail', pk=lesson_id)
 
 
 class LessonUpdateView(LoginRequiredMixin, UpdateView):
