@@ -33,7 +33,7 @@ def index(request):
     return render(request,'mainindex.html')
 
 def coursestatic(request):
-    return render(request,'executive.html')
+    return render(request,'staticcourse.html')
 
 def aboutus(request):
     return render(request,'mainabout.html')
