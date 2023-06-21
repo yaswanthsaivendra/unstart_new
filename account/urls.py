@@ -3,6 +3,7 @@ import account.views as views
 urlpatterns = [
     path('',views.index,name="index"),
     path('aboutus/',views.aboutus,name="aboutus"),
+    path('events/',views.events,name="events"),
     path('teachwithus/',views.teach,name="teach"),
     path('contactus/',views.contactus,name="contactus"),
     path('privacy/',views.privacy,name="privacy"),
