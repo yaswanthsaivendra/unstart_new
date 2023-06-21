@@ -63,13 +63,26 @@ class Unit(models.Model):
 
 
 class Lesson(models.Model):
-    lesson_number = models.IntegerField(null=False, default=1)
+    lesson_number = models.IntegerField(null=True, blank=True)
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField()
     is_released = models.BooleanField(default = False)
     def __str__(self):
         return self.title
+    
+    def save(self, *args, **kwargs):
+        if not self.lesson_number:
+            # Get the maximum lesson_number for the current unit
+            max_lesson_number = Lesson.objects.filter(unit=self.unit).aggregate(
+                max_lesson_number=models.Max('lesson_number')
+            )['max_lesson_number']
+            if max_lesson_number is not None:
+                self.lesson_number = max_lesson_number + 1
+            else:
+                self.lesson_number = 1
+
+        super().save(*args, **kwargs)
 
 class LessonFile(models.Model):
     lesson = models.ForeignKey(Lesson , on_delete = models.CASCADE,related_name='files')
