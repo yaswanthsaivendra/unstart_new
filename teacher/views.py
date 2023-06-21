@@ -190,7 +190,7 @@ class UnitReleaseView(LoginRequiredMixin, View):
 # Lesson Views
 class LessonCreateView(LoginRequiredMixin, CreateView):
     model = Lesson
-    fields = ['lesson_number', 'title', 'description']
+    fields = ['title', 'description']
     template_name = 'teacher/lessons.html'
 
     def get_success_url(self):

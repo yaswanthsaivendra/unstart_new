@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Learning Page</title>
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/course_learning_page_style.css">
+    <link rel="stylesheet" href="{% static 'styles/all.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/student/course_learning_page_style.css' %}">
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -197,162 +198,33 @@
             <div class="main-content">
                 <div class="topics-cards">
                     <ul>
+                    {% for unit in units %}
                         <li>
                             <input type="checkbox" id="topic-1">
-                            <label for="topic-1">Course Introduction<span><i class="fa-solid fa-angle-down"></i></span></label>
-                            
+                            <label for="topic-1">{{ unit.title }}<span><i class="fa-solid fa-angle-down"></i></span></label>                
                             <div class="tutorials">
                                 <button type="button" value="Launch Unit">Launch Unit</button>
-                                <ul>    
+                                <ul>
+                                {% for lesson in unit.lessons %}
+
                                     <li>
                                         <input type="checkbox" id="t1-tutorial-1">
-                                        <label for="t1-tutorial-1">e - Tutorial<span>0/36 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-
-                                    <li>
-                                        <input type="checkbox" id="t1-tutorial-2">
-                                        <label for="t1-tutorial-2">e - Content<span>0/2 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-
-                                    <li>
-                                        <input type="checkbox" id="t1-tutorial-3">
-                                        <label for="t1-tutorial-3">Discussion Forum<span>0/1 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-
-                                    <li>
-                                        <input type="checkbox" id="t1-tutorial-4">
-                                        <label for="t1-tutorial-4">Assessment<span>0/1 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
+                                        <label for="t1-tutorial-1">{{ lesson.title }}<span>{{ unit.lessons_completed }}/{{ unit.total_lessons }} &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
                                     </li>
                                 </ul>
+                                {% empty %}
+                                <p>No lessons found for this unit.</p>
+                                {% endfor %}
                             </div>
                         </li>
-                        
-                        <li>
-                            <input type="checkbox" id="topic-2">
-                            <label for="topic-2">Unit 01 : Set Theory<span>Completed 0/40 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                            
-                            <div class="tutorials">
-                                <button type="button" value="Launch Unit">Launch Unit</button>
-                                <ul>    
-                                    <li>
-                                        <input type="checkbox" id="t2-tutorial-1">
-                                        <label for="t2-tutorial-1">e - Tutorial<span>0/36 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-
-                                    <li>
-                                        <input type="checkbox" id="t2-tutorial-2">
-                                        <label for="t2-tutorial-2">e - Content<span>0/2 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-
-                                    <li>
-                                        <input type="checkbox" id="t2-tutorial-3">
-                                        <label for="t2-tutorial-3">Discussion Forum<span>0/1 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-
-                                    <li>
-                                        <input type="checkbox" id="t2-tutorial-4">
-                                        <label for="t2-tutorial-4">Assessment<span>0/1 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li>
-                            <input type="checkbox" id="topic-3">
-                            <label for="topic-3">Unit 02 : Mathematical Logic<span>Completed 1/28 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                            
-                            <div class="tutorials">
-                                <button type="button" value="Launch Unit">Launch Unit</button>
-                                <ul>    
-                                    <li>
-                                        <input type="checkbox" id="t3-tutorial-1">
-                                        <label for="t3-tutorial-1">e - Tutorial<span>0/36 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-
-                                    <li>
-                                        <input type="checkbox" id="t3-tutorial-2">
-                                        <label for="t3-tutorial-2">e - Content<span>0/2 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-
-                                    <li>
-                                        <input type="checkbox" id="t3-tutorial-3">
-                                        <label for="t3-tutorial-3">Discussion Forum<span>0/1 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-
-                                    <li>
-                                        <input type="checkbox" id="t3-tutorial-4">
-                                        <label for="t3-tutorial-4">Assessment<span>0/1 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li>
-                            <input type="checkbox" id="topic-4">
-                            <label for="topic-4">Unit 03 : Modern Algebra<span>Completed 0/19 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                            
-                            <div class="tutorials">
-                                <button type="button" value="Launch Unit">Launch Unit</button>
-                                <ul>    
-                                    <li>
-                                        <input type="checkbox" id="t4-tutorial-1">
-                                        <label for="t4-tutorial-1">e - Tutorial<span>0/36 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-
-                                    <li>
-                                        <input type="checkbox" id="t4-tutorial-2">
-                                        <label for="t4-tutorial-2">e - Content<span>0/2 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-
-                                    <li>
-                                        <input type="checkbox" id="t4-tutorial-3">
-                                        <label for="t4-tutorial-3">Discussion Forum<span>0/1 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-
-                                    <li>
-                                        <input type="checkbox" id="t4-tutorial-4">
-                                        <label for="t4-tutorial-4">Assessment<span>0/1 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li>
-                            <input type="checkbox" id="topic-5">
-                            <label for="topic-5">Unit 04 : Trignometry<span>Completed 1/28 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                            
-                            <div class="tutorials">
-                                <button type="button" value="Launch Unit">Launch Unit</button>
-                                <ul>    
-                                    <li>
-                                        <input type="checkbox" id="t5-tutorial-1">
-                                        <label for="t5-tutorial-1">e - Tutorial<span>0/36 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-
-                                    <li>
-                                        <input type="checkbox" id="t5-tutorial-2">
-                                        <label for="t5-tutorial-2">e - Content<span>0/2 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-
-                                    <li>
-                                        <input type="checkbox" id="t5-tutorial-3">
-                                        <label for="t5-tutorial-3">Discussion Forum<span>0/1 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-
-                                    <li>
-                                        <input type="checkbox" id="t5-tutorial-4">
-                                        <label for="t5-tutorial-4">Assessment<span>0/1 &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                    {% endfor %}
                     </ul>
                 </div>
             </div>
         </section>
     </div>
 
-    <script src="js/app.js"></script>
+    <script src="{% static 'styles/student/app.js' %}"></script>
 </body>
 
 </html>

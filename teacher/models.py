@@ -41,15 +41,48 @@ class Unit(models.Model):
         self.slug = slugify(self.title + self.course.title)
         super(Unit, self).save(*args, **kwargs)
 
+    @property
+    def lessons_completed(self):
+        lesson_ids = self.lesson_set.values_list('id', flat=True)
+        completed_lesson_count = LessonProgress.objects.filter(
+            enrollment__student=self.request.user,
+            lesson__in=lesson_ids,
+            is_completed=True
+        ).count()
+        return completed_lesson_count
+    
+    @property
+    def total_lessons(self):
+        return self.lesson_set.count()
+    
+    @property
+    def completion_percentage(self):
+        if self.total_lessons > 0:
+            return (self.lessons_completed / self.total_lessons) * 100
+        return 0
+
 
 class Lesson(models.Model):
-    lesson_number = models.IntegerField(null=False, default=1)
+    lesson_number = models.IntegerField(null=True, blank=True)
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField()
     is_released = models.BooleanField(default = False)
     def __str__(self):
         return self.title
+    
+    def save(self, *args, **kwargs):
+        if not self.lesson_number:
+            # Get the maximum lesson_number for the current unit
+            max_lesson_number = Lesson.objects.filter(unit=self.unit).aggregate(
+                max_lesson_number=models.Max('lesson_number')
+            )['max_lesson_number']
+            if max_lesson_number is not None:
+                self.lesson_number = max_lesson_number + 1
+            else:
+                self.lesson_number = 1
+
+        super().save(*args, **kwargs)
 
 class LessonFile(models.Model):
     lesson = models.ForeignKey(Lesson , on_delete = models.CASCADE,related_name='files')

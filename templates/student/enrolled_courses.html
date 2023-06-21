@@ -36,9 +36,8 @@
                     <img
                         src="{{ enrollment.course.image.url }}">
                     <div class="details">
-                        <a href="course_detail.html"
-                            target="_blank">{{ enrollment.course.title }}</a>
-
+                        <a href="{% url 'student:course-detail' enrollment.course.id %}"
+                        >{{ enrollment.course.title }}</a>
                         <p>{{ enrollment.course.created_at }}</p>
                         <p class="spec">{{ enrollment.course.course_level }}</p>
 
