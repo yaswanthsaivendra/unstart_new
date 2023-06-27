@@ -1,0 +1,68 @@
+
+{% extends 'teacher/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block course_sidebar %}
+<div class="course-details panel-item">
+    <div class="panel-heading">
+        <h3>Course Edit</h3>
+        <img src="{% static 'rsc/icons8-chevron-down-30.png'%}" alt="" class="down" id="arrow">
+    </div>
+    <div class="details">
+
+        <div class="detail announcements">
+            <img src="{% static 'rsc/icons8-request-service-48.png'%}" alt="" class="item">
+            <p class="name"><a href="{% url 'teacher:course-detail' course.id %}">Course Detail</a></p>
+        </div>
+
+        <div class="detail announcements">
+            <img src="{% static 'rsc/icons8-commercial-48.png'%}" alt="" class="item">
+            <p class="name"><a href="#">Announcements</a></p>
+        </div>
+        <div class="detail timetable">
+            <img src="{% static 'rsc/icons8-calendar-48.png'%}" alt="" class="item">
+            <p class="name"><a href="#">Timetable</a></p>
+        </div>
+        <div class="detail syllabus">
+            <img src="{% static 'rsc/icons8-google-classroom-48.png'%}" alt="" class="item">
+            <p class="name"><a href="#">Syllabus</a></p>
+        </div>
+        <div class="detail assignment">
+            <img src="{% static 'rsc/icons8-audit-48.png'%}" alt="" class="item">
+            <p class="name"><a href="#">Assignment</a></p>
+        </div>
+        <div class="detail caesum">
+            <img src="{% static 'rsc/icons8-read-online-48.png'%}" alt="" class="item">
+            <p class="name"><a href="#">Caesum</a></p>
+        </div>
+        <div class="detail exams">
+            <img src="{% static 'rsc/icons8-hand-with-pen-48.png'%}" alt="" class="item">
+            <p class="name"><a href="#">Exams</a></p>
+        </div>
+        <div class="detail quiz">
+            <img src="{% static 'rsc/icons8-help-48.png'%}" alt="" class="item">
+            <p class="name"><a href="#">Quiz</a></p>
+        </div>
+        <div class="detail units">
+            <img src="{% static 'rsc/icons8-unit-48.png'%}" alt="" class="item">
+            <p class="name"><a href="{% url 'teacher:unit-list' course.pk %}">Units</a></p>
+        </div>
+    </div>
+</div>
+{% endblock course_sidebar %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

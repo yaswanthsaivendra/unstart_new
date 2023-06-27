@@ -172,7 +172,8 @@ class UnitListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         course_id = self.kwargs['course_pk']
-        context['course_id'] = course_id
+        course = Course.objects.filter(id=course_id).first()
+        context['course'] = course
         draft_units, released_units = self.get_queryset()
         context['released_units'] = released_units
         context['draft_units'] = draft_units
@@ -184,7 +185,7 @@ class UnitReleaseView(LoginRequiredMixin, View):
         unit = Unit.objects.get(pk=unit_id)
         unit.is_released = not unit.is_released
         unit.save()
-        return redirect('teacher:lesson-list', unit_pk=unit_id)
+        return redirect('teacher:lesson-list', course_id=unit.course.id ,unit_pk=unit_id)
 
 
 # Lesson Views
@@ -194,7 +195,8 @@ class LessonCreateView(LoginRequiredMixin, CreateView):
     template_name = 'teacher/lessons.html'
 
     def get_success_url(self):
-        return reverse_lazy('teacher:lesson-list', kwargs={'unit_pk': self.kwargs['unit_pk']})
+        unit = Unit.objects.filter(id=self.kwargs['unit_pk']).first()
+        return reverse_lazy('teacher:lesson-list', kwargs={'course_id': unit.course.pk, 'unit_pk': self.kwargs['unit_pk']})
 
     def get_initial(self):
         initial = super().get_initial()
@@ -214,13 +216,20 @@ class LessonDetailView(LoginRequiredMixin, DetailView):
     template_name = 'teacher/lesson_detail.html'
     context_object_name = 'lesson'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        course_id = self.kwargs['course_id']
+        course = Course.objects.filter(id=course_id).first()
+        context['course'] = course
+        return context
+
 
 class LessonReleaseView(LoginRequiredMixin, View):
     def post(self, request, lesson_id):
         lesson = Lesson.objects.get(pk=lesson_id)
         lesson.is_released = not lesson.is_released
         lesson.save()
-        return redirect('teacher:lesson-detail', pk=lesson_id)
+        return redirect('teacher:lesson-detail', course_id=lesson.unit.course.id ,pk=lesson_id)
 
 
 class LessonUpdateView(LoginRequiredMixin, UpdateView):
@@ -246,7 +255,8 @@ class LessonDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_success_url(self):
         unit_id = self.kwargs['unit_id']
-        return reverse_lazy('teacher:lesson-list', kwargs={'unit_pk': unit_id})
+        unit = Unit.objects.filter(id=unit_id).first()
+        return reverse_lazy('teacher:lesson-list', kwargs={'course_id': unit.course.id, 'unit_pk': unit_id})
 
     def get_object(self, queryset=None):
         queryset = self.get_queryset()
@@ -274,7 +284,10 @@ class LessonListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         unit_id = self.kwargs['unit_pk']
+        course_id = self.kwargs['course_id']
         unit = Unit.objects.filter(id = unit_id).first()
+        course = Course.objects.filter(id=course_id).first()
+        context['course'] = course
         context['unit'] = unit
         draft_lessons, released_lessons = self.get_queryset()
         context['released_lessons'] = released_lessons

@@ -77,10 +77,10 @@ urlpatterns = [
 
     # Lesson URLs
     path('units/<int:unit_pk>/lessons/create/', LessonCreateView.as_view(), name='lesson-create'),
-    path('lessons/<int:pk>/', LessonDetailView.as_view(), name='lesson-detail'),
+    path('courses/<int:course_id>/lessons/<int:pk>/', LessonDetailView.as_view(), name='lesson-detail'),
     path('lessons/<int:pk>/update/', LessonUpdateView.as_view(), name='lesson-update'),
     path('course/<int:unit_id>/lessons/<int:pk>/delete/', LessonDeleteView.as_view(), name='lesson-delete'),
-    path('units/<int:unit_pk>/lessons/', LessonListView.as_view(), name='lesson-list'),
+    path('courses/<int:course_id>/units/<int:unit_pk>/lessons/', LessonListView.as_view(), name='lesson-list'),
     path('lesson/<int:lesson_id>/release/', LessonReleaseView.as_view(), name='lesson-release'),
 
     # LessonFile URLs

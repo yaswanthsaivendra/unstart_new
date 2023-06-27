@@ -91,63 +91,20 @@
             </div>
             <div class="dashboard panel-item">
                 <img src="{% static 'rsc/icons8-dashboard-layout-48.png'%}" alt="" class="item">
-                <p class="name"><a href="">Dashboard</a></p>
+                <p class="name"><a href="{% url 'teacher:home' %}">Dashboard</a></p>
             </div>
             <div class="courses panel-item">
                 <img src="{% static 'rsc/icons8-e-learning-48.png'%}" alt="" class="item">
-                <p class="name"><a href="index.html">Courses</a></p>
+                <p class="name"><a href="{% url 'teacher:course-list' %}">Courses</a></p>
             </div>
 
             <div class="groups panel-item">
                 <img src="{% static 'rsc/icons8-user-groups-48.png'%}" alt="" class="item">
-                <p class="name"><a href="groups.html">Groups</a></p>
+                <p class="name"><a href="{% url 'teacher:group-list' %}">Groups</a></p>
             </div>
-            <div class="course-details panel-item">
-                <div class="panel-heading">
-                    <h3>Course Edit</h3>
-                    <img src="{% static 'rsc/icons8-chevron-down-30.png'%}" alt="" class="down" id="arrow">
-                </div>
-                <div class="details">
 
-                    <div class="detail announcements">
-                        <img src="{% static 'rsc/icons8-request-service-48.png'%}" alt="" class="item">
-                        <p class="name"><a href="">Course Detail</a></p>
-                    </div>
-
-                    <div class="detail announcements">
-                        <img src="{% static 'rsc/icons8-commercial-48.png'%}" alt="" class="item">
-                        <p class="name"><a href="">Announcements</a></p>
-                    </div>
-                    <div class="detail timetable">
-                        <img src="{% static 'rsc/icons8-calendar-48.png'%}" alt="" class="item">
-                        <p class="name"><a href="timetable.html">Timetable</a></p>
-                    </div>
-                    <div class="detail syllabus">
-                        <img src="{% static 'rsc/icons8-google-classroom-48.png'%}" alt="" class="item">
-                        <p class="name"><a href="syllabus.html">Syllabus</a></p>
-                    </div>
-                    <div class="detail assignment">
-                        <img src="{% static 'rsc/icons8-audit-48.png'%}" alt="" class="item">
-                        <p class="name"><a href="assignment.html">Assignment</a></p>
-                    </div>
-                    <div class="detail caesum">
-                        <img src="{% static 'rsc/icons8-read-online-48.png'%}" alt="" class="item">
-                        <p class="name"><a href="caesum.html">Caesum</a></p>
-                    </div>
-                    <div class="detail exams">
-                        <img src="{% static 'rsc/icons8-hand-with-pen-48.png'%}" alt="" class="item">
-                        <p class="name"><a href="exams.html">Exams</a></p>
-                    </div>
-                    <div class="detail quiz">
-                        <img src="{% static 'rsc/icons8-help-48.png'%}" alt="" class="item">
-                        <p class="name"><a href="quiz.html">Quiz</a></p>
-                    </div>
-                    <div class="detail units">
-                        <img src="{% static 'rsc/icons8-unit-48.png'%}" alt="" class="item">
-                        <p class="name"><a href="units.html">Units</a></p>
-                    </div>
-                </div>
-            </div>
+            {% block course_sidebar %}
+            {% endblock course_sidebar %}
             <div class="panel-item support">
                 <button>
                     <img src="{% static 'rsc/icons8-support-60.png'%}" alt="">

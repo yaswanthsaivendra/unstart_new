@@ -1,4 +1,4 @@
-{% extends 'teacher/base.html' %}
+{% extends 'teacher/course_base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% block title %}units{% endblock title %}
@@ -15,7 +15,7 @@
                 <h3>managesnap</h3>
             </div>
         </div>
-        <form method="POST" action="{% url 'teacher:unit-create' course_id %}" enctype="multipart/form-data">
+        <form method="POST" action="{% url 'teacher:unit-create' course.id %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="right">
                 <div class="right-cont">
@@ -89,9 +89,9 @@
                             </div> -->
                         </div>
                         <div class="ann-buttons">
-                            <button class="view"><a href="{% url 'teacher:lesson-list' unit.pk %}">View</a></button>
+                            <button class="view"><a href="{% url 'teacher:lesson-list' course.id unit.pk %}">View</a></button>
 
-                            <form method="POST" action="{% url 'teacher:unit-delete' course_id=course_id pk=unit.pk %}">
+                            <form method="POST" action="{% url 'teacher:unit-delete' course_id=course.id pk=unit.pk %}">
                                 {% csrf_token %}
                                 <button type="submit" class="edit">Delete</button>
                             </form>
@@ -121,8 +121,8 @@
                             </div> -->
                         </div>
                         <div class="ann-buttons">
-                            <button class="view"><a href="{% url 'teacher:lesson-list' unit.pk %}">View</a></button>
-                            <form method="POST" action="{% url 'teacher:unit-delete' course_id=course_id pk=unit.pk %}">
+                            <button class="view"><a href="{% url 'teacher:lesson-list' course.id unit.pk %}">View</a></button>
+                            <form method="POST" action="{% url 'teacher:unit-delete' course_id=course.id pk=unit.pk %}">
                                 {% csrf_token %}
                                 <button type="submit" class="edit">Delete</button>
                             </form>
