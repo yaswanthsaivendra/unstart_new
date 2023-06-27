@@ -326,7 +326,7 @@ def edit_profile_details(request, application_id):
         user_profile.profile_pic = profile_pic
         user_profile.save(update_fields=['profile_pic'])
         return redirect('access-pending-view')
-        
+
 
 
 
@@ -349,7 +349,8 @@ def access_pending_view(request):
 
 
 
-
+def events(request):
+    return render(request,'student/events_page.html')
 
 
 
