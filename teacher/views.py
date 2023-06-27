@@ -60,6 +60,13 @@ class CourseDetailView(LoginRequiredMixin, DetailView):
     template_name = 'teacher/course.html'
     context_object_name = 'course'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        course = self.get_object()
+        has_released_lessons = course.unit_set.filter(lesson__is_released=True).exists()
+        context['has_released_lessons'] = has_released_lessons
+        return context
+
 
 class CourseUpdateView(LoginRequiredMixin, UpdateView):
     model = Course
@@ -292,6 +299,8 @@ class LessonListView(LoginRequiredMixin, ListView):
         draft_lessons, released_lessons = self.get_queryset()
         context['released_lessons'] = released_lessons
         context['draft_lessons'] = draft_lessons
+        has_released_lessons = unit.lesson_set.filter(is_released=True).exists()
+        context['has_released_lessons'] = has_released_lessons
         return context
 
 

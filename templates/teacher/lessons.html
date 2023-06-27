@@ -65,6 +65,7 @@
                     <button class="add-btn"><p>Edit</p></button>
                 </div>
                 <div>
+                    {% if has_released_lessons %}
                     <form method="POST" action="{% url 'teacher:unit-release' unit.id %}">
                         {% csrf_token %}
                     {% if unit.is_released %}
@@ -73,6 +74,7 @@
                     <button type="submit" class="add-btn"><p>Release</p></button>
                     {% endif %}
                     </form>
+                    {% endif %}
                 </div>
                 <div class="tabs ann-item">
                     <div class="tab rel current">

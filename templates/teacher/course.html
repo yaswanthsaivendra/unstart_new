@@ -88,14 +88,16 @@
                                     <p>{{ course.course_level }}</p>
                                 </div>
                                 <div class="preview">
-                                    <form method="POST" action="{% url 'teacher:course-release' course.id %}">
-                                        {% csrf_token %}
+                                {% if has_released_lessons %}
+                                <form method="POST" action="{% url 'teacher:course-release' course.id %}">
+                                    {% csrf_token %}
                                     {% if course.is_released %}
                                     <button type="submit" class="preview-btn">Draft</button>
                                     {% else %}
                                     <button type="submit" class="preview-btn">Release</button>
                                     {% endif %}
                                 </form>
+                                {% endif %}
                                 </div>
                                 <div class="preview">
                                 <button class="filter-btn" id="add-course-btn">edit</button>
