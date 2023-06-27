@@ -120,8 +120,8 @@ def application_details(request, pk, status):
 
             elif status == 's':
                 student_application = Student_profile_application.objects.filter(id=pk).first()
-                student_application.is_verified = True
-                student_application.save(update_fields=['is_verified'])
+                student_application.is_rejected = True
+                student_application.save(update_fields=['is_rejected'])
 
             return redirect(reverse('manager:application-details', kwargs={'pk': pk, 'status': status}))
 
