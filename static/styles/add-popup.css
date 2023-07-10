@@ -1,5 +1,5 @@
 /* Add popup */
-.add-popup 
+.add-popup
 {
     position: fixed;
     width: 800px;
@@ -15,19 +15,19 @@
 {
     display: flex;
 }
-.right, .left 
+.right, .left
 {
     height: 400px;
 }
-.left 
+.left
 {
     width: 300px;
 }
-.right 
+.right
 {
     width: 500px;
 }
-.right-cont 
+.right-cont
 {
     display: flex;
     flex-direction: column;
@@ -75,11 +75,11 @@
     color: white;
     cursor: pointer;
 }
-.ac-btn button:hover 
+.ac-btn button:hover
 {
     background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(162, 88, 253) 0%, rgba(116,182,247,1) 90% );
 }
-.a 
+.a
 {
     background-image: linear-gradient( 73.1deg,  rgba(34,126,34,1) 8%, rgba(99,162,17,1) 86.9% );
 }
@@ -87,7 +87,7 @@
 {
     background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(247,87,0,1) 0%, rgba(249,0,0,1) 90.1% );
 }
-.cancel-icon 
+.cancel-icon
 {
     width: 18px;
     height: 18px;
@@ -104,7 +104,7 @@
     justify-content: center;
     align-items: center;
 }
-.left-cont 
+.left-cont
 {
     display: flex;
     flex-direction: column;
@@ -125,7 +125,7 @@
     height: 50px;
 }
 /* Edit popup */
-.edit-popup 
+.edit-popup
 {
     position: fixed;
     width: 800px;
@@ -137,7 +137,7 @@
     z-index: 4;
     display: none;
 }
-.edit-popup .popup .right .right-cont .right-item 
+.edit-popup .popup .right .right-cont .right-item
 {
     padding: 5px;
 }
@@ -153,7 +153,7 @@ textarea:focus
     outline: none;
 }
 /* Add Course */
-.add-course 
+.add-course
 {
     position: fixed;
     width: 800px;
@@ -172,11 +172,11 @@ textarea:focus
     padding: 7px;
     font-size: 14px;
 }
-.add-course .popup .right .right-cont .right-item h3 
+.add-course .popup .right .right-cont .right-item h3
 {
     font-size: 18px;
 }
-.upload 
+.upload
 {
     background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgb(162, 88, 253) 0%, rgba(116,182,247,1) 90% );
     width: 100%;
@@ -191,16 +191,16 @@ textarea:focus
         margin-left: -300px;
         margin-top: -150px;
     }
-    .right, .left 
+    .right, .left
     {
         height: 300px;
         width: 300px;
     }
-    .left 
+    .left
     {
         width: 200px;
     }
-    .right 
+    .right
     {
         width: 400px;
     }
@@ -208,11 +208,11 @@ textarea:focus
     {
         width: 300px;
     }
-    .second 
+    .second
     {
         height: 160px;
     }
-    
+
 }
 @media(max-width: 650px)
 {
@@ -223,15 +223,15 @@ textarea:focus
         margin-left: -150px;
         margin-top: -150px;
     }
-    .right, .left 
+    .right, .left
     {
         height: 300px;
     }
-    .left 
+    .left
     {
         width: 120px;
     }
-    .right 
+    .right
     {
         width: 180px;
     }
@@ -240,7 +240,7 @@ textarea:focus
         width: 140px;
         font-size: 12px;
     }
-    .second 
+    .second
     {
         height: 150px;
     }
@@ -254,17 +254,17 @@ textarea:focus
         height: 20px;
     }
     .ac-btn button, .upload
-    {   
+    {
         padding: 4px 8px;
         margin-right: 5px;
         text-align: center;
         font-size: 12px;
     }
-    .right-cont h3 
+    .right-cont h3
     {
         font-size: 14px;
     }
-    .cancel-icon 
+    .cancel-icon
     {
         width: 14px;
         height: 14px;

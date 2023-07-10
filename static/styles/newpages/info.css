@@ -1,0 +1,53 @@
+#info{
+    width: 100%;
+    height: auto;
+    background-color:#04007e;
+    max-width: 1500px;
+    margin: auto;
+    padding: 20px;
+}
+
+.flex{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+.flex-card{
+    flex-basis: 100%;
+    height: auto;
+}
+.flex-card img{
+    width: 100%;
+    height: 250px;
+}
+
+.flex-text h1{
+    font-size: 1.5rem;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.flex-text p{
+    font-size: 1rem;
+    color: white;
+}
+
+
+@media (max-width:920px){
+    .flex{
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+
+    }
+    .flex-card{
+        width: 400px;
+    }
+}
+@media(max-width:460px){
+    .flex-card{
+        width: 80%;
+    }
+}

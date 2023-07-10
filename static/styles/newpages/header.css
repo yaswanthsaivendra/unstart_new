@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Poppins&display=swap');
+*{
+    font-family: Poppins;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar{
+    padding:0 20px;
+    position: fixed;
+    z-index: 9999999;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: 0.3 all ease-in;
+    background-color: white;
+}
+
+body{
+    position: relative;
+}
+#navbar .links{
+
+    padding: 10px;
+    padding-top: 50px;
+}
+
+#navbar .links a{
+    text-decoration: none;
+    display: block;
+    font-size: 1.1rem;
+    color: black;
+    margin-bottom: 20px;
+}
+
+#navbar nav{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+#navbar img{
+    width: 200px;
+    object-fit: cover;
+}
+
+#navbar #close{
+    color: #5CABDC;
+    background-color:transparent;
+    border: none;
+    font-size: 2rem;
+
+}
+
+header{
+    position:sticky;
+    max-width: 1500px;
+    margin: auto;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    height: 60px;
+    background:linear-gradient(120deg,#1c51bb,#020204);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+header img{
+    width: 180px;
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+    margin: 0 20px;
+}
+
+nav .btn-signup{
+    padding: 10px 30px;
+    background-color:white;
+    border: none;
+    border-radius: 5px;
+    color: #6C6C73;
+}
+
+.hamburger{
+    display: none;
+    padding: 10px 15px;
+    background-color:white;
+    border: none;
+    border-radius: 5px;
+    color:gray;
+}
+
+
+@media (max-width:1020px){
+    nav{
+        display: none;
+    }
+    .hamburger{
+        display: block;
+    }
+}
+

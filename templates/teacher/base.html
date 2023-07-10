@@ -1,5 +1,6 @@
 {% load static %}
 {% load crispy_forms_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'styles/announcements-style.css'%}">
-    <link rel="stylesheet" href="{% static 'styles/style.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/style2.css'%}">
     <link rel="icon" type="image/x-icon" href="{% static 'rsc/icons8-project-management-48.png' %}">
     <title>{% block title %}{% endblock title %}</title>
         {% block css %}
@@ -136,7 +137,7 @@
 
     {% block script %}
     {% endblock script %}
-    <script src="{% static 'scripts/script.js'%}"></script>
-    <script src="{% static 'scripts/announcements-script.js'%}"></script>
 </body>
+<script src="{% static 'scripts/script.js'%}"></script>
+<script src="{% static 'scripts/announcements-script.js'%}"></script>
 </html>

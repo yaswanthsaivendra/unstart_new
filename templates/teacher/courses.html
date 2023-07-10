@@ -1,10 +1,12 @@
 {% extends 'teacher/base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block title %}coursecreate{% endblock title %}
+{% block title %}Allcourses{% endblock title %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'styles/courses-style.css'%}">
 <link rel="stylesheet" href="{% static 'styles/add-popup.css'%}">
+<script src="{% static 'scripts/script.js'%}"></script>
+<script src="{% static 'scripts/announcements-script.js'%}"></script>
 {% endblock css %}
 {% block body %}
 <div class="add-course">
@@ -96,7 +98,7 @@
                         </div>
                     </div>
                     {% empty %}
-                    No courses 
+                    No courses
                     {% endfor %}
                 </div>
             </div>
@@ -104,9 +106,15 @@
     </div>
 
     <script src="{% static 'scripts/add-course.js' %}"></script>
-    
+    <script src="{% static 'scripts/script.js'%}"></script>
+    <script src="{% static 'scripts/announcements-script.js'%}"></script>
     {% endblock body %}
 
 
     {% block script %}
+    <script src="{% static 'scripts/script.js'%}"></script>
+    <script src="{% static 'scripts/announcements-script.js'%}"></script>
     {% endblock script %}
+
+    <script src="{% static 'scripts/script.js'%}"></script>
+    <script src="{% static 'scripts/announcements-script.js'%}"></script>

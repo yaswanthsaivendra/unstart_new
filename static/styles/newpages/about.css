@@ -1,0 +1,299 @@
+#about{
+    width: 100%;
+    height: auto;
+    background-color: white;
+}
+
+.block-1{
+    width: 100%;
+    padding: 20px;
+    padding-top: 100px;
+    background-color:#043C7C;
+}
+
+.block-1 h1{
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+}
+.block-1 p{
+    font-size: 1.2rem;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    color: white;
+}
+
+.block-2{
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    padding-top: 120px;
+}
+
+.block-2 h1{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.block-2 p{
+    font-size: 1rem;
+    width: 50%;
+    margin: 0 auto;
+
+}
+
+.block-3{
+    width: 100%;
+    padding: 20px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: #252525;
+}
+.info{
+    width: 50%;
+    margin: 0 auto;
+}
+
+#icon{
+    width: 100px;
+    height: 100px;
+    border: none;
+    border-radius: 50%;
+    background-color: #5CABDC;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.info p{
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.info #b3-text{
+    font-size: 1rem;
+    color: #5CABDC;
+    display: inline-block;
+}
+
+.b3-flex{
+    padding-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+
+.b3-flex-card{
+    padding:20px;
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.b3-flex-card div{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #5CABDC;
+}
+
+.b3-content{
+    padding-top: 180px;
+    text-align: center;
+}
+
+.b3-content h1{
+    font-size: 2rem;
+    color: #5CABDC;
+    margin-bottom: 20px;
+}
+
+.b3-content p{
+    font-size: 1rem;
+    color: white;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.block-4{
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    padding-top: 100px;
+    height:auto;
+    padding-bottom: 80px;
+    text-align: center;
+}
+
+.block-4 h1{
+    font-size: 2rem;
+    color: black;
+    margin-bottom: 20px;
+
+}
+
+.block-4 .b4-btn{
+    width: 200px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5CABDC;
+    color: white;
+    display:block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.block-4 a{
+    color: gray;
+}
+
+.block-5{
+    width: 100%;
+    padding: 20px;
+    padding-top: 100px;
+    background-color: #043C7C;
+    padding-bottom: 100px;
+}
+
+.block-5 .b5-flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.b5-col-1{
+    flex-basis: 50%;
+}
+
+.b5-flex span{
+    display: block;
+    color: #5CABDC;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.b5-flex h1{
+    margin-bottom: 20px;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.b5-flex p{
+    font-size: 1.1rem;
+    color: white;
+}
+
+.b5-col-2{
+    width: 500px;
+    background-color: white;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+}
+
+.b5-col-2 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.block-6{
+    width: 100%;
+    padding:20px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.block-6 h1{
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+
+}
+
+.b6-flex{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.b6-flex .col-1-t1{
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.b6-flex p{
+    font-style: italic;
+}
+
+@media(max-width:553px){
+    .block-1 h1{
+        font-size: 1.5rem;
+    }
+    .block-2 h1{
+        font-size: 1.5rem;
+    }
+    .b3-content h1{
+        font-size: 1.5rem;
+    }
+    .b6-flex{
+        text-align: center;
+        display: block;
+    }
+    .b6-col-1{
+        margin-bottom: 20px;
+    }
+    .b5-col-2{
+        width: 100%;
+    }
+    .info{
+        width: 80%;
+    }
+}
+
+@media(max-width:1063px){
+    .b5-flex{
+        flex-direction: column-reverse;
+        gap: 40px;
+    }
+}
+
+@media(max-width:740px){
+    .block-1 p{
+        width: 80%;
+        font-size: 1rem;
+    }
+    .block-2 p{
+        width: 80%;
+        font-size: 1rem;
+    }
+    .info p{
+        font-size: 1.1rem;
+        width: 100%;
+    }
+    .b3-flex{
+        flex-direction: column;
+        align-items: center;
+    }
+    .b3-content p{
+        width: 80%;
+    }
+    .b5-flex{
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 40px;
+    }
+    .info{
+        width: 80%;
+    }
+}

@@ -48,12 +48,9 @@ a
 {
     padding: 10px;
 }
-.side-panel p{
-    margin-bottom: 0 !important;
-}
 .panel-item:not(.course-details), .detail, .panel-heading
 {
-    padding: 15px;
+    padding: 10px;
     display: flex;
     align-items: center;
 }
@@ -90,7 +87,6 @@ a
     color: #ffc824;
     transition: 0.4s;
 }
-
 .support button
 {
     display: flex;
@@ -404,4 +400,3 @@ a
         display: none;
     }
 }
-
