@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 {% block title %}units{% endblock title %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'styles/courses-style.css'%}">
+<link rel="stylesheet" href="{% static 'styles/announcements-style.css'%}">
 <link rel="stylesheet" href="{% static 'styles/add-popup.css'%}">
 {% endblock css %}
 {% block body %}
@@ -59,11 +59,12 @@
                         <div class="add as-item">
                             <button class="add-btn" id="add-course-btn"><p>Add</p></button>
                         </div>
+                        <div>
+                            <button class="add-btn"><p>Edit</p></button>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <button class="add-btn"><p>Edit</p></button>
-                </div>
+
                 <div>
                     {% if has_released_lessons %}
                     <form method="POST" action="{% url 'teacher:unit-release' unit.id %}">
@@ -150,7 +151,8 @@
             </div>
         </div>
     </div>
-
     <script src="{% static 'scripts/add-course.js' %}"></script>
+    <script src="{% static 'scripts/announcements-script.js' %}"></script>
+    <script src="{% static 'scripts/coursearrow.js' %}"></script>
 
     {% endblock body %}

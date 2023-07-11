@@ -7,11 +7,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'styles/announcements-style.css'%}">
     <link rel="stylesheet" href="{% static 'styles/style2.css'%}">
     <link rel="icon" type="image/x-icon" href="{% static 'rsc/icons8-project-management-48.png' %}">
     <title>{% block title %}{% endblock title %}</title>
         {% block css %}
+            {% if not exclude_parent_css %}
+                <link rel="-heet" href="{% static 'styles/announcements-style.css'%}">
+            {% endif %}
         {% endblock css %}
         {% block google_tags %}{% endblock google_tags %}
 </head>
@@ -81,6 +83,25 @@
             </div>
         </div>
     </div>
+
+    <div class="navigation">
+        <div class="navi">
+            <div class="nav-logo">
+                <img src="{% static 'rsc/icons8-menu-50.png'%}" alt="" id="menu" class="nav-logo-item">
+                <img src="{% static 'rsc/icons8-project-management-48.png'%}" alt="" class="nav-logo-item nav-logo-image">
+                <p class="nav-logo-item nav-logo-text">managesnap</p>
+            </div>
+            <div class="nav-rest">
+                <div class="nav-item">
+                    <img src="{% static 'rsc/icons8-notification-48 (1).png'%}" alt="" class="noti-icon">
+                </div>
+                <div class="profile-image nav-item">
+                    <img src="{% static 'rsc/kristina-v-hYdikKrex4U-unsplash.jpg'%}" alt="" class="image">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="side-panel-container">
         <div class="side-panel">
             <div class="panel-item logo-item">
@@ -114,30 +135,14 @@
             </div>
         </div>
     </div>
-    <div class="navigation">
-        <div class="navi">
-            <div class="nav-logo">
-                <img src="{% static 'rsc/icons8-menu-50.png'%}" alt="" id="menu" class="nav-logo-item">
-                <img src="{% static 'rsc/icons8-project-management-48.png'%}" alt="" class="nav-logo-item nav-logo-image">
-                <p class="nav-logo-item nav-logo-text">managesnap</p>
-            </div>
-            <div class="nav-rest">
-                <div class="nav-item">
-                    <img src="{% static 'rsc/icons8-notification-48 (1).png'%}" alt="" class="noti-icon">
-                </div>
-                <div class="profile-image nav-item">
-                    <img src="{% static 'rsc/kristina-v-hYdikKrex4U-unsplash.jpg'%}" alt="" class="image">
-                </div>
-            </div>
-        </div>
-    </div>
+
     {% block body %}
     {% endblock body %}
 
 
     {% block script %}
+    <script src="{% static 'scripts/script.js'%}"></script>
     {% endblock script %}
+
 </body>
-<script src="{% static 'scripts/script.js'%}"></script>
-<script src="{% static 'scripts/announcements-script.js'%}"></script>
 </html>

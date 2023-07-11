@@ -3,7 +3,7 @@
 
 {% block content %}
         <div class="view-container">
-            
+
             <div class="view">
                 <div style="display:flex">
                     {% comment %} <a href={% url 'usercourse' %}><button class="btn btn-link ">All Courses</button></a>
@@ -27,9 +27,9 @@
                     </div> {% endcomment %}
                     {% if lesson.released == False %}
                     <div class="release-edit heading-item">
-                        
+
                         <div class="release">
-                            <a href="{% url 'release-topic' 'lesson' lesson.id courseid %}"> <button class="release-btn">   
+                            <a href="{% url 'release-topic' 'lesson' lesson.id courseid %}"> <button class="release-btn">
                                 <img src="{% static "rsc/icons8-telegram-app-30.png" %}" alt="" class="icon">
                                 <p>Release</p>
                             </button></a>
@@ -125,13 +125,13 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                
+
                                                 </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        
+
+
 
                                     {% endfor %}
                             {% endif %}
@@ -166,7 +166,7 @@
                                 {% else %}
                                     <input type="text" class="form-control" id="info" name="info" placeholder="Add Info if any" >
                                 {% endif %}
-                                
+
                             </div>
                             <input type="hidden" value={{topic.id}} name="assignmentid" id="assignmentid">
                             <input type="hidden" value='False' name="isassignment" id="isassignment">
@@ -175,12 +175,12 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            
+
                     </div>
                     </div>
                 </div>
             </div>
-          
+
 
 <!-- add link modal  -->
             <div class="modal fade" id="addLink" tabindex="-1" aria-labelledby="addLink" aria-hidden="true">
@@ -241,8 +241,9 @@
                     </div>
                 </div>
             </div>
-        
 
+
+            
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -251,7 +252,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-    crossorigin="anonymous"></script> 
+    crossorigin="anonymous"></script>
     <script>
         var donebtn = document.querySelectorAll(".doneBtn")
         donebtn.forEach(function(btn) {

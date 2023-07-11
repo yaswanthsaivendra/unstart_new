@@ -3,14 +3,8 @@
 {% load crispy_forms_tags %}
 {% block title %}coursedetail{% endblock title %}
 {% block css %}
-<link rel="stylesheet" href="{% static "styles/view-style.css"%}">
-<link rel="stylesheet" href="{% static "styles/style.css"%}">
-<link rel="stylesheet" href="{% static "styles/announcements-style.css"%}">
-<link rel="stylesheet" href="{% static "styles/groups-style.css" %}">
 <link rel="stylesheet" href="{% static "styles/courses-style.css"%}">
 <link rel="stylesheet" href="{% static "styles/add-popup.css"%}">
-<link rel="stylesheet" href="{% static "styles/profile-style.css"%}">
-<link rel="stylesheet" href="{% static "css/w3.css"%}">
 {% endblock css %}
 {% block body %}
 <div class="add-course">
@@ -131,19 +125,5 @@
 
     {% block script %}
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-    crossorigin="anonymous"></script>
-<script src="{% static "scripts/script.js"%}"></script>
-<script src="{% static "scripts/add-course.js"%}"></script>
-<script src="{% static "scripts/groups-script.js"%}"></script>
-<script src="{% static "scripts/profile-script.js"%}"></script>
-<script src="{% static "scripts/announcements-script.js"%}"></script>
-    <script src="{% static '{% static ' %}'scripts/add-course.js'%}"></script>
+<script src="{% static "scripts/coursearrow.js"%}"></script>
     {% endblock script %}
