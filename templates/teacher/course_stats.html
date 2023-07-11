@@ -1,24 +1,41 @@
 {% extends 'teacher/course_base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block title %}units{% endblock title %}
+{% block title %}coursestats{% endblock title %}
 {% block css %}
+<link rel="stylesheet" href="{% static 'styles/announcements-style.css'%}">
+<link rel="stylesheet" href="{% static 'styles/add-popup.css'%}">
+<link rel="stylesheet" href="{% static 'styles/requests-style.css' %}">
 {% endblock css %}
 {% block body %}
+    <div class="body">
 
-<div class="body">
-    <div>
-        {% for stat in completion_data %}
-        <div>
-            <p>{{ stat.student.username }}</p>
-            <p>Completion Percentage : {{ stat.completion_percentage }} %</p>
+            <p class="">
+                Student data
+            </p>
+        <div class="table groups-item default-table">
+            <div class="table-item">
+                <table>
+                    <tr>
+                        <th>Full Name</th>
+                        <th class="invisible1">Email</th>
+                        <th>Action</th>
+                    </tr>
+
+                    {% for stat in completion_data %}
+                    <tr>
+                        <td class="invisible1">{{ stat.student.username }}</td>
+                        <td class="invisible1">{{ stat.student.email }}</td>
+                        <td>{{ stat.completion_percentage }}</td>
+                    </tr>
+                    {% empty %}
+                    <p style="padding:30px 30px 30px;font-weight:900;color:red;">No enrolled students</p>
+                    {% endfor %}
+                </table>
+
+            </div>
         </div>
-        {% empty %}
-        <p>No enrolled students in this course</p>
-        {% endfor %}
     </div>
-</div>
-
-
-
+    <script src="{% static 'scripts/requests-script.js' %}"></script>
+    <script src="{% static 'scripts/coursearrow.js' %}"></script>
 {% endblock body %}
