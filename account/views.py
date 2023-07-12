@@ -173,7 +173,7 @@ class LoginView(View):
                             if user.profile.is_verified == False:
                                 return redirect('access-pending-view')
                             else:
-                                return redirect('student:enrolled-courses')
+                                return redirect('student:home')
                         elif user.profile.status == 'm':
                             return redirect('manager:home')
                         else:
@@ -204,7 +204,7 @@ class LoginView(View):
                             if user.profile.is_verified == False:
                                 return redirect('access-pending-view')
                             else:
-                                return redirect('student:enrolled-courses')
+                                return redirect('student:home')
                         elif user.profile.status == 'm':
                             return redirect('manager:home')
                         else:

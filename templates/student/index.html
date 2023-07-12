@@ -20,25 +20,28 @@
                             <div class="wrapper_tab-content">
                                 <div class="course-list">
 
+                                    {% for enrollment in recently_accessed_course_enrollments %}
+
                                     <div class="course-card">
                                         <img
-                                            src="https://www.educative.io/cdn-cgi/image/f=auto,fit=cover,w=620/v2api/collection/10370001/6183193425739776/image/5306219095130112">
+                                            src="{{ enrollment.course.image.url }}">
                                         <div class="details">
-                                            <a href="course_detail.html" target="_blank">Lern Node.js from
-                                                scratch</a>
+                                            <a href="{% url 'student:course-detail' enrollment.course.id %}" >{{ enrollment.course.title }}</a>
 
-                                            <p>DAC1101-MAY-21</p>
-                                            <p class="spec">BCA_Sem1</p>
+                                            <p>{{ enrollment.course.created_at }}</p>
+                                            <p class="spec">{{ enrollment.course.course_level }}</p>
 
                                         </div>
                                     </div>
+
+                                    {% endfor %}
 
 
                                 </div>
 
                                 <div class="bottom-view-more">
                                     <a href="all_courses_page.html" target="_blank">View All Courses (<span
-                                            class="courses-count">5</span>)
+                                            class="courses-count">{{ total_course_enrollments_count }}</span>)
                                         <i class="fa-solid fa-arrow-right"></i></a>
                                 </div>
                             </div>

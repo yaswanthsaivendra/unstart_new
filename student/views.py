@@ -5,6 +5,7 @@ from teacher.models import (
     Course,
     LessonProgress,
 )
+from django.utils import timezone
 
 @login_required
 def enrolled_courses(request):
@@ -17,6 +18,9 @@ def course_detail_view(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
     student = request.user
     enrollment = Enrollment.objects.filter(student=student, course=course).first()
+    # Update the last_accessed field to the current timestamp
+    enrollment.last_accessed = timezone.now()
+    enrollment.save()
     units = course.unit_set.all()
 
     unit_progress = []
@@ -46,3 +50,15 @@ def course_units_view(request, course_id):
     }
 
     return render(request, 'student/course_learning_page.html', context)
+
+
+def index(request):
+    total_course_enrollments = Enrollment.objects.filter(student=request.user).select_related('course').order_by('-last_accessed')
+    recently_accessed_course_enrollments = total_course_enrollments[:6]
+    total_course_enrollments_count = total_course_enrollments.count()
+
+    context = {
+        'recently_accessed_course_enrollments' : recently_accessed_course_enrollments,
+        'total_course_enrollments_count' : total_course_enrollments_count
+    }
+    return render(request, 'student/index.html', context)

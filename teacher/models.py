@@ -106,6 +106,7 @@ class Enrollment(models.Model):
     student = models.ForeignKey(User, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     is_completed = models.BooleanField(default=False)
+    last_accessed = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f"{self.student.username} enrolled in {self.course.title}"
