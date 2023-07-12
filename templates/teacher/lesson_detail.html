@@ -10,6 +10,7 @@
 {% endwith %}
 {% endblock css %}
 {% block body %}
+
 <div class="add-popup">
     <div class="popup">
         <div class="left">
@@ -19,23 +20,30 @@
             </div>
         </div>
         <div class="right">
+            <form method="post" action="{% url 'teacher:lesson-link-create' lesson_pk=lesson.pk %}">
+                {% csrf_token %}
+
             <div class="right-cont">
                 <h3 class="right-item">
                     Add Link
                 </h3>
                 <div class="right-item">
-                    <input type="text" name="" id="" placeholder="add link">
+                    <input type="text" name="link" id="" placeholder="add link">
                 </div>
                 <div class="right-item ac-btn">
-                    <button class="a"><a href="">Save</a></button>
+                    <button class="a" type="submit">Save</button>
                     <button class="cancel">Cancel</button>
                 </div>
             </div>
+            </form>
+
         </div>
         <img src="{% static 'rsc/icons8-close-50.png'%}" alt="" class="cancel-icon">
     </div>
 </div>
-<!--<div class="add-file-popup">
+
+<!-- 
+<div class="add-file-popup">
     <div class="popup">
         <div class="left">
             <div class="left-cont">
@@ -44,22 +52,23 @@
             </div>
         </div>
         <div class="right">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
             <div class="right-cont">
-                <form action= method="post" enctype="multipart/form-data">{% csrf_token %}
-                    <div class="form-group right-item">
-                        <label for="document">Add multiple files</label>
-                        <input type="file" class="form-control" id="document" name="document" placeholder="Add Files" multiple>
-                    </div>
-                    <div class="right-item ac-btn">
-                        <button class="a"><a href="">Save</a></button>
-                        <button class="cancel">Cancel</button>
-                    </div>
-                </form>
+                <div class="form-group right-item">
+                    <label for="document">Add multiple files</label>
+                    <input type="file" class="form-control" id="document" name="document" placeholder="Add Files" multiple>
+                </div>
+                <div class="right-item ac-btn">
+                    <button class="a" type="submit">Save</button>
+                    <button class="cancel">Cancel</button>
+                </div>
             </div>
+        </form>
         </div>
         <img src="{% static 'rsc/icons8-close-50.png'%}" alt="" class="cancel-icon">
     </div>
-</div>-->
+</div>  -->
 
 <div class="edit-popup">
     <div class="popup">
@@ -70,22 +79,27 @@
             </div>
         </div>
         <div class="right">
+            <form method="post" action="{% url 'teacher:lesson-update' pk=lesson.pk %}">
+                {% csrf_token %}
             <div class="right-cont">
                 <div class="right-item">
-                    <textarea name="" id="" cols="58" rows="1" class="textarea first"></textarea>
+                    <textarea name="title" id="" cols="58" rows="1" class="textarea first">{{lesson.title}}</textarea>
                 </div>
                 <div class="right-item">
-                    <textarea name="" id="" cols="58" rows="13" class="textarea second"></textarea>
+                    <textarea name="description" id="" cols="58" rows="13" class="textarea second">{{lesson.description}}</textarea>
                 </div>
                 <div class="right-item ac-btn">
-                    <button class="a"><a href="">Save</a></button>
+                    <button class="a" type="submit">Save</button>
                     <button class="cancel">Cancel</button>
                 </div>
             </div>
+        </form>
+
         </div>
         <img src="{% static 'rsc/icons8-close-50.png'%}" alt="" class="cancel-icon">
     </div>
 </div>
+
     <div class="body">
 
         <div class="view-container">
@@ -98,10 +112,21 @@
                     </div>
                     <div class="release-edit heading-item">
                         <div class="release">
-                            <button class="release-btn">
-                                <img src="{% static 'rsc/icons8-telegram-app-30.png'%}" alt="" class="icon">
-                                <p>Release</p>
-                            </button>
+
+                            <form method="POST" action="{% url 'teacher:lesson-release' lesson.id %}">
+                                {% csrf_token %}
+                                {% if lesson.is_released %}
+                                <button class="release-btn">
+                                    <img src="{% static 'rsc/icons8-telegram-app-30.png'%}" alt="" class="icon">
+                                    <p>Draft</p>
+                                </button>
+                                {% else %}
+                                <button class="release-btn">
+                                    <img src="{% static 'rsc/icons8-telegram-app-30.png'%}" alt="" class="icon">
+                                    <p>Release</p>
+                                </button>
+                                {% endif %}
+                        </form>
                         </div>
                         <div class="edit">
                             <button class="edit-btn">
@@ -131,25 +156,19 @@
                     </div>
                     <div class="links-item">
                         <ol class="links-list">
+                        {% for link in lesson.links.all %}
                             <li class="link">
-                                <span class="link-name"><a href="">sb-how-img3.webp</a></span>
-                                <span><a href=""><img src="{% static 'rsc/icons8-trash-32 (1).png'%}" alt="" class="dustbin"></a></span>
+                                <span class="link-name"><a href="{{ link.link }}">{{ link.link }}</a></span>
+                                <span><a href="{% url 'teacher:lesson-link-delete' link.pk %}"><img src="{% static 'rsc/icons8-trash-32 (1).png'%}" alt="" class="dustbin"></a></span>
                             </li>
-                            <li class="link">
-                                <span class="link-name"><a href="">sb-how-img3.webp</a></span>
-                                <span><a href=""><img src="{% static 'rsc/icons8-trash-32 (1).png'%}" alt="" class="dustbin"></a></span>
-                            </li>
-                            <li class="link">
-                                <span class="link-name"><a href="">sb-how-img3.webp</a></span>
-                                <span><a href=""><img src="{% static 'rsc/icons8-trash-32 (1).png'%}" alt="" class="dustbin"></a></span>
-                            </li>
+                        {% endfor %}
                         </ol>
                     </div>
                 </div>
                 <div class="docs view-item">
                     <div class="heading docs-item">
                         <div class="head heading-item">
-                            <p class="heading-name">
+                            <p class="heading-name">de
                                 Files
                             </p>
                         </div>
@@ -163,18 +182,12 @@
                     </div>
                     <div class="docs-item">
                         <ol class="links-list">
+                            {% for file in lesson.files.all %}
                             <li class="link">
-                                <span class="link-name"><a href="">sb-how-img3.webp</a></span>
+                                <span class="link-name"><a href="{{ file.file.url }}">{{ file.file.name }}</a></span>
                                 <span><a href=""><img src="{% static 'rsc/icons8-trash-32 (1).png'%}" alt="" class="dustbin"></a></span>
                             </li>
-                            <li class="link">
-                                <span class="link-name"><a href="">sb-how-img3.webp</a></span>
-                                <span><a href=""><img src="{% static 'rsc/icons8-trash-32 (1).png'%}" alt="" class="dustbin"></a></span>
-                            </li>
-                            <li class="link">
-                                <span class="link-name"><a href="">sb-how-img3.webp</a></span>
-                                <span><a href=""><img src="{% static 'rsc/icons8-trash-32 (1).png'%}" alt="" class="dustbin"></a></span>
-                            </li>
+                            {% endfor %}    
                         </ol>
                     </div>
                 </div>

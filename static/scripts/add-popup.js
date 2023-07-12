@@ -60,5 +60,5 @@ edit_btn.addEventListener("click", () => {
     document.body.style.position = "fixed"
 })
 
-document.getElementsByClassName('textarea')[0].defaultValue = "Announcement-1"
-document.getElementsByClassName('textarea')[1].defaultValue = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi blanditiis hic atque quisquam consequatur numquam illo tenetur nostrum quibusdam impedit eligendi doloribus ea ab fugit iure veritatis, debitis perferendis sint provident deserunt ex reiciendis omnis deleniti!"
+// document.getElementsByClassName('textarea')[0].defaultValue = "Announcement-1"
+// document.getElementsByClassName('textarea')[1].defaultValue = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi blanditiis hic atque quisquam consequatur numquam illo tenetur nostrum quibusdam impedit eligendi doloribus ea ab fugit iure veritatis, debitis perferendis sint provident deserunt ex reiciendis omnis deleniti!"

@@ -24,8 +24,8 @@ testing,
     LessonListView,
     LessonFileCreateView,
     LessonFileDeleteView,
-    LessonLinkCreateView,
-    LessonLinkDeleteView,
+    lesson_link_create,
+    lesson_link_delete,
     LessonReleaseView,
 
     EnrollmentListView,
@@ -88,8 +88,8 @@ urlpatterns = [
     path('lesson-files/<int:pk>/delete/', LessonFileDeleteView.as_view(), name='lesson-file-delete'),
 
     # LessonLink URLs
-    path('lessons/<int:lesson_pk>/links/create/', LessonLinkCreateView.as_view(), name='lesson-link-create'),
-    path('lesson-links/<int:pk>/delete/', LessonLinkDeleteView.as_view(), name='lesson-link-delete'),
+    path('lessons/<int:lesson_pk>/links/create/', lesson_link_create, name='lesson-link-create'),
+    path('lesson-links/<int:pk>/delete/', lesson_link_delete, name='lesson-link-delete'),
 
     #FOr student stats and enrollments
     path('course/<int:course_id>/enrollment/', EnrollmentListView.as_view(), name='enrollment-list'),

@@ -241,12 +241,13 @@ class LessonReleaseView(LoginRequiredMixin, View):
 
 class LessonUpdateView(LoginRequiredMixin, UpdateView):
     model = Lesson
-    fields = ['lesson_number', 'title', 'description']
-    template_name = 'teacher/lesson_update.html'
+    fields = ['title', 'description']
+    template_name = 'teacher/lesson_detail.html'
     context_object_name = 'lesson'
 
     def get_success_url(self):
-        return reverse_lazy('teacher:lesson-detail', kwargs={'pk': self.kwargs['pk']})
+        lesson = Lesson.objects.filter(pk = self.kwargs['pk']).first()
+        return reverse_lazy('teacher:lesson-detail', kwargs={'pk': self.kwargs['pk'], 'course_id' : lesson.unit.course.pk })
 
 
 class LessonDeleteView(LoginRequiredMixin, DeleteView):
@@ -330,29 +331,22 @@ class LessonFileDeleteView(LoginRequiredMixin, DeleteView):
 
 
 # LessonLink Views
-class LessonLinkCreateView(LoginRequiredMixin, CreateView):
-    model = LessonLink
-    fields = ['link']
-    template_name = 'teacher/lesson_link_create.html'
+def lesson_link_create(request, lesson_pk):
+    lesson = get_object_or_404(Lesson, pk=lesson_pk)
 
-    def get_success_url(self):
-        return reverse_lazy('teacher:lesson-detail', kwargs={'pk': self.kwargs['lesson_pk']})
+    if request.method == 'POST':
+        link = request.POST.get('link')
+        if link:
+            LessonLink.objects.create(lesson=lesson, link=link)
+        return redirect('teacher:lesson-detail', pk=lesson_pk, course_id=lesson.unit.course.pk)
+        
 
-    def get_initial(self):
-        initial = super().get_initial()
-        initial['lesson'] = get_object_or_404(Lesson, pk=self.kwargs['lesson_pk'])
-        return initial
-
-
-class LessonLinkDeleteView(LoginRequiredMixin, DeleteView):
-    model = LessonLink
-    template_name = 'teacher/lesson_link_delete.html'
-    context_object_name = 'lesson_link'
-
-    def get_success_url(self):
-        lesson = self.object.lesson
-        return reverse_lazy('teacher:lesson-detail', kwargs={'pk': lesson.pk})
-
+def lesson_link_delete(request, pk):
+    lesson_link = get_object_or_404(LessonLink, pk=pk)
+    if request.method == 'GET':
+        lesson_link.delete()
+        return redirect('teacher:lesson-detail', pk=lesson_link.lesson.pk, course_id=lesson_link.lesson.unit.course.pk)
+        
 
 
 
