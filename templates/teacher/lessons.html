@@ -62,21 +62,21 @@
                         <div>
                             <button class="add-btn"><p>Edit</p></button>
                         </div>
+                        <div>
+                            {% if has_released_lessons %}
+                            <form method="POST" action="{% url 'teacher:unit-release' unit.id %}">
+                                {% csrf_token %}
+                            {% if unit.is_released %}
+                            <button class="add-btn" type="submit"><p>Draft</p></button>
+                            {% else %}
+                            <button type="submit" class="add-btn"><p>Release</p></button>
+                            {% endif %}
+                            </form>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
 
-                <div>
-                    {% if has_released_lessons %}
-                    <form method="POST" action="{% url 'teacher:unit-release' unit.id %}">
-                        {% csrf_token %}
-                    {% if unit.is_released %}
-                    <button class="add-btn" type="submit"><p>Draft</p></button>
-                    {% else %}
-                    <button type="submit" class="add-btn"><p>Release</p></button>
-                    {% endif %}
-                    </form>
-                    {% endif %}
-                </div>
                 <div class="tabs ann-item">
                     <div class="tab rel current">
                         <img src="{% static 'rsc/icons8-sent-50.png' %}" alt="" class="icon">
