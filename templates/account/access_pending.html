@@ -75,42 +75,38 @@
         <hr>
         <div class="d-flex justify-content-between align-items-center">
             {% for application in teacher_applications %}
-            <div class="card m-3" style="width: 18rem;z-index: -1;">
+            <div class="card m-3" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title font-weight-bold">Details</h5>
                     <p class="card-text">
-                    <p>Full Name: <span class="text-secondary">{{ application.full_name }}</span></p>
-                    <p>Semester: <span class="text-secondary">{{ application.semester }}</span></p>
-                    <p>Section: <span class="text-secondary">{{ application.section }}</span></p>
-                    <p>Date of Joining: <span class="text-secondary">{{ application.date_of_joining}}</span></p>
-                    <p>Department: <span class="text-secondary">{{ application.department }}</span></p>
-                    <p>Request Acknowledged:
-                        {% if application.request_seen %}
-                        <span class="text-secondary">Yes</span>
-                        {% else %}
-                        <span class="text-secondary">No</span>
-                        {% endif %}
-                    </p>
-                    <p>Application Status:
-                        {% if not application.is_verified and not application.is_rejected %}
-                        <span class="text-secondary">Pending</span>
-                        {% elif application.is_rejected %}
-                        <span class="text-secondary">Rejected</span>
-                        {% endif %}
-                    </p>
+                        <p>Full Name: <span class="text-secondary">{{ application.full_name }}</span></p>
+                        <p>Semester: <span class="text-secondary">{{ application.semester }}</span></p>
+                        <p>Section: <span class="text-secondary">{{ application.section }}</span></p>
+                        <p>Date of Joining: <span class="text-secondary">{{ application.date_of_joining}}</span></p>
+                        <p>Department: <span class="text-secondary">{{ application.department }}</span></p>
+                        <p>Request Acknowledged:
+                            {% if application.request_seen %}
+                                <span class="text-secondary">Yes</span>
+                            {% else %}
+                                <span class="text-secondary">No</span>
+                            {% endif %}
+                        </p>
+                        <p>Application Status:
+                            {% if not application.is_verified and not application.is_rejected %}
+                                <span class="text-secondary">Pending</span>
+                            {% elif application.is_rejected %}
+                                <span class="text-secondary">Rejected</span>
+                            {% endif %}
+                        </p>
                     </p>
                     {% if not application.is_verified and not application.is_rejected %}
-                    <a href="{% url 'edit-profile-details' application.id %}"><button class="btn btn-outline-dark my-2">Edit Details</button></a>
+                        <a href="{% url 'edit-profile-details' application.id %}"><button class="btn btn-outline-dark my-2">Edit Details</button></a>
                     {% endif %}
                 </div>
             </div>
             {% endfor %}
         </div>
-
-        {% endif %}
-    </div>
-
-
+    {% endif %}
 
 </div>
 
