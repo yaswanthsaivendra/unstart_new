@@ -89,16 +89,7 @@ toggle.addEventListener("click" , () =>{
     home_section.classList.remove('disable');
 });
 
-modeSwitch.addEventListener("click" , () =>{
-    content.classList.toggle("dark");
-    document.body.classList.toggle("dark");
 
-    if(content.classList.contains("dark")){
-        modeText.innerText = "Light mode";
-    }else{
-        modeText.innerText = "Dark mode";
-    }
-});
 
 // my-courses-container
 
