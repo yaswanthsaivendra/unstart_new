@@ -44,6 +44,9 @@ def course_units_view(request, course_id):
     course = get_object_or_404(Course, pk=course_id)
     units = course.unit_set.all()
 
+    for unit in units:
+        unit.lessons = unit.lesson_set.all()
+
     context = {
         'course': course,
         'units': units,

@@ -45,7 +45,7 @@ class Unit(models.Model):
     def lessons_completed(self):
         lesson_ids = self.lesson_set.values_list('id', flat=True)
         completed_lesson_count = LessonProgress.objects.filter(
-            enrollment__student=self.request.user,
+            enrollment__student= request.user,
             lesson__in=lesson_ids,
             is_completed=True
         ).count()

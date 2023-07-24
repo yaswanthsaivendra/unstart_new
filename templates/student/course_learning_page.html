@@ -209,7 +209,7 @@
 
                                     <li>
                                         <input type="checkbox" id="t1-tutorial-1">
-                                        <label for="t1-tutorial-1">{{ lesson.title }}<span>{{ unit.lessons_completed }}/{{ unit.total_lessons }} &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
+                                        <label for="t1-tutorial-1">{{ lesson.title }}<span>{% comment %}{{ unit.lessons_completed }} /{% endcomment %}{{ unit.total_lessons }} &nbsp; &nbsp;<i class="fa-solid fa-angle-down"></i></span></label>
                                     </li>
                                 </ul>
                                 {% empty %}
