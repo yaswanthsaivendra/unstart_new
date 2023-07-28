@@ -1,0 +1,306 @@
+{%extends 'mainpages/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Unstarted{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/newpages/home.css'%}">
+<link rel="stylesheet" href="{% static 'styles/newpages/cards.css'%}">
+<link rel="stylesheet" href="{% static 'styles/newpages/offer.css'%}">
+<link rel="stylesheet" href="{% static 'styles/newpages/info.css'%}">
+<link rel="stylesheet" href="{% static 'styles/newpages/test.css'%}">
+<link rel="stylesheet" href="{% static 'styles/newpages/courses.css'%}">
+{% endblock css %}
+{% block gtag %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXLDDT540"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXLDDT540');
+</script>
+{% endblock gtag %}
+{% block content %}
+
+    <div class="wrapper2">
+        <section id="home">
+            <div class="home-row">
+                <div class="home-col-1">
+                    <div id="t1">Unleash your passion with</div>
+                    <div id="t2">Unstarted</div><br>
+                    <p>Job Assistance Certification program in</p>
+                    <p id="p-t3" style="margin-bottom: 10px; font-size: 7rem; font-weight: bold;">Executive<br> Management</p>
+                    <div class="text-group">
+                        <span><i class="bi bi-building"></i> 100+ hiring partners</span>
+                        <span><i class="bi bi-currency-dollar"></i> 4-7 Lpa jobs</span>
+                    </div>
+                    <button id="get-btn" class="" data-bs-target="#staticBackdrop" data-bs-toggle="modal">Get Started</button>
+                </div>
+                <div class="home-col-2">
+                    <form>
+                        <label id="text">Let our experts find a better solution</label>
+                        <label>Full Name</label>
+                        <input type="text">
+                        <label for="">Email</label>
+                        <input type="email">
+                        <label for="">Mobile Number</label>
+                        <input type="number">
+                        <label for="">Course Of Interest</label>
+                        <select name="" id="">
+                            <option>Sales</option>
+                            <option>Sales</option>
+                            <option>Sales</option>
+                            <option>Sales</option>
+                        </select>
+                        <button class="form-btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="wrapper3">
+        <section id="cscards">
+            <h1 class="cscard-text">Things You Can Do In Unstarted</h1>
+            <div class="cscontainer">
+                <div class="cscard">
+                    <div class="cscard-row">
+                        <div class="cscard-col-1">
+                            <h1>Hands-on with real world case studies</h1>
+                            <p>UnStartED offers online courses taught by industry experts, providing students with the skills they need to succeed in today's competitive job market.</p>
+                            <p>Our India-specific case studies cover topics like Tata Nano, Flipkart, Patanjali, and Ola, providing practical insights into the unique challenges and opportunities of doing business in India. Don't miss out on the opportunity to gain a competitive edge in your career</p>
+                        </div>
+                        <div class="cscard-col-2">
+                            <img src="https://cdni.iconscout.com/illustration/free/thumb/web-designer-building-website-3724334-3118882.png?f=webp" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="cscard">
+                    <div class="cscard-row">
+                        <div class="cscard-col-1">
+                            <h1>Network Easily with Industry Experts</h1>
+                            <p>At UnStartED, we offer a unique opportunity to learn from industry experts who have real-world experience in their fields. Our online courses are designed to provide students with the skills they need to succeed in today's competitive job market.</p>
+                            <p>Moreover, when you enroll in our courses, you become a part of the UnStartED Alumni community, which is a network of professionals from different industries. This community can help you build your industry connections, learn from others experiences, and grow in your career</p>
+                        </div>
+                        <div class="cscard-col-2">
+                            <img src="https://cdni.iconscout.com/illustration/free/thumb/web-designer-building-website-3724334-3118882.png?f=webp" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="cscard">
+                    <div class="cscard-row">
+                        <div class="cscard-col-1">
+                            <h1>Placement Assistance with Mentorship</h1>
+                            <p>We offer placement assistance, which means after completing this course, we would be here to offer you placement assistance.</p>
+                            <p>You will receive guidance from mentors to build your resume, portfolio & LinkedIn profile.They will hand-hold you throughout the process.The placement process will start from the 6th month of the program for the relevant profiles, based on performance</p>
+                        </div>
+                        <div class="cscard-col-2">
+                            <img src="https://cdni.iconscout.com/illustration/free/thumb/web-designer-building-website-3724334-3118882.png?f=webp" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="wrapper4">
+        <section id="offer">
+            <h1 id="t1">Our Offerings</h1>
+            <h2 id="t2">Certification Programs in Executive management</h2>
+            <div class="grid">
+                <div class="item">
+                    <div class="div"><img src="{% static 'images/box.png'%}"></div>
+                    <div class="div">
+                        <h1>Placement Oriented Program</h1>
+                    <ul>
+                        <li>Placement Assistance</li>
+                        <li>Mentor Guidance</li>
+                        <li>Soft skill development</li>
+                        <li>100+ Partner company</li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="div"><img src="{% static 'images/group-chat.png'%}"></div>
+                    <div class="div">
+                        <h1>Daily Live & Online Classes</h1>
+                    <ul>
+                        <li>Live Classes and Q&A Sessions</li>
+                        <li>Evaluation after Each Module</li>
+                        <li>Recorded video available</li>
+                        <li>Interactions with Instructors &Mentors</li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="div"><img src="{% static 'images/cv.png'%}"></div>
+                    <div class="div">
+                        <h1>CV Building & Job Preperation</h1>
+                    <ul>
+                        <li>Communication Training</li>
+                        <li>Resume Building</li>
+                        <li>Mock Interviews</li>
+                        <li>Linkedin Profile Setup</li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="div"><img src="{% static 'images/in-process.png'%}"></div>
+                    <div class="div">
+                        <h1>6 Month Extensive Program</h1>
+                    <ul>
+                        <li>Rigorous Curriculum</li>
+                        <li>1:1 Mentor Sessions</li>
+                        <li>250+ Hours Of Live Classes</li>
+                        <li>8+ Major & Minor Industry Based Projects</li>
+                    </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="offer-row">
+                <div class="offer-col-1">
+                    <h1>Instantly and Interactively</h1>
+                    <p>Explore new skills, deepen existing passions, and get lost in creativity. What you find just might surprise and inspire you.</p>
+                    <button>Browse Lms</button>
+                </div>
+                <div class="offer-col-2">
+                    <img src="{% static 'images/lms.png'%}" alt="">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="wrapper5">
+        <section id="info">
+            <div class="flex">
+                <div class="flex-card">
+                    <img src="https://img.freepik.com/premium-vector/online-education-online-class-learning-illustration-teacher-live-education-student-poster_432516-494.jpg">
+                    <div class="flex-text">
+                        <h1>Daily live classes</h1>
+                        <p>Join our daily live classes at UnStartED and take your career to the next level. Our experienced instructors will guide you through our executive management certification program, providing you with the skills and knowledge you need to succeed.</p>
+                    </div>
+                </div>
+                <div class="flex-card">
+                    <img src="https://assets-global.website-files.com/62196607bf1b46c300301846/62196607bf1b4619b6301f32_5fb427276298857449cd9c89_mentor%2520mentee%2520meetings%2520guide.jpeg">
+                    <div class="flex-text">
+                        <h1>Weekly 1:1 Mentorship</h1>
+                        <p>At UnStartED, we believe that mentorship is key to success. That's why we offer weekly one-on-one mentorship sessions with our expert instructors. These sessions are designed to provide personalized guidance and support, helping you to achieve your goals and reach your full potential</p>
+                    </div>
+                </div>
+                <div class="flex-card">
+                    <img src="https://fairgaze.com/images/UploadedImages/thumbs/0257787_0257787_sales.jpg">
+                    <div class="flex-text">
+                        <h1>Crack Inside Sales</h1>
+                        <p>Join our daily live classes at UnStartED and take your career to the next level. Our experienced instructors will guide you through our executive management certification program, providing you with the skills and knowledge you need to succeed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="wrapper6">
+        <section id="testimonials">
+            <h1>Don't take our word for it, see what the community is saying</h1>
+            <div class="test-grid">
+                <div class="test-item">
+                    <p class="page-7-grid-text">"Thanks to UnStartED's executive management certification
+                        program, I was able to secure a high-paying job at a top-tier
+                        company. The course provided me with the skills and
+                        knowledge I needed to succeed in the competitive job
+                        market.Highly recommend!"</p>
+                    <span class="page-7-author">Priya Patel
+                    </span>
+                </div>
+
+                <div class="test-item">
+                    <p class="page-7-grid-text">"UnStartED mentorship programs been a game-changer
+                        for me. My mentor provided me with invaluable guidance
+                        and support, which helped me to start my own business. I'm
+                        now a successful entrepreneur, and I couldn't have done it
+                        without UnStartED."</p>
+                    <span class="page-7-author">Rohit Sharma</span>
+                </div>
+                <div class="test-item">
+                    <p class="page-7-grid-text">"I was struggling to find work in my field before I enrolled in
+                        UnStartED's executive management certification program.
+                        Thanks to the skills I learned in the course, I was able to
+                        upskill and become a freelancer.Now, I'm earning more than
+                        ever before and doing work that I love."
+                        </p>
+                    <span class="page-7-author">Shruti Gupta</span>
+                </div>
+
+                <div class="test-item">
+                    <p class="page-7-grid-text">"UnStartED'smentorship programhelpedme to identifymy
+                        strengths and weaknesses and provided me with the tools I
+                        needed to improve.Mymentorwas patient, knowledgeable,
+                        and supportive, and I'm now more confident and successful
+                        inmy career."
+                        </p>
+                    <span class="page-7-author">Raj Kumar</span>
+                </div>
+                <div class="test-item">
+                    <p class="page-7-grid-text">"I never thought I'd be able to open my own business, but
+                        UnStartED's executive management certification program
+                        gave me the knowledge and skills I needed to do so. The
+                        course was comprehensive and practical, and it provided me
+                        with a roadmap forsuccess."</p>
+                    <span class="page-7-author">Akash Singh</span>
+                </div>
+                <div class="test-item">
+                    <p class="page-7-grid-text">"UnStartED's mentorship program was a life-changer for
+                        me. My mentor helped me to develop my leadership skills
+                        and provided me with guidance on how to navigate the
+                        challenges of the corporate world. I'm now a more effective
+                        and confidentmanager, and I owe it all to UnStartED."</p>
+                    <span class="page-7-author">Ajasta</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="wrapper7">
+        <section id="courses">
+            <div class="cs-flex">
+                <h1>Don't Miss The Updates!!</h1>
+                <button>Subscribe</button>
+            </div>
+            <div class="courses-container">
+                <div class="course-card">
+                    <img
+                        src="https://intelliven.com/wp-content/uploads/2020/03/executive-leadership-team-meetings-672x372.jpg">
+                    <h1 class="page-8-card-text">May 3, 2023</h1>
+                    <p>Executive Management Course</p>
+                    <button class="page-8-card-btn">View course</button>
+                </div>
+                <div class="course-card">
+                    <img src="https://muzztech.com/images/Terms-and-Conditions-.jpeg">
+                    <h1 class="page-8-card-text">May 7, 2023</h1>
+                    <p>Terms and Conditions Updated</p>
+                    <button class="page-8-card-btn">View Terms</button>
+                </div>
+                <div class="course-card">
+                    <img src="https://www.seqrite.com/skin/frontend/default/seqrite_v1/images/support-img.png">
+                    <h1 class="page-8-card-text">May 9, 2023</h1>
+                    <p>Get 24X7 using Support</p>
+                    <button class="page-8-card-btn">Contact Now</button>
+                </div>
+                <div class="course-card">
+                    <img src="https://www.learnupon.com/wp-content/uploads/LMS-Features-facebook-linkedin-no-cta.png">
+                    <h1 class="page-8-card-text">May 10, 2022</h1>
+                    <p>LMS Intergration</p>
+                    <button class="page-8-card-btn">Login Now</button>
+                </div>
+                <div class="course-card">
+                    <img
+                        src="https://img.etimg.com/thumb/width-420,height-315,imgsize-1548415,resizemode-1,msid-93142661/tech/technology/neiman-marcus-group-to-hire-600-people-for-india-gcc/hiring.jpg">
+                    <h1 class="page-8-card-text">May 14, 2023</h1>
+                    <p>Start Hiring Our Students</p>
+                    <button class="page-8-card-btn">Hire From Us</button>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock content %}

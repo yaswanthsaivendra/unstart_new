@@ -30,25 +30,25 @@ def index(request):
         c = Contact.objects.create(name=name, email=email, number=number,interest=interest)
         c.save()
         send_mail(subject, message, settings.EMAIL_HOST_USER, ['saipavansaketh@gmail.com'], fail_silently=False)
-    return render(request,'mainindex.html')
+    return render(request,'mainpages/index.html')
 
 def coursestatic(request):
-    return render(request,'staticcourse.html')
+    return render(request,'mainpages/staticcourse.html')
 
 def aboutus(request):
-    return render(request,'mainabout.html')
+    return render(request,'mainpages/about.html')
 
 def teach(request):
     return render(request,'mainteach.html')
 
 def contactus(request):
-    return render(request,'maincontact.html')
+    return render(request,'mainpages/contact.html')
 
 def privacy(request):
     return render(request,'mainprivacy.html')
 
 def hire(request):
-    return render(request,'mainhire.html')
+    return render(request,'mainpages/hireus.html')
 
 class RegistrationView(View):
     def get(self, request):
@@ -56,7 +56,7 @@ class RegistrationView(View):
             messages.error(request, "Please logout to signup")
             return redirect('index')
         else:
-            return render(request, 'register.html')
+            return render(request, 'mainpages/signup.html')
 
     def post(self, request):
         # create a user account
@@ -71,7 +71,7 @@ class RegistrationView(View):
             if not User.objects.filter(email=email).exists():
                 if len(password) < 6:
                     messages.error(request, 'Password is too short')
-                    return render(request, 'register.html')
+                    return render(request, 'mainpages/signup.html')
                 user = User.objects.create_user(username=username, email=email)
                 user.set_password(password)
                 user.is_active = True
@@ -85,10 +85,10 @@ class RegistrationView(View):
                 return redirect('add-profile-details')
 
             messages.warning(request, "This Email already exists!")
-            return render(request, 'register.html', context)
+            return render(request, 'mainpages/signup.html', context)
         else:
             messages.warning(request, "This username already exists!")
-            return render(request, 'register.html', context)
+            return render(request, 'mainpages/signup.html', context)
 
 class VerificationView(View):
     def get(self, request, uidb64, token, backend='django.contrib.auth.backends.ModelBackend'):
@@ -141,7 +141,7 @@ class LoginView(View):
             messages.success(request, "Already loggedin")
             return redirect('index')
         else:
-            return render(request,'login.html')
+            return render(request,'mainpages/login.html')
 
     def post(self, request):
         # if 'login_page' in request.POST:
@@ -216,14 +216,14 @@ class LoginView(View):
             elif (User.objects.filter(email=username).exists() or User.objects.filter(username=username).exists() == False):
                 messages.error(
                     request, "The username or Email you have entered does not exist.")
-                return render(request, 'login.html', context)
+                return render(request, 'mainpages/login.html', context)
 
         context = {
             'user_found': True,
             'user_name': username
         }
         messages.error(request, 'Invalid credentials, try again')
-        return render(request, 'login.html', context)
+        return render(request, 'mainpages/login.html', context)
 
         # return render(request, "login.html")
 
