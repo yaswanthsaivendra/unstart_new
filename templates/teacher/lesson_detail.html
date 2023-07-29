@@ -180,6 +180,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="docs-item">
                         <ol class="links-list">
                             {% for file in lesson.files.all %}
@@ -191,6 +192,22 @@
                         </ol>
                     </div>
                 </div>
+
+                <form enctype="multipart/form-data" method="post" action="{% url 'teacher:lesson-bigtext-create' lesson_pk=lesson.pk %}">
+                    {% csrf_token %}
+                    <div class="">
+                        <textarea name="body" id="editor"></textarea>
+                        <div class="">
+                            {{form.as_p}}
+                            {{form.media}}
+                        </div>
+                        <div class="">
+                            <button class="a" type="submit">Save</button>
+                            <button class="cancel">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>

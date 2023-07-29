@@ -1,0 +1,433 @@
+{%extends 'mainpages/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Executive Management{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/newpages/ExecutiveManagement.css'%}">
+<link rel="stylesheet" href="{% static 'styles/newpages/home.css'%}">
+
+<style>
+    .accordion-button:focus{
+        box-shadow: none;
+    }
+    .accordion-button{
+        position: static;
+     }
+
+</style>
+
+{% endblock css %}
+{% block gtag %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXLDDT540"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXLDDT540');
+</script>
+{% endblock gtag %}
+{% block content %}
+<section id="em">
+        <div class="em-1-card">
+            <h1>₹ 50000/-</h1>
+            <p>Kickstart your Career with Certification Program</p>
+            <button class="em-1-card-btn">Buy Now</button>
+            <ul>
+                <li>Level: Advanced</li>
+                <li>Duration: 05-06 Months</li>
+                <li>Lessons: 60+</li>
+                <li>Lifetime Access</li>
+                <li>Access From Any Computer, Tablet or Mobile</li>
+            </ul>
+        </div>
+            <div class="em-1">
+                <button type="button" class="em-1-card-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Book a Demo
+                  </button>
+                <h1>Executive Management</h1>
+                <p>The Executive Management Program provides a comprehensive learning experience for professionals seeking to advance their career in management. With a curriculum covering essential topics like strategic planning, marketing, human resource management, and leadership,</p>
+            </div>
+            <div class="sc-em-1-card">
+              <h1>₹ 15000/-</h1>
+              <p>Kickstart your Career with Certification Program</p>
+              <button class="em-1-card-btn">Buy Now</button>
+              <ul>
+                  <li>Level: Advanced</li>
+                  <li>Duration: 05-06 Months</li>
+                  <li>Lessons: 60+</li>
+                  <li>Lifetime Access</li>
+                  <li>Access From Any Computer, Tablet or Mobile</li>
+              </ul>
+          </div>
+        <div class="tabs-container">
+            <div class="tabs">
+                <input type="radio" name="tab-example" id="tab1" class="tab_radio" checked>
+                <label for="tab1" class="tabs_label">About</label>
+                <div class="tabs-content">
+                    <span>About the course</span>
+                    <p style="margin-bottom: 20px;">Completing the program can lead to exciting new career opportunities, including management positions in various industries, and provide valuable networking opportunities with industry experts and peers. Overall, the Executive Management Program is an excellent investment in professional development, providing the knowledge, skills, and connections needed to take your career to the next level.</p>
+                    <p>Certainly! Our program is specifically designed for individuals who are interested in advancing their careers in executive management. Whether you are looking to develop new skills, expand your knowledge, or gain practical experience, our program will provide you with the tools you need to succeed in the fast-paced world of executive management. We welcome individuals with a range of backgrounds and experience levels, and are committed to helping you achieve your professional goals.</p>
+                </div>
+
+                <input type="radio" name="tab-example" id="tab2" class="tab_radio">
+                <label for="tab2" class="tabs_label">Topics</label>
+                <div class="tabs-content">
+                    <span>Course Content</span>
+
+
+                    <div class="lessons">
+                      <div class="accordion lesson-acrr " id="accordionExample1">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapseOne">
+                              Orientation
+                            </button>
+                          </h2>
+                          <div id="collapse1" class="accordion-collapse collapse  " aria-labelledby="headingOne" data-bs-parent="#accordionExample1">
+                            <div class="accordion-body">
+                              <ul>
+                                <li class="roadmap">Onboarding & Introduction</li>
+                                <li class="roadmap">Introduction of the program</li>
+                                <li class="roadmap">Introduction to Webapp</li>
+                                <li class="roadmap">Interaction Class with mentors</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+
+                        <div class="accordion lesson-acrr " id="accordionExample2">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapseOne">
+                                Communication
+                              </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample2">
+                              <div class="accordion-body">
+                                <ul>
+                                  <li class="roadmap">Introduction</li>
+                                  <li class="roadmap">The Communication Process</li>
+                                  <li class="roadmap">Barriers in Communication</li>
+                                  <li class="roadmap">Perspectives in Communication</li>
+                                  <li class="roadmap">Elements of Communication</li>
+                                  <li class="roadmap">Communication Styles</li>
+                                  <li class="roadmap">Listening Skills</li>
+                                  <li class="roadmap">Written Communication</li>
+                                  <li class="roadmap">Effective Corporate Writing</li>
+                                  <li class="roadmap">Presentations</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+
+                          <div class="accordion lesson-acrr " id="accordionExample3">
+                            <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="true" aria-controls="collapseOne">
+                                  Google Sheets
+                                </button>
+                              </h2>
+                              <div id="collapse3" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample3">
+                                <div class="accordion-body">
+                                  <ul>
+                                    <li class="roadmap">Getting Started with Google Sheets</li>
+                                    <li class="roadmap">Data Entry</li>
+                                    <li class="roadmap">Manipulation</li>
+                                    <li class="roadmap">Data Analysis</li>
+                                    <li class="roadmap">Collaboration and Sharing</li>
+                                    <li class="roadmap">Advanced functions and formula</li>
+                                    <li class="roadmap">Using add-ons</li>
+                                    <li class="roadmap">Importing and exporting data</li>
+                                    <li class="roadmap">Tips and tricks for efficiency and productivity</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            </div>
+
+                            <div class="accordion lesson-acrr " id="accordionExample4">
+                              <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="true" aria-controls="collapseOne">
+                                    Excel
+                                  </button>
+                                </h2>
+                                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample4">
+                                  <div class="accordion-body">
+                                    <ul>
+                                      <li class="roadmap">Introduction to Excel</li>
+                                      <li class="roadmap">Merging & Looking Up Data</li>
+                                      <li class="roadmap">Formulas and Functions</li>
+                                      <li class="roadmap">Data Manipulation</li>
+                                      <li class="roadmap">Charts and Graphs</li>
+                                      <li class="roadmap">Pivot Tables</li>
+                                      <li class="roadmap">Collaboration and Sharing</li>
+                                      <li class="roadmap">Advanced formulas and functions</li>
+                                      <li class="roadmap">Using add-ins</li>
+                                      <li class="roadmap">Importing and exporting data</li>
+                                      <li class="roadmap">Tips and tricks for efficiency and productivity</li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              </div>
+
+                              <div class="accordion lesson-acrr " id="accordionExample5">
+                                <div class="accordion-item">
+                                  <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="true" aria-controls="collapseOne">
+                                      Canva
+                                    </button>
+                                  </h2>
+                                  <div id="collapse5" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample5">
+                                    <div class="accordion-body">
+                                      <ul>
+                                        <li class="roadmap">Introduction to Canva</li>
+                                        <li class="roadmap">Designing with Canva</li>
+                                        <li class="roadmap">Presentations</li>
+                                        <li class="roadmap">Infographics</li>
+                                        <li class="roadmap">Business Crads</li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                                </div>
+
+                                <div class="accordion lesson-acrr " id="accordionExample6">
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="true" aria-controls="collapseOne">
+                                        CRM
+                                      </button>
+                                    </h2>
+                                    <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample6">
+                                      <div class="accordion-body">
+                                        <ul>
+                                         <li class="roadmap">Introduction to CRM</li>
+                                         <li class="roadmap">Customer Lifecycle</li>
+                                         <li class="roadmap">Sales Process</li>
+                                         <li class="roadmap">Data Management</li>
+                                         <li class="roadmap">Analytics and Reporting</li>
+                                         <li class="roadmap">CRM Platforms</li>
+                                         <li class="roadmap">Introduction to Salesforce</li>
+                                         <li class="roadmap">Salesforce Platform</li>
+                                         <li class="roadmap">Salesforce View</li>
+                                         <li class="roadmap">Reports</li>
+                                         <li class="roadmap">Dashboards</li>
+                                         <li class="roadmap">Setup Salesforce Trailhead Account</li>
+                                         <li class="roadmap">Introduction to Leadsquared</li>
+                                         <li class="roadmap">Leadsquared Platform</li>
+                                         <li class="roadmap">Reports</li>
+                                         <li class="roadmap">Dashboards</li>
+                                         <li class="roadmap">Setup Leadsquared Academy</li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  </div>
+
+                                  <div class="accordion lesson-acrr " id="accordionExample7">
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="true" aria-controls="collapseOne">
+                                          Sales & Operations
+                                        </button>
+                                      </h2>
+                                      <div id="collapse7" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample7">
+                                        <div class="accordion-body">
+                                          <ul>
+                                            <li class="roadmap">Introduction to Sales</li>
+                                            <li class="roadmap">Understanding your Market</li>
+                                            <li class="roadmap">The sales process</li>
+                                            <li class="roadmap">Sales forecasting and planning</li>
+                                            <li class="roadmap">Sales data management analysis</li>
+                                            <li class="roadmap">Sales Operation Management</li>
+                                            <li class="roadmap">Sales Ethics and Legal Compliance</li>
+                                            <li class="roadmap">Master Class on Sales Pitch</li>
+                                            <li class="roadmap">Case Studies</li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    </div>
+                                    <div class="accordion lesson-acrr " id="accordionExample8">
+                                      <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne">
+                                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="true" aria-controls="collapseOne">
+                                            Advertisement & Marketing
+                                          </button>
+                                        </h2>
+                                        <div id="collapse8" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample8">
+                                          <div class="accordion-body">
+                                            <ul>
+                                              <li class="roadmap">Introduction to Marketing</li>
+                                              <li class="roadmap">Understanding Your Market</li>
+                                              <li class="roadmap">Marketing Strategy</li>
+                                              <li class="roadmap">Content Marketing and Copywriting</li>
+                                              <li class="roadmap">Social Media Marketing</li>
+                                              <li class="roadmap">Email Marketing and Marketing Automation</li>
+                                              <li class="roadmap">Search Engine Optimization (SEO)</li>
+                                              <li class="roadmap">Analytics and Reporting</li>
+                                              <li class="roadmap">Marketing Tools -SEMrush, Google Analytics, Hootsuite, SendGrid, Typeform</li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      </div>
+
+                                      <div class="accordion lesson-acrr " id="accordionExample9">
+                                        <div class="accordion-item">
+                                          <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="true" aria-controls="collapseOne">
+                                              HRM-Human Resource Management
+                                            </button>
+                                          </h2>
+                                          <div id="collapse9" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample9">
+                                            <div class="accordion-body">
+                                              <ul>
+                                                <li class="roadmap">Introduction to HRM</li>
+                                                <li class="roadmap">Workforce Planning and Staffing</li>
+                                                <li class="roadmap">Performance management</li>
+                                                <li class="roadmap">Compensation and benefits</li>
+                                                <li class="roadmap">Employee relations</li>
+                                                <li class="roadmap">Training and development</li>
+                                                <li class="roadmap">HR metrics and analytics</li>
+                                                <li class="roadmap">Legal and ethical issues in HRM</li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        </div>
+
+                                        <div class="accordion lesson-acrr " id="accordionExample10">
+                                          <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingOne">
+                                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="true" aria-controls="collapseOne">
+                                                Leadership Program
+                                              </button>
+                                            </h2>
+                                            <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample10">
+                                              <div class="accordion-body">
+                                                <ul>
+                                                  <li class="roadmap">Introduction to Leadership</li>
+                                                  <li class="roadmap">Self-awareness and personal development</li>
+                                                  <li class="roadmap">Communication skills</li>
+                                                  <li class="roadmap">Team building and collaboration</li>
+                                                  <li class="roadmap">Change management and innovation</li>
+                                                  <li class="roadmap">Ethics and value based leaderships</li>
+                                                  <li class="roadmap">Coaching and mentoring</li>
+                                                </ul>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          </div>
+                    </div>
+
+
+                    <span style="display: block;">Weekly Commitments</span>
+                    <ul>
+                        <li>15 hrs of live learning</li>
+                        <li>Instructor & Mentor sessions</li>
+                        <li>5-10 hrs of assignments</li>
+                        <li>Case Studies projects</li>
+                    </ul>
+                </div>
+
+                <input type="radio" name="tab-example" id="tab3" class="tab_radio">
+                <label for="tab3" class="tabs_label">Result</label>
+                <div class="tabs-content">
+                    <span>
+                        Admission Process
+                    </span>
+                    <p>Duration : 05-06 Months Registration Fees: ₹15000/- Step 1: Fill out the Eligibility Application Form Step 2: Based on candidature and selection, appear for a Screening Round. Step 3: On clearing the Screening Round, receive offer letter and scholarship, if eligible Step 4: Block your seat by paying registration fees: ₹15000/-</p>
+                </div>
+
+                <input type="radio" name="tab-example" id="tab4" class="tab_radio">
+                <label for="tab4" class="tabs_label">Reviews</label>
+                <div class="tabs-content">
+                    <span>What our students say</span>
+                    <div class="tab-card" style="box-shadow: 0px 0px 1px 0px #252525;padding: 20px;width: 100%;display: flex;gap: 20px;">
+                        <img src="imgs/dp.webp" style="width: 100px;object-fit: cover;border-radius: 50%;border: none;height: 100px;">
+                        <div>
+                            <span style="margin-bottom: 10px;">Ratings:4.5</span>
+                            <p style="color: gray;">“Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint”</p>
+                            <h1 style="font-size: 1.2rem;">Katherine Cutts</h1>
+                            <span style="display: inline-block;color: gray;">Junior Designer at Facebook</span>
+                        </div>
+                    </div>
+                    <div class="tab-card" style="box-shadow: 0px 0px 1px 0px #252525;padding: 20px;width: 100%;display: flex;gap: 20px;">
+                        <img src="imgs/dp.webp" style="width: 100px;object-fit: cover;border-radius: 50%;border: none;height: 100px;">
+                        <div>
+                            <span style="margin-bottom: 10px;">Ratings:4.5</span>
+                            <p style="color: gray;">“Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint”</p>
+                            <h1 style="font-size: 1.2rem;">Katherine Cutts</h1>
+                            <span style="display: inline-block;color: gray;">Junior Designer at Facebook</span>
+                        </div>
+                    </div>
+                </div>
+                <input type="radio" name="tab-example" id="tab5" class="tab_radio">
+                <label for="tab5" class="tabs_label">Faq</label>
+                <div class="tabs-content">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Where will I learn this course?
+                            </button>
+                          </h2>
+                          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <p>You will be transferred to Unstarted LMS platform</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Will I gain access to any sort of Forum support?
+                            </button>
+                          </h2>
+                          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                            <p>Yes. You will gain complete access to our forum support to connect with our fellow aspiring users.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Will they give any assignments or tests ?
+                            </button>
+                          </h2>
+                          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                            <p>yes, You will be given tests weekly and assignments lesson wise</p>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                              <button style="border-top: 1px solid rgba(0,0,0,.125);" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                                When will I receive my Certificate & How will I receive it?
+                              </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                              <div class="accordion-body">
+                            <p>Certificates are awarded separately for a nominal fee. If Paid, you will receive an E-certificate through email as soon as you complete the course with 100% progress.</p>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}

@@ -1,0 +1,144 @@
+{%extends 'mainpages/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Hire from us{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/newpages/hirefromus.css'%}">
+<link rel="stylesheet" href="{% static 'styles/newpages/home.css'%}">
+
+<style>
+    .accordion-button:focus{
+        box-shadow: none;
+    }
+</style>
+{% endblock css %}
+{% block gtag %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXLDDT540"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXLDDT540');
+</script>
+{% endblock gtag %}
+{% block content %}
+<section id="hirefromus">
+    <div class="block-1">
+        <h1>Hire From UnStartED - Powering your Growth with Talent and Skills</h1>
+        <p>At UnStartED, our primary focus is on sharpening the practical skills of our learners through real-time, interactive online classes. We take immense pride in our comprehensive upskilling programs centered around key fields like marketing, sales, operations, and HR. Our bespoke curriculum bridges the gap between academic theory and industry expectations. Our learners don't just understand their field; they're ready to apply their knowledge and skills in real-world business scenarios.</p>
+        <button class="b1-btn">Apply Now</button>
+        <a href="#">Affiliate Terms and Conditions</a>
+    </div>
+    <div class="block-2">
+        <h1>How It Works</h1>
+        <div class="b2-flex">
+            <div class="b2-card">
+                <div class="b2-img">
+                    <p><span>Up to 30 Day</span>Screened Candidates: </p>
+                </div>
+                <p> Each UnStartED candidate undergoes a rigorous learning and evaluation process, assuring the high caliber of our recommendations.</p>
+            </div>
+
+            <div class="b2-card">
+                <div class="b2-img">
+                    <p><span>15-20%</span> Relevant Skills:</p>
+                </div>
+                <p>Our targeted upskilling programs equip our learners with highly coveted skills in marketing, sales, operations, and HR. They are primed to hit the ground running and add immediate value to your organization.</p>
+            </div>
+
+            <div class="b2-card">
+                <div class="b2-img">
+                    <p><span>50-80%</span>Culture Fit:</p>
+                </div>
+                <p>We understand that successful integration goes beyond skill matching. We assess the compatibility of our candidates with your organization's culture, ensuring a smooth transition.</p>
+            </div>
+        </div>
+    </div>
+    <div class="block-3">
+        <div class="b3-flex" style="    justify-content: normal ; !important">
+            <div id="b3-text">What You <br>Get From Us</div>
+            <div id="b3-col">
+                <div class="b3-col-flex-card">
+                    <div class="b3-col-flex-card-img"><i class="bi bi-rocket-fill"></i></div>
+                    <div>
+                        <h1>Creative Assets</h1>
+                        <p>We provide you the necessary creative ad assets needed to optimize conversions.</p>
+                    </div>
+                </div>
+
+                <div class="b3-col-flex-card">
+                    <div class="b3-col-flex-card-img"><i class="bi bi-envelope-fill"></i></div>
+                    <div>
+                        <h1>Quarterly Newsletter</h1>
+                        <p>Get updates on upcoming promotions, access to new creative assets, and tips that will help you succeed.</p>
+                      </div>
+                </div>
+
+                <div class="b3-col-flex-card">
+                    <div class="b3-col-flex-card-img"><i class="bi bi-bullseye"></i></div>
+                    <div>
+                        <h1>Tips</h1>
+                        <p>We will provide you with tips on where to place your ads, how to optimize conversions, and best utilize the creative assets we provide you.</p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block-4">
+        <p>If you're prepared to leverage a diverse pool of top-tier talent eager to make a mark in their respective fields, UnStartED is ready to help. Let's work together to bolster your team and foster a more diverse, inclusive, and innovative workforce. Reach out to us today!</p>
+        <h1>FAQ</h1>
+
+        <div class="block-4-container">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        How much does it cost to apply?
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <strong>Depends on the course</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        How long does it take for my application to be approved or denied?
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <strong>Once the course fee is processed your application will be reviewed</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                       How to contact the support team ?
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <strong>Please do have a look at the contact page</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p style="font-size: 1rem;text-align:left;width: 100%;margin-top: 20px;">If you have other questions or need additional information, please don't hesitate to contact us at <a href="#" style="color:#5CABDC;">contact@unstarted.in </a></p>
+        </div>
+
+    </div>
+    <div class="block-5">
+        <h1>Ready to join?</h1>
+        <p>Unstarted uses an affiliate platform called Impact.</p>
+        <button id="get-btn" class="b5-btn" data-bs-target="#staticBackdrop" data-bs-toggle="modal">Get Started</button>
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,10 +1,17 @@
+
+.wrapper4{
+    width: 100%;
+    height: auto;
+    background-color: white;
+}
 #offer{
     width: 100%;
     height:auto;
     background-color:white;
     padding: 20px;
-    max-width: 1500px;
-    margin: auto;
+    max-width: 2000px;
+    margin: 0 auto;
+    
 }
 
 #offer #t1{
@@ -24,13 +31,14 @@
 .grid{
     margin-top: 40px;
     display: grid;
-    grid-template-columns: repeat(2,auto);
-    gap: 60px;
+    grid-template-columns: repeat(2,1fr);
+    gap: 100px;
     justify-content: center;
 }
 
-.item h1{
+.item div h1{
     color: black;
+    font-size: 1.5rem;
 }
 .item{
     box-shadow: 0px 0px 1px 0px #252525;
@@ -60,6 +68,7 @@
 
 .offer-col-1{
     flex-basis: 50%;
+    text-align: left;
 }
 .offer-col-1 h1{
     font-size: 3rem;
@@ -84,32 +93,52 @@
 
 .offer-col-2{
     width: 750px;
-
+    
     background-color: white;
 }
 .offer-col-2 img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover;    
 }
 
-@media (max-width:850px){
+@media (min-width:370px){
     .grid{
-        grid-template-columns: repeat(1,400px);
-        gap: 20px;
+        grid-template-columns: repeat(1,1fr);
     }
     .offer-row{
-       flex-direction: column;
-       align-items: center;
-       gap: 30px;
+        flex-direction: column;
+        gap: 30px;
     }
     .offer-col-1{
-        flex-basis: 100%;
         text-align: center;
+        flex-basis: 100%;
     }
     .offer-col-2{
         width: 100%;
     }
+    .offer-col-1 h1{
+        font-size: 2rem;
+    }
+}
 
+@media(min-width:820px){
+    .grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .offer-col-1 h1{
+        font-size: 3rem;
+    }
+}
 
+@media(min-width:1200px){
+    .grid{
+        grid-template-columns: repeat(2,500px);
+    }
+    .offer-row{
+        flex-direction: row;
+    }
+    .offer-col-1{
+        text-align: left;
+    }
 }

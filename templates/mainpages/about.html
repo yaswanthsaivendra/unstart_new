@@ -1,0 +1,94 @@
+{%extends 'mainpages/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Aboutus{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/newpages/about.css'%}">
+
+{% endblock css %}
+{% block gtag %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXLDDT540"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXLDDT540');
+</script>
+{% endblock gtag %}
+{% block content %}
+<section id="about">
+    <div class="block-1">
+        <h1>Our mission is to<br> Elevate Learning,Connect Careers,<br> Drive Change.</h1>
+        <p>At UnStartED, we shape graduates into industry-ready professionals, enhancing their skills to meet today's dynamic market demands.</p>
+    </div>
+    <div class="block-2">
+        <h1>The Impact of Our Executive Management <br>Certification Program</h1>
+        <p>The impact of our Executive Management Certification Program is multifaceted. Firstly, it equips participants with industry-specific skills and knowledge that are in high demand. Courses are structured around key management domains such as Human Resources, Business Analysis, Marketing, Program Management, Sales and Operations, providing a rich and varied learning experience.</p>
+    </div>
+    <div class="block-3">
+        <div class="info">
+            <span id="icon"></span>
+            <p>"We pride ourselves on our comprehensive online Certification Course in Executive Management that paves the way not just for academic achievement but for real-world success. Our program combines theoretical learning with practical applications, giving students the skills and knowledge they need to thrive in the management field."</p>
+            <span id="b3-text">ARPIT SINHAL, UNSTARTED CEO</span>
+        </div>
+        <div class="b3-flex">
+            <div class="b3-flex-card">
+                <div id="b3-ft1">80+<br>COMPANIES</div>
+
+            </div>
+            <div class="b3-flex-card">
+                <div id="b3-ft1">35+<br>ACADEMIC ORGANIZATIONS
+                    </div>
+
+            </div>
+            <div class="b3-flex-card">
+                <div id="b3-ft1">1000+<br>UNSTARTED LEARNERS</div>
+
+            </div>
+            <div class="b3-flex-card">
+                <div id="b3-ft1">60+<br>TRAINERS & MENTORS</div>
+
+            </div>
+        </div>
+        <div class="b3-content">
+            <h1>Executive Management Certification<br> Program</h1>
+            <p>The impact is undeniable. Imagine becoming a part of a transformative workforce, driving change, innovation, and growth within businesses. With expertise in key areas such as Human Resources, Business Analysis, Marketing, Program Management, Sales, and Operations, you can be at the forefront of addressing industry challenges and shaping the future. It is more than a course - it's a stepping-stone to business success and a fulfilling career.</p>
+        </div>
+    </div>
+    <div class="block-4">
+        <h1>Come join us</h1>
+        <button class="b4-btn">Become An Instructor</button>
+        <a href="#">Want to become a Unstarted instructor?</a>
+    </div>
+    <div class="block-5">
+        <div class="b5-flex">
+            <div class="b5-col-1">
+                <span>LOVED BY THOUSANDS OF LEARNERS</span>
+                <h1>By bridging the skills gap, these programs play a pivotal role in fostering sustainable growth & innovation</h1>
+                <p>This program can greatly enhance the health and productivity of businesses and industries. We make you skilled professionals who are prepared to tackle current challenges and foresee potential future issues and success in the world of business.</p>
+            </div>
+            <div class="b5-col-2" style="background-color:black;">
+                <img src="{%static 'images/g13.png'%}" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="block-6">
+        <h1>Our offices</h1>
+        <div class="b6-flex">
+            <div class="b6-col-1">
+                <div class="col-1-t1">UNSTARTED PRIVATE LIMITED<br>Patna/Bihar, India</div>
+                <p>Sales and Marketing<br>
+                    Operations and Support<br>
+                    In, 801503</p>
+            </div>
+            <div class="b6-col-1">
+                <div class="col-1-t1">UNSTARTED<br>Banglore, karnataka</div>
+                <p>Corporate office<br>
+                    Near HSR Layout</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

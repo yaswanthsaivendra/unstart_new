@@ -1,10 +1,16 @@
+.wrapper6{
+    width: 100%;
+    background-color: rgb(255, 219, 40);
+    height: auto;
+}
+
 #testimonials{
     width: 100%;
-    max-width: 1500px;
-    background-color: white;
+    background-color: rgb(255, 219, 40);
     padding: 20px;
     height: auto;
-    margin: auto;
+    max-width: 2000px;
+    margin: 0 auto;
 }
 
 #testimonials h1{
@@ -17,7 +23,11 @@
 .test-grid{
     gap: 20px;
     display: grid;
+    overflow:scroll;
     grid-template-columns: repeat(3,1fr);
+}
+::-webkit-scrollbar{
+    display: none;
 }
 
 .test-item{
@@ -40,23 +50,14 @@
 }
 
 
-@media (max-width:920px){
-    
-.test-grid{
-    gap: 20px;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-}
-}
-
-@media(max-width:460px){
+@media (min-width:370px){
     .test-grid{
-        gap: 20px;
-        display: grid;
-        grid-template-columns: repeat(1,1fr);
+        grid-template-columns: repeat(5,500px);
     }
-    #testimonials h1{
-        font-size:1.3rem;
-    }
+}
 
+@media(min-width:1200px){
+    .test-grid{
+        grid-template-columns: repeat(3,1fr);
+    }
 }

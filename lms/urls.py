@@ -18,6 +18,9 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+admin.site.index_title = 'Unstarted Administration'
+admin.site.site_header = 'Unstarted Administration'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('courses.urls')),
@@ -26,6 +29,7 @@ urlpatterns = [
     path('teacher/', include('teacher.urls')),
     path('student/', include('student.urls')),
     path('payment/', include('payment.urls')),
+    path('ckeditor', include('ckeditor_uploader.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL , document_root = settings.MEDIA_ROOT)

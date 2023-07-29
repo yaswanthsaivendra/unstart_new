@@ -15,14 +15,14 @@
     width: 100%;
     height: 100%;
     transition: 0.3 all ease-in;
-    background-color: white;
+    background:#175cd3
 }
 
 body{
     position: relative;
 }
 #navbar .links{
-
+    
     padding: 10px;
     padding-top: 50px;
 }
@@ -30,8 +30,8 @@ body{
 #navbar .links a{
     text-decoration: none;
     display: block;
-    font-size: 1.1rem;
-    color: black;
+    font-size: 1.2rem;
+    color: white;
     margin-bottom: 20px;
 }
 
@@ -54,15 +54,21 @@ body{
 
 }
 
+.wrapper1{
+    width: 100%;
+    height:auto;
+    background:linear-gradient(100deg,#175cd3,#1e1c49 50%,#171733 65%,#000);
+}
+
 header{
+    max-width: 2000px;
+    margin: 0 auto;
     position:sticky;
-    max-width: 1500px;
-    margin: auto;
     top: 0;
-    z-index: 99;
+    z-index: 99;    
     width: 100%;
     height: 60px;
-    background:linear-gradient(120deg,#1c51bb,#020204);
+    background:linear-gradient(100deg,#175cd3,#1e1c49 50%,#171733 65%,#000);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -77,6 +83,9 @@ nav a{
     text-decoration: none;
     color: white;
     margin: 0 20px;
+}
+nav a:hover{
+    color: rgb(255, 219, 40);
 }
 
 nav .btn-signup{
@@ -96,13 +105,15 @@ nav .btn-signup{
     color:gray;
 }
 
-
-@media (max-width:1020px){
-    nav{
-        display: none;
-    }
+@media (max-width:1120px) {
     .hamburger{
         display: block;
     }
+
+    header nav{
+        display: none;
+    }
 }
+
+
 

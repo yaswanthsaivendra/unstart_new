@@ -51,7 +51,9 @@ INSTALLED_APPS = [
     'payment',
     'django_extensions',
     'django_email_verification',
-    'crispy_bootstrap4'
+    'crispy_bootstrap4',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -181,3 +183,25 @@ EMAIL_HOST_PASSWORD = 'vzwjjkbfykfbbahq'
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+
+]
+
+
+CKEDITOR_UPLOAD_PATH = 'blog_uploads/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': 'auto',
+        'height': 500,
+        'resize_enabled': False,
+        'uiColor': '#ff5d63',
+        'editorplaceholder': 'Start typing here',
+        'extraPlugins': ('codesnippet,widget','richcombo,floatpanel,panel,listblock,button',),
+        'skin': 'moono-lisa',
+        'toolbar': 'full',
+        'codeSnippet_theme':'monokai_sublime',
+    }
+}

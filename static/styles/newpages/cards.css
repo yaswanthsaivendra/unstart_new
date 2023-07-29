@@ -1,20 +1,27 @@
-#cards{
+
+.wrapper3{
     width: 100%;
+    background-color: black;
     height: auto;
-    background-color:black;
-    padding: 20px;
-    max-width: 1500px;
-    margin: auto;
 }
 
-#cards .card-text{
+#cscards{
+    width: 100%;
+    height: auto;
+    background-color:transparent;
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#cscards .cscard-text{
     text-align: center;
     font-size: 2.5rem;
     color:white;
     margin-bottom: 20px;
 }
 
-.container{
+.cscontainer{
     width: 100%;
     display: flex;
     overflow-x: scroll;
@@ -26,7 +33,7 @@
     display: none;
 }
 
-.card{
+.cscard{
     padding: 20px;
     border:none;
     height: auto;
@@ -35,50 +42,63 @@
     background-color:#043C7C;
 }
 
-.card-row{
+.cscard-row{
     display: flex;
     justify-content: space-between;
 }
-.card-col-1{
+.cscard-col-1{
     flex-basis: 50%;
 }
 
-.card-col-1 h1{
+.cscard-col-1 h1{
     font-size: 1.5rem;
     color: white;
     margin-bottom: 10px;
 }
-.card-col-1 p{
+.cscard-col-1 p{
     color: white;
     margin-bottom: 10px;
     font-size: 1rem;
 }
 
-.card-col-2{
+.cscard-col-2{
     width: 300px;
     height: 300px;
 }
 
-.card-col-2 img{
+.cscard-col-2 img{
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-@media(max-width:450px){
-    .card{
-        min-width:100%;
-    }
-    .card-row{
-        flex-direction: column;
-    }
 
-    .card-col-1{
+@media(min-width:370px){
+    .cscard{
+        min-width: 400px;
+    }
+    .cscard-row{
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+    .cscard-col-1{
         flex-basis: 100%;
     }
-    .container{
-        overflow-x:hidden;
-        flex-direction: column;
+    .cscard-col-2{
+        width: 100%;
     }
-    
 }
+
+@media (min-width:820px){
+    .cscard{
+        min-width: 700px;
+    }
+    .cscard-row{
+        flex-direction:row;
+        gap: 30px;
+    }
+}
+
+
+
+
