@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'student',
     'account',
     'courses',
+    'payment',
     'django_extensions',
     'django_email_verification',
     'crispy_bootstrap4'
