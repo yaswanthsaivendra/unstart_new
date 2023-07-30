@@ -50,6 +50,9 @@ def privacy(request):
 def hire(request):
     return render(request,'mainpages/hireus.html')
 
+def events(request):
+    return render(request,'mainpages/events.html')
+
 class RegistrationView(View):
     def get(self, request):
         if request.user.is_authenticated:
@@ -348,9 +351,6 @@ def access_pending_view(request):
         })
 
 
-
-def events(request):
-    return render(request,'student/events_page.html')
 
 
 

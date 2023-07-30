@@ -3,7 +3,14 @@ from .views import (
     index,
     enrolled_courses,
     course_detail_view,
-    course_units_view
+    course_units_view,
+    allcourses,
+    calender,
+    communication,
+    course_detail,
+    course_learning,
+    course_tools,
+    notifications_page
 )
 
 
@@ -15,4 +22,11 @@ urlpatterns = [
     path('courses/', enrolled_courses, name='enrolled-courses'),
     path('course/<int:course_id>/', course_detail_view, name='course-detail'),
     path('course/<int:course_id>/units/', course_units_view, name='course-units-view'),
+    path('courses/allcourses',allcourses,name="allcourses"),
+    path('courses/calender',calender,name="calender"),
+    path('courses/communication',communication,name="communication"),
+    path('courses/course_learning',course_learning,name="course_learning"),
+    path('courses/course_tools',course_tools,name="course_tools"),
+    path('courses/notifications_page',notifications_page,name="notifications"),
+
 ]
