@@ -65,3 +65,25 @@ def index(request):
         'total_course_enrollments_count' : total_course_enrollments_count
     }
     return render(request, 'student/index.html', context)
+
+
+def allcourses(request):
+    return render(request,'student/enrolled_courses.html')
+
+def calender(request):
+    return render(request,'student/calender_page.html')
+
+def communication(request):
+    return render(request,'student/communication_page.html')
+
+def course_detail(request):
+    return render(request,'student/course_detail.html')
+
+def course_learning(request):
+    return render(request,'student/course_learning_page.html')
+
+def course_tools(request):
+    return render(request,'student/course_tools_page.html')
+
+def notifications_page(request):
+    return render(request,'student/notifications_page.html')
