@@ -16,7 +16,14 @@ from .models import (
     Enrollment,
 )
 
-admin.site.register(Course)
+
+
+class CourseAdmin(admin.ModelAdmin):
+    list_display = ('pk', '__str__',) 
+
+admin.site.register(Course, CourseAdmin)
+
+# admin.site.register(Course)
 admin.site.register(Unit)
 admin.site.register(Lesson)
 admin.site.register(LessonFile)

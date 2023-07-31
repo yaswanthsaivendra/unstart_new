@@ -11,17 +11,17 @@ import json
 
 # prod
 
-# BASE_URL = 'https://api-preprod.phonepe.com/apis/hermes'
+BASE_URL = 'https://api-preprod.phonepe.com/apis/hermes'
 
-# merchant_id = "UNSTARTONLINE"
-# salt_key = "80815208-8c48-4c1e-be94-71c22dff882e"  
+merchant_id = "UNSTARTONLINE"
+salt_key = "80815208-8c48-4c1e-be94-71c22dff882e"  
 
 # pre prod
 
-BASE_URL = 'https://api-preprod.phonepe.com/apis/hermes'
+# BASE_URL = 'https://api-preprod.phonepe.com/apis/hermes'
 
-merchant_id = "PGTESTPAYUAT"
-salt_key = "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399"  
+# merchant_id = "PGTESTPAYUAT"
+# salt_key = "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399"  
 salt_index = 1 
 
 
