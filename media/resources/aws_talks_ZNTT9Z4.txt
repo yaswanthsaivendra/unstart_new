@@ -1,0 +1,73 @@
+Hello everyone, my name is [Your Name], and 
+I'm thrilled to be here today 
+to introduce you to the exciting world of cloud computing and Amazon Web Services, 
+commonly known as AWS. 
+
+Joining me today is my good friend and AWS expert, Aditya. 
+[Aditya's Name] is a seasoned cloud solutions architect with a strong background in implementing AWS services
+He brings a wealth of practical experience to our presentation, 
+and I'm excited to have him share his insights with all of you.
+
+Before we dive into the nuts and bolts of AWS, 
+let's take a quick look at what we'll be covering in this presentation:
+
+
+Cloud computing is a way of using the internet to access and store data or run programs,
+which makes it easier to manage and also to access the information from anywhere.
+
+Mainly there are three diferent clouds 
+public
+private and hybrid
+
+and also coming to major services of cloud are proiding servers, databases,applications and many more
+
+
+It is a cloud computing platform provided by Amazon 
+and major features of aws are 
+
+
+AWS S3 is a file storage service which can  store and retrie any type of files from anywhere 
+
+AWS Lambda is a serverless computing service which lets you run your code without managing servers, 
+and also it automatically gets scaled to handle requests in real-time.
+
+
+aws step function is famous for its "synchronize workflow" 
+which means it helps in coordinating and managing the execution of multiple tasks 
+in a well-defined order, 
+and also it ensures that 
+each step is completed before proceeding to the next one. 
+It helps create efficient and reliable workflows between different components of a system.
+
+
+Structured data is organized and formatted, 
+typically which is in stored in tabular format with will have defined columns and properties, 
+making it easily searchable 
+
+and on the other hand Unstructured data lacks a predefined structure 
+and is typically found in formats like text, images, audio, or video, 
+which makes it more challenging 
+
+
+
+SQL databases are relational databases that use structured tables with fixed schemas and defined properties 
+NoSQL databases, on the other hand, 
+which are non-relational databases 
+that offer flexible schema options
+for handling unstructured or semi-structured data.
+
+api gateway securely connect you to to the backend services like suppose take a scenario 
+where application has signup page and login page 
+which reuqires three different lambdas 
+where one lambda to analyze inputs from login page and aunthenticate 
+and another to store the text data in database from signup page
+and another lambda which stores the profile image in the s3
+
+its collects and monitos the metrics or logs from our services
+which later helps us to analyze if any operational errors happens 
+
+
+Now, I'll hand over the stage to aditya, 
+who will take us through the next section of presentation. 
+
+

@@ -1,0 +1,137 @@
+{% extends 'student/base2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Course Content{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static "styles/student/test_and_assignments_style.css"%}">
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+{% endblock css %}
+{% block google_tags %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXLDDT540"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXLDDT540');
+</script>
+{% endblock google_tags %}
+{% block body %}
+        <section class="home">
+            <div class="test-assignment-tab">
+                <nav class="nav-bar">
+                    <ul class="ta-tabs">
+                        <li class="tab-item"><a href="#test-item" class="active" onclick="return false">Tests</a></li>
+                        <li class="tab-item"><a href="#assignment-item" onclick="return false">Assignments</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="wrapper_tab-content">
+                <section id="test-item" class="tab-content content-visible">
+                    <div class="ta-list">
+                        <div class="ta-card">
+                            <img
+                                src="http://www.sulitest.org/files/source/logo%20test%20horiz%20bis.png?1574185700651">
+                            <div class="details">
+                                <a href="{%url 'student:assignments_detail'%}">Test - 1</a>
+                                <p>Time: 1hr 30min</p>
+                            </div>
+                        </div>
+
+                        <div class="ta-card">
+                            <img
+                                src="http://www.sulitest.org/files/source/logo%20test%20horiz%20bis.png?1574185700651">
+                            <div class="details">
+                                <a href="{%url 'student:assignments_detail'%}">Test - 2</a>
+                                <p>Time: 1hr 30min</p>
+                            </div>
+                        </div>
+
+                        <div class="ta-card">
+                            <img
+                                src="http://www.sulitest.org/files/source/logo%20test%20horiz%20bis.png?1574185700651">
+                            <div class="details">
+                                <a href="{%url 'student:assignments_detail'%}">Test - 3</a>
+                                <p>Time: 1hr 30min</p>
+                            </div>
+                        </div>
+
+                        <div class="ta-card">
+                            <img
+                                src="http://www.sulitest.org/files/source/logo%20test%20horiz%20bis.png?1574185700651">
+                            <div class="details">
+                                <a href="{%url 'student:assignments_detail'%}">Test - 4</a>
+                                <p>Time: 1hr 30min</p>
+                            </div>
+                        </div>
+
+                        <div class="ta-card">
+                            <img
+                                src="http://www.sulitest.org/files/source/logo%20test%20horiz%20bis.png?1574185700651">
+                            <div class="details">
+                                <a href="{%url 'student:assignments_detail'%}">Test - 5</a>
+                                <p>Time: 1hr 30min</p>
+                            </div>
+                        </div>
+
+                        <div class="ta-card">
+                            <img
+                                src="http://www.sulitest.org/files/source/logo%20test%20horiz%20bis.png?1574185700651">
+                            <div class="details">
+                                <a href="{%url 'student:assignments_detail'%}">Test - 6</a>
+                                <p>Time: 1hr 30min</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="assignment-item" class="tab-content">
+                    <div class="ta-list">
+                        <div class="ta-card">
+                            <img
+                                src="https://t4.ftcdn.net/jpg/04/02/42/69/360_F_402426919_8EQoxyOoC1QMZE8a9X0l0IAsjzjrZpWX.jpg">
+                            <div class="details">
+                                <a href="{%url 'student:assignments_detail'%}">Assignment - 1</a>
+                                <p>Time: 1hr 30min</p>
+                            </div>
+                        </div>
+
+                        <div class="ta-card">
+                            <img
+                                src="https://t4.ftcdn.net/jpg/04/02/42/69/360_F_402426919_8EQoxyOoC1QMZE8a9X0l0IAsjzjrZpWX.jpg">
+                            <div class="details">
+                                <a href="{%url 'student:assignments_detail'%}">Assignment - 2</a>
+                                <p>Time: 1hr 30min</p>
+                            </div>
+                        </div>
+
+                        <div class="ta-card">
+                            <img
+                                src="https://t4.ftcdn.net/jpg/04/02/42/69/360_F_402426919_8EQoxyOoC1QMZE8a9X0l0IAsjzjrZpWX.jpg">
+                            <div class="details">
+                                <a href="{%url 'student:assignments_detail'%}">Assignment - 3</a>
+                                <p>Time: 1hr 30min</p>
+                            </div>
+                        </div>
+
+                        <div class="ta-card">
+                            <img
+                                src="https://t4.ftcdn.net/jpg/04/02/42/69/360_F_402426919_8EQoxyOoC1QMZE8a9X0l0IAsjzjrZpWX.jpg">
+                            <div class="details">
+                                <a href="{%url 'student:assignments_detail'%}">Assignment - 4</a>
+                                <p>Time: 1hr 30min</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </section>
+
+    </div>
+    {% block script %}
+    <script src="js/test_assignments.js"></script>
+    {% endblock script %}
+    {% endblock body %}

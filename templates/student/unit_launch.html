@@ -1,0 +1,118 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Launch</title>
+    <link rel="stylesheet" href="{% static "styles/student/unit_launch.css"%}">
+    <script defer src="{% static "styles/student/unit_launch.js"%}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" integrity="sha512-ZnR2wlLbSbr8/c9AgLg3jQPAattCUImNsae6NHYnS9KrIwRdcY9DxFotXhNAKIKbAXlRnujIqUWoXXwqyFOeIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXLDDT540"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXLDDT540');
+</script>
+</head>
+<body>
+
+    <div class="course-popup">
+        <div class="course-page">
+            <div class="row-1">
+                <h1>Introduction to Python</h1>
+                <button class="btn-close"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <div class="course-container">
+                <div class="course-card">
+                    <div class="cc-row-1">
+                        <h1>1. Python Basics <span>FREE</span></h1>
+                        <div class="bar"></div>
+                    </div>
+                    <p>Python is a popular programming language. Python can be used on a server to create web applications. Start learning Python now. Learning by Examples. With our</p>
+                    <ul class="list">
+                        <li>python list</li>
+                        <li>data types</li>
+                        <li>classes</li>
+                        <li>oops</li>
+                        <li>modules</li>
+                    </ul>
+                    <button class="collapse">View Chapter Details </button>
+                </div>
+                <div class="course-card">
+                    <div class="cc-row-1">
+                        <h1>1. Python Basics <span>FREE</span></h1>
+                        <div class="bar"></div>
+                    </div>
+                    <p>Python is a popular programming language. Python can be used on a server to create web applications. Start learning Python now. Learning by Examples. With our</p>
+                    <ul class="list">
+                        <li>python list</li>
+                        <li>data types</li>
+                        <li>classes</li>
+                        <li>oops</li>
+                        <li>modules</li>
+                    </ul>
+                    <button class="collapse">View Chapter Details</button>
+                </div>
+                <div class="course-card">
+                    <div class="cc-row-1">
+                        <h1>1. Python Basics <span>FREE</span></h1>
+                        <div class="bar"></div>
+                    </div>
+                    <p>Python is a popular programming language. Python can be used on a server to create web applications. Start learning Python now. Learning by Examples. With our</p>
+                    <ul class="list">
+                        <li>python list</li>
+                        <li>data types</li>
+                        <li>classes</li>
+                        <li>oops</li>
+                        <li>modules</li>
+                    </ul>
+                    <button class="collapse">View Chapter Details</button>
+                </div>
+            </div>
+            <div class="row-2">
+                <button class="br-1">back to dashboard</button>
+                <button class="br-2">Reset course page</button>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="container flex">
+            <nav class="navlist">
+                <img src="{% static "images/logoblue.png"%}" alt="">
+                <a href="#">learn /courses/ excetuive management</a>
+            </nav>
+            <nav class="nav-btns">
+                <button class="btn-course"><i class="bi bi-laptop"></i> course outline</button>
+            <button class="btn-pf"><i class="bi bi-rss-fill"></i> provide feedback</button>
+            <button class="btn-bd"><i class="bi bi-layout-sidebar"></i> back to dashboard</button>
+            </nav>
+            <nav class="nav-btn-2">
+                <button class="btn-course"><i class="bi bi-laptop"></i></button>
+            <button class="btn-pf"><i class="bi bi-rss-fill"></i></button>
+            <button class="btn-bd"><i class="bi bi-layout-sidebar"></i></button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="course">
+        <div class="cont c-flex">
+            <h1 id="title">lesson Title: Canva</h1>
+            <iframe src="https://www.youtube.com/embed/tdZOjBODtE4?rel=0" frameborder="0"></iframe>
+            <div class="btn-flex">
+                <button class="btn-1"><a href="">previous <i class="bi bi-arrow-left"></i></a></button>
+                <div type="" class="btn-3">
+                    <input type="checkbox">
+                    Mark as completed
+                </div>
+                <button type="" class="btn-2"><a href="">Next <i class="bi bi-arrow-right"></i> </a></button>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

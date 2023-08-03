@@ -1,7 +1,7 @@
-{% extends 'student/base.html' %}
+{% extends 'student/base2.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block title %}Calender{% endblock title %}
+{% block title %}Course Content{% endblock title %}
 {% block css %}
 <link rel="stylesheet" href="{% static "styles/student/course_learning_page_style.css"%}">
 <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -27,7 +27,7 @@
 
                     <h1>PDF - Complex Numbers</h1>
 
-                    <button type="button" value="Continue">Continue</button>
+                    <a href="{%url 'student:unit_launch'%}" ><button type="button" value="Continue">Continue</button></a>
                 </div>
             </div>
 

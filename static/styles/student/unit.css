@@ -1,0 +1,47 @@
+.check-container{
+    height: 100%;
+    width: 100%;
+}
+
+.check-container ul small{
+    margin-top: 10px;
+    display: inline-block;
+    list-style: none;
+    font-size: 1.5rem;
+    font-weight:bold;
+}
+
+.check-container ul li{
+    list-style: none;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+
+.check-container ul{
+    width: 100%;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.check-container ul li span{
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.check-container ul li input{
+    width: 20px;
+    float:right;
+    height: 20px;
+    accent-color: rgb(61, 106, 255);
+}
+
+
+@media(max-width:530px){
+    .home p{
+        font-size: 12px;
+    }
+    .check-container ul li span{
+        font-size: 12px;
+    }
+}

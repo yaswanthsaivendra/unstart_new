@@ -1,0 +1,70 @@
+{% extends 'student/base2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Course Content{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static "styles/student/course_learning_page_style.css"%}">
+<link rel="stylesheet" href="{% static "styles/student/unit.css"%}">
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+{% endblock css %}
+{% block google_tags %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXLDDT540"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXLDDT540');
+</script>
+{% endblock google_tags %}
+{% block body %}
+
+        <section class="home">
+            <h1 class="home-text">
+                unstarted subjects units
+            </h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, placeat necessitatibus. Vel ex iste, blanditiis esse eum et, quis optio placeat numquam error ducimus atque ratione nobis rem, soluta aut.</p>
+            <div class="check-container">
+                <ul>
+                    <small>Announcements</small>
+                    <li>
+                        <span>python basis from top to bottm left to right</span>
+                        <input type="checkbox">
+                    </li>
+                    <li>
+                        <span>python basis from top to bottm left to right</span>
+                        <input type="checkbox">
+                    </li>
+                    <li>
+                        <span>python basis from top to bottm left to right</span>
+                        <input type="checkbox">
+                    </li>
+                    <li>
+                        <span>python basis from top to bottm left to right</span>
+                        <input type="checkbox">
+                    </li>
+                </ul>
+                <ul>
+                    <small>Syllabus</small>
+                    <li>
+                        <span>python basis from top to bottm left to right</span>
+                        <input type="checkbox">
+                    </li>
+                    <li>
+                        <span>python basis from top to bottm left to right</span>
+                        <input type="checkbox">
+                    </li>
+                    <li>
+                        <span>python basis from top to bottm left to right</span>
+                        <input type="checkbox">
+                    </li>
+                    <li>
+                        <span>python basis from top to bottm left to right</span>
+                        <input type="checkbox">
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    {% endblock body %}

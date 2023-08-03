@@ -1,4 +1,4 @@
-{% extends 'student/base2.html' %}
+{% extends 'student/base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% block title %}Course Detail{% endblock title %}
@@ -18,9 +18,9 @@
 </script>
 {% endblock google_tags %}
 {% block body %}
-        <section class="home">
+<section class="home">
             <div class="img-banner">
-                <img src="images/logo.png" alt="" srcset="">
+                <img src="{% static 'images/logo.png' %}" alt="" srcset="">
             </div>
 
             <div class="main-content">
@@ -32,65 +32,22 @@
                         </button>
                         <section class="content">
                             <div class="course-list">
+                                {% for unit, completion_percentage, lessons_completed, total_lessons in unit_progress %}
                                 <div class="course-card">
                                     <div class="row-1">
-                                        <h2><a href="https://" target="_blank" rel="noopener noreferrer">Course Introduction</a></h2>
+                                        <h2><a href="https://" target="_blank" rel="noopener noreferrer">{{ unit.title }}</a></h2>
                                     </div>
                                     <div class="row-2">
                                         <div class="pro-bar">
                                             <div class="completed"></div>
                                         </div>
                                         <div class="details">
-                                            <p><span class="prog-count">4</span>%</p>
-                                            <p>1 of 28 Topics Completed</p>
+                                            <p><span class="prog-count">{{ completion_percentage }}</span>%</p>
+                                            <p>{{ lessons_completed }} of {{ total_lessons }} Topics Completed</p>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="course-card">
-                                    <div class="row-1">
-                                        <h2><a href="https://" target="_blank" rel="noopener noreferrer">Unit 01 - Introduction</a></h2>
-                                    </div>
-                                    <div class="row-2">
-                                        <div class="pro-bar">
-                                            <div class="completed"></div>
-                                        </div>
-                                        <div class="details">
-                                            <p><span class="prog-count">10</span>%</p>
-                                            <p>1 of 28 Topics Completed</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="course-card">
-                                    <div class="row-1">
-                                        <h2><a href="https://" target="_blank" rel="noopener noreferrer">Unit 02 - Mathemaical Logic</a></h2>
-                                    </div>
-                                    <div class="row-2">
-                                        <div class="pro-bar">
-                                            <div class="completed"></div>
-                                        </div>
-                                        <div class="details">
-                                            <p><span class="prog-count">4</span>%</p>
-                                            <p>1 of 28 Topics Completed</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="course-card">
-                                    <div class="row-1">
-                                        <h2><a href="https://" target="_blank" rel="noopener noreferrer">Unit 03 - Modern Algebra</a></h2>
-                                    </div>
-                                    <div class="row-2">
-                                        <div class="pro-bar">
-                                            <div class="completed"></div>
-                                        </div>
-                                        <div class="details">
-                                            <p><span class="prog-count">0</span>%</p>
-                                            <p>1 of 28 Topics Completed</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </section>
                     </div>
@@ -105,8 +62,9 @@
                                 <p>Last viewed - <a href="#">PDF - Complex Numbers</a></p>
 
                                 <div class="topics-list">
+                                    {% for unit, completion_percentage, lessons_completed, total_lessons in unit_progress %}
                                     <div class="topic-card">
-                                        <h1>Course Introduction</h1>
+                                        <h1>{{ unit.title }}</h1>
 
                                         <div class="percent">
                                             <svg>
@@ -114,85 +72,14 @@
                                               <circle cx="30" cy="30" r="30"></circle>
                                             </svg>
                                             <div class="num">
-                                              <h2>87<span>%</span></h2>
+                                              <h2>{{ completion_percentage }}<span>%</span></h2>
                                             </div>
                                           </div>
                                     </div>
                                     <hr>
+                                    {% endfor %}
 
-                                    <div class="topic-card">
-                                        <h1>Unit 01 : Set Theory</h1>
 
-                                        <div class="percent">
-                                            <svg>
-                                              <circle cx="30" cy="30" r="30"></circle>
-                                              <circle cx="30" cy="30" r="30"></circle>
-                                            </svg>
-                                            <div class="num">
-                                              <h2>87<span>%</span></h2>
-                                            </div>
-                                          </div>
-                                    </div>
-                                    <hr>
-
-                                    <div class="topic-card">
-                                        <h1>Unit 02 : Mathemaical Logic</h1>
-
-                                        <div class="percent">
-                                            <svg>
-                                              <circle cx="30" cy="30" r="30"></circle>
-                                              <circle cx="30" cy="30" r="30"></circle>
-                                            </svg>
-                                            <div class="num">
-                                              <h2>87<span>%</span></h2>
-                                            </div>
-                                          </div>
-                                    </div>
-                                    <hr>
-
-                                    <div class="topic-card">
-                                        <h1>Unit 03 : Modern Algebra</h1>
-
-                                        <div class="percent">
-                                            <svg>
-                                              <circle cx="30" cy="30" r="30"></circle>
-                                              <circle cx="30" cy="30" r="30"></circle>
-                                            </svg>
-                                            <div class="num">
-                                              <h2>87<span>%</span></h2>
-                                            </div>
-                                          </div>
-                                    </div>
-                                    <hr>
-
-                                    <div class="topic-card">
-                                        <h1>Unit 04 : Trigonometry</h1>
-
-                                        <div class="percent">
-                                            <svg>
-                                              <circle cx="30" cy="30" r="30"></circle>
-                                              <circle cx="30" cy="30" r="30"></circle>
-                                            </svg>
-                                            <div class="num">
-                                              <h2>87<span>%</span></h2>
-                                            </div>
-                                          </div>
-                                    </div>
-                                    <hr>
-
-                                    <div class="topic-card">
-                                        <h1>Unit 05 : Limits and Contunity</h1>
-
-                                        <div class="percent">
-                                            <svg>
-                                              <circle cx="30" cy="30" r="30"></circle>
-                                              <circle cx="30" cy="30" r="30"></circle>
-                                            </svg>
-                                            <div class="num">
-                                              <h2>87<span>%</span></h2>
-                                            </div>
-                                          </div>
-                                    </div>
 
                                 </div>
                             </div>
@@ -295,4 +182,10 @@
             </div>
         </section>
     </div>
+
     {% endblock body %}
+
+    {% block script %}
+    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/all_courses.js' %}"></script>
+    {% endblock script %}

@@ -87,3 +87,18 @@ def course_tools(request):
 
 def notifications_page(request):
     return render(request,'student/notifications_page.html')
+
+def course_content(request):
+    return render(request,'student/course_learning_page.html')
+
+def assignments(request):
+    return render(request,'student/assignments.html')
+
+def assignments_detail(request):
+    return render(request,'student/assignments_detail.html')
+
+def course_tasks(request):
+    return render(request,'student/course_tasks.html')
+
+def unit_launch(request):
+    return render(request,'student/unit_launch.html')

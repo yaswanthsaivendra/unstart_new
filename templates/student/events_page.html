@@ -5,6 +5,17 @@
 {% block css %}
 <link rel="stylesheet" href="{% static "styles/student/events_style.css"%}">
 {% endblock css %}
+{% block google_tags %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXLDDT540"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXLDDT540');
+</script>
+{% endblock google_tags %}
 {% block body %}
 
         <section class="home">

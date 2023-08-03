@@ -1,0 +1,101 @@
+{% extends 'student/base2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Course Content{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static "styles/student/ta_submission_style.css"%}">
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+{% endblock css %}
+{% block google_tags %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTXLDDT540"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTXLDDT540');
+</script>
+{% endblock google_tags %}
+{% block body %}
+
+        <section class="home">
+           <div class="main-content">
+                <div class="title-section">
+                    <h1 class="ta-title">Test - 1</h1>
+                    <div class="ta-details">
+                        <img src="images/fileImgPDF.png" alt="file name" class="ta-file-type-img">
+                        <a href="Test And Assigments Files/sample.pdf" download="sample File" class="file-download-link">Test File.pdf</a>
+                        <p class="date-time">5th Dec 2022, 10:45 AM</p>
+                    </div>
+                    <h1 class="ta-submission-status">Submission Status</h1>
+                </div>
+
+                <div class="submission-section">
+                    <table class="submission-details-table">
+                        <tr>
+                            <td class="c1">Submission Status</td>
+                            <td class="c2 ta-sub-status-val">Submitted for grading</td>
+                        </tr>
+                        <tr>
+                            <td class="c1">Grading Status</td>
+                            <td class="c2 ta-grad-status-val" style="background: #d5ffcf;">Released</td>
+                        </tr>
+                        <tr>
+                            <td class="c1">Last Modified</td>
+                            <td class="c2 ta-last-modified-val">Tuesday, 5 April 2022, 5:55 PM</td>
+                        </tr>
+                        <tr>
+                            <td class="c1">File Submissions</td>
+                            <td class="c2 ta-file-sub-val">
+                                <div class="file-info">
+                                    <img src="images/fileImgPDF.png" alt="file type" class="ta-file-type-img">
+                                    <a href="Test And Assigments Files/sample.pdf" download="sample File" class="file-download-link">DocScanner 5 April 2022 2 - 18 PM. pdf</a>
+                                    <p>5 April 2022, 8:44 PM</p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="c1">Submission Comments</td>
+                            <td class="c2 ta-sub-comments">
+                                <div class="comments-section">
+                                    <i class="fa-sharp fa-solid fa-caret-right"></i>
+                                    <p>Comments (<span>0</span>)</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="edit-remove-sub-buttons">
+                        <div class="sub-buttons">
+                            <button class="edit btn">EDIT SUBMISSION</button>
+                            <button class="remove btn">REMOVE SUBMISSION</button>
+                        </div>
+                        <p>You can still make changes to your submission.</p>
+                    </div>
+                </div>
+
+                <div class="feedback-section">
+                    <h1>Feedback</h1>
+                    <table class="grade-details-table">
+                        <tr>
+                            <td class="c1">Grade</td>
+                            <td class="c2 ta-grade-val">26.00 / 30.00</td>
+                        </tr>
+                        <tr>
+                            <td class="c1">Graded On</td>
+                            <td class="c2 ta-graded-time-val">Sunday, 27 April 2022, 4:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td class="c1">Graded By</td>
+                            <td class="c2 ta-graded-By-val">
+                                <img src="images/User.png" alt="Professor name">
+                                <p>Mr. David Hopper</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+           </div>
+        </section>
+    </div>
+    {% endblock body %}
