@@ -23,7 +23,6 @@ admin.site.site_header = 'Unstarted Administration'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('courses.urls')),
     path('', include('account.urls')),
     path('management/', include('manager.urls')),
     path('teacher/', include('teacher.urls')),

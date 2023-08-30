@@ -7,6 +7,8 @@ from .models import (
     LessonLink,
     LessonProgress,
     Announcement,
+    Timetable,
+    Syllabus,
     AnnouncementFile,
     AnnouncementLink,
     Assignment,
@@ -19,7 +21,7 @@ from .models import (
 
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('pk', '__str__',) 
+    list_display = ('pk', '__str__',)
 
 admin.site.register(Course, CourseAdmin)
 
@@ -31,5 +33,7 @@ admin.site.register(LessonLink)
 admin.site.register(LessonProgress)
 admin.site.register(Announcement)
 admin.site.register(Enrollment)
+admin.site.register(Timetable)
+admin.site.register(Syllabus)
 
 # Register your models here.

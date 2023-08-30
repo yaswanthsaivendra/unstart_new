@@ -42,12 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    # apps
     'manager',
     'teacher',
     'student',
     'account',
-    'courses',
     'payment',
     'django_extensions',
     'django_email_verification',

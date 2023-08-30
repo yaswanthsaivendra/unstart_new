@@ -193,7 +193,7 @@
                     </div>
                 </div>
 
-                <form enctype="multipart/form-data" method="post" action="{% url 'teacher:lesson-bigtext-create' lesson_pk=lesson.pk %}">
+                <form enctype="multipart/form-data" method="post" action="">
                     {% csrf_token %}
                     <div class="">
                         <textarea name="body" id="editor"></textarea>

@@ -2,7 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.utils import timezone
+from django.utils.text import slugify
+import hashlib
+# Create your models here.
 
+def get_unique_string(body, time):
+    s = str(body)+str(time)
+    result_str = hashlib.sha1(s.encode()).hexdigest()[:10]
+    return result_str
 
 ## Courses
 
@@ -50,11 +57,11 @@ class Unit(models.Model):
             is_completed=True
         ).count()
         return completed_lesson_count
-    
+
     @property
     def total_lessons(self):
         return self.lesson_set.count()
-    
+
     @property
     def completion_percentage(self):
         if self.total_lessons > 0:
@@ -70,7 +77,7 @@ class Lesson(models.Model):
     is_released = models.BooleanField(default = False)
     def __str__(self):
         return self.title
-    
+
     def save(self, *args, **kwargs):
         if not self.lesson_number:
             # Get the maximum lesson_number for the current unit
@@ -166,12 +173,19 @@ class GroupCourseEnrollment(models.Model):
 ## announcements
 
 class Announcement(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    title = models.CharField(max_length=50, blank=True, null=True)
+
+    DRAFT = 'draft'
+    RELEASED = 'released'
+    STATUS_CHOICES = [
+        (DRAFT, 'Draft'),
+        (RELEASED, 'Released'),
+    ]
+
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, default='0000000')
+    title = models.CharField(max_length=50,blank=True,null=True)
     description = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
-    is_released = models.BooleanField(default=False)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default=DRAFT)
 
     slug = models.SlugField(max_length=16, null=True, unique=True, editable=False)
 
@@ -179,16 +193,16 @@ class Announcement(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        self.slug = slugify(get_unique_string(self.title, self.user))
-        super().save(*args, **kwargs)
+        super(Announcement, self).save()
+        self.slug = slugify(get_unique_string(self.title,self.user_profile))
+        super(Announcement, self).save()
 
 
 class AnnouncementFile(models.Model):
     announcement = models.ForeignKey(Announcement, on_delete=models.CASCADE)
     file = models.FileField(upload_to='announcement_files/')
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.announcement.title} - file {self.id}"
 
 
@@ -196,9 +210,94 @@ class AnnouncementLink(models.Model):
     announcement = models.ForeignKey(Announcement, on_delete=models.CASCADE)
     link = models.URLField()
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.announcement.title} - link {self.id}"
 
+## Syllabus
+
+class Syllabus(models.Model):
+
+    DRAFT = 'draft'
+    RELEASED = 'released'
+    STATUS_CHOICES = [
+        (DRAFT, 'Draft'),
+        (RELEASED, 'Released'),
+    ]
+
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, default='0000000')
+    title = models.CharField(max_length=50,blank=True,null=True)
+    description = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default=DRAFT)
+
+    slug = models.SlugField(max_length=16, null=True, unique=True, editable=False)
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        super(Syllabus, self).save()
+        self.slug = slugify(get_unique_string(self.title,self.user_profile))
+        super(Syllabus, self).save()
+
+
+class SyllabusFile(models.Model):
+    syllabus = models.ForeignKey(Syllabus, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='syllabus_files/')
+
+    def __str__(self):
+        return f"{self.syllabus.title} - file {self.id}"
+
+
+class SyllabusLink(models.Model):
+    syllabus = models.ForeignKey(Syllabus, on_delete=models.CASCADE)
+    link = models.URLField()
+
+    def __str__(self):
+        return f"{self.syllabus.title} - link {self.id}"
+
+## Timetable
+
+class Timetable(models.Model):
+
+    DRAFT = 'draft'
+    RELEASED = 'released'
+    STATUS_CHOICES = [
+        (DRAFT, 'Draft'),
+        (RELEASED, 'Released'),
+    ]
+
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, default='0000000')
+    title = models.CharField(max_length=50,blank=True,null=True)
+    description = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default=DRAFT)
+
+    slug = models.SlugField(max_length=16, null=True, unique=True, editable=False)
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        super(Timetable, self).save()
+        self.slug = slugify(get_unique_string(self.title,self.user_profile))
+        super(Timetable, self).save()
+
+
+class TimetableFile(models.Model):
+    timetable = models.ForeignKey(Timetable, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='timetable_files/')
+
+    def __str__(self):
+        return f"{self.timetable.title} - file {self.id}"
+
+
+class TimetableLink(models.Model):
+    timetable = models.ForeignKey(Timetable, on_delete=models.CASCADE)
+    link = models.URLField()
+
+    def __str__(self):
+        return f"{self.timetable.title} - link {self.id}"
 
 ## assignments
 

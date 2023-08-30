@@ -58,7 +58,7 @@
             <a href="{% url 'login' %}" style="color: white;    background-color: #5CABDC;padding: 8px 20px;border: none;border-radius: 5px; width: 110px;">Login</a>
             <a href="{%url 'register'%}" style="color: white;      background-color: #5CABDC;padding: 8px 20px;border: none;border-radius: 5px; width: 110px;">Signup</a>
             {% else %}
-            <a href="{% url 'home' %}" style="color: white;    background-color: #5CABDC;padding: 8px 20px;border: none;border-radius: 5px; width: 110px;">view LMS</a>
+            <a href="" style="color: white;    background-color: #5CABDC;padding: 8px 20px;border: none;border-radius: 5px; width: 110px;">view LMS</a>
             <a href="{%url 'logout'%}" style="color: white;      background-color: #5CABDC;padding: 8px 20px;border: none;border-radius: 5px; width: 110px;">Logout</a>
             {% endif %}
         </div>
@@ -75,7 +75,7 @@
                 <a href="{% url 'login' %}">Login</a>
                 <button class="btn-signup"><a href="{%url 'register'%}" style="text-decoration: none; color: gray;">Signup</a></button>
                 {% else %}
-                <a href="{% url 'home' %}">view LMS</a>
+                <a href="">view LMS</a>
                 <button class="btn-signup"><a href="{%url 'logout'%}" style="text-decoration: none; color: gray;">Logout</a></button>
                 {% endif %}
         </nav>

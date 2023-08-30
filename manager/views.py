@@ -15,7 +15,6 @@ from account.models import (
     )
 from django.conf import settings
 from itertools import chain
-from courses.forms import userform
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from django.views import View
 from django.urls import reverse_lazy, reverse
